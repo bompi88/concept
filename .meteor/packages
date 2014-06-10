@@ -8,3 +8,5 @@ iron-router
 d3
 bootstrap3-sass
 insecure
+accounts-base
+accounts-password

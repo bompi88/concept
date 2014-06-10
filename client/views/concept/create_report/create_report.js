@@ -2,12 +2,13 @@
 /* CreateReport: Event Handlers and Helpers */
 /*****************************************************************************/
 Template.CreateReport.events({
-  /*
-   * Example: 
-   *  'click .selector': function (e, tmpl) {
-   *
-   *  }
-   */
+  'submit report-form': function (tmpl, err) {
+    var name = tmpl.find('#name');
+
+    Reports.insert({name: name}, function() {
+
+    });
+  }
 });
 
 Template.CreateReport.helpers({

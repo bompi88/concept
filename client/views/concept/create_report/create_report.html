@@ -1,0 +1,84 @@
+<template name="CreateReport">
+	<div class="row">
+		<div class="col-xs-8 col-xs-offset-2">
+			<form role="form">
+				<h3>Generelt</h3>
+				<div class="form-group">
+					<input type="text" class="form-control" id="name" placeholder="Prosjektnavn">
+				</div>
+				<div class="form-group">
+					<input type="text" class="form-control" id="sector" placeholder="Sektor">
+				</div>
+				<div class="form-group">
+					<input type="text" class="form-control" id="year" placeholder="Årstall">
+				</div>
+				<div class="form-group">
+					<input type="text" class="form-control" id="cost" placeholder="Kostnad">
+				</div>
+				<div class="form-group">
+					<input type="text" class="form-control" id="location" placeholder="Sted">
+				</div>
+				<div class="form-group">
+					<!-- Should be a combobox or something? -->
+					<input type="text" class="form-control" id="success-factor" placeholder="Grad av suksess 1-3">
+				</div>
+				<div class="form-group">
+					<textarea class="form-control" rows="5" placeholder="Kort prosjektbeskrivelse"></textarea>
+				</div>
+
+				<h3>Evaluering</h3>
+
+				<h4>Tekstlige vurderinger</h4>
+				<div class="form-group">
+					<textarea class="form-control" rows="5" placeholder="Kort sammenfattende tekstlig vurdering (seks kriterier)"></textarea>
+				</div>
+				<div class="form-group">
+					<textarea class="form-control" rows="5" placeholder="Samlet vurdering"></textarea>
+				</div>
+				<div class="form-group">
+					<textarea class="form-control" rows="5" placeholder="Effektivitet"></textarea>
+				</div>
+				<div class="form-group">
+					<textarea class="form-control" rows="5" placeholder="Måloppnåelse"></textarea>
+				</div>
+				<div class="form-group">
+					<textarea class="form-control" rows="5" placeholder="Virkninger"></textarea>
+				</div>
+				<div class="form-group">
+					<textarea class="form-control" rows="5" placeholder="Relevans"></textarea>
+				</div>
+				<div class="form-group">
+					<textarea class="form-control" rows="5" placeholder="Levedyktighet"></textarea>
+				</div>
+				<div class="form-group">
+					<textarea class="form-control" rows="5" placeholder="Samfunnsøkonomisk lønnsomhet"></textarea>
+				</div>
+
+				<h4>Tallvurderinger</h4>
+				<div class="form-group">
+					<input type="text" class="form-control" id="num-eval-total" placeholder="Samlet vurdering">
+				</div>
+				<div class="form-group">
+					<input type="text" class="form-control" id="num-eval-efficiency" placeholder="Effektivitet">
+				</div>
+				<div class="form-group">
+					<input type="text" class="form-control" id="num-eval-satisfaction" placeholder="Måloppnåelse">
+				</div>
+				<div class="form-group">
+					<input type="text" class="form-control" id="num-eval-" placeholder="Virkninger">
+				</div>
+				<div class="form-group">
+					<input type="text" class="form-control" id="num-eval-" placeholder="Relevans">
+				</div>
+				<div class="form-group">
+					<input type="text" class="form-control" id="num-eval-" placeholder="Levedyktighet">
+				</div>
+				<div class="form-group">
+					<input type="text" class="form-control" id="num-eval-" placeholder="Samfunnsøkonomisk lønnsomhet">
+				</div>
+				<button type="submit" class="btn btn-primary pull-right">Lagre</button>
+				<button type="button" class="btn btn-default pull-right">Avbryt</button>
+			</form>
+		</div>
+	</div>
+</template>

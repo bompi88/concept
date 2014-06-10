@@ -10,4 +10,5 @@ bootstrap3-sass
 insecure
 accounts-base
 accounts-password
-accounts-ui
+scss
+accounts-ui-bootstrap-3

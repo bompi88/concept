@@ -1,7 +1,7 @@
 <template name="CreateReport">
 	<div class="row">
 		<div class="col-xs-8 col-xs-offset-2">
-			<form role="form">
+			<form role="form" id="report-form">
 				<h3>Generelt</h3>
 				<div class="form-group">
 					<input type="text" class="form-control" id="name" placeholder="Prosjektnavn">
@@ -55,30 +55,48 @@
 				</div>
 
 				<h4>Tallvurderinger</h4>
-				<div class="form-group">
-					<input type="text" class="form-control" id="num-eval-total" placeholder="Samlet vurdering">
-				</div>
-				<div class="form-group">
-					<input type="text" class="form-control" id="num-eval-efficiency" placeholder="Effektivitet">
-				</div>
-				<div class="form-group">
-					<input type="text" class="form-control" id="num-eval-satisfaction" placeholder="Måloppnåelse">
-				</div>
-				<div class="form-group">
-					<input type="text" class="form-control" id="num-eval-" placeholder="Virkninger">
-				</div>
-				<div class="form-group">
-					<input type="text" class="form-control" id="num-eval-" placeholder="Relevans">
-				</div>
-				<div class="form-group">
-					<input type="text" class="form-control" id="num-eval-" placeholder="Levedyktighet">
-				</div>
-				<div class="form-group">
-					<input type="text" class="form-control" id="num-eval-" placeholder="Samfunnsøkonomisk lønnsomhet">
-				</div>
+
+				<h5>1. Samlet vurdering</h5>
+				{{> RadioGroupFive name="num-eval-total"}}
+
+				<h5>2. Effektivitet</h5>
+				{{> RadioGroupFive name="num-eval-efficiency"}}
+
+				<h5>3. Måloppnåelse</h5>
+				{{> RadioGroupFive name="num-eval-achievement"}}
+
+				<h5>4. Virkninger</h5>
+				{{> RadioGroupFive name="num-eval-effects"}}
+
+				<h5>5. Relevans</h5>
+				{{> RadioGroupFive name="num-eval-relevance"}}
+
+				<h5>6. Levedyktighet</h5>
+				{{> RadioGroupFive name="num-eval-viability"}}
+
+				<h5>7. Samfunnsøkonomisk lønnsomhet</h5>
+				{{> RadioGroupFive name="num-eval-profitability"}}
+				
 				<button type="submit" class="btn btn-primary pull-right">Lagre</button>
-				<button type="button" class="btn btn-default pull-right">Avbryt</button>
+				<button type="button" class="btn btn-default pull-right cancel-btn">Avbryt</button>
 			</form>
 		</div>
 	</div>
+</template>
+
+<template name="RadioGroupFive">
+	<div class="form-group">
+		{{> RadioButton name=this.name value="1"}}
+		{{> RadioButton name=this.name value="2"}}
+		{{> RadioButton name=this.name value="3"}}
+		{{> RadioButton name=this.name value="4"}}
+		{{> RadioButton name=this.name value="5"}}
+	</div>
+</template>
+
+<template name="RadioButton">
+	<label class="radio-inline">
+		<input type="radio" name="{{name}}" id="{{name}}-option1" value="{{value}}" checked>
+		{{value}}
+	</label>
 </template>

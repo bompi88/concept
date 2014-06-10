@@ -10,5 +10,15 @@ Router.configure({
 });
 
 Router.map(function () {
-      this.route('ConceptIndex', {path: '/'});
+	this.route('ConceptIndex', {path: '/'});
+
+	this.route('AdminReportList', {
+    	path: '/reports',
+    	controller: 'AdminReportListController'
+    });
+
+    this.route('CreateReport', {
+    	path: '/create',
+    	controller: 'AdminCreateReportController'
+    });
 });

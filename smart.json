@@ -1,6 +1,7 @@
 {
   "packages": {
     "iron-router": {},
-    "bootstrap3-sass": {}
+    "bootstrap3-sass": {},
+    "accounts-ui-bootstrap-3": {}
   }
 }

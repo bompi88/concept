@@ -5,6 +5,9 @@ _.extend(App, {
 });
 
 App.helpers = {
+	isLoggedIn: function() {
+  	return Meteor.userId();
+  }
 };
 
 _.each(App.helpers, function (helper, key) {

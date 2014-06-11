@@ -12,3 +12,7 @@ accounts-base
 accounts-password
 scss
 accounts-ui-bootstrap-3
+collectionFS
+cfs-gridfs
+cfs-graphicsmagick
+moment

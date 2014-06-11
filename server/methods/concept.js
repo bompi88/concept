@@ -10,4 +10,8 @@ Meteor.methods({
   *  }
   *
   */
+
+  	insertReport: function(doc) {
+		return Reports.insert(doc);
+	}
 });

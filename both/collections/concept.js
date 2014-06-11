@@ -1,7 +1,7 @@
 
 Concept = new Meteor.Collection('concept');
 
-Reports = new Meteor.Collection('report');
+Reports = new Meteor.Collection('reports');
 
 /*
  * Add query methods like this:

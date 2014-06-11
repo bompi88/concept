@@ -11,12 +11,9 @@ Template.AdminReportList.events({
 });
 
 Template.AdminReportList.helpers({
-  /*
-   * Example: 
-   *  items: function () {
-   *    return Items.find();
-   *  }
-   */
+  reports: function() {
+    return Reports.find({});
+  }
 });
 
 /*****************************************************************************/

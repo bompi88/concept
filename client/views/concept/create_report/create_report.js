@@ -2,12 +2,21 @@
 /* CreateReport: Event Handlers and Helpers */
 /*****************************************************************************/
 Template.CreateReport.events({
-  'submit report-form': function (tmpl, err) {
-    var name = tmpl.find('#name');
+  'submit #report-form': function (event, tmpl) {
+    event.preventDefault();
+    
+    // our report document
+    var doc = {};
 
-    Reports.insert({name: name}, function() {
+    // get all variables
+    doc.name = tmpl.find('#name').value;
+    doc.sector = tmpl.find('#sector').value;
 
-    });
+    // call server side method to insert the document into the database
+    Meteor.call('insertReport', doc);
+
+    // redirect to report list (for now)
+    Router.go(Router.path('AdminReportList'));
   }
 });
 

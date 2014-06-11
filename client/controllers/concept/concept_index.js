@@ -9,39 +9,39 @@ AuthRouteController = RouteController.extend({
 });
 
 ConceptIndexController = AuthRouteController.extend({
-  waitOn: function () {
-  },
+	waitOn: function () {
+	},
 
-  data: function () {
-  },
+	data: function () {
+	},
 
-  action: function () {
-    this.render();
-  }
+	action: function () {
+		this.render();
+	}
 });
 
 AdminReportListController = AuthRouteController.extend({
-  waitOn: function () {
-  	return Meteor.subscribe('reports');
-  },
+  	waitOn: function () {
+  		return Meteor.subscribe('reports');
+  	},
 
-  data: function () {
-  },
+  	data: function () {	
+  	},
 
-  action: function () {
-    this.render();
-  }
+  	action: function () {
+    	this.render();
+  	}
 });
 
 AdminCreateReportController = AuthRouteController.extend({
-  waitOn: function () {
-  	return Meteor.subscribe('reports');
-  },
+	waitOn: function () {
+		return Meteor.subscribe('reports');
+	},
 
-  data: function () {
-  },
+	data: function () {
+	},
 
-  action: function () {
-    this.render();
-  }
+	action: function () {
+		this.render();
+	}
 });

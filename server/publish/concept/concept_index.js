@@ -8,7 +8,8 @@ Meteor.publish('concept_index', function () {
 });
 
 Meteor.publish('reports', function() {
-	if(Meteor.user()) {
+	if(this.userId) {
+		console.log(Reports.findOne());
 		return Reports.find();
 	} else {
 		this.stop();

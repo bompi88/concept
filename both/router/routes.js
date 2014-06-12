@@ -22,8 +22,8 @@ Router.map(function () {
     	controller: 'AdminCreateReportController'
     });
 
-    this.route('ViewReport', {
-      path: '/reports/:id',
-      controller: 'ViewReportController'
+    this.route('ReportView', {
+      path: '/reports/:_id',
+      controller: 'ReportViewController'
     });
 });

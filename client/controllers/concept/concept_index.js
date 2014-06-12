@@ -47,13 +47,13 @@ AdminCreateReportController = AuthRouteController.extend({
 	}
 });
 
-ViewReportController = AuthRouteController.extend({
+ReportViewController = AuthRouteController.extend({
 	waitOn: function () {
-		return Meteor.subscribe('report', this.params.id);
+		return Meteor.subscribe('report', this.params._id);
 	},
 
 	data: function () {
-		return Reports.findOne({_id: this.params.id});
+		return Reports.findOne({_id: this.params._id});
 	},
 
 	action: function () {

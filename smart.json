@@ -6,6 +6,7 @@
     "collectionFS": {},
     "moment": {},
     "cfs-ui": {},
-    "chartjs": {}
+    "chartjs": {},
+    "handlebar-helpers": {}
   }
 }

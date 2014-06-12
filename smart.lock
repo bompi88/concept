@@ -8,7 +8,8 @@
       "collectionFS": {},
       "moment": {},
       "cfs-ui": {},
-      "chartjs": {}
+      "chartjs": {},
+      "handlebar-helpers": {}
     },
     "packages": {
       "iron-router": {
@@ -45,6 +46,11 @@
         "git": "https://github.com/donskifarrell/meteor-chartjs.git",
         "tag": "v0.0.4",
         "commit": "9d2adcd1de3728c8227e8eb7da0dcb2e0df21d0b"
+      },
+      "handlebar-helpers": {
+        "git": "https://github.com/raix/Meteor-handlebar-helpers.git",
+        "tag": "v0.1.1",
+        "commit": "0b407ab65e7c1ebd53d71aef0de2e2c1d21a597c"
       },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",

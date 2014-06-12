@@ -145,14 +145,15 @@
 
 <template name="Dropzone">
 	<div class="row">
+		{{#each files}}
+
+			{{#unless this.isUploaded}}
+				{{> FS.UploadProgressBar bootstrap=true}}
+			{{/unless}}
+  			Delete {{this.name}}: {{> FS.DeleteButton class="btn btn-danger btn-xs"}}
+		{{/each}}
 		<div  class="dropzone text-center" id="dropzone-{{type}}" style="text-aling:center;">
-			{{#each files}}
-				{{#with FS.GetFile "images" fileId}}
-				 Delete {{this.name}}: {{#FS.DeleteButton class="btn btn-danger btn-xs"}}Delete Me{{/FS.DeleteButton}}
-				  {{> FS.UploadProgressBar bootstrap=true}}
 			
-				{{/with}}
-			{{/each}}
 			<p style="padding:50px 10px;float:none;margin:auto;cursor:pointer;font-size:16px;"><b><i style="font-size:40px">Slipp {{typeDesc}} her</i></b><br>(eller klikk)</p>
 			
 			<input type="file" id="upload-{{type}}" name="upload-{{type}}" style="visibility: hidden; width: 1px; height: 1px" multiple />

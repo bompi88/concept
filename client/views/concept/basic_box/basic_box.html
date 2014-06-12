@@ -1,0 +1,30 @@
+<template name="BasicBox">
+	<div class="col-xxs-12 col-xs-12 col-sm-6 col-md-6 col-lg-4 box">
+		<div class="thumbnail-normal clearfix">
+			<div class="box-header">
+				<h4 style="padding:0;margin:0;">{{project.name}}</h4>
+			</div>
+			<input type="hidden" name="id" class="id" value="{{_id}}">
+			<section class="row" style="margin:s 5px 0;">
+				<div>
+					<div class="col-xs-7 box-facts">
+						<ul class="list-group">
+							<li class="list-group-item"><span class="bold">Sektor:</span> <span class="pull-right">{{project.sector}}</span></li>
+							<li class="list-group-item"><span class="bold">Ferdigstilt:</span> <span class="pull-right">{{project.finishingYear}}</span></li>
+							<li class="list-group-item"><span class="bold">Økonomi:</span> <span class="pull-right">bar</span></li>
+							<li class="list-group-item"><span class="bold">Suksess:</span> <span class="pull-right">tr.lys</span></li>
+						</ul>
+					</div>
+					<div class="col-xs-5 box-image">
+						<img class="img-responsive" src="http://upload.wikimedia.org/wikipedia/commons/6/6f/Victoria_Tunnel_(Newcastle)_near_Ouse_Street_2010-02-19.jpg" alt="Bilde knyttet til {{project.name}}.">
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="col-xs-12 box-desc">{{project.projectDescription.short}}</div>
+			</section>
+			<div class="overlay"></div>
+		</div>
+
+	</div>
+</template>

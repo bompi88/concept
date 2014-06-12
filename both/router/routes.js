@@ -21,4 +21,9 @@ Router.map(function () {
     	path: '/create',
     	controller: 'AdminCreateReportController'
     });
+
+    this.route('ViewReport', {
+      path: '/reports/:id',
+      controller: 'ViewReportController'
+    });
 });

@@ -1,5 +1,5 @@
 <template name="AdminReportList">
   {{#each reports}}
-  	name: {{project.name}} <br>
+  	<a href="reports/{{_id}}">name: {{project.name}}</a><br>
   {{/each}}
 </template>

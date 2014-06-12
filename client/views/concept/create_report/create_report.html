@@ -1,104 +1,106 @@
 <template name="CreateReport">
-	<div class="row">
-		<div class="col-xs-8 col-xs-offset-2">
-			<form role="form" id="report-form">
-				<h3>Om prosjektet</h3>
-				<h4>Generelt</h4>
-				{{> TextInput id="name" placeholder="Prosjektnavn"}}
-				{{> TextInput id="project-num" placeholder="Prosjektnummer (Trailbase)"}}
-				{{> TextInput id="sector" placeholder="Sektor"}}
-				{{> TextInput id="location" placeholder="Lokasjonsbeskrivelse for evalueringsobjektet"}}
-				<h5>Suksesskategori</h5>
-				{{> RadioTrafficLight name="traffic-light"}}
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xs-8 col-xs-offset-2">
+				<form role="form" id="report-form">
+					<h3>Om prosjektet</h3>
+					<h4>Generelt</h4>
+					{{> TextInput id="name" placeholder="Prosjektnavn"}}
+					{{> TextInput id="project-num" placeholder="Prosjektnummer (Trailbase)"}}
+					{{> TextInput id="sector" placeholder="Sektor"}}
+					{{> TextInput id="location" placeholder="Lokasjonsbeskrivelse for evalueringsobjektet"}}
+					<h5>Suksesskategori</h5>
+					{{> RadioTrafficLight name="traffic-light"}}
 
-				<h5>Prosjektbeskrivelse</h5>
-				{{> TextArea id="project-desc-short" placeholder="Kort prosjektbeskrivelse"}}
-				{{> TextArea id="project-desc-long" placeholder="Utdypende prosjektbeskrivelse og mål/bakgrunn for prosjektet"}}
+					<h5>Prosjektbeskrivelse</h5>
+					{{> TextArea id="project-desc-short" placeholder="Kort prosjektbeskrivelse"}}
+					{{> TextArea id="project-desc-long" placeholder="Utdypende prosjektbeskrivelse og mål/bakgrunn for prosjektet"}}
 
-				<h4>Tidsbeskrivelse</h4>
-				<div class="col-lg-4" style="padding-left:0;">
-					{{> TextInput id="decision-year" placeholder="Årstall for vedtak"}}
-				</div>
-				<div class="col-lg-4">
-					{{> TextInput id="finishing-year" placeholder="Årstall for ferdigstilling av prosjekt"}}
+					<h4>Tidsbeskrivelse</h4>
+					<div class="col-lg-4" style="padding-left:0;">
+						{{> TextInput id="decision-year" placeholder="Årstall for vedtak"}}
+					</div>
+					<div class="col-lg-4">
+						{{> TextInput id="finishing-year" placeholder="Årstall for ferdigstilling av prosjekt"}}
+						
+					</div>
+					<div class="col-lg-4" style="padding-right:0;">
+						{{> TextInput id="eval-year" placeholder="Årstall for utført evaluering"}}
+					</div>
+
+					<h4>Økonomiske verdier</h4>
+					<div class="col-lg-4" style="padding-left:0;">
+						{{> TextInput id="management-budget" placeholder="Styringsramme (i millioner NOK)"}}
+					</div>
+					<div class="col-lg-4" style="">
+						{{> TextInput id="cost-budget" placeholder="Kostnadsramme (i millioner NOK)"}}
+					</div>
+					<div class="col-lg-4" style="padding-right:0;">
+						{{> TextInput id="cost-final" placeholder="Sluttkostnad (i millioner NOK)"}}
+					</div>
+
+					<h4>Ansvarlige</h4>
+					{{> TextInput id="eval-responsible-org" placeholder="Evalueringsansvarlig instans"}}
+					{{> TextInput id="eval-responsible-person" placeholder="Evalueringsansvarlig person"}}
+					{{> TextInput id="principal" placeholder="Oppdragsgiver"}}
+
+					<h3>Evaluering</h3>
+
+					<h4>Tekstlige vurderinger</h4>
+					<h5>1. Effektivitet</h5>
+					{{> TextArea id="eval-productivity-short" placeholder="Kort vurdering av produktivitet"}}
+					{{> TextArea id="eval-productivity-long" placeholder="Utdypende vurdering av produktivitet"}}
+
+					<h5>2. Måloppnåelse</h5>
+					{{> TextArea id="eval-achievement-short" placeholder="Kort vurdering av måloppnåelse"}}
+					{{> TextArea id="eval-achievement-long" placeholder="Utdypende vurdering av måloppnåelse"}}
+
+					<h5>3. Virkninger</h5>
+					{{> TextArea id="eval-effects-short" placeholder="Kort vurdering av virkninger"}}
+					{{> TextArea id="eval-effects-long" placeholder="Utdypende vurdering av virkninger"}}
+
+					<h5>4. Relevans</h5>
+					{{> TextArea id="eval-relevance-short" placeholder="Kort vurdering av relevans"}}
+					{{> TextArea id="eval-relevance-long" placeholder="Utdypende vurdering av relevans"}}
+
+					<h5>5. Levedyktighet</h5>
+					{{> TextArea id="eval-viability-short" placeholder="Kort vurdering av levedyktighet"}}
+					{{> TextArea id="eval-viability-long" placeholder="Utdypende vurdering av levedyktighet"}}
+
+					<h5>6. Samfunnsøkonomisk lønnsomhet</h5>
+					{{> TextArea id="eval-profitability-short" placeholder="Kort vurdering av samfunnsøkonomisk lønnsomhet"}}
+					{{> TextArea id="eval-profitability-long" placeholder="Utdypende vurdering av samfunnsøkonomisk lønnsomhet"}}
+
+					<h4>Tallvurderinger</h4>
+
+					<h5>1. Effektivitet</h5>
+					{{> RadioGroupFive name="num-eval-productivity"}}
+
+					<h5>2. Måloppnåelse</h5>
+					{{> RadioGroupFive name="num-eval-achievement"}}
+
+					<h5>3. Virkninger</h5>
+					{{> RadioGroupFive name="num-eval-effects"}}
+
+					<h5>4. Relevans</h5>
+					{{> RadioGroupFive name="num-eval-relevance"}}
+
+					<h5>5. Levedyktighet</h5>
+					{{> RadioGroupFive name="num-eval-viability"}}
+
+					<h5>6. Samfunnsøkonomisk lønnsomhet</h5>
+					{{> RadioGroupFive name="num-eval-profitability"}}
+
+					<h3>Referanser</h3>
+					{{> Dropzone type="files" typeDesc="filer" files=references}}
+
+					<h3>Illustrasjoner</h3>
+					{{> Dropzone type="images" typeDesc="bildefiler" files=images}}
 					
-				</div>
-				<div class="col-lg-4" style="padding-right:0;">
-					{{> TextInput id="eval-year" placeholder="Årstall for utført evaluering"}}
-				</div>
-
-				<h4>Økonomiske verdier</h4>
-				<div class="col-lg-4" style="padding-left:0;">
-					{{> TextInput id="management-budget" placeholder="Styringsramme (i millioner NOK)"}}
-				</div>
-				<div class="col-lg-4" style="">
-					{{> TextInput id="cost-budget" placeholder="Kostnadsramme (i millioner NOK)"}}
-				</div>
-				<div class="col-lg-4" style="padding-right:0;">
-					{{> TextInput id="cost-final" placeholder="Sluttkostnad (i millioner NOK)"}}
-				</div>
-
-				<h4>Ansvarlige</h4>
-				{{> TextInput id="eval-responsible-org" placeholder="Evalueringsansvarlig instans"}}
-				{{> TextInput id="eval-responsible-person" placeholder="Evalueringsansvarlig person"}}
-				{{> TextInput id="principal" placeholder="Oppdragsgiver"}}
-
-				<h3>Evaluering</h3>
-
-				<h4>Tekstlige vurderinger</h4>
-				<h5>1. Effektivitet</h5>
-				{{> TextArea id="eval-productivity-short" placeholder="Kort vurdering av produktivitet"}}
-				{{> TextArea id="eval-productivity-long" placeholder="Utdypende vurdering av produktivitet"}}
-
-				<h5>2. Måloppnåelse</h5>
-				{{> TextArea id="eval-achievement-short" placeholder="Kort vurdering av måloppnåelse"}}
-				{{> TextArea id="eval-achievement-long" placeholder="Utdypende vurdering av måloppnåelse"}}
-
-				<h5>3. Virkninger</h5>
-				{{> TextArea id="eval-effects-short" placeholder="Kort vurdering av virkninger"}}
-				{{> TextArea id="eval-effects-long" placeholder="Utdypende vurdering av virkninger"}}
-
-				<h5>4. Relevans</h5>
-				{{> TextArea id="eval-relevance-short" placeholder="Kort vurdering av relevans"}}
-				{{> TextArea id="eval-relevance-long" placeholder="Utdypende vurdering av relevans"}}
-
-				<h5>5. Levedyktighet</h5>
-				{{> TextArea id="eval-viability-short" placeholder="Kort vurdering av levedyktighet"}}
-				{{> TextArea id="eval-viability-long" placeholder="Utdypende vurdering av levedyktighet"}}
-
-				<h5>6. Samfunnsøkonomisk lønnsomhet</h5>
-				{{> TextArea id="eval-profitability-short" placeholder="Kort vurdering av samfunnsøkonomisk lønnsomhet"}}
-				{{> TextArea id="eval-profitability-long" placeholder="Utdypende vurdering av samfunnsøkonomisk lønnsomhet"}}
-
-				<h4>Tallvurderinger</h4>
-
-				<h5>1. Effektivitet</h5>
-				{{> RadioGroupFive name="num-eval-productivity"}}
-
-				<h5>2. Måloppnåelse</h5>
-				{{> RadioGroupFive name="num-eval-achievement"}}
-
-				<h5>3. Virkninger</h5>
-				{{> RadioGroupFive name="num-eval-effects"}}
-
-				<h5>4. Relevans</h5>
-				{{> RadioGroupFive name="num-eval-relevance"}}
-
-				<h5>5. Levedyktighet</h5>
-				{{> RadioGroupFive name="num-eval-viability"}}
-
-				<h5>6. Samfunnsøkonomisk lønnsomhet</h5>
-				{{> RadioGroupFive name="num-eval-profitability"}}
-
-				<h3>Referanser</h3>
-				{{> Dropzone type="files" typeDesc="filer" files=references}}
-
-				<h3>Illustrasjoner</h3>
-				{{> Dropzone type="images" typeDesc="bildefiler" files=images}}
-				
-				<button type="submit" class="btn btn-primary pull-right">Lagre</button>
-				<button type="button" class="btn btn-default pull-right cancel-btn">Avbryt</button>
-			</form>
+					<button type="submit" class="btn btn-primary pull-right">Lagre</button>
+					<button type="button" class="btn btn-default pull-right cancel-btn">Avbryt</button>
+				</form>
+			</div>
 		</div>
 	</div>
 </template>

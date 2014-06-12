@@ -15,3 +15,7 @@ Meteor.publish('reports', function() {
     	return;
 	}
 });
+
+Meteor.publish('report', function(id) {
+	return Reports.find({_id: id});
+});

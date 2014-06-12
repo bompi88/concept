@@ -4,6 +4,7 @@
     "bootstrap3-sass": {},
     "accounts-ui-bootstrap-3": {},
     "collectionFS": {},
-    "moment": {}
+    "moment": {},
+    "cfs-ui": {}
   }
 }

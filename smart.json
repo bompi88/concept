@@ -5,6 +5,7 @@
     "accounts-ui-bootstrap-3": {},
     "collectionFS": {},
     "moment": {},
-    "cfs-ui": {}
+    "cfs-ui": {},
+    "chartjs": {}
   }
 }

@@ -7,7 +7,8 @@
       "accounts-ui-bootstrap-3": {},
       "collectionFS": {},
       "moment": {},
-      "cfs-ui": {}
+      "cfs-ui": {},
+      "chartjs": {}
     },
     "packages": {
       "iron-router": {
@@ -39,6 +40,11 @@
         "git": "https://github.com/CollectionFS/Meteor-cfs-ui.git",
         "tag": "v0.1.0",
         "commit": "41feb979e88cb2cf4c6f2934ba58ae0bb4e3dddb"
+      },
+      "chartjs": {
+        "git": "https://github.com/donskifarrell/meteor-chartjs.git",
+        "tag": "v0.0.4",
+        "commit": "9d2adcd1de3728c8227e8eb7da0dcb2e0df21d0b"
       },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",

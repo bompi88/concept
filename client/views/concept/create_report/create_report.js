@@ -15,24 +15,14 @@ uploadObject = {
     return this.References;
   },
   addImage: function(fileObj) {
-    var image = {};
 
-    image.fileId = fileObj._id;
-    image.uploadDate = moment();
-    image.uploadedBy = Meteor.userId();
-
-    this.Images.push(image);
+    this.Images.push(fileObj);
     this.dep.changed();  //invalidates all dependent computations
     return this.Images;
   },
   addReference: function(fileObj) {
-    var ref = {};
 
-    ref.fileId = fileObj._id;
-    ref.uploadDate = moment();
-    ref.uploadedBy = Meteor.userId();
-
-    this.References.push(ref);
+    this.References.push(fileObj);
     this.dep.changed();  //invalidates all dependent computations
     return this.References;
   },
@@ -52,7 +42,7 @@ uploadObject = {
 
 var removeByFileId = function(array, id) {
     return _.reject(array, function(item) {
-        return item.fileId === id; // or some complex logic
+        return item._id === id; // or some complex logic
     });
 };
 
@@ -173,10 +163,9 @@ Template.CreateReport.events({
 var uploadImages = function(event) {
   FS.Utility.eachFile(event, function(image) {
     Images.insert(image, function (err, fileObj) {
-
       if(fileObj)
         uploadObject.addImage(fileObj);
-      
+
     });
   });
 };

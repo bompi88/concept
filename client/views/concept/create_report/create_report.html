@@ -147,7 +147,11 @@
 	<div class="row">
 		<div  class="dropzone text-center" id="dropzone-{{type}}" style="text-aling:center;">
 			{{#each files}}
-				{{fileId}}
+				{{#with FS.GetFile "images" fileId}}
+				 Delete {{this.name}}: {{#FS.DeleteButton class="btn btn-danger btn-xs"}}Delete Me{{/FS.DeleteButton}}
+				  {{> FS.UploadProgressBar bootstrap=true}}
+			
+				{{/with}}
 			{{/each}}
 			<p style="padding:50px 10px;float:none;margin:auto;cursor:pointer;font-size:16px;"><b><i style="font-size:40px">Slipp {{typeDesc}} her</i></b><br>(eller klikk)</p>
 			

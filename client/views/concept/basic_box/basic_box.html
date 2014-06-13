@@ -12,7 +12,7 @@
 							<li class="list-group-item"><span class="bold">Sektor:</span> <span class="pull-right">{{project.sector}}</span></li>
 							<li class="list-group-item"><span class="bold">Ferdigstilt:</span> <span class="pull-right">{{project.finishingYear}}</span></li>
 							<li class="list-group-item"><span class="bold">Økonomi:</span> <span class="pull-right">bar</span></li>
-							<li class="list-group-item"><span class="bold">Suksess:</span> <span class="pull-right">tr.lys</span></li>
+							<li class="list-group-item"><span class="bold">Suksess:</span> <span class="pull-right">{{>TraficLight}}</span></li>
 						</ul>
 					</div>
 					<div class="col-xs-5 box-image">
@@ -27,4 +27,15 @@
 		</div>
 
 	</div>
+</template>
+
+
+
+
+<template name="TraficLight">
+	<div id="light">
+    	<span class="{{#if $eq project.successCategory "1" }} active {{else}} passive {{/if}}" id="red"></span>
+   		<span class="{{#if $eq project.successCategory "2" }} active {{else}} passive {{/if}}" id="orange"></span>
+    	<span class="{{#if $eq project.successCategory "3" }} active {{else}} passive {{/if}}" id="green"></span>
+</div>
 </template>

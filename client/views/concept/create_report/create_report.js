@@ -16,7 +16,7 @@ uploadObject = {
   },
   addImage: function(fileObj) {
 
-    this.Images.push(fileObj);
+    this.Images.push(fileObj._id);
     this.dep.changed();  //invalidates all dependent computations
     return this.Images;
   },
@@ -134,6 +134,8 @@ Template.CreateReport.events({
     report.evaluation.numeric.viability.value = tmpl.find('input[name="num-eval-viability"]:checked').value;
     report.evaluation.numeric.profitability.value = tmpl.find('input[name="num-eval-profitability"]:checked').value;
 
+    report.images = uploadObject.getImages();
+    
     // call server side method to insert the document into the database
     Meteor.call('insertReport', report);
 
@@ -189,7 +191,7 @@ Template.CreateReport.helpers({
     return uploadObject.getReferences();
   },
   images: function() {
-    return uploadObject.getImages();
+    return Images.find({_id: {$in : uploadObject.getImages()}});
   }
 });
 

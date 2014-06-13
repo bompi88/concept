@@ -100,7 +100,7 @@ var options = {
     //Number - Point label font size in pixels  
   pointLabelFontSize : 20,
     //String - Point label font colour  
-  pointLabelFontColor : "rgba(0,0,0,0.6)",
+  pointLabelFontColor : "rgba(0,0,0,0.8)",
     //String - Colour of the scale line 
   scaleLineColor : "rgba(0,0,0,.4)",
 

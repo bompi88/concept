@@ -41,6 +41,32 @@ Template.ReportList.helpers({
   viewState: function () {
     return Session.get('ReportViewState');
   },
+  currentSort: function() {
+    var text = '';
+    var curSort = Session.get('sortBy');
+    
+    if (curSort === 'project.projectNumber') {
+      text = 'Prosjektnummer';
+    } else if (curSort === 'project.name') {
+      text = 'Prosjektnavn';
+    } else if (curSort === 'project.sector') {
+      text = 'Sektor';
+    } else if (curSort === 'project.finishingYear') {
+      text = 'Årstall ferdigstilt';
+    } else if (curSort === 'project.evaluationYear') {
+      text = 'Årstall evaluering';
+    } else if (curSort === 'project.managementBudget.amount') {
+      text = 'Styringsramme';
+    } else if (curSort === 'project.costFinal.amount') {
+      text = 'Sluttkostnad';
+    } else if (curSort === 'responsible.organization') {
+      text = 'Ansvarlig';
+    } else if (curSort === 'principal') {
+      text = 'Oppdragsgiver';
+    }
+
+    return text;
+  }
 });
 
 Template.TableReportView.helpers({

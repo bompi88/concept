@@ -1,3 +1,7 @@
+
+Session.setDefault('TextState','short');
+
+
 /*****************************************************************************/
 /* ReportView: Event Handlers and Helpers */
 /*****************************************************************************/
@@ -8,6 +12,13 @@ Template.ReportView.events({
    *
    *  }
    */
+  'click #text-view-short': function(event, tmpl) {
+    Session.set('TextState', 'short');
+  },
+  'click #text-view-long': function(event, tmpl) {
+    Session.set('TextState', 'long');
+  }
+
 });
 
 Template.ReportView.helpers({
@@ -17,6 +28,11 @@ Template.ReportView.helpers({
    *    return Items.find();
    *  }
    */
+
+    textState: function () {
+      return Session.get('TextState');
+  }
+
 });
 
 /*****************************************************************************/
@@ -66,7 +82,7 @@ var options = {
     //Boolean - Whether to show labels on the scale 
   scaleShowLabels : true,
     //Number - Scale label font size in pixels  
-  scaleFontSize : 17,
+  scaleFontSize : 18,
     //Boolean - If we show the scale above the chart data     
   //scaleOverlay : true,
   
@@ -82,7 +98,7 @@ var options = {
   scaleStartValue : 0,
 
     //Number - Point label font size in pixels  
-  pointLabelFontSize : 18,
+  pointLabelFontSize : 20,
     //String - Point label font colour  
   pointLabelFontColor : "rgba(0,0,0,0.6)",
     //String - Colour of the scale line 

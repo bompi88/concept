@@ -8,12 +8,14 @@ Meteor.publish('concept_index', function () {
 });
 
 Meteor.publish('reports', function() {
-	if(this.userId) {
-		return Reports.find();
-	} else {
-		this.stop();
-    	return;
-	}
+	// if(this.userId) {
+	// 	return Reports.find();
+	// } else {
+	// 	this.stop();
+ //    	return;
+	// }
+
+	return Reports.find({});
 });
 
 Meteor.publish('report', function(id) {

@@ -64,7 +64,10 @@ Template.CreateReport.events({
     report.project.name = tmpl.find('#name').value;
     report.project.projectNumber = tmpl.find('#project-num').value;
     report.project.sector = tmpl.find('#sector').value;
-    report.project.location = tmpl.find('#location').value;
+
+    report.project.location = {};
+
+    report.project.location.name = tmpl.find('#location').value;
     report.project.successCategory = tmpl.find('input[name="traffic-light"]:checked').value;
     
     report.project.projectDescription = {};
@@ -92,50 +95,32 @@ Template.CreateReport.events({
     report.responsible.person = tmpl.find('#eval-responsible-person').value;
     report.principal = tmpl.find('#principal').value;
 
-    report.evaluation.textual = {
-      productivity: {},
-      achievement: {},
-      effects: {},
-      relevance: {},
-      viability: {},
-      profitability: {}
-    };
+    report.evaluation.productivity.short = tmpl.find('#eval-productivity-short').value;
+    report.evaluation.productivity.long = tmpl.find('#eval-productivity-long').value;
+    report.evaluation.achievement.short = tmpl.find('#eval-achievement-short').value;
+    report.evaluation.achievement.long = tmpl.find('#eval-achievement-long').value;
 
-    report.evaluation.textual.productivity.short = tmpl.find('#eval-productivity-short').value;
-    report.evaluation.textual.productivity.long = tmpl.find('#eval-productivity-long').value;
-    report.evaluation.textual.achievement.short = tmpl.find('#eval-achievement-short').value;
-    report.evaluation.textual.achievement.long = tmpl.find('#eval-achievement-long').value;
+    report.evaluation.effects.short = tmpl.find('#eval-effects-short').value;
+    report.evaluation.effects.long = tmpl.find('#eval-effects-long').value;
 
-    report.evaluation.textual.effects.short = tmpl.find('#eval-effects-short').value;
-    report.evaluation.textual.effects.long = tmpl.find('#eval-effects-long').value;
+    report.evaluation.relevance.short = tmpl.find('#eval-relevance-short').value;
+    report.evaluation.relevance.long = tmpl.find('#eval-relevance-long').value;
 
-    report.evaluation.textual.relevance.short = tmpl.find('#eval-relevance-short').value;
-    report.evaluation.textual.relevance.long = tmpl.find('#eval-relevance-long').value;
+    report.evaluation.viability.short = tmpl.find('#eval-viability-short').value;
+    report.evaluation.viability.long = tmpl.find('#eval-viability-long').value;
 
-    report.evaluation.textual.viability.short = tmpl.find('#eval-viability-short').value;
-    report.evaluation.textual.viability.long = tmpl.find('#eval-viability-long').value;
+    report.evaluation.profitability.short = tmpl.find('#eval-profitability-short').value;
+    report.evaluation.profitability.long = tmpl.find('#eval-profitability-long').value;
 
-    report.evaluation.textual.profitability.short = tmpl.find('#eval-profitability-short').value;
-    report.evaluation.textual.profitability.long = tmpl.find('#eval-profitability-long').value;
-
-    report.evaluation.numeric = {
-      productivity: { axis: "Produktivitet" },
-      achievement: { axis: "Måloppnåelse" },
-      effects: { axis: "Virkninger" },
-      relevance: { axis: "Relevans" },
-      viability: { axis: "Levedyktighet" },
-      profitability: { axis: "Samf.øk. lønnsomhet" }
-    };
-
-    report.evaluation.numeric.productivity.value = tmpl.find('input[name="num-eval-productivity"]:checked').value;
-    report.evaluation.numeric.achievement.value = tmpl.find('input[name="num-eval-achievement"]:checked').value;
-    report.evaluation.numeric.effects.value = tmpl.find('input[name="num-eval-effects"]:checked').value;
-    report.evaluation.numeric.relevance.value = tmpl.find('input[name="num-eval-relevance"]:checked').value;
-    report.evaluation.numeric.viability.value = tmpl.find('input[name="num-eval-viability"]:checked').value;
-    report.evaluation.numeric.profitability.value = tmpl.find('input[name="num-eval-profitability"]:checked').value;
+    report.evaluation.productivity.value = tmpl.find('input[name="num-eval-productivity"]:checked').value;
+    report.evaluation.achievement.value = tmpl.find('input[name="num-eval-achievement"]:checked').value;
+    report.evaluation.effects.value = tmpl.find('input[name="num-eval-effects"]:checked').value;
+    report.evaluation.relevance.value = tmpl.find('input[name="num-eval-relevance"]:checked').value;
+    report.evaluation.viability.value = tmpl.find('input[name="num-eval-viability"]:checked').value;
+    report.evaluation.profitability.value = tmpl.find('input[name="num-eval-profitability"]:checked').value;
 
     report.images = uploadObject.getImages();
-    
+
     // call server side method to insert the document into the database
     Meteor.call('insertReport', report);
 

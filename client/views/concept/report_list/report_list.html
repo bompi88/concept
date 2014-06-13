@@ -10,17 +10,17 @@
 					<input type="radio" name="report-view" ><span class="glyphicon glyphicon-th-list"></span> Tabell
 				</label>
 			</div>
-			<div class="btn-group pull-right"> <a class="btn btn-default dropdown-toggle btn-select" data-toggle="dropdown" href="#">Sorter etter <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                <li class="sort-toggle" data-id="project-number"><a href="#"># {{> SortArrow sortBy='project.projectNumber'}}</a></li>
-                <li class="sort-toggle" data-id="name"><a href="#">Navn {{> SortArrow sortBy='project.name'}}</a></li>
-	            <li class="sort-toggle" data-id="sector"><a href="#">Sektor {{> SortArrow sortBy='project.sector'}}</a></li>
-	            <li class="sort-toggle" data-id="finishing-year"><a href="#">Årstall ferdigstilt {{> SortArrow sortBy='project.finishingYear'}}</a></li>
-	            <li class="sort-toggle" data-id="evaluation-year"><a href="#">Årstall evaluering {{> SortArrow sortBy='project.evaluationYear'}}</a></li>
-	        	<li class="sort-toggle" data-id="management-budget"><a href="#">Styringsramme {{> SortArrow sortBy='project.managementBudget.amount'}}</a></li>
-	        	<li class="sort-toggle" data-id="cost-final"><a href="#">Sluttkostnad {{> SortArrow sortBy='project.costFinal.amount'}}</a></li>
-	        	<li class="sort-toggle" data-id="responsible-org"><a href="#">Ansvarlig {{> SortArrow sortBy='responsible.organization'}}</a></li>
-	        	<li class="sort-toggle" data-id="principal"><a href="#">Oppdragsgiver {{> SortArrow sortBy='principal'}}</a></li>
+			<div class="btn-group pull-right"> <a class="btn btn-default dropdown-toggle btn-select" data-toggle="dropdown" href="#"><span style="font-weight:500;">Sorter etter:</span> {{currentSort}} <span class="caret"></span></a>
+            <ul class="dropdown-menu" style="text-align:left;">
+                <li class="sort-toggle" data-id="project-number"><a href="#">Prosjektnummer<div class="pull-right">{{> SortArrow sortBy='project.projectNumber'}}</div></a></li>
+                <li class="sort-toggle" data-id="name"><a href="#">Navn<div class="pull-right">{{> SortArrow sortBy='project.name'}}</div></a></li>
+	            <li class="sort-toggle" data-id="sector"><a href="#">Sektor<div class="pull-right">{{> SortArrow sortBy='project.sector'}}</div></a></li>
+	            <li class="sort-toggle" data-id="finishing-year"><a href="#">Årstall ferdigstilt<div class="pull-right">{{> SortArrow sortBy='project.finishingYear'}}</div></a></li>
+	            <li class="sort-toggle" data-id="evaluation-year"><a href="#">Årstall evaluering<div class="pull-right">{{> SortArrow sortBy='project.evaluationYear'}}</div></a></li>
+	        	<li class="sort-toggle" data-id="management-budget"><a href="#">Styringsramme<div class="pull-right">{{> SortArrow sortBy='project.managementBudget.amount'}}</div></a></li>
+	        	<li class="sort-toggle" data-id="cost-final"><a href="#">Sluttkostnad<div class="pull-right">{{> SortArrow sortBy='project.costFinal.amount'}}</div></a></li>
+	        	<li class="sort-toggle" data-id="responsible-org"><a href="#">Ansvarlig<div class="pull-right">{{> SortArrow sortBy='responsible.organization'}}</div></a></li>
+	        	<li class="sort-toggle" data-id="principal"><a href="#">Oppdragsgiver<div class="pull-right">{{> SortArrow sortBy='principal'}}</div></a></li>
             </ul>
         </div>
 		</div>
@@ -38,7 +38,6 @@
 <template name="BoxReportView">
 	{{#each reports}}
 		{{> BasicBox}}
-{{> BasicBox}}
 {{> BasicBox}}
 {{> BasicBox}}
 {{> BasicBox}}

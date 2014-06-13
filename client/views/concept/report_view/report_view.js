@@ -41,25 +41,27 @@ Template.ReportView.helpers({
 Template.ReportView.created = function () {
 };
 
-Template.ReportView.rendered = function () {
+Template.ShortTextReport.rendered = function () {
+  
   Deps.autorun(function () {
     var report = Router.getData();
+
     if (report) {
+      
       var values = _.pluck(report.evaluation, 'value');
+      
       var data = {
         labels : ["Produktivitet", "Måloppnåelse", "Virkninger", "Relevans", "Levedyktighet", "Samf.øk. lønnsomhet"],
         datasets : [
           {
-            fillColor : "rgba(220,220,220,0.5)",
-            strokeColor : "rgba(0,0,255,0.9)",
-            pointColor : "rgba(0,0,255,0.9)",
-            pointStrokeColor : "#000",
+            fillColor : "rgba(0, 140, 186, 0.3)",
+            strokeColor : "rgba(0, 140, 186, 0.9)",
+            pointColor : "rgba(0, 140, 186, 0.9)",
+            pointStrokeColor : "rgba(0, 140, 186, 1)",
             data : values
           }
         ]
       }
-
-      console.log(data);
 
       var el = $("#spiderEvaluation");
 
@@ -69,11 +71,10 @@ Template.ReportView.rendered = function () {
       }
     }
   });
-  
-
 };
 
 Template.ReportView.destroyed = function () {
+
 };
 
 var options = {
@@ -96,21 +97,16 @@ var options = {
   //Number - The centre starting value
   scaleStartValue : 0,
 
-
-
     //Number - Point label font size in pixels  
   pointLabelFontSize : 20,
     //String - Point label font colour  
-  pointLabelFontColor : "#000",
+  pointLabelFontColor : "rgba(0,0,0,0.6)",
     //String - Colour of the scale line 
   scaleLineColor : "rgba(0,0,0,.4)",
 
     //String - Scale label font colour  
-  scaleFontColor : "#000",
+  scaleFontColor : "rgba(0,0,0,0.5)",
 
     //String - Point label font weight
   pointLabelFontStyle : "normal",
-  
-
-
 }

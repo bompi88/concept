@@ -12,6 +12,12 @@ Template.ReportList.events({
   'click #report-view-option2': function(event, tmpl) {
     Session.set('ReportViewState', 'table');
   },
+  'click #report-view-option3': function(event, tmpl) {
+    Session.set('ReportViewState', 'map');
+  },
+  'click #report-view-option4': function(event, tmpl) {
+    Session.set('ReportViewState', 'timeline');
+  },
   'click .sort-toggle': function(event, tmpl) {
     var t = $(event.currentTarget).attr("data-id");
 
@@ -66,6 +72,14 @@ Template.ReportList.helpers({
     }
 
     return text;
+  },
+  currentSortDirection: function() {
+    return Session.get('sortOrder') === 'asc' ? 'stigende' : 'synkende';
+  },
+  showSortBox: function() {
+    var listState = Session.get('ReportViewState');
+
+    return listState === 'box' || listState === 'table';
   }
 });
 
@@ -141,11 +155,40 @@ Object.byString = function(o, s) {
 /*****************************************************************************/
 /* ReportList: Lifecycle Hooks */
 /*****************************************************************************/
-Template.ReportList.created = function () {
+Template.TimelineReportView.created = function () {
+
 };
 
-Template.ReportList.rendered = function () {
+Template.MapReportView.rendered = function () {
+// create a map in the "map" div, set the view to a given place and zoom
+var map = L.map('map').setView([51.505, -0.09], 13);
+
+// add an OpenStreetMap tile layer
+L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+// add a marker in the given location, attach some popup content to it and open the popup
+L.marker([51.5, -0.09]).addTo(map)
+    .bindPopup('A pretty CSS3 popup. <br> Easily customizable.')
+    .openPopup();
+}
+
+Template.TimelineReportView.rendered = function () {
+  var timeline_config = {
+    type: 'timeline',
+    width: "100%",
+    height: "400",
+    source: '/data.json',
+    embed_id: 'timeline-embed',
+    start_at_end: true,
+    lang: 'no'
+  }
+  Deps.autorun(function() {
+      createStoryJS(timeline_config);
+  });
 };
 
-Template.ReportList.destroyed = function () {
+Template.TimelineReportView.destroyed = function () {
+
 };

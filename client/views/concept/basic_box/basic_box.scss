@@ -32,13 +32,16 @@ $header-section-background-color: darken(#fff, 2%);
 }
 
 .thumbnail-normal:hover {
+
+	border-color: darken(#fff, 20%);
+
 	h4 {
 		color:#008cba;
 	}
-	border-color: darken(#fff, 30%);
+
 	.overlay{
 		display:block;
-	    background-color:black;
+	    background-color:darken(#fff, 40%);
 	    opacity:0.1;
 		cursor: pointer;
 	}

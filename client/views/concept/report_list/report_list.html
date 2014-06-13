@@ -2,7 +2,7 @@
 <div class="container-fluid background-basic fill">
 	<div class="container" style="margin: 50px auto;">
 		<div class="row">
-			<div class="col-xs-6 col-xs-offset-3 text-center">
+			<div class="col-xs-12 col-md-6 col-md-offset-3 text-center">
 				<div class="btn-group" data-toggle="buttons">
 					<label class="btn btn-default {{#if $eq viewState "box"}}active{{/if}}" id="report-view-option1">
 						<input type="radio" name="report-view" ><span class="glyphicon glyphicon-th"></span> Bokser
@@ -10,10 +10,17 @@
 					<label class="btn btn-default {{#if $eq viewState "table"}}active{{/if}}" id="report-view-option2">
 						<input type="radio" name="report-view" ><span class="glyphicon glyphicon-th-list"></span> Tabell
 					</label>
+					<label class="btn btn-default {{#if $eq viewState "map"}}active{{/if}}" id="report-view-option3">
+						<input type="radio" name="report-view" ><span class="glyphicon glyphicon-map-marker"></span> Kart
+					</label>
+					<label class="btn btn-default {{#if $eq viewState "timeline"}}active{{/if}}" id="report-view-option4">
+						<input type="radio" name="report-view" ><span class="glyphicon glyphicon-time"></span> Tidslinje
+					</label>
 				</div>
 			</div>
-			<div class="col-xs-3">
-				<div class="btn-group pull-right"> <a class="btn btn-default dropdown-toggle btn-select" data-toggle="dropdown" href="#"><span style="font-weight:500;">Sorter etter:</span> {{currentSort}} <span class="caret"></span></a>
+			{{#if showSortBox}}
+			<div class="col-md-3 hidden-xs hidden-sm">
+				<div class="btn-group pull-right"> <a class="btn btn-default dropdown-toggle btn-select" data-toggle="dropdown" href="#"><span style="font-weight:500;">Sorter etter:</span> {{currentSort}} ({{currentSortDirection}}) <span class="caret"></span></a>
 		            <ul class="dropdown-menu" style="text-align:left;">
 		                <li class="sort-toggle" data-id="project-number"><a href="#">Prosjektnummer<div class="pull-right">{{> SortArrow sortBy='project.projectNumber'}}</div></a></li>
 		                <li class="sort-toggle" data-id="name"><a href="#">Navn<div class="pull-right">{{> SortArrow sortBy='project.name'}}</div></a></li>
@@ -27,12 +34,35 @@
 		            </ul>
 		        </div>
 	        </div>
+	        <div class="col-xs-12 visible-xs visible-sm text-center" style="padding-top: 30px;">
+				<div class="btn-group"> <a class="btn btn-default dropdown-toggle btn-select" data-toggle="dropdown" href="#"><span style="font-weight:500;">Sorter etter:</span> {{currentSort}} ({{currentSortDirection}}) <span class="caret"></span></a>
+		            <ul class="dropdown-menu" style="text-align:left;">
+		                <li class="sort-toggle" data-id="project-number"><a href="#">Prosjektnummer<div class="pull-right">{{> SortArrow sortBy='project.projectNumber'}}</div></a></li>
+		                <li class="sort-toggle" data-id="name"><a href="#">Navn<div class="pull-right">{{> SortArrow sortBy='project.name'}}</div></a></li>
+			            <li class="sort-toggle" data-id="sector"><a href="#">Sektor<div class="pull-right">{{> SortArrow sortBy='project.sector'}}</div></a></li>
+			            <li class="sort-toggle" data-id="finishing-year"><a href="#">Årstall ferdigstilt<div class="pull-right">{{> SortArrow sortBy='project.finishingYear'}}</div></a></li>
+			            <li class="sort-toggle" data-id="evaluation-year"><a href="#">Årstall evaluering<div class="pull-right">{{> SortArrow sortBy='project.evaluationYear'}}</div></a></li>
+			        	<li class="sort-toggle" data-id="management-budget"><a href="#">Styringsramme<div class="pull-right">{{> SortArrow sortBy='project.managementBudget.amount'}}</div></a></li>
+			        	<li class="sort-toggle" data-id="cost-final"><a href="#">Sluttkostnad<div class="pull-right">{{> SortArrow sortBy='project.costFinal.amount'}}</div></a></li>
+			        	<li class="sort-toggle" data-id="responsible-org"><a href="#">Ansvarlig<div class="pull-right">{{> SortArrow sortBy='responsible.organization'}}</div></a></li>
+			        	<li class="sort-toggle" data-id="principal"><a href="#">Oppdragsgiver<div class="pull-right">{{> SortArrow sortBy='principal'}}</div></a></li>
+		            </ul>
+		        </div>
+	        </div>
+	        {{/if}}
 		</div>
-		<div class="row" id="report-list-container">
+		<div class="row" id="report-list-container" style="height:400px;">
 			{{#if $eq viewState "box"}}
 				{{> BoxReportView}}
-			{{else}}
+			{{/if}}
+			{{#if $eq viewState "table"}}
 				{{> TableReportView}}
+			{{/if}}
+			{{#if $eq viewState "map"}}
+				{{> MapReportView}}
+			{{/if}}
+			{{#if $eq viewState "timeline"}}
+				{{> TimelineReportView}}
 			{{/if}}
 		</div>
 	</div>
@@ -59,7 +89,7 @@
 </template>
 
 <template name="TableReportView">
-	<div class="table-container">
+	<div class="table-container table-responsive">
 		<table class="table table-striped table-hover">
 			<thead>
 		        <tr>
@@ -91,6 +121,14 @@
 		  	</tbody>
 		</table>
 	</div>
+</template>
+
+<template name="MapReportView">
+	<div id="map"></div>
+</template>
+
+<template name="TimelineReportView">
+      <div id="timeline-embed"></div>
 </template>
 
 <template name="SortArrow">

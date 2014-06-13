@@ -177,7 +177,7 @@ L.marker([51.5, -0.09]).addTo(map)
 Template.TimelineReportView.rendered = function () {
   var timeline_config = {
     type: 'timeline',
-    width: "80%",
+    width: "96%",
     height: "400",
     source: '/data.json',
     embed_id: 'timeline-embed',

@@ -50,3 +50,35 @@
 		margin-top: 100px;
 	}
 }
+
+
+  dt:after {
+    content: ":";
+  }
+
+
+
+
+.boxed {
+  outline: 1px solid black ;
+}
+
+
+
+/** {
+    margin: 0;
+    padding: 0;
+}*/
+/*dt {
+    float: left;
+    clear: both;
+    width: 10em;
+    font-weight: bold;
+}
+dt:after {
+    content: ":";
+}
+dd {
+    float: left;
+    width: 10em;
+}*/

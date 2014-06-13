@@ -32,18 +32,22 @@
 
 
 #desc {
-	h1{
-		margin-bottom: 40px;
-		text-align: center;
-
-
-	}
+	
 	p {
 		margin-bottom: 20px;
 		line-height: 1.5;
 	}
 
 
+}
+
+#top {
+	h1{
+		margin-bottom: 40px;
+		text-align: center;
+
+
+	}
 }
 
 
@@ -57,6 +61,23 @@ dt:after {
 
 .boxed {
   outline: 1px solid black ;
+
+}
+
+
+#longText {
+		p {
+		margin-bottom: 20px;
+		line-height: 1.5;
+	}
+
+		h4,
+	h5 {
+	  	margin-top: 20px;
+		margin-bottom: 5px;
+
+	}
+
 
 }
 

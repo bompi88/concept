@@ -104,12 +104,10 @@
 		<p>{{responsible.organization}} ved {{responsible.person}}</p>
 	</section>
 
+	{{>ProjectReferences}}
 
-	<section id="references">
-		<header>
-			<h3>Litteratur og referanser</h3>
-		</header>
-	</section>
+
+
 </template>
 
 
@@ -117,35 +115,35 @@
 	<div class="container">
 		<div class="row">
 
-		<div class="col-xs-8 col-xs-offset-2" style="font-size:15px">
+			<div class="col-xs-8 col-xs-offset-2" style="font-size:15px">
 
-		<div id="longText">
+				<div id="longText">
 
-			<p>{{project.projectDescription.long}}</p>
-
-
-			<h4>Produktivitet</h4>
-			<p>{{evaluation.productivity.long}}  <b>{{evaluation.productivity.value}} av 6 poeng</b>.</p>
-
-			<h4>Måloppnåelse</h4>
-			<p>{{evaluation.achievement.long}} <b>{{evaluation.achievement.value}} av 6 poeng</b>.</p>
-
-			<h4>Virkninger</h4>
-			<p>{{evaluation.effects.long}} <b>{{evaluation.effects.value}} av 6 poeng</b>.</p>
+					<p>{{project.projectDescription.long}}</p>
 
 
-			<h4>Relevans</h4>
-			<p>{{evaluation.relevance.long}} <b>{{evaluation.relevance.value}} av 6 poeng</b>.</p>
+					<h4>Produktivitet</h4>
+					<p>{{evaluation.productivity.long}}  <b>{{evaluation.productivity.value}} av 6 poeng</b>.</p>
 
-			<h4>Levedyktighet</h4>
-			<p>{{evaluation.viability.long}} <b>{{evaluation.viability.value}} av 6 poeng</b>.</p>
+					<h4>Måloppnåelse</h4>
+					<p>{{evaluation.achievement.long}} <b>{{evaluation.achievement.value}} av 6 poeng</b>.</p>
 
-			<h4>Samfunnsøkonomisk lønnsomhet</h4>
-			<p>{{evaluation.profitability.long}} <b>{{evaluation.profitability.value}} av 6 poeng</b>.</p>
+					<h4>Virkninger</h4>
+					<p>{{evaluation.effects.long}} <b>{{evaluation.effects.value}} av 6 poeng</b>.</p>
 
+
+					<h4>Relevans</h4>
+					<p>{{evaluation.relevance.long}} <b>{{evaluation.relevance.value}} av 6 poeng</b>.</p>
+
+					<h4>Levedyktighet</h4>
+					<p>{{evaluation.viability.long}} <b>{{evaluation.viability.value}} av 6 poeng</b>.</p>
+
+					<h4>Samfunnsøkonomisk lønnsomhet</h4>
+					<p>{{evaluation.profitability.long}} <b>{{evaluation.profitability.value}} av 6 poeng</b>.</p>
+
+				</div>
+			</div>
 		</div>
-	</div>
-</div>
 
 	</div>
 </template>
@@ -189,6 +187,52 @@
 		</div>
 	</div>
 </template>
+
+
+
+<template name="ProjectReferences">
+	
+
+	<section id="references">
+		<header>
+			<h3>Litteratur og referanser</h3>
+		</header>
+
+		<div class="row">
+			<div class="col-md-6">
+		<div class="table-responsive text-center">
+			<table class="table table-condensed">
+				<thead>
+					<tr>
+						<th>Tittel</th>
+						<th>Dato</th>
+						<th>Type dokument</th>
+						<th>Lenke</th>
+					</tr>
+				</thead>
+				<tbody>
+
+					<tr>
+						<td>Stortingsdokumenter SD</td>
+						<td>*blank*</td>
+						<td>Stortingsdokumenter</td>
+						<td><a href="http://www.w3schools.com">Lenke</a></td>
+					</tr>
+				</tbody>
+
+
+
+			</table>
+		</div>
+		</div>
+	</div>
+
+	</section>
+
+</template>
+
+
+
 
 
 

@@ -48,7 +48,7 @@ Template.ReportList.helpers({
     if (curSort === 'project.projectNumber') {
       text = 'Prosjektnummer';
     } else if (curSort === 'project.name') {
-      text = 'Prosjektnavn';
+      text = 'Navn';
     } else if (curSort === 'project.sector') {
       text = 'Sektor';
     } else if (curSort === 'project.finishingYear') {

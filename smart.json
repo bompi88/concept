@@ -7,6 +7,7 @@
     "moment": {},
     "cfs-ui": {},
     "chartjs": {},
-    "handlebar-helpers": {}
+    "handlebar-helpers": {},
+    "auto-nprogress": {}
   }
 }

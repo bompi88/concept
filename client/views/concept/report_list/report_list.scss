@@ -1,5 +1,5 @@
 /*****************************************************************************/
-/* AdminReportList: Style */
+/* ReportList: Style */
 /*****************************************************************************/
 
 #report-list-container {
@@ -23,14 +23,24 @@
 }
 
 .table-row {
-
 	&:hover {
+		
 		cursor:pointer;
+
+		td {
+			color:#008cba;
+		}
 	}
 }
 .table-header {
 	&:hover {
 		color:#008cba;
 		cursor: pointer;
+	}
+}
+
+.sort-toggle {
+	span {
+		font-size:10px;
 	}
 }

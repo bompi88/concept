@@ -177,17 +177,20 @@ L.marker([51.5, -0.09]).addTo(map)
 Template.TimelineReportView.rendered = function () {
   var timeline_config = {
     type: 'timeline',
-    width: "100%",
+    width: "80%",
     height: "400",
     source: '/data.json',
     embed_id: 'timeline-embed',
     start_at_end: true,
-    lang: 'no'
+    language: VMM.Language.no
   }
   Deps.autorun(function() {
-      createStoryJS(timeline_config);
+      storyjs_embedjs = new VMM.Timeline('timeline-embed', '100%', '400');
+      storyjs_embedjs.init(timeline_config);
   });
 };
+
+VMM.Language.no = {lang:"no",api:{wikipedia:"no"},date:{month:["Januar","Februar","Mars","April","Mai","Juni","Juli","August","September","Oktober","November","Desember"],month_abbr:["Jan.","Feb.","Mars","Apr.","Mai","Juni","Juli","Aug.","Sep.","Okt.","Nov.","Des."],day:["Søndag","Mandag","Tirsdag","Onsdag","Torsdag","Fredag","Lørdag"],day_abbr:["Søn.","Man.","Tir.","Ons.","Tor.","Fre.","Lør."]},dateformats:{year:"yyyy",month_short:"mmm",month:"mmmm yyyy",full_short:"d. mmm",full:"d. mmmm',' yyyy",time_no_seconds_short:"HH:MM",time_no_seconds_small_date:"HH:MM'<br/><small>'d. mmmm',' yyyy'</small>'",full_long:"dddd',' d. mmm',' yyyy 'kl.' HH:MM",full_long_small_date:"HH:MM'<br/><small>'dddd',' d. mmm',' yyyy'</small>'"},messages:{loading_timeline:"Laster timeline... ",return_to_title:"Tilbake til tittel",expand_timeline:"Utvid timeline",contract_timeline:"Krymp timeline",wikipedia:"Fra Wikipedia, den frie encyklopedi",loading_content:"Laster innhold",loading:"Laster"}};
 
 Template.TimelineReportView.destroyed = function () {
 

@@ -9,7 +9,8 @@
       "moment": {},
       "cfs-ui": {},
       "chartjs": {},
-      "handlebar-helpers": {}
+      "handlebar-helpers": {},
+      "auto-nprogress": {}
     },
     "packages": {
       "iron-router": {
@@ -51,6 +52,11 @@
         "git": "https://github.com/raix/Meteor-handlebar-helpers.git",
         "tag": "v0.1.1",
         "commit": "0b407ab65e7c1ebd53d71aef0de2e2c1d21a597c"
+      },
+      "auto-nprogress": {
+        "git": "https://github.com/settinghead/meteor-auto-nprogress.git",
+        "tag": "v0.2.7",
+        "commit": "3fa87d5244e140cc5b49696585cd23b110c36467"
       },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",
@@ -96,6 +102,11 @@
         "git": "https://github.com/CollectionFS/Meteor-cfs-upload-http.git",
         "tag": "v0.0.12",
         "commit": "774bf581e0f3da269dc842672ed6c2da09fd2bdf"
+      },
+      "nprogress": {
+        "git": "https://github.com/zhouzhuojie/meteor-nprogress.git",
+        "tag": "v0.0.4",
+        "commit": "8333206b751a24fac1fbd1b03fa37621bcefe50c"
       },
       "cfs-filesaver": {
         "git": "https://github.com/CollectionFS/Meteor-cfs-filesaver.git",

@@ -95,6 +95,13 @@ Template.CreateReport.events({
     report.responsible.person = tmpl.find('#eval-responsible-person').value;
     report.principal = tmpl.find('#principal').value;
 
+    report.evaluation.productivity = {};
+    report.evaluation.achievement = {};
+    report.evaluation.effects = {};
+    report.evaluation.relevance = {};
+    report.evaluation.viability = {};
+    report.evaluation.profitability = {};
+
     report.evaluation.productivity.short = tmpl.find('#eval-productivity-short').value;
     report.evaluation.productivity.long = tmpl.find('#eval-productivity-long').value;
     report.evaluation.achievement.short = tmpl.find('#eval-achievement-short').value;
@@ -119,13 +126,13 @@ Template.CreateReport.events({
     report.evaluation.viability.value = tmpl.find('input[name="num-eval-viability"]:checked').value;
     report.evaluation.profitability.value = tmpl.find('input[name="num-eval-profitability"]:checked').value;
 
-    report.images = uploadObject.getImages();
+    //report.images = uploadObject.getImages();
 
     // call server side method to insert the document into the database
     Meteor.call('insertReport', report);
 
     // redirect to report list (for now)
-    Router.go(Router.path('AdminReportList'));
+    Router.go(Router.path('ReportList'));
   },
   'change #dropzone-images': function(event, tmpl) {
     uploadImages(event);

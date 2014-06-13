@@ -27,8 +27,31 @@ Template.ReportView.created = function () {
 
 Template.ReportView.rendered = function () {
   Deps.autorun(function () {
-    var ctx =  $("#spiderEvaluation").get(0).getContext("2d");
-    var chart = new Chart(ctx).Radar(data, options);
+    var report = Router.getData();
+    if (report) {
+      var values = _.pluck(report.evaluation, 'value');
+      var data = {
+        labels : ["Produktivitet", "Måloppnåelse", "Virkninger", "Relevans", "Levedyktighet", "Samf.øk. lønnsomhet"],
+        datasets : [
+          {
+            fillColor : "rgba(220,220,220,0.5)",
+            strokeColor : "rgba(0,0,255,0.9)",
+            pointColor : "rgba(0,0,255,0.9)",
+            pointStrokeColor : "#000",
+            data : values
+          }
+        ]
+      }
+
+      console.log(data);
+
+      var el = $("#spiderEvaluation");
+
+      if (el.get(0)) {
+        var ctx = el.get(0).getContext("2d");
+        var chart = new Chart(ctx).Radar(data, options);
+      }
+    }
   });
   
 
@@ -36,20 +59,6 @@ Template.ReportView.rendered = function () {
 
 Template.ReportView.destroyed = function () {
 };
-
-
-var data = {
-  labels : ["Produktivitet", "Måloppnåelse", "Virkninger", "Relevans", "Levedyktighet", "Samf.øk. lønnsomhet"],
-  datasets : [
-    {
-      fillColor : "rgba(220,220,220,0.5)",
-      strokeColor : "rgba(0,0,255,0.9)",
-      pointColor : "rgba(0,0,255,0.9)",
-      pointStrokeColor : "#000",
-      data : [5,3,2,6,4,5] //just some example data as of now
-    }
-  ]
-}
 
 var options = {
 

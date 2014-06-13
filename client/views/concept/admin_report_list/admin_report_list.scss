@@ -28,3 +28,9 @@
 		cursor:pointer;
 	}
 }
+.table-header {
+	&:hover {
+		color:#008cba;
+		cursor: pointer;
+	}
+}

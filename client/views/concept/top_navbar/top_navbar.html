@@ -1,13 +1,15 @@
 <template name="TopNavbar">
-	<div class="navbar navbar-default" role="navigation">
+	<div class="navbar navbar-default navbar-fixed-top" role="navigation">
 		<div class="navbar-header">
 			<a class="navbar-brand" href="/">Concept</a>
 		</div>
 		<div class="navbar-collapse collapse">
+
+			<ul class="nav navbar-nav">
+			  	<li class="active"><a href="/reports">Evalueringsrapporter</a></li>
+			</ul>
 			{{#if isLoggedIn}}
-				<ul class="nav navbar-nav">
-			  		<li class="active"><a href="/reports">Alle rapporter</a></li>
-				</ul>
+				
 				<ul class="nav navbar-nav">
 			  		<li class="new-report"><a href="/create">Opprett</a></li>
 				</ul>

@@ -41,7 +41,7 @@ Template.ReportView.helpers({
 Template.ReportView.created = function () {
 };
 
-Template.ReportView.rendered = function () {
+Template.ShortTextReport.rendered = function () {
   
   Deps.autorun(function () {
     var report = Router.getData();

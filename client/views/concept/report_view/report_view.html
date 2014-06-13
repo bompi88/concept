@@ -95,13 +95,7 @@
 			</div>
 		</div>
 
-
-
-
 	</section>
-
-
-
 
 	<section id="evaluator">
 		<header>
@@ -116,47 +110,7 @@
 			<h3>Litteratur og referanser</h3>
 		</header>
 	</section>
-
-
-
-
-
-
-
-
 </template>
-
-
-
-<template name="ProjectInformationBox">
-	<h4 class="text-center">Faktaboks</h4>
-	<div class="boxed">
-		<dl class="dl-horizontal">
-			<dt>Prosjektnummer</dt>
-			<dd>{{project.projectNumber}}</dd>
-			<dt>Sektor</dt>
-			<dd>{{project.sector}}</dd>
-			<dt>Årstall påbegynt</dt>
-			<dd>{{project.decisionYear}}</dd>
-			<dt>Årstall ferdigstilt</dt>
-			<dd>{{project.finishingYear}}</dd>
-			<dt>Årstall evaluering</dt>
-			<dd>{{project.evaluationYear}}</dd>
-			<dt>Styringsramme</dt>
-			<dd>{{project.managementBudget.amount}} mill</dd>
-			<dt>Kostnadsramme</dt>
-			<dd>{{project.costBudget.amount}} mill</dd>
-			<dt>Sluttkostnad</dt>
-			<dd>{{project.costFinal.amount}} mill</dd>
-			<dt>Ansvarlig</dt>
-			<dd>{{responsible.organization}}</dd>
-			<dt>Oppdragsgiver</dt>
-			<dd>{{principal}}</dd>
-
-		</dl>
-	</div>
-</template>
-
 
 
 <template name="LongTextReport">
@@ -195,6 +149,49 @@
 
 	</div>
 </template>
+
+
+
+
+<template name="ProjectInformationBox">
+	<div class="row">
+		<div class="col-xs-8 col-xs-offset-2">
+			<h4 class="text-center">Prosjektinformasjon</h4>
+
+			<div class="boxed">
+				<section id="faktaboks">
+
+					<dl class="dl-horizontal">
+						<dt>Prosjektnummer</dt>
+						<dd>{{project.projectNumber}}</dd>
+						<dt>Sektor</dt>
+						<dd>{{project.sector}}</dd>
+						<dt>Årstall påbegynt</dt>
+						<dd>{{project.decisionYear}}</dd>
+						<dt>Årstall ferdigstilt</dt>
+						<dd>{{project.finishingYear}}</dd>
+						<dt>Årstall evaluering</dt>
+						<dd>{{project.evaluationYear}}</dd>
+						<dt>Styringsramme</dt>
+						<dd>{{project.managementBudget.amount}} mill</dd>
+						<dt>Kostnadsramme</dt>
+						<dd>{{project.costBudget.amount}} mill</dd>
+						<dt>Sluttkostnad</dt>
+						<dd>{{project.costFinal.amount}} mill</dd>
+						<dt>Ansvarlig</dt>
+						<dd>{{responsible.organization}}</dd>
+						<dt>Oppdragsgiver</dt>
+						<dd>{{principal}}</dd>
+
+					</dl>
+				</section>
+			</div>
+		</div>
+	</div>
+</template>
+
+
+
 
 
 

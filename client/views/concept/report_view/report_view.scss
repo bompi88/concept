@@ -32,11 +32,7 @@
 
 
 #desc {
-	h2{
-		margin-bottom: 25px;
-
-
-	}
+	
 	p {
 		margin-bottom: 20px;
 		line-height: 1.5;
@@ -45,14 +41,18 @@
 
 }
 
-#projectImage {
-	figure{
-		margin-top: 100px;
+#top {
+	h1{
+		margin-bottom: 40px;
+		text-align: center;
+
+
 	}
 }
 
 
-  dt:after {
+
+dt:after {
     content: ":";
   }
 
@@ -61,24 +61,29 @@
 
 .boxed {
   outline: 1px solid black ;
+
+}
+
+
+#longText {
+		p {
+		margin-bottom: 20px;
+		line-height: 1.5;
+	}
+
+		h4,
+	h5 {
+	  	margin-top: 20px;
+		margin-bottom: 5px;
+
+	}
+
+
 }
 
 
 
-/** {
-    margin: 0;
-    padding: 0;
-}*/
-/*dt {
-    float: left;
-    clear: both;
-    width: 10em;
-    font-weight: bold;
-}
-dt:after {
-    content: ":";
-}
-dd {
-    float: left;
-    width: 10em;
-}*/
+
+
+
+

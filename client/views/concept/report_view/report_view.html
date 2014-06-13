@@ -1,119 +1,200 @@
-	<template name="ReportView">
-		
-		<div class="container">
+	
+<template name="ReportView">
+	<div class="container">
 
-				<article>
-					<section id="desc">
+		<article>
+			<section id="top">
+				<div class="row">
+					<div class="col-md-8">
 						<header>
-							<h2>{{project.name}}</h2>
+							<h1>{{project.name}}</h1>
 						</header>
-
-						<p>{{project.projectDescription.short}}</p>
-
-						<figure id="projectImage">
-							<img src="http://www.tu.no/migration_catalog/2008/02/22/eiksundgrafikk0802220950.jpg/alternates/h1080/eiksundgrafikk0802220950.jpg" alt="Beskrivese av sambandet Ørsta/Volda-Eiksund. Foto." width="450" height="225">
-							<figcaption>Eiksundsambandet. Foto: Statens Vegvesen</figcaption>
-						</figure>
-
-					</section>
-
-										{{>ProjectInformationBox}}
-
-
-					<section id="eval">
-
-						<header>
-							<h3>Evaluering</h3>
-						</header>
+					</div>
+					<div class="col-md-4">
+						<div class="btn-group" data-toggle="buttons">
+							<label class="btn btn-primary btn-lg {{#if $eq textState "short"}}active{{/if}}" id="text-view-short">
+								<input type="radio" name="text-view" ><span class="glyphicon glyphicon-tasks"></span> Kort versjon
+							</label>
+							<label class="btn btn-primary btn-lg {{#if $eq textState "long"}}active{{/if}}" id="text-view-long">
+								<input type="radio" name="text-view" ><span class="glyphicon glyphicon-align-justify"></span> Lang tekstversjon
+							</label>
+						</div>
+					</div>
+				</div>
 
 
-
-							<section id="texteval">
-								<h4>Produktivitet</h4>
-								<p>{{evaluation.textual.productivity.short}}  <b>{{evaluation.numeric.productivity.value}} av 6 poeng</b>.</p>
-
-								<h4>Måloppnåelse</h4>
-								<p>{{evaluation.textual.achievement.short}} <b>{{evaluation.numeric.achievement.value}} av 6 poeng</b>.</p>
-
-								<h4>Virkninger</h4>
-								<p>{{evaluation.textual.effects.short}} <b>{{evaluation.numeric.effects.value}} av 6 poeng</b>.</p>
-
-
-								<h4>Relevans</h4>
-								<p>{{evaluation.textual.relevance.short}} <b>{{evaluation.numeric.relevance.value}} av 6 poeng</b>.</p>
-
-								<h4>Levedyktighet</h4>
-								<p>{{evaluation.textual.viability.short}} <b>{{evaluation.numeric.viability.value}} av 6 poeng</b>.</p>
-
-								<h4>Samfunnsøkonomisk lønnsomhet</h4>
-								<p>{{evaluation.textual.profitability.short}} <b>{{evaluation.numeric.profitability.value}} av 6 poeng</b>.</p>
-							</section>
-
-						<canvas id="spiderEvaluation" height="800" width="800"></canvas>
+			</section>
+			{{#if $eq textState "short"}}
+			{{> ShortTextReport}}
+			{{else}}
+			{{> LongTextReport}}
+			{{/if}}
+		</article>
+	</div>
+</template>
 
 
+<template name="ShortTextReport">
+
+	<section id="desc">
+		<div class="row">
+			<div class="col-md-7">
+				<p>{{project.projectDescription.short}}</p>
+
+				<figure id="projectImage">
+					<img src="http://www.tu.no/migration_catalog/2008/02/22/eiksundgrafikk0802220950.jpg/alternates/h1080/eiksundgrafikk0802220950.jpg" class="img-responsive" alt="Beskrivese av sambandet Ørsta/Volda-Eiksund. Foto." >
+					<figcaption class="text-center">Eiksundsambandet. Foto: Statens Vegvesen</figcaption>
+				</figure>
+			</div>
+			<div class="col-md-5">
+				<div class="center-block">
+					{{>ProjectInformationBox}}
+				</div>
+			</div>
+		</div>
+	</section>
 
 
+	<section id="eval">
 
-					</section>
-
-
-
-
-					<section id="evaluator">
-						<header>
-							<h3>Evaluator</h3>
-						</header>
-						<p>{{responsible.organization}} ved {{responsible.person}}</p>
-					</section>
+		<header>
+			<h3>Evaluering</h3>
+		</header>
 
 
-					<section id="references">
-						<header>
-							<h3>Litteratur og referanser</h3>
-						</header>
-					</section>
+		<div class="row">
+
+			<section id="texteval">
+
+				<div class="col-md-7">
+					<h4>Produktivitet</h4>
+					<p>{{evaluation.productivity.short}} <b>{{evaluation.productivity.value}} av 6 poeng</b>.</p>
+
+					<h4>Måloppnåelse</h4>
+					<p>{{evaluation.achievement.short}} <b>{{evaluation.achievement.value}} av 6 poeng</b>.</p>
+
+					<h4>Virkninger</h4>
+					<p>{{evaluation.effects.short}} <b>{{evaluation.effects.value}} av 6 poeng</b>.</p>
 
 
+					<h4>Relevans</h4>
+					<p>{{evaluation.relevance.short}} <b>{{evaluation.relevance.value}} av 6 poeng</b>.</p>
 
+					<h4>Levedyktighet</h4>
+					<p>{{evaluation.viability.short}} <b>{{evaluation.viability.value}} av 6 poeng</b>.</p>
 
-				</article>
-
+					<h4>Samfunnsøkonomisk lønnsomhet</h4>
+					<p>{{evaluation.profitability.short}} <b>{{evaluation.profitability.value}} av 6 poeng</b>.</p>
+				</div>
+			</section>
+			<div class="col-md-5">
+				<figure id="radarChart">
+					<canvas id="spiderEvaluation" height="800" width="800"></canvas>
+					<figcaption class="text-center">Figur: Karakter til vurderingskriterier</figcaption>
+				</figure>
+			</div>
 		</div>
 
 
-	</template>
+
+
+	</section>
 
 
 
-	<template name="ProjectInformationBox">
-		<h4>Faktaboks</h4>
-		<div class="boxed">
-			<dl class="dl-horizontal">
-    			<dt>Prosjektnummer</dt>
-   				<dd>{{project.projectNumber}}</dd>
-    			<dt>Sektor</dt>
-    			<dd>{{project.sector}}</dd>
-    			<dt>Årstall påbegynt</dt>
-    			<dd>{{project.decisionYear}}</dd>
-    			<dt>Årstall ferdigstilt</dt>
-    			<dd>{{project.finishingYear}}</dd>
-    			<dt>Årstall evaluering</dt>
-    			<dd>{{project.evaluationYear}}</dd>
-    			<dt>Styringsramme</dt>
-    			<dd>{{project.managementBudget.amount}}</dd>
-    			<dt>Kostnadsramme</dt>
-    			<dd>{{project.costBudget.amount}}</dd>
-    			<dt>Sluttkostnad</dt>
-    			<dd>{{project.costFinal.amount}}</dd>
-    			<dt>Ansvarlig</dt>
-    			<dd>{{responsible.organization}}</dd>
-    			<dt>Oppdragsgiver</dt>
-    			<dd>{{principal}}</dd>
 
-			</dl>
+	<section id="evaluator">
+		<header>
+			<h3>Evaluator</h3>
+		</header>
+		<p>{{responsible.organization}} ved {{responsible.person}}</p>
+	</section>
+
+
+	<section id="references">
+		<header>
+			<h3>Litteratur og referanser</h3>
+		</header>
+	</section>
+
+
+
+
+
+
+
+
+</template>
+
+
+
+<template name="ProjectInformationBox">
+	<h4 class="text-center">Faktaboks</h4>
+	<div class="boxed">
+		<dl class="dl-horizontal">
+			<dt>Prosjektnummer</dt>
+			<dd>{{project.projectNumber}}</dd>
+			<dt>Sektor</dt>
+			<dd>{{project.sector}}</dd>
+			<dt>Årstall påbegynt</dt>
+			<dd>{{project.decisionYear}}</dd>
+			<dt>Årstall ferdigstilt</dt>
+			<dd>{{project.finishingYear}}</dd>
+			<dt>Årstall evaluering</dt>
+			<dd>{{project.evaluationYear}}</dd>
+			<dt>Styringsramme</dt>
+			<dd>{{project.managementBudget.amount}} mill</dd>
+			<dt>Kostnadsramme</dt>
+			<dd>{{project.costBudget.amount}} mill</dd>
+			<dt>Sluttkostnad</dt>
+			<dd>{{project.costFinal.amount}} mill</dd>
+			<dt>Ansvarlig</dt>
+			<dd>{{responsible.organization}}</dd>
+			<dt>Oppdragsgiver</dt>
+			<dd>{{principal}}</dd>
+
+		</dl>
+	</div>
+</template>
+
+
+
+<template name="LongTextReport">
+	<div class="container">
+		<div class="row">
+
+		<div class="col-xs-8 col-xs-offset-2" style="font-size:15px">
+
+		<div id="longText">
+
+			<p>{{project.projectDescription.long}}</p>
+
+
+			<h4>Produktivitet</h4>
+			<p>{{evaluation.productivity.long}}  <b>{{evaluation.productivity.value}} av 6 poeng</b>.</p>
+
+			<h4>Måloppnåelse</h4>
+			<p>{{evaluation.achievement.long}} <b>{{evaluation.achievement.value}} av 6 poeng</b>.</p>
+
+			<h4>Virkninger</h4>
+			<p>{{evaluation.effects.long}} <b>{{evaluation.effects.value}} av 6 poeng</b>.</p>
+
+
+			<h4>Relevans</h4>
+			<p>{{evaluation.relevance.long}} <b>{{evaluation.relevance.value}} av 6 poeng</b>.</p>
+
+			<h4>Levedyktighet</h4>
+			<p>{{evaluation.viability.long}} <b>{{evaluation.viability.value}} av 6 poeng</b>.</p>
+
+			<h4>Samfunnsøkonomisk lønnsomhet</h4>
+			<p>{{evaluation.profitability.long}} <b>{{evaluation.profitability.value}} av 6 poeng</b>.</p>
+
 		</div>
-	</template>
+	</div>
+</div>
+
+	</div>
+</template>
 
 
 

@@ -8,6 +8,8 @@
     "cfs-ui": {},
     "chartjs": {},
     "handlebar-helpers": {},
-    "auto-nprogress": {}
+    "auto-nprogress": {},
+    "timeline-js": {},
+    "leaflet": {}
   }
 }

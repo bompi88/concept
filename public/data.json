@@ -1,0 +1,35 @@
+{
+    "timeline":
+    {
+        "headline":"Concept rapporter",
+        "type":"default",
+        "text":"Evalueringsrapporter av statlige prosjekter.",
+        "startDate":"2012,1,26",
+        "date": [
+            {
+                "startDate":"2011",
+                "endDate":"2012",
+                "headline":"Stort prosjekt",
+                "text":"<p>Dette er et stort prosjekt</p>",
+                "asset":
+                {
+                    "media":"http://upload.wikimedia.org/wikipedia/commons/6/6f/Victoria_Tunnel_(Newcastle)_near_Ouse_Street_2010-02-19.jpg",
+                    "credit":"",
+                    "caption":""
+                }
+            },
+            {
+                "startDate":"2012",
+                "endDate":"2013",
+                "headline":"Et annet prosjekt",
+                "text":"<p>Dette er et annet prosjekt</p>",
+                "asset":
+                {
+                    "media":"http://upload.wikimedia.org/wikipedia/commons/7/79/Svinesundbrua_022.JPG",
+                    "credit":"",
+                    "caption":""
+                }
+            }
+        ]
+    }
+}

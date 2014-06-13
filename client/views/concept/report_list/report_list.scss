@@ -15,7 +15,6 @@
 }
 
 .table-container {
-	min-width: 1024px;
 	background-color: #fff;
 	padding: 10px;
 	border: 2px solid darken(#fff, 3%);
@@ -44,3 +43,5 @@
 		font-size:10px;
 	}
 }
+
+#map { height: 400px; }

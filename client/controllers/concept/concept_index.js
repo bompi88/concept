@@ -20,12 +20,12 @@ ConceptIndexController = AuthRouteController.extend({
 	}
 });
 
-AdminReportListController = AuthRouteController.extend({
+ReportListController = RouteController.extend({
   	waitOn: function () {
   		return Meteor.subscribe('reports');
   	},
 
-  	data: function () {	
+  	data: function () {
   	},
 
   	action: function () {

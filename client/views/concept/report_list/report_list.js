@@ -3,7 +3,7 @@ Session.setDefault('ReportViewState','box');
 /*****************************************************************************/
 /* AdminReportList: Event Handlers and Helpers */
 /*****************************************************************************/
-Template.AdminReportList.events({
+Template.ReportList.events({
   /*
    * Example: 
    *  'click .selector': function (e, tmpl) {
@@ -18,7 +18,7 @@ Template.AdminReportList.events({
   }
 });
 
-Template.AdminReportList.helpers({
+Template.ReportList.helpers({
   viewState: function () {
     return Session.get('ReportViewState');
   }
@@ -45,11 +45,11 @@ Template.BoxReportView.helpers({
 /*****************************************************************************/
 /* AdminReportList: Lifecycle Hooks */
 /*****************************************************************************/
-Template.AdminReportList.created = function () {
+Template.ReportList.created = function () {
 };
 
-Template.AdminReportList.rendered = function () {
+Template.ReportList.rendered = function () {
 };
 
-Template.AdminReportList.destroyed = function () {
+Template.ReportList.destroyed = function () {
 };

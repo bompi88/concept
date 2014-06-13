@@ -6,12 +6,12 @@
 		<div class="navbar-collapse collapse">
 
 			<ul class="nav navbar-nav">
-			  	<li class="active"><a href="/reports">Evalueringsrapporter</a></li>
+			  	<li class="{{activeIfTemplateIs 'ReportList'}}"><a href="{{pathFor 'ReportList'}}">Evalueringsrapporter</a></li>
 			</ul>
 			{{#if isLoggedIn}}
 				
 				<ul class="nav navbar-nav">
-			  		<li class="new-report"><a href="/create">Opprett</a></li>
+			  		<li class="new-report {{activeIfTemplateIs 'CreateReport'}}"><a href="{{pathFor 'CreateReport'}}">Opprett</a></li>
 				</ul>
 			{{/if}}
 			<ul class="nav navbar-nav navbar-right">

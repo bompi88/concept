@@ -1,3 +1,4 @@
+
 /*****************************************************************************/
 /* TopNavbar: Event Handlers and Helpers */
 /*****************************************************************************/
@@ -14,7 +15,10 @@ Template.TopNavbar.helpers({
    *    return Items.find();
    *  }
    */
-
+	activeIfTemplateIs: function(tmpl) {
+		var curRoute = Router.current();
+		return curRoute && tmpl === curRoute.lookupTemplate() ? 'active' : '';
+  	}
 });
 
 /*****************************************************************************/

@@ -8,6 +8,11 @@
 					{{> TextInput id="name" placeholder="Prosjektnavn"}}
 					{{> TextInput id="project-num" placeholder="Prosjektnummer (Trailbase)"}}
 					{{> TextInput id="sector" placeholder="Sektor"}}
+
+					<h4>Lokasjon</h4>
+					<p>Velg ett sted med dobbel museklikk. Fjern sted med enkelt museklikk</p>
+					{{>MapLocationPicker}}
+
 					{{> TextInput id="location" placeholder="Lokasjonsbeskrivelse for evalueringsobjektet"}}
 					<h5>Suksesskategori</h5>
 					{{> RadioTrafficLight name="traffic-light"}}
@@ -171,5 +176,11 @@
 		
 		</div>
 		</div>
+	</div>
+</template>
+
+<template name="MapLocationPicker">
+	<div class="content-wrapper">
+		<div id="map"></div>
 	</div>
 </template>

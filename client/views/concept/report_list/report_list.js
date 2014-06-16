@@ -43,6 +43,15 @@ Template.ReportList.events({
   }
 });
 
+Template.MapPopupBox.events({
+
+  'click .panel': function(event, tmpl) {
+    var id = tmpl.find('.id').value;
+    Router.go('/reports/' + id);
+  }
+});
+
+
 Template.ReportList.helpers({
   viewState: function () {
     return Session.get('ReportViewState');
@@ -177,15 +186,22 @@ Template.MapReportView.rendered = function () {
       return UI.toHTML(kind.extend({data: function () { return data; }}));
     };
 
+      var mapDiv =  L.DomUtil.create("div","lbqs");
+       UI.insert(UI.renderWithData(Template.MapPopupBox,report), mapDiv);
 
-  var marker = L.marker([63.43, 10.39]).addTo(map);
-  var content = toHTMLWithData(Template.BasicBox, report);
-  console.log(content);
+
+
+
+  var marker = L.marker([63.43, 10.39]).bindLabel(report.project.name, {noHide: true}).addTo(map);
+   marker.bindPopup(mapDiv);
+
+  //var content = toHTMLWithData(Template.BasicBox, report);
+  //console.log(content);
 
   //div = L.DomUtil.create("div","lbqs");
   //div.appendChild(content);
 
-  marker.bindPopup(content).openPopup()
+  //marker.bindPopup(content).openPopup()
 
 
 

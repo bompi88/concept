@@ -22,7 +22,7 @@
 }
 
 .content-wrapper {
-	height:425px;
+	height:575px;
 }
 
 .table-row {
@@ -48,4 +48,24 @@
 	}
 }
 
-#map { height: 400px; }
+#map { height: 550px; }
+
+
+.panel:hover {
+
+	border-color: darken(#fff, 20% )!important;
+
+	.overlay{
+		display:block!important;
+	    background-color:darken(#fff, 40%)!important;
+	    opacity:0.2!important;
+		cursor: pointer!important;
+	}
+	h2, dt, dd{
+		color:#008cba !important;
+	}
+
+
+}
+
+

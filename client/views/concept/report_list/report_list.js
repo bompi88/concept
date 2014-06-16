@@ -43,6 +43,15 @@ Template.ReportList.events({
   }
 });
 
+Template.MapPopupBox.events({
+
+  'click .panel': function(event, tmpl) {
+    var id = tmpl.find('.id').value;
+    Router.go('/reports/' + id);
+  }
+});
+
+
 Template.ReportList.helpers({
   viewState: function () {
     return Session.get('ReportViewState');
@@ -160,18 +169,44 @@ Template.TimelineReportView.created = function () {
 };
 
 Template.MapReportView.rendered = function () {
-// create a map in the "map" div, set the view to a given place and zoom
-var map = L.map('map').setView([51.505, -0.09], 13);
+  L.Icon.Default.imagePath = 'packages/leaflet/images';
+  // create a map in the "map" div, set the view to Trondheim and zoom to get most of Norway
+  var map = L.map('map', {doubleClickZoom: false}).setView([63.43, 10.39], 5);
 
-// add an OpenStreetMap tile layer
-L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+  // add an OpenStreetMap tile layer
+  L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(map);
+  }).addTo(map);
 
-// add a marker in the given location, attach some popup content to it and open the popup
-L.marker([51.5, -0.09]).addTo(map)
-    .bindPopup('A pretty CSS3 popup. <br> Easily customizable.')
-    .openPopup();
+  // add a marker in the given location, attach some popup content to it 
+  var reports = Reports.find({});
+  reports.forEach(function (report) {
+
+    var toHTMLWithData = function (kind, data) {
+      return UI.toHTML(kind.extend({data: function () { return data; }}));
+    };
+
+      var mapDiv =  L.DomUtil.create("div","lbqs");
+       UI.insert(UI.renderWithData(Template.MapPopupBox,report), mapDiv);
+
+
+
+
+  var marker = L.marker([63.43, 10.39]).bindLabel(report.project.name, {noHide: true}).addTo(map);
+   marker.bindPopup(mapDiv);
+
+  //var content = toHTMLWithData(Template.BasicBox, report);
+  //console.log(content);
+
+  //div = L.DomUtil.create("div","lbqs");
+  //div.appendChild(content);
+
+  //marker.bindPopup(content).openPopup()
+
+
+
+
+  });
 }
 
 Template.TimelineReportView.rendered = function () {

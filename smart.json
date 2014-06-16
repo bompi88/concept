@@ -12,6 +12,7 @@
     "handlebar-helpers": {},
     "auto-nprogress": {},
     "timeline-js": {},
-    "leaflet": {}
+    "leaflet": {},
+    "leaflet-label": {}
   }
 }

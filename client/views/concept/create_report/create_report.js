@@ -22,7 +22,7 @@ uploadObject = {
   },
   addReference: function(fileObj) {
 
-    this.References.push(fileObj);
+    this.References.push(fileObj._id);
     this.dep.changed();  //invalidates all dependent computations
     return this.References;
   },
@@ -42,7 +42,7 @@ uploadObject = {
 
 var removeByFileId = function(array, id) {
     return _.reject(array, function(item) {
-        return item._id === id; // or some complex logic
+        return item === id; // or some complex logic
     });
 };
 
@@ -126,7 +126,33 @@ Template.CreateReport.events({
     report.evaluation.viability.value = tmpl.find('input[name="num-eval-viability"]:checked').value;
     report.evaluation.profitability.value = tmpl.find('input[name="num-eval-profitability"]:checked').value;
 
-    //report.images = uploadObject.getImages();
+    var imgs_ids = uploadObject.getImages();
+    var imgs = [];
+
+    for (var i = 0; i < imgs_ids.length; i++){
+      var img = {
+        fileId: imgs_ids[i],
+        title: tmpl.find('#title-' + imgs_ids[i]).value,
+        copyright: tmpl.find('#copyright-' + imgs_ids[i]).value,
+        url: tmpl.find('#url-' + imgs_ids[i]).value
+      };
+      imgs.push(img);
+    }
+    report.images = imgs;
+
+    var files_ids = uploadObject.getReferences();
+    var files = [];
+
+    for (var i = 0; i < files_ids.length; i++){
+      var file = {
+        fileId: files_ids[i],
+        title: tmpl.find('#title-' + files_ids[i]).value,
+        type: tmpl.find('#type-' + files_ids[i]).value,
+        date: tmpl.find('#date-' + files_ids[i]).value
+      };
+      files.push(file);
+    }
+    report.references = files;
 
     // call server side method to insert the document into the database
     Meteor.call('insertReport', report);
@@ -167,24 +193,23 @@ var uploadImages = function(event) {
 var uploadFiles = function(event) {
   FS.Utility.eachFile(event, function(file) {
     Files.insert(file, function (err, fileObj) {
-      uploadObject.addReference(fileObj);
+      if(fileObj)
+        uploadObject.addReference(fileObj);
     });
   });
 };
 
 Template.CreateReport.helpers({
-  /*
-   * Example: 
-   *  items: function () {
-   *    return Items.find();
-   *  }
-   */
-  references: function() {
-    return uploadObject.getReferences();
-  },
   images: function() {
     return Images.find({_id: {$in : uploadObject.getImages()}});
+  },
+  references: function() {
+    return Files.find({_id: {$in : uploadObject.getReferences()}});
   }
+});
+
+UI.registerHelper('$generateId', function (name, _id, options) {
+ return _.extend(options.hash, { id: name + '-' + _id});
 });
 
 /*****************************************************************************/

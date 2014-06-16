@@ -96,7 +96,7 @@
 
 					<h3>Illustrasjoner</h3>
 					{{> Dropzone type="images" typeDesc="bildefiler" files=images}}
-					
+
 					<button type="submit" class="btn btn-primary pull-right">Lagre</button>
 					<button type="button" class="btn btn-default pull-right cancel-btn">Avbryt</button>
 				</form>
@@ -145,23 +145,7 @@
 
 <template name="Dropzone">
 	<div class="row">
-		{{#each files}}
-		<div class="col-xs-12">
-		<div class="row">
-			<div class="col-xs-2">
-				{{#unless this.isUploaded}}
-					{{> FS.UploadProgressBar bootstrap=true}}
-				{{/unless}}
-				<img src="{{this.url store='original'}}" height="100" alt="">
-			</div>
-			<div class="col-xs-10" style="padding-top:40px;">
-
-		  			{{this.name}}<span class="pull-right">{{#FS.DeleteButton class="btn btn-danger btn-xs"}}Slett{{/FS.DeleteButton}}</span>
-				
-			</div>
-		</div>
-		</div>
-		{{/each}}
+		{{> DownloadListTable files=this.files type=this.type}}
 		<div class="col-xs-12">
 		<div  class="dropzone text-center" id="dropzone-{{type}}" style="text-aling:center;">
 			
@@ -172,4 +156,56 @@
 		</div>
 		</div>
 	</div>
+</template>
+
+<template name="DownloadListTable">
+	<table class="table table-striped table-condensed voc_list ">
+	<thead>
+		<tr>
+			<th style="width:15%;"></th>
+			<th style="width:50%;"></th>
+			<th style="width:30%;"></th>
+			<th style="width:5%;"></th>
+		</tr>
+	</thead>
+	<tbody>
+		{{#each files}}
+		<tr class="listview">
+			<td class="text-center vert-align">
+				{{#if $eq collectionName "images"}}
+					{{#unless this.isUploaded}}
+						<span class="glyphicon glyphicon-file" style="font-size:75px;"></span>
+					{{else}}
+						<img src="{{this.url store='original'}}" class="img-responsive" style="margin:auto;">
+					{{/unless}}
+				{{else}}
+					<span class="glyphicon glyphicon-file" style="font-size:75px;"></span>
+				{{/if}}
+			</td>
+			<td class="vert-align">
+				<h5>Navn: {{this.name}}</h5>
+				{{#if $eq collectionName "images"}}
+					{{> TextInput $generateId 'title' this._id placeholder="Tittel"}}
+					{{> TextInput $generateId 'copyright' this._id  placeholder="Kilde"}}
+					{{> TextInput $generateId 'url' this._id  placeholder="Kilde-url"}}
+				{{else}}
+					{{> TextInput $generateId 'title' this._id  placeholder="Tittel"}}
+					{{> TextInput $generateId 'type' this._id  placeholder="Type dokument"}}
+					{{> TextInput $generateId 'date' this._id  placeholder="Dato"}}
+				{{/if}}
+			</td>
+			<td class="vert-align" style="padding-top:25px;">
+				{{#unless this.isUploaded}}
+					{{> FS.UploadProgressBar bootstrap=true}}
+				{{else}}
+					{{> FS.UploadProgressBar bootstrap=true class="progress-bar-success"}}
+				{{/unless}}
+			</td>
+			<td class="text-center vert-align">
+				{{#FS.DeleteButton type=type class="btn btn-danger btn-xs"}}Slett{{/FS.DeleteButton}}
+			</td>
+		</tr>
+		{{/each}}
+	</tbody>
+</table>
 </template>

@@ -9,3 +9,12 @@
 	border: 2px dashed darken(#fff, 10%);
 	border-radius: 20px;
 }
+
+.dropzone:hover {
+	background-color:darken(#fff, 7%);
+}
+
+.table tbody>tr>td.vert-align
+{
+    vertical-align: middle;
+}

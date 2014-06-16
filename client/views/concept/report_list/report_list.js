@@ -210,18 +210,64 @@ Template.MapReportView.rendered = function () {
 }
 
 Template.TimelineReportView.rendered = function () {
-  var timeline_config = {
-    type: 'timeline',
-    width: "96%",
-    height: "400",
-    source: '/data.json',
-    embed_id: 'timeline-embed',
-    start_at_end: true,
-    language: VMM.Language.no
-  }
+
   Deps.autorun(function() {
-      storyjs_embedjs = new VMM.Timeline('timeline-embed', '100%', '400');
-      storyjs_embedjs.init(timeline_config);
+  
+    var reports = Reports.find({}).fetch();
+    
+    if (reports) {
+      var elements = [];
+      elements = _.map(reports, function(report){
+
+        var res = {
+          "startDate":report.project.decisionYear,
+          "endDate":report.project.finishingYear,
+          "headline":report.project.name,
+          "text":"<p>" + report.project.projectDescription.short + "</p>",
+        };
+
+        if (report.images && report.images[0]) {
+          var img_url = Images.findOne({_id:report.images[0].fileId}).url();
+          
+          if (!img_url)
+            img_url = "";
+
+          res["asset"] = {
+            "media": img_url,
+            "credit": report.images[0].copyright,
+            "caption":report.images[0].title
+          }
+        }
+        return res;
+      });
+      
+      var data = {};
+
+      if (elements) {
+        data = {
+          "timeline":
+          {
+              "headline":"Concept rapporter",
+              "type":"default",
+              "text":"Evalueringsrapporter av statlige prosjekter.",
+              "date": elements
+          }
+        } 
+
+        var timeline_config = {
+          type: 'timeline',
+          width: "96%",
+          height: "400",
+          source: data,
+          embed_id: 'timeline-embed',
+          start_at_end: true,
+          language: VMM.Language.no
+        }
+
+        storyjs_embedjs = new VMM.Timeline('timeline-embed', '100%', '400');
+        storyjs_embedjs.init(timeline_config);
+      }
+    }
   });
 };
 

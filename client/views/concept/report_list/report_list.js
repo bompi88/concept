@@ -178,33 +178,24 @@ Template.MapReportView.rendered = function () {
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
   }).addTo(map);
 
-  // add a marker in the given location, attach some popup content to it 
   var reports = Reports.find({});
+
   reports.forEach(function (report) {
+    var mapDiv =  L.DomUtil.create("div","lbqs");
+    UI.insert(UI.renderWithData(Template.MapPopupBox,report), mapDiv);
 
-    var toHTMLWithData = function (kind, data) {
-      return UI.toHTML(kind.extend({data: function () { return data; }}));
-    };
+    //local debug to surpass undefined, to be removed..............................
+    if(report.project.location == "Eiksund" || report.project.location.name =="") {
+      report.project.location = {"coordinates":{"lat":63.43, "lng":10.39}};
+    }
 
-      var mapDiv =  L.DomUtil.create("div","lbqs");
-       UI.insert(UI.renderWithData(Template.MapPopupBox,report), mapDiv);
+    console.log(report);
+    if(report) {
+        // add a marker in the given location, attach some popup content to it 
+        var marker = L.marker([report.project.location.coordinates.lat, report.project.location.coordinates.lng]).bindLabel(report.project.name, {noHide: true}).addTo(map);
+        marker.bindPopup(mapDiv);
 
-
-
-
-  var marker = L.marker([63.43, 10.39]).bindLabel(report.project.name, {noHide: true}).addTo(map);
-   marker.bindPopup(mapDiv);
-
-  //var content = toHTMLWithData(Template.BasicBox, report);
-  //console.log(content);
-
-  //div = L.DomUtil.create("div","lbqs");
-  //div.appendChild(content);
-
-  //marker.bindPopup(content).openPopup()
-
-
-
+      }
 
   });
 }

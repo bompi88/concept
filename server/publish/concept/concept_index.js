@@ -22,7 +22,10 @@ Meteor.publish('report', function(id) {
 	return Reports.find({_id: id});
 });
 
-Meteor.publish('images', function() {
+Meteor.publish('images', function(ids) {
 	return Images.find({});
 });
 
+Meteor.publish('files', function() {
+	return Files.find({});
+});

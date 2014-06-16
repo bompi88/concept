@@ -35,11 +35,11 @@ ReportListController = RouteController.extend({
 
 AdminCreateReportController = AuthRouteController.extend({
 	waitOn: function () {
-		return Meteor.subscribe('images');
+		return [ Meteor.subscribe('images'), Meteor.subscribe('files') ];
 	},
 
 	data: function () {
-		return Images.find();
+		
 	},
 
 	action: function () {

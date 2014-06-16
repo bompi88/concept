@@ -5,7 +5,9 @@
     "accounts-ui-bootstrap-3": {},
     "collectionFS": {},
     "moment": {},
-    "cfs-ui": {},
+    "cfs-ui": {
+        "git": "https://github.com/bompi88/Meteor-cfs-ui.git"
+    },
     "chartjs": {},
     "handlebar-helpers": {},
     "auto-nprogress": {},

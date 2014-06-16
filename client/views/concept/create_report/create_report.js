@@ -40,6 +40,17 @@ uploadObject = {
   }
 }
 
+var locationObject = {
+  coordinates: {},
+  getCoordinates: function() {
+    return coordinates;
+  },
+  setCoordinates: function(c) {
+    coordinates = c;
+    console.log(coordinates);
+  }
+}
+
 var removeByFileId = function(array, id) {
     return _.reject(array, function(item) {
         return item._id === id; // or some complex logic
@@ -68,6 +79,8 @@ Template.CreateReport.events({
     report.project.location = {};
 
     report.project.location.name = tmpl.find('#location').value;
+    report.project.location.coordinates = locationObject.getCoordinates();
+    
     report.project.successCategory = tmpl.find('input[name="traffic-light"]:checked').value;
     
     report.project.projectDescription = {};
@@ -172,6 +185,8 @@ var uploadFiles = function(event) {
   });
 };
 
+
+
 Template.CreateReport.helpers({
   /*
    * Example: 
@@ -187,9 +202,48 @@ Template.CreateReport.helpers({
   }
 });
 
+
 /*****************************************************************************/
 /* CreateReport: Lifecycle Hooks */
 /*****************************************************************************/
+Template.MapLocationPicker.rendered = function () {
+
+
+  L.Icon.Default.imagePath = 'packages/leaflet/images';
+  // create a map in the "map" div, set the view to Trondheim and zoom to get most of Norway
+  var map = L.map('map', {doubleClickZoom: false}).setView([63.43, 10.39], 5);
+
+  // add an OpenStreetMap tile layer
+  L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
+
+  var locationAdded = false;
+
+  map.on('dblclick', function(e) {
+
+    if(!locationAdded) {
+      var marker = L.marker(e.latlng).addTo(map)
+        .on('click', function(event) {
+          if(locationAdded) {
+            map.removeLayer(marker);
+            locationAdded = false;
+          }
+
+        });
+      locationObject.setCoordinates(e.latlng);
+      locationAdded = true;
+    }
+
+  });
+
+  // add a marker in the given location, attach some popup content to it and open the popup
+  // L.marker([51.5, -0.09]).addTo(map)
+  //     .bindPopup('A pretty CSS3 popup. <br> Easily customizable.')
+  //     .openPopup();
+
+};
+
 Template.CreateReport.created = function () {
 };
 

@@ -7,7 +7,9 @@
 				<div class="row">
 					<div class="col-md-8">
 						<header>
+							<div class="page-header">
 							<h1>{{project.name}}</h1>
+						</div>
 						</header>
 					</div>
 					<div class="col-md-4">
@@ -58,7 +60,7 @@
 	<section id="eval">
 
 		<header>
-			<h3>Evaluering</h3>
+			<h3>Evaluering <small> utført av {{responsible.organization}} ved {{responsible.person}}</small></h3>
 		</header>
 
 
@@ -97,12 +99,11 @@
 
 	</section>
 
-	<section id="evaluator">
+<!-- 	<section id="evaluator">
 		<header>
-			<h3>Evaluator</h3>
+			<h3>Evaluator <small> utført av {{responsible.organization}} ved {{responsible.person}}</small></h3>
 		</header>
-		<p>{{responsible.organization}} ved {{responsible.person}}</p>
-	</section>
+	</section> -->
 
 	{{>ProjectReferences}}
 
@@ -152,12 +153,14 @@
 
 
 <template name="ProjectInformationBox">
-	<div class="row">
-		<div class="col-xs-8 col-xs-offset-2">
-			<h4 class="text-center">Prosjektinformasjon</h4>
+	<div class="panel panel-info">
+  		
+  		<div class="panel-heading"><h4 class="panel-heading text-center">Prosjektinformasjon</h4>
+		</div>
 
-			<div class="boxed">
-				<section id="faktaboks">
+
+		  <div class="panel-body">
+    			<section id="faktaboks">
 
 					<dl class="dl-horizontal">
 						<dt>Prosjektnummer</dt>
@@ -183,9 +186,10 @@
 
 					</dl>
 				</section>
-			</div>
 		</div>
 	</div>
+ 		
+			
 </template>
 
 

@@ -22,18 +22,44 @@ Template.ReportView.events({
 });
 
 Template.ReportView.helpers({
-  /*
-   * Example: 
-   *  items: function () {
-   *    return Items.find();
-   *  }
-   */
-
     textState: function () {
       return Session.get('TextState');
   }
 
 });
+
+
+
+
+Template.ShortTextReport.helpers({
+   getMainImageUrl: function() {
+    if(this.images && this.images[0]) {
+      var original = Images.findOne({_id:this.images[0].fileId});
+
+      if (original) {
+        return original.url();
+      }
+      else
+        return false;
+    }
+    return false;
+   }
+});
+
+
+Template.ProjectReferences.helpers({
+
+  getFileURL: function(fileId) {
+    var file = Files.findOne({_id:fileId});
+    if (file) {
+      return file.url();
+    }
+    else
+      return false;
+
+  }
+
+  });
 
 /*****************************************************************************/
 /* ReportView: Lifecycle Hooks */

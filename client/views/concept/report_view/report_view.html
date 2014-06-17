@@ -44,8 +44,8 @@
 				<p>{{project.projectDescription.short}}</p>
 
 				<figure id="projectImage">
-					<img src="http://www.tu.no/migration_catalog/2008/02/22/eiksundgrafikk0802220950.jpg/alternates/h1080/eiksundgrafikk0802220950.jpg" class="img-responsive" alt="Beskrivese av sambandet Ørsta/Volda-Eiksund. Foto." >
-					<figcaption class="text-center">Eiksundsambandet. Foto: Statens Vegvesen</figcaption>
+					<img src="{{getMainImageUrl store='original'}}" class="img-responsive" alt="Beskrivese av sambandet Ørsta/Volda-Eiksund. Foto." >
+					<figcaption class="text-center">{{images.[0].title}}. Foto: {{images.[0].copyright}}</figcaption>
 				</figure>
 			</div>
 			<div class="col-md-5">
@@ -195,7 +195,6 @@
 
 
 <template name="ProjectReferences">
-	
 
 	<section id="references">
 		<header>
@@ -204,34 +203,37 @@
 
 		<div class="row">
 			<div class="col-md-6">
-		<div class="table-responsive text-center">
-			<table class="table table-condensed">
-				<thead>
-					<tr>
-						<th>Tittel</th>
-						<th>Dato</th>
-						<th>Type dokument</th>
-						<th>Lenke</th>
-					</tr>
-				</thead>
-				<tbody>
+				<div class="table-responsive text-center">
+					<table class="table table-condensed">
+						<thead>
+							<tr>
+								<th>Tittel</th>
+								<th>Dato</th>
+								<th>Type dokument</th>
+								<th>Lenke</th>
+							</tr>
+						</thead>
+						<tbody>
+							{{#each references}}
+							<tr>
+								<td>{{title}}</td>
+								<td>{{date}}</td>
+								<td>{{type}}</td>
+								<td><a href="{{getFileURL fileId}}">Last ned</a></td>
+							</tr>
+							{{/each}}
+						</tbody>
 
-					<tr>
-						<td>Stortingsdokumenter SD</td>
-						<td>*blank*</td>
-						<td>Stortingsdokumenter</td>
-						<td><a href="http://www.w3schools.com">Lenke</a></td>
-					</tr>
-				</tbody>
 
 
-
-			</table>
+					</table>
+				</div>
+			</div>
 		</div>
-		</div>
-	</div>
 
 	</section>
+
+
 
 </template>
 

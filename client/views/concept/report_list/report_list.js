@@ -40,6 +40,9 @@ Template.ReportList.events({
     } else if (t === 'principal') {
       orderBy('principal');
     }
+  },
+  'click .edit-btn': function(event, tmpl) {
+    Router.go('/reports/' + this._id + '/edit');
   }
 });
 
@@ -50,7 +53,6 @@ Template.MapPopupBox.events({
     Router.go('/reports/' + id);
   }
 });
-
 
 Template.ReportList.helpers({
   viewState: function () {

@@ -213,8 +213,8 @@ Template.TimelineReportView.rendered = function () {
         var res = {
           "startDate":report.project.decisionYear,
           "endDate":report.project.finishingYear,
-          "headline":report.project.name,
-          "text":"<p>" + report.project.projectDescription.short + "</p>",
+          "headline":"<a href=\"/reports/"+report._id+"\">" + report.project.name +"</a>",
+          "text":"<p>" + report.project.projectDescription.short + " " + "<a href=\"/reports/"+report._id+"\">" + "Les mer" +"</a>" + "</p>",
         };
 
         if (report.images && report.images[0]) {
@@ -238,7 +238,7 @@ Template.TimelineReportView.rendered = function () {
         data = {
           "timeline":
           {
-              "headline":"Concept rapporter",
+              "headline":"Concept-rapporter",
               "type":"default",
               "text":"Evalueringsrapporter av statlige prosjekter.",
               "date": elements

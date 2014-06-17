@@ -100,29 +100,22 @@ $header-section-background-color: darken(#fff, 2%);
 
 
 
-#light{
-transform:rotate(90deg);
--ms-transform:rotate(90deg); /* IE 9 */
--webkit-transform:rotate(90deg); /* Opera, Chrome, and Safari */
-}
-
-
-
 /*! Light */
 #light {
-    background-color: #cccccc;
+    background-color: #ccc;
     box-shadow: 0 0 2.5px rgba(0,0,0, .8);
     overflow: hidden;
-    padding: 0 0 2px;
-    width: 20px;
+    padding: 1.25px 0 1.25px;
+    height: 17.5px;
+    width: 60px;
 }
 
 #light span {
-    border-radius: 50px;
-    display: block;
+    border-radius: 25px;
+    display: inline-block;
     height: 15px;
-    margin: 2px auto 0;
-    opacity: .18;
+    margin: 1px 1px 1px;
+    opacity: .25;
     width: 15px;
 }
 
@@ -133,7 +126,6 @@ transform:rotate(90deg);
 
 /*! Active states */
 #light span.active    { opacity: 1; }
-#light #red.active    { box-shadow: 0 0 35px red; }
-#light #orange.active { box-shadow: 0 0 35px orange; }
-#light #green.active  { box-shadow: 0 0 35px green; }
-
+#light #red.active    { box-shadow: 0 0 5px red; }
+#light #orange.active { box-shadow: 0 0 5px orange; }
+#light #green.active  { box-shadow: 0 0 5px green; }

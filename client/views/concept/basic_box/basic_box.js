@@ -23,6 +23,44 @@ Template.BasicBox.helpers({
    }
 });
 
+Template.BasicBox.successColor = function() {
+  console.log("hallo");
+  var success = this.project.successCategory;
+  if(success == 1) {
+    return "Rød";
+  }
+  else if(success == 2) {
+    return "Gul";
+  }
+  else if(success == 3) {
+    return "Grønn";
+  }
+  else return false;
+};
+
+
+Template.BasicBox.economyPercentage = function() {
+
+  if(this.project.managementBudget && this.project.costFinal && this.project.managementBudget.amount && this.project.costFinal.amount ) {
+
+  var styringsramme = this.project.managementBudget.amount;
+  var sluttkostnad = this.project.costFinal.amount;
+
+  var percentage = (sluttkostnad-styringsramme)*100 / styringsramme;
+
+  percentage = percentage.toFixed(1);
+
+
+  var text = percentage < 0 ? " under styringsrammen." : " over styringsrammen.";
+  console.log(percentage+ " %" + text);
+
+  return percentage+ " %" + text;
+}
+return false;
+
+
+};
+
 /*****************************************************************************/
 /* BasicBox: Lifecycle Hooks */
 /*****************************************************************************/

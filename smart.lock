@@ -16,7 +16,8 @@
       "auto-nprogress": {},
       "timeline-js": {},
       "leaflet": {},
-      "leaflet-label": {}
+      "leaflet-label": {},
+      "leaflet-search": {}
     },
     "packages": {
       "iron-router": {
@@ -78,6 +79,11 @@
         "git": "https://github.com/bdunnette/meteor-leaflet-label.git",
         "tag": "v0.2.1",
         "commit": "409138bdd888c021e529c1fd25a91c9252d4a6ce"
+      },
+      "leaflet-search": {
+        "git": "https://github.com/stefanocudini/leaflet-search.git",
+        "tag": "v1.5.2",
+        "commit": "4a3754138d6893b1a55256e3697eaea4574641df"
       },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",

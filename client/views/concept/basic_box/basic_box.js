@@ -1,13 +1,8 @@
 /*****************************************************************************/
 /* BasicBox: Event Handlers and Helpers */
 /*****************************************************************************/
+
 Template.BasicBox.events({
-  /*
-   * Example: 
-   *  'click .selector': function (e, tmpl) {
-   *
-   *  }
-   */
   'click .thumbnail-normal': function(event, tmpl) {
     var id = tmpl.find('.id').value;
     Router.go('/reports/' + id);
@@ -15,17 +10,23 @@ Template.BasicBox.events({
 });
 
 Template.BasicBox.helpers({
-  /*
-   * Example: 
-   *  items: function () {
-   *    return Items.find();
-   *  }
-   */
+   getThumbUrl: function() {
+    if(this.images && this.images[0]) {
+      var thumb = Images.findOne({_id:this.images[0].fileId});
+
+      if (thumb)
+        return thumb.url();
+      else
+        return false;
+    }
+    return false;
+   }
 });
 
 /*****************************************************************************/
 /* BasicBox: Lifecycle Hooks */
 /*****************************************************************************/
+
 Template.BasicBox.created = function () {
 };
 

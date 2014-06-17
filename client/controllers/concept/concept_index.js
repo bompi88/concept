@@ -22,7 +22,7 @@ ConceptIndexController = AuthRouteController.extend({
 
 ReportListController = RouteController.extend({
   	waitOn: function () {
-  		return Meteor.subscribe('reports');
+  		return [Meteor.subscribe('images'), Meteor.subscribe('reports')];
   	},
 
   	data: function () {

@@ -110,7 +110,7 @@ transform:rotate(90deg);
 
 /*! Light */
 #light {
-    background-color: #000;
+    background-color: #cccccc;
     box-shadow: 0 0 2.5px rgba(0,0,0, .8);
     overflow: hidden;
     padding: 0 0 2px;
@@ -118,11 +118,11 @@ transform:rotate(90deg);
 }
 
 #light span {
-    border-radius: 25px;
+    border-radius: 50px;
     display: block;
     height: 15px;
     margin: 2px auto 0;
-    opacity: .22;
+    opacity: .18;
     width: 15px;
 }
 
@@ -133,7 +133,7 @@ transform:rotate(90deg);
 
 /*! Active states */
 #light span.active    { opacity: 1; }
-#light #red.active    { box-shadow: 0 0 25px red; }
-#light #orange.active { box-shadow: 0 0 25px orange; }
-#light #green.active  { box-shadow: 0 0 25px green; }
+#light #red.active    { box-shadow: 0 0 35px red; }
+#light #orange.active { box-shadow: 0 0 35px orange; }
+#light #green.active  { box-shadow: 0 0 35px green; }
 

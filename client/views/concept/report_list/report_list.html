@@ -1,0 +1,166 @@
+<template name="ReportList">
+<div class="container-fluid background-basic fill">
+	<div class="container" style="margin: 50px auto;">
+		<div class="row">
+			<div class="col-xs-12 col-md-6 col-md-offset-3 text-center">
+				<div class="btn-group" data-toggle="buttons">
+					<label class="btn btn-default {{#if $eq viewState "box"}}active{{/if}}" id="report-view-option1">
+						<input type="radio" name="report-view" ><span class="glyphicon glyphicon-th"></span> Bokser
+					</label>
+					<label class="btn btn-default {{#if $eq viewState "table"}}active{{/if}}" id="report-view-option2">
+						<input type="radio" name="report-view" ><span class="glyphicon glyphicon-th-list"></span> Tabell
+					</label>
+					<label class="btn btn-default {{#if $eq viewState "map"}}active{{/if}}" id="report-view-option3">
+						<input type="radio" name="report-view" ><span class="glyphicon glyphicon-map-marker"></span> Kart
+					</label>
+					<label class="btn btn-default {{#if $eq viewState "timeline"}}active{{/if}}" id="report-view-option4">
+						<input type="radio" name="report-view" ><span class="glyphicon glyphicon-time"></span> Tidslinje
+					</label>
+				</div>
+			</div>
+			{{#if showSortBox}}
+			<div class="col-md-3 hidden-xs hidden-sm">
+				<div class="btn-group pull-right"> <a class="btn btn-default dropdown-toggle btn-select" data-toggle="dropdown" href="#"><span style="font-weight:500;">Sorter etter:</span> {{currentSort}} ({{currentSortDirection}}) <span class="caret"></span></a>
+		            <ul class="dropdown-menu" style="text-align:left;">
+		                <li class="sort-toggle" data-id="project-number"><a href="#">Prosjektnummer<div class="pull-right">{{> SortArrow sortBy='project.projectNumber'}}</div></a></li>
+		                <li class="sort-toggle" data-id="name"><a href="#">Navn<div class="pull-right">{{> SortArrow sortBy='project.name'}}</div></a></li>
+			            <li class="sort-toggle" data-id="sector"><a href="#">Sektor<div class="pull-right">{{> SortArrow sortBy='project.sector'}}</div></a></li>
+			            <li class="sort-toggle" data-id="finishing-year"><a href="#">Årstall ferdigstilt<div class="pull-right">{{> SortArrow sortBy='project.finishingYear'}}</div></a></li>
+			            <li class="sort-toggle" data-id="evaluation-year"><a href="#">Årstall evaluering<div class="pull-right">{{> SortArrow sortBy='project.evaluationYear'}}</div></a></li>
+			        	<li class="sort-toggle" data-id="management-budget"><a href="#">Styringsramme<div class="pull-right">{{> SortArrow sortBy='project.managementBudget.amount'}}</div></a></li>
+			        	<li class="sort-toggle" data-id="cost-final"><a href="#">Sluttkostnad<div class="pull-right">{{> SortArrow sortBy='project.costFinal.amount'}}</div></a></li>
+			        	<li class="sort-toggle" data-id="responsible-org"><a href="#">Ansvarlig<div class="pull-right">{{> SortArrow sortBy='responsible.organization'}}</div></a></li>
+			        	<li class="sort-toggle" data-id="principal"><a href="#">Oppdragsgiver<div class="pull-right">{{> SortArrow sortBy='principal'}}</div></a></li>
+		            </ul>
+		        </div>
+	        </div>
+	        <div class="col-xs-12 visible-xs visible-sm text-center" style="padding-top: 30px;">
+				<div class="btn-group"> <a class="btn btn-default dropdown-toggle btn-select" data-toggle="dropdown" href="#"><span style="font-weight:500;">Sorter etter:</span> {{currentSort}} ({{currentSortDirection}}) <span class="caret"></span></a>
+		            <ul class="dropdown-menu" style="text-align:left;">
+		                <li class="sort-toggle" data-id="project-number"><a href="#">Prosjektnummer<div class="pull-right">{{> SortArrow sortBy='project.projectNumber'}}</div></a></li>
+		                <li class="sort-toggle" data-id="name"><a href="#">Navn<div class="pull-right">{{> SortArrow sortBy='project.name'}}</div></a></li>
+			            <li class="sort-toggle" data-id="sector"><a href="#">Sektor<div class="pull-right">{{> SortArrow sortBy='project.sector'}}</div></a></li>
+			            <li class="sort-toggle" data-id="finishing-year"><a href="#">Årstall ferdigstilt<div class="pull-right">{{> SortArrow sortBy='project.finishingYear'}}</div></a></li>
+			            <li class="sort-toggle" data-id="evaluation-year"><a href="#">Årstall evaluering<div class="pull-right">{{> SortArrow sortBy='project.evaluationYear'}}</div></a></li>
+			        	<li class="sort-toggle" data-id="management-budget"><a href="#">Styringsramme<div class="pull-right">{{> SortArrow sortBy='project.managementBudget.amount'}}</div></a></li>
+			        	<li class="sort-toggle" data-id="cost-final"><a href="#">Sluttkostnad<div class="pull-right">{{> SortArrow sortBy='project.costFinal.amount'}}</div></a></li>
+			        	<li class="sort-toggle" data-id="responsible-org"><a href="#">Ansvarlig<div class="pull-right">{{> SortArrow sortBy='responsible.organization'}}</div></a></li>
+			        	<li class="sort-toggle" data-id="principal"><a href="#">Oppdragsgiver<div class="pull-right">{{> SortArrow sortBy='principal'}}</div></a></li>
+		            </ul>
+		        </div>
+	        </div>
+	        {{/if}}
+		</div>
+		<div class="row" id="report-list-container" style="height:400px;">
+			{{#if $eq viewState "box"}}
+				{{> BoxReportView}}
+			{{/if}}
+			{{#if $eq viewState "table"}}
+				{{> TableReportView}}
+			{{/if}}
+			{{#if $eq viewState "map"}}
+				{{> MapReportView}}
+			{{/if}}
+			{{#if $eq viewState "timeline"}}
+				{{> TimelineReportView}}
+			{{/if}}
+		</div>
+	</div>
+</div>
+</template>
+
+<template name="BoxReportView">
+	{{#each reports}}
+		{{> BasicBox}}
+	{{/each}}
+</template>
+
+<template name="TableReportView">
+	<div class="table-container table-responsive">
+		<table class="table table-striped table-hover">
+			<thead>
+		        <tr>
+		            <th class="sort-toggle table-header" data-id="project-number"># {{> SortArrow sortBy='project.projectNumber'}}</th>
+		            <th class="sort-toggle table-header" data-id="name">Navn {{> SortArrow sortBy='project.name'}}</th>
+		            <th class="sort-toggle table-header" data-id="sector">Sektor {{> SortArrow sortBy='project.sector'}}</th>
+		            <th class="sort-toggle table-header" data-id="finishing-year">Årstall ferdigstilt {{> SortArrow sortBy='project.finishingYear'}}</th>
+		            <th class="sort-toggle table-header" data-id="evaluation-year">Årstall evaluering {{> SortArrow sortBy='project.evaluationYear'}}</th>
+		        	<th class="sort-toggle table-header" data-id="management-budget">Styringsramme {{> SortArrow sortBy='project.managementBudget.amount'}}</th>
+		        	<th class="sort-toggle table-header" data-id="cost-final">Sluttkostnad {{> SortArrow sortBy='project.costFinal.amount'}}</th>
+		        	<th class="sort-toggle table-header" data-id="responsible-org">Ansvarlig {{> SortArrow sortBy='responsible.organization'}}</th>
+		        	<th class="sort-toggle table-header" data-id="principal">Oppdragsgiver {{> SortArrow sortBy='principal'}}</th>
+		        </tr>
+		    </thead>
+		    <tbody>
+				{{#each reports}}
+			  		<tr class="table-row">
+			            <td>{{project.projectNumber}}</td>
+			            <td>{{project.name}}</td>
+			            <td>{{project.sector}}</td>
+			            <td>{{project.finishingYear}}</td>
+			            <td>{{project.evaluationYear}}</td>
+			            <td>{{project.managementBudget.amount}}</td>
+			            <td>{{project.costFinal.amount}}</td>
+			            <td>{{responsible.organization}}</td>
+			            <td>{{principal}}</td>
+			        </tr>
+			  	{{/each}}
+		  	</tbody>
+		</table>
+	</div>
+</template>
+
+<template name="MapReportView">
+	<div class="content-wrapper">
+		<div id="map"></div>
+	</div>
+</template>
+
+<template name="TimelineReportView">
+	<div class="content-wrapper col-xs-12">
+      	<div id="timeline-embed"></div>
+    </div>
+</template>
+
+<template name="SortArrow">
+	{{#if $.Session.equals 'sortBy' sortBy}}{{#if $.Session.equals 'sortOrder' 'asc'}}<span class="glyphicon glyphicon-chevron-down"></span>{{else}}<span class="glyphicon glyphicon-chevron-up"></span>{{/if}}{{/if}}
+</template>
+
+
+
+
+<template name="MapPopupBox"> 
+	<div class="panel panel-default">
+		<div class="overlay"></div>
+		<div class="panel-heading">
+			<h2 class="panel-title text-center">{{project.name}}</h2>
+		</div>
+		<div class="panel-body">   
+			<input type="hidden" name="id" class="id" value="{{_id}}">
+			<dl class="dl-horizontal">
+				<dt>Prosjektnummer</dt>
+				<dd>{{project.projectNumber}}</dd>
+				<dt>Sektor</dt>
+				<dd>{{project.sector}}</dd>
+				<dt>Årstall påbegynt</dt>
+				<dd>{{project.decisionYear}}</dd>
+				<dt>Årstall ferdigstilt</dt>
+				<dd>{{project.finishingYear}}</dd>
+				<dt>Årstall evaluering</dt>
+				<dd>{{project.evaluationYear}}</dd>
+				<dt>Styringsramme</dt>
+				<dd>{{project.managementBudget.amount}} mill</dd>
+				<dt>Kostnadsramme</dt>
+				<dd>{{project.costBudget.amount}} mill</dd>
+				<dt>Sluttkostnad</dt>
+				<dd>{{project.costFinal.amount}} mill</dd>
+				<dt>Ansvarlig</dt>
+				<dd>{{responsible.organization}}</dd>
+				<dt>Oppdragsgiver</dt>
+				<dd>{{principal}}</dd>
+
+			</dl>
+
+		</div>
+	</div>
+</template>

@@ -1,6 +1,19 @@
 {
   "packages": {
     "iron-router": {},
-    "bootstrap3-sass": {}
+    "bootstrap3-sass": {},
+    "accounts-ui-bootstrap-3": {},
+    "collectionFS": {},
+    "moment": {},
+    "cfs-ui": {
+      "git": "https://github.com/bompi88/Meteor-cfs-ui.git"
+    },
+    "chartjs": {},
+    "handlebar-helpers": {},
+    "auto-nprogress": {},
+    "timeline-js": {},
+    "leaflet": {},
+    "leaflet-label": {},
+    "leaflet-search": {}
   }
 }

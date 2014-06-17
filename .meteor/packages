@@ -4,8 +4,23 @@
 # but you can also edit it by hand.
 
 standard-app-packages
-autopublish
-insecure
 iron-router
 d3
 bootstrap3-sass
+insecure
+accounts-base
+accounts-password
+scss
+accounts-ui-bootstrap-3
+collectionFS
+cfs-gridfs
+cfs-graphicsmagick
+moment
+cfs-ui
+chartjs
+handlebar-helpers
+auto-nprogress
+timeline-js
+leaflet
+leaflet-label
+leaflet-search

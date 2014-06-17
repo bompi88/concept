@@ -1,0 +1,38 @@
+<template name="TopNavbar">
+	<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		    </button>
+			<a class="navbar-brand" rel="home" href="/" title="Til forside">
+        		<img style="max-height:40px; margin-top: -10px;" src="/images/logo.jpg"> <span style="position:relative;top:-3px;padding-left:10px;">Concept</span>
+   	 		</a>
+		</div>
+		<div class="navbar-collapse collapse">
+
+			<ul class="nav navbar-nav">
+			  	<li class="{{activeIfRouteIs 'ReportList'}}"><a href="{{pathFor 'ReportList'}}">Evalueringsrapporter</a></li>
+			</ul>
+			{{#if isLoggedIn}}
+				
+				<ul class="nav navbar-nav">
+			  		<li class="new-report {{activeIfRouteIs 'CreateReport'}}"><a href="{{pathFor 'CreateReport'}}">Opprett</a></li>
+				</ul>
+			{{/if}}
+			{{#if currentRoute 'AdminLogon'}}
+				<ul class="nav navbar-nav navbar-right">
+			  		{{> loginButtons}}
+				</ul>
+			{{else}}
+				{{#if currentUser}}
+					<ul class="nav navbar-nav navbar-right">
+				  		{{> loginButtons}}
+					</ul>
+				{{/if}}
+			{{/if}}
+		</div>
+	</div>
+</template>

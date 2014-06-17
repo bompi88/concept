@@ -47,7 +47,7 @@ AdminCreateReportController = AuthRouteController.extend({
 	}
 });
 
-ReportViewController = AuthRouteController.extend({
+ReportViewController = RouteController.extend({
 	waitOn: function () {
 		return Meteor.subscribe('report', this.params._id);
 	},

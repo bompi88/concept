@@ -22,9 +22,11 @@
 			  		<li class="new-report {{activeIfTemplateIs 'CreateReport'}}"><a href="{{pathFor 'CreateReport'}}">Opprett</a></li>
 				</ul>
 			{{/if}}
+			{{#if currentRoute 'AdminLogon'}}
 			<ul class="nav navbar-nav navbar-right">
-		  		{{> loginButtons }}
+		  		{{> loginButtons}}
 			</ul>
+			{{/if}}
 		</div>
 	</div>
 </template>

@@ -37,6 +37,11 @@ uploadObject = {
     
     this.dep.changed();  //invalidates all dependent computations
     return this.References;
+  },
+  reset: function() {
+    this.Images = [];
+    this.References = [];
+    this.dep.changed();
   }
 }
 
@@ -151,7 +156,7 @@ Template.CreateReport.events({
         fileId: imgs_ids[i],
         title: tmpl.find('#title-' + imgs_ids[i]).value,
         copyright: tmpl.find('#copyright-' + imgs_ids[i]).value,
-        url: tmpl.find('#url-' + imgs_ids[i]).value
+        link: tmpl.find('#link-' + imgs_ids[i]).value
       };
       imgs.push(img);
     }
@@ -164,13 +169,13 @@ Template.CreateReport.events({
       var file = {
         fileId: files_ids[i],
         title: tmpl.find('#title-' + files_ids[i]).value,
-        type: tmpl.find('#type-' + files_ids[i]).value,
+        typedoc: tmpl.find('#typedoc-' + files_ids[i]).value,
         date: tmpl.find('#date-' + files_ids[i]).value
       };
       files.push(file);
     }
     report.references = files;
-
+    console.log(report)
     // call server side method to insert the document into the database
     if(currRoute('EditReport')) {
       Meteor.call('updateReport', this._id, report);
@@ -185,6 +190,9 @@ Template.CreateReport.events({
     Meteor.call('deleteReport', this._id, function (error, result) {
       Router.go(Router.path('ReportList'));
     });
+  },
+  'click .cancel-btn': function(event, tmpl) {
+    Router.go('/reports/' + this._id);
   },
   'change #dropzone-images': function(event, tmpl) {
     uploadImages(event);
@@ -242,10 +250,9 @@ Template.CreateReport.helpers({
         var old_img_ids = _.pluck(report.images, 'fileId');
 
 
-        return Images.find({_id: {$in : new_img_ids.concat(old_img_ids)}});
+      return Images.find({_id: {$in : new_img_ids.concat(old_img_ids)}});
       }
-      return null;
-      
+      return [];
     }
     return Images.find({_id: {$in : uploadObject.getImages()}});
   },
@@ -260,7 +267,7 @@ Template.CreateReport.helpers({
 
         return Files.find({_id: {$in : new_files_ids.concat(old_files_ids)}});
       }
-      return null;
+      return [];
       
     }
     return Files.find({_id: {$in : uploadObject.getReferences()}});
@@ -322,7 +329,7 @@ Template.MapLocationPicker.rendered = function () {
 
   Deps.autorun(function () {
     var report = Router.getData();
-    if(report && report.project && report.project.location && report.project.location.coordinates) {
+    if(report && report.project && report.project.location && report.project.location.coordinates && report.project.location.coordinates.lat) {
       var coords = report.project.location.coordinates;
       locationObject.setCoordinates(coords);  
       locationAdded = true
@@ -338,10 +345,53 @@ Template.MapLocationPicker.rendered = function () {
   });
 };
 
+Template.DownloadListTable.helpers({
+  getData: function(id, options) {
+    
+    var report = Router.getData();
+
+    if(options.hash && options.hash.parent && options.hash.parent.type) {
+      if (options.hash.parent.type === 'images') {
+        if(report && report.images){
+
+            var img_data = _.find(report.images, function(img){ return img.fileId == id; });
+
+            return _.extend(this, img_data);
+        }
+        return this;
+      } else if (options.hash.parent.type === 'files') {
+        if(report && report.references){
+
+            var ref_data = _.find(report.references, function(ref){ return ref.fileId == id; });
+
+            return _.extend(this, ref_data);
+        }
+        return this;
+      }
+    }
+    return null;
+  }
+});
+
 Template.CreateReport.created = function () {
 };
 
 Template.CreateReport.rendered = function () {
+  uploadObject.reset();
+  var report = Router.getData();
+
+  if(report) {
+    if(report.images) {
+      for(var i = 0; i < report.images.length; i++) {
+        uploadObject.addImage({_id:report.images[i].fileId});
+      }
+    }
+    if(report.references) {
+      for(var i = 0; i < report.references.length; i++) {
+        uploadObject.addReference({_id:report.references[i].fileId});
+      }
+    }
+  }
 };
 
 Template.CreateReport.destroyed = function () {

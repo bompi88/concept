@@ -203,16 +203,17 @@
 							<span class="glyphicon glyphicon-file" style="font-size:75px;"></span>
 						{{/if}}
 					</td>
+					{{#with getData this._id parent=..}}
 					<td class="vert-align">
 						<h5>Navn: {{this.name}}</h5>
 						{{#if $eq collectionName "images"}}
-							{{> TextInput $generateId 'title' this._id placeholder="Tittel"}}
-							{{> TextInput $generateId 'copyright' this._id  placeholder="Kilde"}}
-							{{> TextInput $generateId 'url' this._id  placeholder="Kilde-url"}}
+							{{> TextInput $generateId 'title' this._id placeholder="Tittel" value=title}}
+							{{> TextInput $generateId 'copyright' this._id  placeholder="Kilde" value=copyright}}
+							{{> TextInput $generateId 'link' this._id  placeholder="Kilde-url" value=link}}
 						{{else}}
-							{{> TextInput $generateId 'title' this._id  placeholder="Tittel"}}
-							{{> TextInput $generateId 'type' this._id  placeholder="Type dokument"}}
-							{{> TextInput $generateId 'date' this._id  placeholder="Dato"}}
+							{{> TextInput $generateId 'title' this._id  placeholder="Tittel" value=title}}
+							{{> TextInput $generateId 'typedoc' this._id  placeholder="Type dokument" value=typedoc}}
+							{{> TextInput $generateId 'date' this._id  placeholder="Dato" value=date}}
 						{{/if}}
 					</td>
 					<td class="vert-align" style="padding-top:25px;">
@@ -225,6 +226,7 @@
 					<td class="text-center vert-align">
 						{{#FS.DeleteButton type=type class="btn btn-danger btn-xs"}}Slett{{/FS.DeleteButton}}
 					</td>
+					{{/with}}
 				</tr>
 				{{/each}}
 			</tbody>

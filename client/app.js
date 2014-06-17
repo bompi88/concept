@@ -23,6 +23,12 @@ _.each(App.helpers, function (helper, key) {
   Handlebars.registerHelper(key, helper);
 });
 
+UI.registerHelper("currentRoute", function(route) {
+  var currentRoute = Router.current();
+  if (!currentRoute) return '';
+
+  return route === currentRoute.route.name ? true : false;
+});
 
 if(Meteor.isClient) {
 	Accounts.config({ forbidClientAccountCreation: true });

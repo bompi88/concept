@@ -22,10 +22,17 @@ Router.map(function () {
     	controller: 'AdminCreateReportController'
     });
 
+    this.route('EditReport', {
+      path: '/reports/:_id/edit',
+      template: 'CreateReport',
+      controller: 'AdminEditReportController'
+    });
+
     this.route('ReportView', {
       path: '/reports/:_id',
       controller: 'ReportViewController'
     });
+
     this.route('AdminLogon', {
       path: '/bak'
     });

@@ -14,12 +14,12 @@
 		<div class="navbar-collapse collapse">
 
 			<ul class="nav navbar-nav">
-			  	<li class="{{activeIfTemplateIs 'ReportList'}}"><a href="{{pathFor 'ReportList'}}">Evalueringsrapporter</a></li>
+			  	<li class="{{activeIfRouteIs 'ReportList'}}"><a href="{{pathFor 'ReportList'}}">Evalueringsrapporter</a></li>
 			</ul>
 			{{#if isLoggedIn}}
 				
 				<ul class="nav navbar-nav">
-			  		<li class="new-report {{activeIfTemplateIs 'CreateReport'}}"><a href="{{pathFor 'CreateReport'}}">Opprett</a></li>
+			  		<li class="new-report {{activeIfRouteIs 'CreateReport'}}"><a href="{{pathFor 'CreateReport'}}">Opprett</a></li>
 				</ul>
 			{{/if}}
 			{{#if currentRoute 'AdminLogon'}}

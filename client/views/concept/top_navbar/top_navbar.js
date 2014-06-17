@@ -15,17 +15,12 @@ Template.TopNavbar.helpers({
    *    return Items.find();
    *  }
    */
-	activeIfTemplateIs: function(tmpl) {
+	activeIfRouteIs: function(route) {
 		var curRoute = Router.current();
-		return curRoute && tmpl === curRoute.lookupTemplate() ? 'active' : '';
-  	}
-});
+    if (!curRoute) return '';
 
-UI.registerHelper("currentRoute", function(route) {
-  var currentRoute = Router.current();
-  if (!currentRoute) return '';
-
-  return route === currentRoute.route.name ? true : false;
+		return curRoute && route === curRoute.route.name ? 'active' : '';
+  }
 });
 
 /*****************************************************************************/

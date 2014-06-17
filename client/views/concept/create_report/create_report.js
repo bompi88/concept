@@ -293,6 +293,16 @@ Template.MapLocationPicker.rendered = function () {
   // create a map in the "map" div, set the view to Trondheim and zoom to get most of Norway
   var map = L.map('map', {doubleClickZoom: false}).setView([63.43, 10.39], 5);
 
+
+  map.addControl( new L.Control.Search({
+    url: 'http://nominatim.openstreetmap.org/search?format=json&q={s}',
+    jsonpParam: 'json_callback',
+    propertyName: 'display_name',
+    propertyLoc: ['lat','lon']
+  }) );
+
+
+
   // add an OpenStreetMap tile layer
   L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

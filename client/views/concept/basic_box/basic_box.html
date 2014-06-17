@@ -1,0 +1,44 @@
+<template name="BasicBox">
+	<div class="col-xxs-12 col-xs-12 col-sm-6 col-md-6 col-lg-4 box">
+		<div class="thumbnail-normal clearfix">
+			<div class="box-header text-center">
+				<h4 style="padding:0;margin:0;">{{project.name}}</h4>
+			</div>
+			<input type="hidden" name="id" class="id" value="{{_id}}">
+			<section class="row col-xs-12" style="margin: 0;padding:0;">
+	
+					<div class="col-xs-7 box-facts">
+						<ul class="list-group">
+							<li class="list-group-item"><span class="bold">Sektor:</span> <span class="pull-right">{{project.sector}}</span></li>
+							<li class="list-group-item"><span class="bold">Ferdigstilt:</span> <span class="pull-right">{{project.finishingYear}}</span></li>
+							<li class="list-group-item"><span class="bold">Økonomi:</span> <span class="pull-right">bar</span></li>
+							<li class="list-group-item"><span class="bold">Suksess:</span> <span class="pull-right">{{>TraficLight}}</span></li>
+						</ul>
+						<div class="btn-group btn-group-xs pull-left" style="z-index:100;">
+					<button type="button" class="btn btn-success edit-btn btn-small"><span class="glyphicon glyphicon-edit"></span> Rediger</button>
+				</div>
+					</div>
+					<div class="col-xs-5 box-image" style="height:100%;">
+						<img class="img-responsive" src="{{getThumbUrl store='thumbs'}}" style="margin: 0 auto; max-height:100px;" alt="Bilde knyttet til {{project.name}}.">
+					</div>
+		
+			</section>
+			<section>
+				<div class="col-xs-12 box-desc">{{cutText project.projectDescription.short 200}}</div>
+			</section>
+			<div class="overlay"></div>
+		</div>
+
+	</div>
+</template>
+
+
+
+
+<template name="TraficLight">
+	<div id="light">
+    	<span class="{{#if $eq project.successCategory "1" }} active {{else}} passive {{/if}}" id="red"></span>
+   		<span class="{{#if $eq project.successCategory "2" }} active {{else}} passive {{/if}}" id="orange"></span>
+    	<span class="{{#if $eq project.successCategory "3" }} active {{else}} passive {{/if}}" id="green"></span>
+</div>
+</template>

@@ -8,7 +8,7 @@
 		        <span class="icon-bar"></span>
 		    </button>
 			<a class="navbar-brand" rel="home" href="/" title="Til forside">
-        		<img style="max-height:40px; margin-top: -10px;" src="/images/logo.jpg"> <span style="position:relative;top:-1px;padding-left:10px;">Concept</span>
+        		<img style="max-height:40px; margin-top: -10px;" src="/images/logo.jpg"> <span style="position:relative;top:-3px;padding-left:10px;">Concept</span>
    	 		</a>
 		</div>
 		<div class="navbar-collapse collapse">
@@ -23,9 +23,15 @@
 				</ul>
 			{{/if}}
 			{{#if currentRoute 'AdminLogon'}}
-			<ul class="nav navbar-nav navbar-right">
-		  		{{> loginButtons}}
-			</ul>
+				<ul class="nav navbar-nav navbar-right">
+			  		{{> loginButtons}}
+				</ul>
+			{{else}}
+				{{#if currentUser}}
+					<ul class="nav navbar-nav navbar-right">
+				  		{{> loginButtons}}
+					</ul>
+				{{/if}}
 			{{/if}}
 		</div>
 	</div>

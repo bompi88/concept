@@ -17,8 +17,10 @@ Template.ReportView.events({
   },
   'click #text-view-long': function(event, tmpl) {
     Session.set('TextState', 'long');
+  },
+  'click .edit-btn': function(event, tmpl) {
+    Router.go('/reports/' + this._id + '/edit');
   }
-
 });
 
 Template.ReportView.helpers({

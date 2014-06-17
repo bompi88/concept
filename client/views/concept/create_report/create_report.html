@@ -6,104 +6,109 @@
 					<form role="form" id="report-form" style="margin: 0 20px;">
 						<h2>Om prosjektet</h2>
 						<h4>Generelt</h4>
-						{{> TextInput id="name" placeholder="Prosjektnavn"}}
-						{{> TextInput id="project-num" placeholder="Prosjektnummer (Trailbase)"}}
-						{{> TextInput id="sector" placeholder="Sektor"}}
+						{{> TextInput id="name" placeholder="Prosjektnavn" value=this.project.name}}
+						{{> TextInput id="project-num" placeholder="Prosjektnummer (Trailbase)" value=this.project.projectNumber}}
+						{{> TextInput id="sector" placeholder="Sektor" value=this.project.sector}}
 
 						<h4>Lokasjon</h4>
 						<p>Velg ett sted med dobbel museklikk. Fjern sted med enkelt museklikk</p>
 						{{>MapLocationPicker}}
 
-						{{> TextInput id="location" placeholder="Lokasjonsbeskrivelse for evalueringsobjektet"}}
+						{{> TextInput id="location" placeholder="Lokasjonsbeskrivelse for evalueringsobjektet" value=this.project.location.name}}
 						<h5>Suksesskategori</h5>
-						{{> RadioTrafficLight name="traffic-light"}}
+						{{> RadioTrafficLight name="traffic-light" curval=this.project.successCategory}}
 
 						<h5>Prosjektbeskrivelse</h5>
-						{{> TextArea id="project-desc-short" placeholder="Kort prosjektbeskrivelse"}}
-						{{> TextArea id="project-desc-long" placeholder="Utdypende prosjektbeskrivelse og mål/bakgrunn for prosjektet"}}
+						{{> TextArea id="project-desc-short" placeholder="Kort prosjektbeskrivelse" value=this.project.projectDescription.short}}
+						{{> TextArea id="project-desc-long" placeholder="Utdypende prosjektbeskrivelse og mål/bakgrunn for prosjektet" value=this.project.projectDescription.long}}
 
 						<h4>Tidsbeskrivelse</h4>
 						<div class="col-lg-4" style="padding-left:0;">
-							{{> TextInput id="decision-year" placeholder="Årstall for vedtak"}}
+							{{> TextInput id="decision-year" placeholder="Årstall for vedtak" value=this.project.decisionYear}}
 						</div>
 						<div class="col-lg-4">
-							{{> TextInput id="finishing-year" placeholder="Årstall for ferdigstilling av prosjekt"}}
+							{{> TextInput id="finishing-year" placeholder="Årstall for ferdigstilling av prosjekt" value=this.project.finishingYear}}
 							
 						</div>
 						<div class="col-lg-4" style="padding-right:0;">
-							{{> TextInput id="eval-year" placeholder="Årstall for utført evaluering"}}
+							{{> TextInput id="eval-year" placeholder="Årstall for utført evaluering" value=this.project.evaluationYear}}
 						</div>
 
 						<h4>Økonomiske verdier</h4>
 						<div class="col-lg-4" style="padding-left:0;">
-							{{> TextInput id="management-budget" placeholder="Styringsramme (i millioner NOK)"}}
+							{{> TextInput id="management-budget" placeholder="Styringsramme (i millioner NOK)" value=this.project.managementBudget.amount}}
 						</div>
 						<div class="col-lg-4" style="">
-							{{> TextInput id="cost-budget" placeholder="Kostnadsramme (i millioner NOK)"}}
+							{{> TextInput id="cost-budget" placeholder="Kostnadsramme (i millioner NOK)" value=this.project.costBudget.amount}}
 						</div>
 						<div class="col-lg-4" style="padding-right:0;">
-							{{> TextInput id="cost-final" placeholder="Sluttkostnad (i millioner NOK)"}}
+							{{> TextInput id="cost-final" placeholder="Sluttkostnad (i millioner NOK)" value=this.project.costFinal.amount}}
 						</div>
 
 						<h4>Ansvarlige</h4>
-						{{> TextInput id="eval-responsible-org" placeholder="Evalueringsansvarlig instans"}}
-						{{> TextInput id="eval-responsible-person" placeholder="Evalueringsansvarlig person"}}
-						{{> TextInput id="principal" placeholder="Oppdragsgiver"}}
+						{{> TextInput id="eval-responsible-org" placeholder="Evalueringsansvarlig instans" value=this.responsible.organization}}
+						{{> TextInput id="eval-responsible-person" placeholder="Evalueringsansvarlig person" value=this.responsible.person}}
+						{{> TextInput id="principal" placeholder="Oppdragsgiver" value=this.principal}}
 
 						<h3>Evaluering</h3>
 
 						<h4>Tekstlige vurderinger</h4>
-						<h5>1. Effektivitet</h5>
-						{{> TextArea id="eval-productivity-short" placeholder="Kort vurdering av produktivitet"}}
-						{{> TextArea id="eval-productivity-long" placeholder="Utdypende vurdering av produktivitet"}}
+						<h5>1. Produktivitet</h5>
+						{{> TextArea id="eval-productivity-short" placeholder="Kort vurdering av produktivitet" value=this.evaluation.productivity.short}}
+						{{> TextArea id="eval-productivity-long" placeholder="Utdypende vurdering av produktivitet" value=this.evaluation.productivity.long}}
 
 						<h5>2. Måloppnåelse</h5>
-						{{> TextArea id="eval-achievement-short" placeholder="Kort vurdering av måloppnåelse"}}
-						{{> TextArea id="eval-achievement-long" placeholder="Utdypende vurdering av måloppnåelse"}}
+						{{> TextArea id="eval-achievement-short" placeholder="Kort vurdering av måloppnåelse" value=this.evaluation.achievement.short}}
+						{{> TextArea id="eval-achievement-long" placeholder="Utdypende vurdering av måloppnåelse" value=this.evaluation.achievement.long}}
 
 						<h5>3. Virkninger</h5>
-						{{> TextArea id="eval-effects-short" placeholder="Kort vurdering av virkninger"}}
-						{{> TextArea id="eval-effects-long" placeholder="Utdypende vurdering av virkninger"}}
+						{{> TextArea id="eval-effects-short" placeholder="Kort vurdering av virkninger" value=this.evaluation.effects.short}}
+						{{> TextArea id="eval-effects-long" placeholder="Utdypende vurdering av virkninger" value=this.evaluation.effects.long}}
 
 						<h5>4. Relevans</h5>
-						{{> TextArea id="eval-relevance-short" placeholder="Kort vurdering av relevans"}}
-						{{> TextArea id="eval-relevance-long" placeholder="Utdypende vurdering av relevans"}}
+						{{> TextArea id="eval-relevance-short" placeholder="Kort vurdering av relevans" value=this.evaluation.relevance.short}}
+						{{> TextArea id="eval-relevance-long" placeholder="Utdypende vurdering av relevans" value=this.evaluation.relevance.long}}
 
 						<h5>5. Levedyktighet</h5>
-						{{> TextArea id="eval-viability-short" placeholder="Kort vurdering av levedyktighet"}}
-						{{> TextArea id="eval-viability-long" placeholder="Utdypende vurdering av levedyktighet"}}
+						{{> TextArea id="eval-viability-short" placeholder="Kort vurdering av levedyktighet" value=this.evaluation.viability.short}}
+						{{> TextArea id="eval-viability-long" placeholder="Utdypende vurdering av levedyktighet" value=this.evaluation.viability.long}}
 
 						<h5>6. Samfunnsøkonomisk lønnsomhet</h5>
-						{{> TextArea id="eval-profitability-short" placeholder="Kort vurdering av samfunnsøkonomisk lønnsomhet"}}
-						{{> TextArea id="eval-profitability-long" placeholder="Utdypende vurdering av samfunnsøkonomisk lønnsomhet"}}
+						{{> TextArea id="eval-profitability-short" placeholder="Kort vurdering av samfunnsøkonomisk lønnsomhet" value=this.evaluation.profitability.short}}
+						{{> TextArea id="eval-profitability-long" placeholder="Utdypende vurdering av samfunnsøkonomisk lønnsomhet" value=this.evaluation.profitability.long}}
 
 						<h4>Tallvurderinger</h4>
 
-						<h5>1. Effektivitet</h5>
-						{{> RadioGroupFive name="num-eval-productivity"}}
+						<h5>1. Produktivitet</h5>
+						{{> RadioGroupFive name="num-eval-productivity" curval=this.evaluation.productivity.value}}
 
 						<h5>2. Måloppnåelse</h5>
-						{{> RadioGroupFive name="num-eval-achievement"}}
+						{{> RadioGroupFive name="num-eval-achievement" curval=this.evaluation.achievement.value}}
 
 						<h5>3. Virkninger</h5>
-						{{> RadioGroupFive name="num-eval-effects"}}
+						{{> RadioGroupFive name="num-eval-effects" curval=this.evaluation.effects.value}}
 
 						<h5>4. Relevans</h5>
-						{{> RadioGroupFive name="num-eval-relevance"}}
+						{{> RadioGroupFive name="num-eval-relevance" curval=this.evaluation.relevance.value}}
 
 						<h5>5. Levedyktighet</h5>
-						{{> RadioGroupFive name="num-eval-viability"}}
+						{{> RadioGroupFive name="num-eval-viability" curval=this.evaluation.viability.value}}
 
 						<h5>6. Samfunnsøkonomisk lønnsomhet</h5>
-						{{> RadioGroupFive name="num-eval-profitability"}}
+						{{> RadioGroupFive name="num-eval-profitability" curval=this.evaluation.profitability.value}}
 
 						<h3>Referanser</h3>
-						{{> Dropzone type="files" typeDesc="filer" files=references}}
+						{{> Dropzone type="files" typeDesc="filer" files=referencesList}}
 
 						<h3>Illustrasjoner</h3>
-						{{> Dropzone type="images" typeDesc="bildefiler" files=images}}
+						{{> Dropzone type="images" typeDesc="bildefiler" files=imagesList}}
 
-						<button type="submit" class="btn btn-primary pull-right">Lagre</button>
+						{{#if currentRoute 'EditReport'}}
+							<button type="button" class="btn btn-danger pull-left delete-btn">Slett</button>
+							<button type="submit" class="btn btn-primary pull-right">Lagre</button>
+						{{else}}
+							<button type="submit" class="btn btn-primary pull-right">Opprett</button>
+						{{/if}}
 						<button type="button" class="btn btn-default pull-right cancel-btn">Avbryt</button>
 					</form>
 				</div>
@@ -114,39 +119,47 @@
 
 <template name="RadioTrafficLight">
 	<div class="form-group">
-		{{> RadioButton name=this.name value="1" text="Rød" checked=1}}
-		{{> RadioButton name=this.name value="2" text="Gul"}}
-		{{> RadioButton name=this.name value="3" text="Grønn"}}
+		{{#if curval}}
+			{{> RadioButton name=this.name value="1" text="Rød" curval=curval}}
+		{{else}}
+			{{> RadioButton name=this.name value="1" text="Rød" checked=1}}
+		{{/if}}
+		{{> RadioButton name=this.name value="2" text="Gul" curval=curval}}
+		{{> RadioButton name=this.name value="3" text="Grønn" curval=curval}}
 	</div>
 </template>
 
 <template name="RadioGroupFive">
 	<div class="form-group">
-		{{> RadioButton name=this.name value="1" text="1" checked=1}}
-		{{> RadioButton name=this.name value="2" text="2"}}
-		{{> RadioButton name=this.name value="3" text="3"}}
-		{{> RadioButton name=this.name value="4" text="4"}}
-		{{> RadioButton name=this.name value="5" text="5"}}
-		{{> RadioButton name=this.name value="6" text="6"}}
+		{{#if curval}}
+			{{> RadioButton name=this.name value="1" text="1" curval=curval}}
+		{{else}}
+			{{> RadioButton name=this.name value="1" text="1" checked=1}}
+		{{/if}}
+		{{> RadioButton name=this.name value="2" text="2" curval=curval}}
+		{{> RadioButton name=this.name value="3" text="3" curval=curval}}
+		{{> RadioButton name=this.name value="4" text="4" curval=curval}}
+		{{> RadioButton name=this.name value="5" text="5" curval=curval}}
+		{{> RadioButton name=this.name value="6" text="6" curval=curval}}
 	</div>
 </template>
 
 <template name="RadioButton">
 	<label class="radio-inline">
-		<input type="radio" name="{{name}}" id="{{name}}-option1" value="{{value}}" checked={{this.checked}} >
+		<input type="radio" name="{{name}}" id="{{name}}-option1" value="{{value}}" checked={{#if $eq curval value}}checked{{else}}{{this.checked}}{{/if}} >
 		{{text}}
 	</label>
 </template>
 
 <template name="TextInput">
 	<div class="form-group">
-		<input type="text" class="form-control" id="{{id}}" placeholder="{{placeholder}}">
+		<input type="text" class="form-control" id="{{id}}" placeholder="{{placeholder}}" value="{{#if currentRoute 'EditReport'}}{{value}}{{/if}}">
 	</div>
 </template>
 
 <template name="TextArea">
 	<div class="form-group">
-		<textarea class="form-control" rows="5" id="{{id}}" placeholder="{{placeholder}}"></textarea>
+		<textarea class="form-control" rows="5" id="{{id}}" placeholder="{{placeholder}}">{{#if currentRoute 'EditReport'}}{{value}}{{/if}}</textarea>
 	</div>
 </template>
 

@@ -42,12 +42,16 @@ uploadObject = {
 
 var locationObject = {
   coordinates: {},
+  dep: new Deps.Dependency,
   getCoordinates: function() {
-    return coordinates;
+    this.dep.depend();
+    
+    return this.coordinates;
   },
   setCoordinates: function(c) {
-    coordinates = c;
-    console.log(coordinates);
+    this.coordinates = c;
+    this.dep.changed();  
+    return this.coordinates;
   }
 }
 
@@ -64,7 +68,7 @@ var removeByFileId = function(array, id) {
 Template.CreateReport.events({
   'submit #report-form': function (event, tmpl) {
     event.preventDefault();
-    
+
     // our report document
     var report = {
       project: {},
@@ -168,10 +172,19 @@ Template.CreateReport.events({
     report.references = files;
 
     // call server side method to insert the document into the database
-    Meteor.call('insertReport', report);
-
+    if(currRoute('EditReport')) {
+      Meteor.call('updateReport', this._id, report);
+    } else {
+      Meteor.call('insertReport', report);
+    }
+  
     // redirect to report list (for now)
     Router.go(Router.path('ReportList'));
+  },
+  'click .delete-btn': function(event, tmpl) {
+    Meteor.call('deleteReport', this._id, function (error, result) {
+      Router.go(Router.path('ReportList'));
+    });
   },
   'change #dropzone-images': function(event, tmpl) {
     uploadImages(event);
@@ -211,14 +224,45 @@ var uploadFiles = function(event) {
     });
   });
 };
+var currRoute = function(route) {
+    var currentRoute = Router.current();
+    if (!currentRoute) return '';
 
+    return route === currentRoute.route.name ? true : false;
+  };
 
 
 Template.CreateReport.helpers({
-  images: function() {
+  imagesList: function() {
+    if(currRoute('EditReport')) {
+      var report = Router.getData();
+
+      if(report) {
+        var new_img_ids = uploadObject.getImages();
+        var old_img_ids = _.pluck(report.images, 'fileId');
+
+
+        return Images.find({_id: {$in : new_img_ids.concat(old_img_ids)}});
+      }
+      return null;
+      
+    }
     return Images.find({_id: {$in : uploadObject.getImages()}});
   },
-  references: function() {
+  referencesList: function() {
+    if(currRoute('EditReport')) {
+      var report = Router.getData();
+
+      if(report) {
+        var new_files_ids = uploadObject.getReferences();
+        var old_files_ids = _.pluck(report.references, 'fileId');
+
+
+        return Files.find({_id: {$in : new_files_ids.concat(old_files_ids)}});
+      }
+      return null;
+      
+    }
     return Files.find({_id: {$in : uploadObject.getReferences()}});
   }
 });
@@ -228,6 +272,8 @@ UI.registerHelper('$generateId', function (name, _id, options) {
 });
 
 UI.registerHelper('$isNotEmptyArray', function (array) {
+  if (!array || !array.count)
+    return false;
  return array.count() > 0;
 });
 
@@ -236,8 +282,7 @@ UI.registerHelper('$isNotEmptyArray', function (array) {
 /*****************************************************************************/
 Template.MapLocationPicker.rendered = function () {
 
-
-  L.Icon.Default.imagePath = 'packages/leaflet/images';
+  L.Icon.Default.imagePath = '/packages/leaflet/images';
   // create a map in the "map" div, set the view to Trondheim and zoom to get most of Norway
   var map = L.map('map', {doubleClickZoom: false}).setView([63.43, 10.39], 5);
 
@@ -265,11 +310,22 @@ Template.MapLocationPicker.rendered = function () {
 
   });
 
-  // add a marker in the given location, attach some popup content to it and open the popup
-  // L.marker([51.5, -0.09]).addTo(map)
-  //     .bindPopup('A pretty CSS3 popup. <br> Easily customizable.')
-  //     .openPopup();
+  Deps.autorun(function () {
+    var report = Router.getData();
+    if(report && report.project && report.project.location && report.project.location.coordinates) {
+      var coords = report.project.location.coordinates;
+      locationObject.setCoordinates(coords);  
+      locationAdded = true
 
+      var marker = L.marker([coords.lat, coords.lng]).addTo(map).on('click', function(event) {
+        if(locationAdded) {
+          map.removeLayer(marker);
+          locationAdded = false;
+        }
+
+      });;
+    }
+  });
 };
 
 Template.CreateReport.created = function () {

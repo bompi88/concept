@@ -21,6 +21,13 @@ Template.TopNavbar.helpers({
   	}
 });
 
+UI.registerHelper("currentRoute", function(route) {
+  var currentRoute = Router.current();
+  if (!currentRoute) return '';
+
+  return route === currentRoute.route.name ? true : false;
+});
+
 /*****************************************************************************/
 /* TopNavbar: Lifecycle Hooks */
 /*****************************************************************************/

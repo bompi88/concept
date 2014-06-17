@@ -227,6 +227,10 @@ UI.registerHelper('$generateId', function (name, _id, options) {
  return _.extend(options.hash, { id: name + '-' + _id});
 });
 
+UI.registerHelper('$isNotEmptyArray', function (array) {
+ return array.count() > 0;
+});
+
 /*****************************************************************************/
 /* CreateReport: Lifecycle Hooks */
 /*****************************************************************************/

@@ -11,3 +11,10 @@
   bottom: 15px;
   top: auto;
 }
+
+@media (max-width: 767px) {
+
+	#nprogress .bar {
+		top:50px;
+	}
+}

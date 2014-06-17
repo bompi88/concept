@@ -26,4 +26,7 @@ Router.map(function () {
       path: '/reports/:_id',
       controller: 'ReportViewController'
     });
+    this.route('AdminLogon', {
+      path: '/bak'
+    });
 });

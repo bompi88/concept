@@ -32,8 +32,14 @@ $ em g:view /folder/anotherFolder
 		"name" : "",
 		"projectNumber" : "",
 		"sector" : "",
-		"location" : "",
-		"successCategory" : "1",
+		"location" : {
+			"name" : "",
+			"coordinates" : {
+				lat: "",
+				lng: ""
+			}
+		},
+		"successCategory" : "",
 		"projectDescription" : {
 			"short" : "",
 			"long" : ""
@@ -55,57 +61,35 @@ $ em g:view /folder/anotherFolder
 		}
 	},
 	"evaluation" : {
-		"textual" : {
-			"productivity" : {
-				"short" : "",
-				"long" : ""
-			},
-			"achievement" : {
-				"short" : "",
-				"long" : ""
-			},
-			"effects" : {
-				"short" : "",
-				"long" : ""
-			},
-			"relevance" : {
-				"short" : "",
-				"long" : ""
-			},
-			"viability" : {
-				"short" : "",
-				"long" : ""
-			},
-			"profitability" : {
-				"short" : "",
-				"long" : ""
-			}
+		"productivity" : {
+			"short" : "",
+			"long" : "",
+			"value" : ""
 		},
-		"numeric" : {
-			"productivity" : {
-				"axis" : "Produktivitet",
-				"value" : "1"
-			},
-			"achievement" : {
-				"axis" : "Måloppnåelse",
-				"value" : "1"
-			},
-			"effects" : {
-				"axis" : "Virkninger",
-				"value" : "1"
-			},
-			"relevance" : {
-				"axis" : "Relevans",
-				"value" : "1"
-			},
-			"viability" : {
-				"axis" : "Levedyktighet",
-				"value" : "1"
-			},
-			"profitability" : {
-				"axis" : "Samf.øk. lønnsomhet",
-				"value" : "1"
-			}
+		"achievement" : {
+			"short" : "",
+			"long" : "",
+			"value" : ""
+		},
+		"effects" : {
+			"short" : "",
+			"long" : "",
+			"value" : ""
+		},
+		"relevance" : {
+			"short" : "",
+			"long" : "",
+			"value" : ""
+		},
+		"viability" : {
+			"short" : "",
+			"long" : "",
+			"value" : ""
+		},
+		"profitability" : {
+			"short" : "",
+			"long" : "",
+			"value" : ""
 		}
 	},
 	"responsible" : {
@@ -113,6 +97,22 @@ $ em g:view /folder/anotherFolder
 		"person" : ""
 	},
 	"principal" : "",
-	"_id" : "nKCvhFKdaG5d2cXH5"
+	"images" : [
+		{
+			"fileId" : "",
+			"title" : "",
+			"copyright" : "",
+			"link" : ""
+		}
+	],
+	"references" : [
+		{
+			"fileId" : "",
+			"title" : "",
+			"typedoc" : "",
+			"date" : ""
+		}
+	],
+	"_id" : ""
 }
 ```

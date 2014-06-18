@@ -31,6 +31,7 @@ ReportListController = RouteController.extend({
   	action: function () {
     	this.render();
   	}
+
 });
 
 AdminCreateReportController = AuthRouteController.extend({
@@ -72,5 +73,26 @@ ReportViewController = RouteController.extend({
 
 	action: function () {
 		this.render();
+	},
+	onAfterAction: function() {
+
+		if(this.data()) {
+			var report = this.data();
+			SEO.set({
+				title: "Evaluering av " + report.project.name,
+				meta: {
+					'description': report.project.projectDescription.short
+				},
+				og: {
+					'title': "Evaluering av " + report.project.name,
+					'description': report.project.projectDescription.short
+					//todo image 
+				}
+			});
+		}
+
+
+
 	}
+
 });

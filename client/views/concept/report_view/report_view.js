@@ -51,7 +51,8 @@ Template.ShortTextReport.helpers({
 
 Template.LongTextReport.helpers({
      notEscapeHTML: function(text) {
-      return Spacebars.SafeString(text);
+      if(text)
+        return Spacebars.SafeString(text);
    }
 });
 

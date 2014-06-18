@@ -54,7 +54,7 @@ Template.BasicBox.economyPercentage = function() {
   var text = percentage < 0 ? " under styringsrammen." : " over styringsrammen.";
   console.log(percentage+ " %" + text);
 
-  return percentage+ " %" + text;
+  return percentage.toString() + "%";//+ " %" + text;
 }
 return false;
 

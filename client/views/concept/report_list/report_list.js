@@ -171,6 +171,7 @@ Template.TimelineReportView.created = function () {
 };
 
 Template.MapReportView.rendered = function () {
+
   L.Icon.Default.imagePath = 'packages/leaflet/images';
   // create a map in the "map" div, set the view to Trondheim and zoom to get most of Norway
   var map = L.map('map', {doubleClickZoom: false}).setView([63.43, 10.39], 5);
@@ -190,8 +191,6 @@ Template.MapReportView.rendered = function () {
     if(report.project.location == "Eiksund" || report.project.location.name =="") {
       report.project.location = {"coordinates":{"lat":63.43, "lng":10.39}};
     }
-
-    console.log(report);
     if(report) {
         // add a marker in the given location, attach some popup content to it 
         var marker = L.marker([report.project.location.coordinates.lat, report.project.location.coordinates.lng]).bindLabel(report.project.name, {noHide: true}).addTo(map);

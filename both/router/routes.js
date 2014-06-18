@@ -34,6 +34,9 @@ Router.map(function () {
     });
 
     this.route('AdminLogon', {
-      path: '/bak'
+      path: '/concept-admin'
+    });
+    this.route('AdminForgottonPassword', {
+      path: '/concept-admin-forgotton-password'
     });
 });

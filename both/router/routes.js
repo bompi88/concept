@@ -34,7 +34,8 @@ Router.map(function () {
     });
 
     this.route('AdminLogon', {
-      path: '/concept-admin'
+      path: '/concept-admin',
+      controller: 'AdminLogonController'
     });
     this.route('AdminForgottonPassword', {
       path: '/concept-admin-forgotton-password'

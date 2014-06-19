@@ -64,8 +64,11 @@ AdminEditReportController = AuthRouteController.extend({
 
 AdminLogonController = RouteController.extend({
 	onBeforeAction: function() {
-		if(Meteor.user() && !Meteor.loggingIn())
-			Router.go(Router.path('ReportList'));
+		if (! Meteor.user()) {
+	    	if (Meteor.loggingIn()) {
+	      		Router.go(Router.path('ReportList'));
+	    	}
+    	}	
 	}
 });
 

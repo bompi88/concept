@@ -62,6 +62,13 @@ AdminEditReportController = AuthRouteController.extend({
 	}
 });
 
+AdminLogonController = RouteController.extend({
+	onBeforeAction: function() {
+		if(Meteor.user() && !Meteor.loggingIn())
+			Router.go(Router.path('ReportList'));
+	}
+});
+
 ReportViewController = RouteController.extend({
 	waitOn: function () {
 		return [Meteor.subscribe('report', this.params._id), Meteor.subscribe('images'), Meteor.subscribe('files')];

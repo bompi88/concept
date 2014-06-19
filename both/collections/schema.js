@@ -80,9 +80,9 @@ var createReport = function(tmpl) {
       };
 
       // get all variables, and build the document
-      report.project.name = tmpl.find('#name').value || null;
-      report.project.projectNumber = parseInt(tmpl.find('#project-num').value) || 0;
-      report.project.sector = tmpl.find('#sector').value || null;
+      report.project.name = tmpl.find('#name').value;
+      report.project.projectNumber = parseInt(tmpl.find('#project-num').value);
+      report.project.sector = tmpl.find('#sector').value;
   
       report.project.location = {};
   
@@ -95,27 +95,27 @@ var createReport = function(tmpl) {
       report.project.location.coordinates.lat = coords.lat;
       report.project.location.coordinates.lng = coords.lng;
       
-      report.project.successCategory = parseInt(tmpl.find('input[name="traffic-light"]:checked').value) || 1;
+      report.project.successCategory = parseInt(tmpl.find('input[name="traffic-light"]:checked').value);
       
       report.project.projectDescription = {};
-      report.project.projectDescription.short = tmpl.find('#project-desc-short').value || null;
-      report.project.projectDescription.long = tmpl.find('#project-desc-long').value || null;
+      report.project.projectDescription.short = tmpl.find('#project-desc-short').value;
+      report.project.projectDescription.long = tmpl.find('#project-desc-long').value;
   
-      report.project.finishingYear = parseInt(tmpl.find('#finishing-year').value) || 0;
-      report.project.evaluationYear = parseInt(tmpl.find('#eval-year').value) || 0;
-      report.project.decisionYear = parseInt(tmpl.find('#decision-year').value) || 0;
+      report.project.finishingYear = parseInt(tmpl.find('#finishing-year').value);
+      report.project.evaluationYear = parseInt(tmpl.find('#eval-year').value);
+      report.project.decisionYear = parseInt(tmpl.find('#decision-year').value);
   
       report.project.managementBudget = {};
       report.project.costBudget = {};
       report.project.costFinal = {};
   
-      report.project.managementBudget.year = parseInt(tmpl.find('#decision-year').value) || 0;
-      report.project.costBudget.year = parseInt(tmpl.find('#decision-year').value) || 0;
-      report.project.costFinal.year = parseInt(tmpl.find('#finishing-year').value) || 0;
+      report.project.managementBudget.year = parseInt(tmpl.find('#decision-year').value);
+      report.project.costBudget.year = parseInt(tmpl.find('#decision-year').value);
+      report.project.costFinal.year = parseInt(tmpl.find('#finishing-year').value);
   
-      report.project.managementBudget.amount = parseInt(tmpl.find('#management-budget').value) || 0;
-      report.project.costBudget.amount = parseInt(tmpl.find('#cost-budget').value) || 0;
-      report.project.costFinal.amount = parseInt(tmpl.find('#cost-final').value) || 0;
+      report.project.managementBudget.amount = parseInt(tmpl.find('#management-budget').value);
+      report.project.costBudget.amount = parseInt(tmpl.find('#cost-budget').value);
+      report.project.costFinal.amount = parseInt(tmpl.find('#cost-final').value);
   
       report.responsible = {};
       report.responsible.organization = tmpl.find('#eval-responsible-org').value || null;
@@ -131,6 +131,7 @@ var createReport = function(tmpl) {
   
       report.evaluation.productivity.short = tmpl.find('#eval-productivity-short').value || null;
       report.evaluation.productivity.long = tmpl.find('#eval-productivity-long').value || null;
+
       report.evaluation.achievement.short = tmpl.find('#eval-achievement-short').value || null;
       report.evaluation.achievement.long = tmpl.find('#eval-achievement-long').value || null;
   
@@ -188,29 +189,29 @@ var Schemas = {};
 Schemas.Report = new SimpleSchema({
     project: {
         type: Object,
-        optional: true
+        optional: false
     },
     "project.name": {
     	type: String,
     	label: "Prosjektnavn",
-    	optional: true,
+    	optional: false,
     	regEx: /^[a-z0-9A-z .,æøåè()-]{3,100}$/
     },
     "project.projectNumber": {
     	type: Number,
     	label: "Prosjektnummer (Trailbase)",
-    	optional: true,
+    	optional: false,
     	regEx: /^[0-9 ]{1,10}$/
     },
     "project.sector": {
     	type: String,
     	label: "Sektor",
-    	optional: true,
+    	optional: false,
 		regEx: /^[a-z0-9A-z .,æøåè()-]{2,100}$/
     },
     "project.location": {
         type: Object,
-        optional: true
+        optional: false
     },
     "project.location.name": {
     	type: String,
@@ -232,95 +233,101 @@ Schemas.Report = new SimpleSchema({
     },
     "project.successCategory": {
     	type: Number,
-    	optional: true,
-    	regEx: /^[1-3 ]$/
+    	optional: false,
+    	regEx: /^[1-3]$/
     },
     "project.projectDescription": {
         type: Object,
-        optional: true
+        optional: false
     },
     "project.projectDescription.short": {
     	type: String,
     	label: "Kort prosjektbeskrivelse",
-    	optional: true,
+    	optional: false,
     	regEx: /^[a-z0-9A-z .,!;\n\r&:%"?æøåè\/()-]*$/
     },
     "project.projectDescription.long": {
     	type: String,
     	label: "Utdypende prosjektbeskrivelse og mål/bakgrunn for prosjektet",
-    	optional: true,
+    	optional: false,
     	regEx: /^[a-z0-9A-z .,!;\n\r&:%"?æøåè\/()-]*$/
     },
     "project.finishingYear": {
     	type: Number,
     	label: "Årstall for ferdigstilling av prosjekt",
-    	optional: true,
+    	optional: false,
+        max:9999,
+        min:1900,
     	regEx: /^[0-9]{4}$/
     },
     "project.evaluationYear": {
     	type: Number,
     	label: "Årstall for utført evaluering",
-    	optional: true,
+    	optional: false,
+        max:9999,
+        min:1900,
     	regEx: /^[0-9]{4}$/
     },
     "project.decisionYear": {
     	type: Number,
     	label: "Årstall for vedtak",
-    	optional: true,
+    	optional: false,
+        max:9999,
+        min:1900,
     	regEx: /^[0-9]{4}$/
     },
     "project.managementBudget": {
         type: Object,
-        optional: true
+        optional: false
     },
     "project.managementBudget.year": {
     	type: Number,
-    	optional: true,
+    	optional: false,
     	regEx: /^[0-9]{4}$/
     },
     "project.managementBudget.amount": {
     	type: Number,
     	label: "Styringsramme (i millioner NOK)",
-    	optional: true,
+    	optional: false,
     	regEx: /^[0-9]{1-10}$/
     },
     "project.costBudget": {
         type: Object,
-        optional: true
+        optional: false
     },
     "project.costBudget.year": {
     	type: Number,
-    	optional: true,
+    	optional: false,
     	regEx: /^[0-9]{4}$/
     },
     "project.costBudget.amount": {
     	type: Number,
     	label: "Kostnadsramme (i millioner NOK)",
-    	optional: true,
+    	optional: false,
     	regEx: /^[0-9]{1-10}$/
     },
     "project.costFinal": {
         type: Object,
-        optional: true
+        optional: false
     },
     "project.costFinal.year": {
     	type: Number,
-    	optional: true,
+    	optional: false,
     	regEx: /^[0-9]{4}$/
     },
     "project.costFinal.amount": {
     	type: Number,
     	label: "Sluttkostnad (i millioner NOK)",
-    	optional: true,
+    	optional: false,
     	regEx: /^[0-9]{1-10}$/
     },
     "evaluation": {
         type: Object,
-        optional: true
+        optional: false
     },
     "evaluation.productivity": {
         type: Object,
-        optional: true
+        optional: false
     },
     "evaluation.productivity.short": {
     	type: String,
@@ -336,12 +343,12 @@ Schemas.Report = new SimpleSchema({
     },
     "evaluation.productivity.value": {
     	type: Number,
-    	optional: true,
+    	optional: false,
     	regEx: /^[1-6]$/
     },
     "evaluation.achievement": {
         type: Object,
-        optional: true
+        optional: false
     },
     "evaluation.achievement.short": {
     	type: String,
@@ -357,12 +364,12 @@ Schemas.Report = new SimpleSchema({
     },
     "evaluation.achievement.value": {
     	type: Number,
-    	optional: true,
+    	optional: false,
     	regEx: /^[1-6]$/
     },
     "evaluation.effects": {
         type: Object,
-        optional: true
+        optional: false
     },
     "evaluation.effects.short": {
     	type: String,
@@ -378,12 +385,12 @@ Schemas.Report = new SimpleSchema({
     },
     "evaluation.effects.value": {
     	type: Number,
-    	optional: true,
+    	optional: false,
     	regEx: /^[1-6]$/
     },
     "evaluation.relevance": {
         type: Object,
-        optional: true
+        optional: false
     },
     "evaluation.relevance.short": {
     	type: String,
@@ -399,12 +406,12 @@ Schemas.Report = new SimpleSchema({
     },
     "evaluation.relevance.value": {
     	type: Number,
-    	optional: true,
+    	optional: false,
     	regEx: /^[1-6]$/
     },
     "evaluation.viability": {
         type: Object,
-        optional: true
+        optional: false
     },
     "evaluation.viability.short": {
     	type: String,
@@ -420,12 +427,12 @@ Schemas.Report = new SimpleSchema({
     },
     "evaluation.viability.value": {
     	type: Number,
-    	optional: true,
+    	optional: false,
     	regEx: /^[1-6]$/
     },
     "evaluation.profitability": {
         type: Object,
-        optional: true
+        optional: false
     },
     "evaluation.profitability.short": {
     	type: String,
@@ -441,17 +448,17 @@ Schemas.Report = new SimpleSchema({
     },
     "evaluation.profitability.value": {
     	type: Number,
-    	optional: true,
+    	optional: false,
     	regEx: /^[1-6]$/
     },
     "responsible": {
         type: Object,
-        optional: true
+        optional: false
     },
     "responsible.organization": {
     	type: String,
     	label: "Evalueringsansvarlig instans",
-    	optional: true,
+    	optional: false,
 		regEx: /^[a-z0-9A-z .,æøåè()-]{2,100}$/
     },
     "responsible.person": {
@@ -463,12 +470,12 @@ Schemas.Report = new SimpleSchema({
     "principal": {
     	type: String,
     	label: "Oppdragsgiver",
-    	optional: true,
+    	optional: false,
 		regEx: /^[a-z0-9A-z .,æøåè()-]{2,100}$/
     },
     "images": {
         type: [Object],
-        optional: true
+        optional: false
     },
     "images.$.fileId": {
         type: String,
@@ -495,7 +502,7 @@ Schemas.Report = new SimpleSchema({
     },
     "references": {
         type: [Object],
-        optional: true
+        optional: false
     },
     "references.$.fileId": {
         type: String,

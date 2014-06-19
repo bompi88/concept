@@ -202,7 +202,7 @@ Template.MapReportView.rendered = function () {
     var mapDiv =  L.DomUtil.create("div","lbqs");
     UI.insert(UI.renderWithData(Template.MapPopupBox,report), mapDiv);
 
-    if(report && report.project && report.project.coordinates && report.project.coordinates.lat && report.project.coordinates.lng) {
+    if(report && report.project && report.project.location && report.project.location.coordinates && report.project.location.coordinates.lat && report.project.location.coordinates.lng) {
         // add a marker in the given location, attach some popup content to it 
         var marker = L.marker([report.project.location.coordinates.lat, report.project.location.coordinates.lng]).bindLabel(report.project.name, {noHide: true}).addTo(map);
         marker.bindPopup(mapDiv);
@@ -223,10 +223,11 @@ Template.TimelineReportView.rendered = function () {
         var reportRoute = Routes.routes['ReportView'].path({_id: report._id});
 
         var res = {
-          "startDate":report.project.decisionYear,
-          "endDate":report.project.finishingYear,
+          "startDate":report.project.decisionYear.toString(),
+          "endDate":report.project.finishingYear.toString(),
           "headline":"<a href=\""+reportRoute+"\">" + report.project.name +"</a>",
           "text":"<p>" + report.project.projectDescription.short + " " + "<a href=\""+reportRoute+"\">" + "Les mer" +"</a>" + "</p>",
+
         };
 
         if (report.images && report.images[0]) {

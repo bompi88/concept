@@ -220,7 +220,7 @@ Template.TimelineReportView.rendered = function () {
       var elements = [];
       elements = _.map(reports, function(report){
 
-        var reportRoute = Routes.routes['ReportView'].path({_id: report._id});
+        var reportRoute = Router.routes['ReportView'].path({_id: report._id});
 
         var res = {
           "startDate":report.project.decisionYear.toString(),
@@ -265,7 +265,8 @@ Template.TimelineReportView.rendered = function () {
           source: data,
           embed_id: 'timeline-embed',
           start_at_end: true,
-          language: VMM.Language.no
+          language: VMM.Language.no,
+          debug:false
         }
 
         storyjs_embedjs = new VMM.Timeline('timeline-embed', '100%', '550');

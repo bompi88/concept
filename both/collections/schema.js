@@ -23,9 +23,13 @@ AutoForm.hooks({
 var createMofidiers = function(modifier, tmpl) {
 
     var coords = locationObject.getCoordinates();
+    var lat = "";
+    var lng = "";
 
-    var lat = coords.lat.toString();
-    var lng = coords.lng.toString();
+    if(coords.lat && coords.lng) {
+        lat = coords.lat.toString();
+        lng = coords.lng.toString();
+    }
 
     var mods = {
         "project.location.coordinates.lat": lat,

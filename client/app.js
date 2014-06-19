@@ -30,6 +30,4 @@ UI.registerHelper("currentRoute", function(route) {
   return route === currentRoute.route.name ? true : false;
 });
 
-if(Meteor.isClient) {
-	Accounts.config({ forbidClientAccountCreation: true });
-};
+

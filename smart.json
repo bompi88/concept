@@ -2,7 +2,9 @@
   "packages": {
     "iron-router": {},
     "bootstrap3-sass": {},
-    "accounts-ui-bootstrap-3": {},
+    "accounts-ui-bootstrap-3": {
+      "git": "https://github.com/bompi88/meteor-accounts-ui-bootstrap-3.git"
+    },
     "collectionFS": {},
     "moment": {},
     "cfs-ui": {
@@ -14,6 +16,8 @@
     "timeline-js": {},
     "leaflet": {},
     "leaflet-label": {},
-    "leaflet-search": {}
+    "leaflet-search": {},
+    "collection2": {},
+    "autoform": {}
   }
 }

@@ -10,12 +10,14 @@ App.helpers = {
   },
   cutText: function (str, n) {
 
+  	if(str) {
 		if(str.length > n) {
 			str = str.substring(0, n);
 			str = str + '...';
 		}
-		
 		return str;
+	}
+		return '';
 	}
 };
 

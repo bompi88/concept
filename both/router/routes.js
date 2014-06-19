@@ -34,6 +34,6 @@ Router.map(function () {
     });
 
     this.route('AdminLogon', {
-      path: '/bak'
+      path: '/admin-concept'
     });
 });

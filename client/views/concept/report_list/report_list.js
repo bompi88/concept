@@ -219,11 +219,15 @@ Template.TimelineReportView.rendered = function () {
     if (reports) {
       var elements = [];
       elements = _.map(reports, function(report){
+
+        var reportRoute = Routes.routes['ReportView'].path({_id: report._id});
+
         var res = {
           "startDate":report.project.decisionYear.toString(),
           "endDate":report.project.finishingYear.toString(),
-          "headline":"<a href=\"/reports/"+report._id+"\">" + report.project.name +"</a>",
-          "text":"<p>" + report.project.projectDescription.short + " " + "<a href=\"/reports/"+report._id+"\">" + "Les mer" +"</a>" + "</p>",
+          "headline":"<a href=\""+reportRoute+"\">" + report.project.name +"</a>",
+          "text":"<p>" + report.project.projectDescription.short + " " + "<a href=\""+reportRoute+"\">" + "Les mer" +"</a>" + "</p>",
+
         };
 
         if (report.images && report.images[0]) {

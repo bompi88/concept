@@ -186,6 +186,7 @@ Template.TimelineReportView.created = function () {
 };
 
 Template.MapReportView.rendered = function () {
+
   L.Icon.Default.imagePath = 'packages/leaflet/images';
   // create a map in the "map" div, set the view to Trondheim and zoom to get most of Norway
   var map = L.map('map', {doubleClickZoom: false}).setView([63.43, 10.39], 5);
@@ -234,7 +235,7 @@ Template.TimelineReportView.rendered = function () {
 
           res["asset"] = {
             "media": img_url,
-            "credit": report.images[0].copyright,
+            "credit": "<a href=\""+report.images[0].link+"\">" + report.images[0].copyright +"</a>",
             "caption":report.images[0].title
           }
         }

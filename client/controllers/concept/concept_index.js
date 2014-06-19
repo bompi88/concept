@@ -31,6 +31,7 @@ ReportListController = RouteController.extend({
   	action: function () {
     	this.render();
   	}
+
 });
 
 AdminCreateReportController = AuthRouteController.extend({
@@ -47,7 +48,7 @@ AdminCreateReportController = AuthRouteController.extend({
 	}
 });
 
-AdminEditReportController = RouteController.extend({
+AdminEditReportController = AuthRouteController.extend({
 	waitOn: function () {
 		return [ Meteor.subscribe('images'), Meteor.subscribe('files'), Meteor.subscribe('report', this.params._id)];
 	},
@@ -72,5 +73,26 @@ ReportViewController = RouteController.extend({
 
 	action: function () {
 		this.render();
+	},
+	onAfterAction: function() {
+
+		if(this.data()) {
+			var report = this.data();
+			SEO.set({
+				title: "Evaluering av " + report.project.name,
+				meta: {
+					'description': report.project.projectDescription.short
+				},
+				og: {
+					'title': "Evaluering av " + report.project.name,
+					'description': report.project.projectDescription.short
+					//todo image 
+				}
+			});
+		}
+
+
+
 	}
+
 });

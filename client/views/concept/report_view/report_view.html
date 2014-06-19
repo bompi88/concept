@@ -49,7 +49,7 @@
 
 				<figure id="projectImage">
 					<img src="{{getMainImageUrl store='original'}}" class="img-responsive" alt="Beskrivese av sambandet Ørsta/Volda-Eiksund. Foto." >
-					<figcaption class="text-center">{{images.[0].title}}. Foto: {{images.[0].copyright}}</figcaption>
+					<figcaption class="text-center">{{images.[0].title}}. Foto: <a href="{{images.[0].link}}"> {{images.[0].copyright}}</a></figcaption>
 				</figure>
 			</div>
 			<div class="col-md-5">
@@ -128,23 +128,23 @@
 
 
 					<h4>Produktivitet</h4>
-					<p>{{evaluation.productivity.long}}  <b>{{evaluation.productivity.value}} av 6 poeng</b>.</p>
+					<p>{{notEscapeHTML evaluation.productivity.long}}  <b>{{evaluation.productivity.value}} av 6 poeng</b>.</p>
 
 					<h4>Måloppnåelse</h4>
-					<p>{{evaluation.achievement.long}} <b>{{evaluation.achievement.value}} av 6 poeng</b>.</p>
+					<p>{{notEscapeHTML evaluation.achievement.long}} <b>{{evaluation.achievement.value}} av 6 poeng</b>.</p>
 
 					<h4>Virkninger</h4>
-					<p>{{evaluation.effects.long}} <b>{{evaluation.effects.value}} av 6 poeng</b>.</p>
+					<p>{{notEscapeHTML evaluation.effects.long}} <b>{{evaluation.effects.value}} av 6 poeng</b>.</p>
 
 
 					<h4>Relevans</h4>
-					<p>{{evaluation.relevance.long}} <b>{{evaluation.relevance.value}} av 6 poeng</b>.</p>
+					<p>{{notEscapeHTML evaluation.relevance.long}} <b>{{evaluation.relevance.value}} av 6 poeng</b>.</p>
 
 					<h4>Levedyktighet</h4>
-					<p>{{evaluation.viability.long}} <b>{{evaluation.viability.value}} av 6 poeng</b>.</p>
+					<p>{{notEscapeHTML evaluation.viability.long}} <b>{{evaluation.viability.value}} av 6 poeng</b>.</p>
 
 					<h4>Samfunnsøkonomisk lønnsomhet</h4>
-					<p>{{evaluation.profitability.long}} <b>{{evaluation.profitability.value}} av 6 poeng</b>.</p>
+					<p>{{notEscapeHTML evaluation.profitability.long}} <b>{{evaluation.profitability.value}} av 6 poeng</b>.</p>
 
 				</div>
 			</div>

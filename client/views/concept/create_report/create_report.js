@@ -45,7 +45,7 @@ uploadObject = {
   }
 }
 
-var locationObject = {
+locationObject = {
   coordinates: {},
   dep: new Deps.Dependency,
   getCoordinates: function() {
@@ -67,125 +67,10 @@ var removeByFileId = function(array, id) {
 };
 
 /*****************************************************************************/
-/* CreateReport: Event Handlers and Helpers */
+/* ReportForm: Event Handlers and Helpers */
 /*****************************************************************************/
 
-Template.CreateReport.events({
-  'submit #report-form': function (event, tmpl) {
-    event.preventDefault();
-
-    // our report document
-    var report = {
-      project: {},
-      evaluation: {}
-    };
-
-    // get all variables, and build the document
-    report.project.name = tmpl.find('#name').value;
-    report.project.projectNumber = tmpl.find('#project-num').value;
-    report.project.sector = tmpl.find('#sector').value;
-
-    report.project.location = {};
-
-    report.project.location.name = tmpl.find('#location').value;
-    report.project.location.coordinates = locationObject.getCoordinates();
-    
-    report.project.successCategory = tmpl.find('input[name="traffic-light"]:checked').value;
-    
-    report.project.projectDescription = {};
-    report.project.projectDescription.short = tmpl.find('#project-desc-short').value;
-    report.project.projectDescription.long = tmpl.find('#project-desc-long').value;
-
-    report.project.finishingYear = tmpl.find('#finishing-year').value;
-    report.project.evaluationYear = tmpl.find('#eval-year').value;
-    report.project.decisionYear = tmpl.find('#decision-year').value;
-
-    report.project.managementBudget = {};
-    report.project.costBudget = {};
-    report.project.costFinal = {};
-
-    report.project.managementBudget.year = tmpl.find('#decision-year').value;
-    report.project.costBudget.year = tmpl.find('#decision-year').value;
-    report.project.costFinal.year = tmpl.find('#finishing-year').value;
-
-    report.project.managementBudget.amount = tmpl.find('#management-budget').value;
-    report.project.costBudget.amount = tmpl.find('#cost-budget').value;
-    report.project.costFinal.amount = tmpl.find('#cost-final').value;
-
-    report.responsible = {};
-    report.responsible.organization = tmpl.find('#eval-responsible-org').value;
-    report.responsible.person = tmpl.find('#eval-responsible-person').value;
-    report.principal = tmpl.find('#principal').value;
-
-    report.evaluation.productivity = {};
-    report.evaluation.achievement = {};
-    report.evaluation.effects = {};
-    report.evaluation.relevance = {};
-    report.evaluation.viability = {};
-    report.evaluation.profitability = {};
-
-    report.evaluation.productivity.short = tmpl.find('#eval-productivity-short').value;
-    report.evaluation.productivity.long = tmpl.find('#eval-productivity-long').value;
-    report.evaluation.achievement.short = tmpl.find('#eval-achievement-short').value;
-    report.evaluation.achievement.long = tmpl.find('#eval-achievement-long').value;
-
-    report.evaluation.effects.short = tmpl.find('#eval-effects-short').value;
-    report.evaluation.effects.long = tmpl.find('#eval-effects-long').value;
-
-    report.evaluation.relevance.short = tmpl.find('#eval-relevance-short').value;
-    report.evaluation.relevance.long = tmpl.find('#eval-relevance-long').value;
-
-    report.evaluation.viability.short = tmpl.find('#eval-viability-short').value;
-    report.evaluation.viability.long = tmpl.find('#eval-viability-long').value;
-
-    report.evaluation.profitability.short = tmpl.find('#eval-profitability-short').value;
-    report.evaluation.profitability.long = tmpl.find('#eval-profitability-long').value;
-
-    report.evaluation.productivity.value = tmpl.find('input[name="num-eval-productivity"]:checked').value;
-    report.evaluation.achievement.value = tmpl.find('input[name="num-eval-achievement"]:checked').value;
-    report.evaluation.effects.value = tmpl.find('input[name="num-eval-effects"]:checked').value;
-    report.evaluation.relevance.value = tmpl.find('input[name="num-eval-relevance"]:checked').value;
-    report.evaluation.viability.value = tmpl.find('input[name="num-eval-viability"]:checked').value;
-    report.evaluation.profitability.value = tmpl.find('input[name="num-eval-profitability"]:checked').value;
-
-    var imgs_ids = uploadObject.getImages();
-    var imgs = [];
-
-    for (var i = 0; i < imgs_ids.length; i++){
-      var img = {
-        fileId: imgs_ids[i],
-        title: tmpl.find('#title-' + imgs_ids[i]).value,
-        copyright: tmpl.find('#copyright-' + imgs_ids[i]).value,
-        link: tmpl.find('#link-' + imgs_ids[i]).value
-      };
-      imgs.push(img);
-    }
-    report.images = imgs;
-
-    var files_ids = uploadObject.getReferences();
-    var files = [];
-
-    for (var i = 0; i < files_ids.length; i++){
-      var file = {
-        fileId: files_ids[i],
-        title: tmpl.find('#title-' + files_ids[i]).value,
-        typedoc: tmpl.find('#typedoc-' + files_ids[i]).value,
-        date: tmpl.find('#date-' + files_ids[i]).value
-      };
-      files.push(file);
-    }
-    report.references = files;
-    console.log(report)
-    // call server side method to insert the document into the database
-    if(currRoute('EditReport')) {
-      Meteor.call('updateReport', this._id, report);
-    } else {
-      Meteor.call('insertReport', report);
-    }
-  
-    // redirect to report list (for now)
-    Router.go(Router.path('ReportList'));
-  },
+Template.ReportForm.events({
   'click .delete-btn': function(event, tmpl) {
     Meteor.call('deleteReport', this._id, function (error, result) {
       Router.go(Router.path('ReportList'));
@@ -240,7 +125,7 @@ var currRoute = function(route) {
   };
 
 
-Template.CreateReport.helpers({
+Template.ReportForm.helpers({
   imagesList: function() {
     if(currRoute('EditReport')) {
       var report = Router.getData();
@@ -276,6 +161,12 @@ Template.CreateReport.helpers({
 
 UI.registerHelper('$generateId', function (name, _id, options) {
  return _.extend(options.hash, { id: name + '-' + _id});
+});
+
+UI.registerHelper('$checked', function (num, val) {
+  if (num === undefined && parseInt(val) == 1)
+    return true;
+  return (parseInt(val)) == num ? true : false;
 });
 
 UI.registerHelper('$isNotEmptyArray', function (array) {
@@ -376,10 +267,10 @@ Template.DownloadListTable.helpers({
 Template.CreateReport.created = function () {
 };
 
-Template.CreateReport.rendered = function () {
+Template.ReportForm.rendered = function () {
   uploadObject.reset();
   var report = Router.getData();
-
+  console.log(report);
   if(report) {
     if(report.images) {
       for(var i = 0; i < report.images.length; i++) {

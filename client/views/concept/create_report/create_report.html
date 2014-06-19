@@ -3,94 +3,113 @@
 		<div class="col-xs-8 col-xs-offset-2 content-wrapper fill" style="margin-bottom:30px;">
 			<div class="row" style="margin-bottom:30px;">
 				<div class="col-xs-12" >
-					<form role="form" id="report-form" style="margin: 0 20px;">
-						<h2>Om prosjektet</h2>
-						<h3>Generelt</h3>
-						{{> TextInput id="name" placeholder="Prosjektnavn" value=this.project.name}}
-						{{> TextInput id="project-num" placeholder="Prosjektnummer (Trailbase)" value=this.project.projectNumber}}
-						{{> TextInput id="sector" placeholder="Sektor" value=this.project.sector}}
-
-						{{> RadioTrafficLight name="traffic-light" placeholder="Suksesskategori" curval=this.project.successCategory}}
-
-						<h3>Lokasjon</h3>
-						<p>Velg ett sted med dobbel museklikk. Fjern sted med enkelt museklikk</p>
-						{{>MapLocationPicker}}
-
-						{{> TextInput id="location" placeholder="Lokasjonsbeskrivelse for evalueringsobjektet" value=this.project.location.name}}
-						
-
-						<h3>Prosjektbeskrivelse</h3>
-						{{> TextArea id="project-desc-short" placeholder="Kort prosjektbeskrivelse" value=this.project.projectDescription.short}}
-						{{> TextArea id="project-desc-long" placeholder="Utdypende prosjektbeskrivelse og mål/bakgrunn for prosjektet" value=this.project.projectDescription.long}}
-
-						<h3>Tidsbeskrivelse</h3>
-						{{> TextInput id="decision-year" placeholder="Årstall for vedtak" value=this.project.decisionYear}}
-						{{> TextInput id="finishing-year" placeholder="Årstall for ferdigstilling av prosjekt" value=this.project.finishingYear}}
-						{{> TextInput id="eval-year" placeholder="Årstall for utført evaluering" value=this.project.evaluationYear}}
-
-						<h3>Økonomiske verdier</h3>
-						{{> TextInput id="management-budget" placeholder="Styringsramme (i millioner NOK)" value=this.project.managementBudget.amount}}
-						{{> TextInput id="cost-budget" placeholder="Kostnadsramme (i millioner NOK)" value=this.project.costBudget.amount}}
-						{{> TextInput id="cost-final" placeholder="Sluttkostnad (i millioner NOK)" value=this.project.costFinal.amount}}
-
-						<h3>Ansvarlige</h3>
-						{{> TextInput id="eval-responsible-org" placeholder="Evalueringsansvarlig instans" value=this.responsible.organization}}
-						{{> TextInput id="eval-responsible-person" placeholder="Evalueringsansvarlig person" value=this.responsible.person}}
-						{{> TextInput id="principal" placeholder="Oppdragsgiver" value=this.principal}}
-
-						<h2>Evaluering</h2>
-
-						<h3>Tekstlige vurderinger</h3>
-						<h4>1. Produktivitet</h4>
-						{{> TextArea id="eval-productivity-short" placeholder="Kort vurdering av produktivitet" value=this.evaluation.productivity.short}}
-						{{> TextArea id="eval-productivity-long" placeholder="Utdypende vurdering av produktivitet" value=this.evaluation.productivity.long}}
-
-						<h4>2. Måloppnåelse</h4>
-						{{> TextArea id="eval-achievement-short" placeholder="Kort vurdering av måloppnåelse" value=this.evaluation.achievement.short}}
-						{{> TextArea id="eval-achievement-long" placeholder="Utdypende vurdering av måloppnåelse" value=this.evaluation.achievement.long}}
-
-						<h4>3. Virkninger</h4>
-						{{> TextArea id="eval-effects-short" placeholder="Kort vurdering av virkninger" value=this.evaluation.effects.short}}
-						{{> TextArea id="eval-effects-long" placeholder="Utdypende vurdering av virkninger" value=this.evaluation.effects.long}}
-
-						<h4>4. Relevans</h4>
-						{{> TextArea id="eval-relevance-short" placeholder="Kort vurdering av relevans" value=this.evaluation.relevance.short}}
-						{{> TextArea id="eval-relevance-long" placeholder="Utdypende vurdering av relevans" value=this.evaluation.relevance.long}}
-
-						<h4>5. Levedyktighet</h4>
-						{{> TextArea id="eval-viability-short" placeholder="Kort vurdering av levedyktighet" value=this.evaluation.viability.short}}
-						{{> TextArea id="eval-viability-long" placeholder="Utdypende vurdering av levedyktighet" value=this.evaluation.viability.long}}
-
-						<h4>6. Samfunnsøkonomisk lønnsomhet</h4>
-						{{> TextArea id="eval-profitability-short" placeholder="Kort vurdering av samfunnsøkonomisk lønnsomhet" value=this.evaluation.profitability.short}}
-						{{> TextArea id="eval-profitability-long" placeholder="Utdypende vurdering av samfunnsøkonomisk lønnsomhet" value=this.evaluation.profitability.long}}
-
-						<h3>Tallvurderinger</h3>
-						{{> RadioGroupFive name="num-eval-productivity" placeholder="1. Produktivitet" curval=this.evaluation.productivity.value}}
-						{{> RadioGroupFive name="num-eval-achievement" placeholder="2. Måloppnåelse" curval=this.evaluation.achievement.value}}
-						{{> RadioGroupFive name="num-eval-effects" placeholder="3. Virkninger" curval=this.evaluation.effects.value}}
-						{{> RadioGroupFive name="num-eval-relevance" placeholder="4. Relevans" curval=this.evaluation.relevance.value}}
-						{{> RadioGroupFive name="num-eval-viability" placeholder="5. Levedyktighet" curval=this.evaluation.viability.value}}
-						{{> RadioGroupFive name="num-eval-profitability" placeholder="6. Samfunnsøkonomisk lønnsomhet" curval=this.evaluation.profitability.value}}
-
-						<h3>Referanser</h3>
-						{{> Dropzone type="files" typeDesc="filer" files=referencesList}}
-
-						<h3>Illustrasjoner</h3>
-						{{> Dropzone type="images" typeDesc="bildefiler" files=imagesList}}
-
-						{{#if currentRoute 'EditReport'}}
-							<button type="button" class="btn btn-danger pull-left delete-btn">Slett</button>
-							<button type="submit" class="btn btn-primary pull-right">Lagre</button>
-						{{else}}
-							<button type="submit" class="btn btn-primary pull-right">Opprett</button>
-						{{/if}}
-						<button type="button" class="btn btn-default pull-right cancel-btn">Avbryt</button>
-					</form>
+					{{#if currentRoute 'EditReport'}}
+						{{> ReportForm id='report-form' doc=this type="update"}}
+					{{else}}
+						{{> ReportForm id='report-form' type="insert"}}
+					{{/if}}
 				</div>
 			</div>
 		</div>
 	</div>
+</template>
+
+<template name="ReportForm">
+	{{#autoForm collection="Reports" id=this.id type=this.type doc=this.doc style="margin: 0 20px;"}}
+		<h2>Om prosjektet</h2>
+		<fieldset>
+		    <legend>Generelt</legend>
+		    {{> afQuickField name='project.name' id="name" placeholder="schemaLabel"}}
+		   	{{> afQuickField name='project.projectNumber' id="project-num" placeholder="schemaLabel"}}
+		   	{{> afQuickField name='project.sector' id="sector" placeholder="schemaLabel"}}
+
+			{{> RadioTrafficLight name="traffic-light" placeholder="Suksesskategori" curval=doc.project.successCategory}}
+		</fieldset>
+		<fieldset>
+			<legend>Lokasjon</legend>
+			<p>Velg ett sted med dobbel museklikk. Fjern sted med enkelt museklikk</p>
+			{{>MapLocationPicker}}
+
+			{{> afQuickField name='project.location.name' id="location" placeholder="schemaLabel"}}
+		</fieldset>
+		<fieldset>
+			<legend>Prosjektbeskrivelse</legend>
+			{{> afQuickField name='project.projectDescription.short' id="project-desc-short" placeholder="schemaLabel" rows="5"}}
+			{{> afQuickField name='project.projectDescription.long' id="project-desc-long" placeholder="schemaLabel" rows="5"}}
+		</fieldset>
+		<fieldset>
+			<legend>Tidsbeskrivelse</legend>
+			{{> afQuickField name='project.decisionYear' id="decision-year" placeholder="schemaLabel"}}
+			{{> afQuickField name='project.finishingYear' id="finishing-year" placeholder="schemaLabel"}}
+			{{> afQuickField name='project.evaluationYear' id="eval-year" placeholder="schemaLabel"}}
+		</fieldset>
+		<fieldset>
+			<legend>Økonomiske verdier</legend>
+			{{> afQuickField name='project.managementBudget.amount' id="management-budget" placeholder="schemaLabel"}}
+			{{> afQuickField name='project.costBudget.amount' id="cost-budget" placeholder="schemaLabel"}}
+			{{> afQuickField name='project.costFinal.amount' id="cost-final" placeholder="schemaLabel"}}
+		</fieldset>
+		<fieldset>
+			<legend>Ansvarlige</legend>
+			{{> afQuickField name='responsible.organization' id="eval-responsible-org" placeholder="schemaLabel"}}
+			{{> afQuickField name='responsible.person' id="eval-responsible-person" placeholder="schemaLabel"}}
+			{{> afQuickField name='principal' id="principal" placeholder="schemaLabel"}}
+		</fieldset>
+
+		<h2>Evaluering</h2>
+		<fieldset>
+			<legend>Tekstlige vurderinger</legend>
+			<h4>1. Produktivitet</h4>
+			{{> afQuickField name='evaluation.productivity.short' id="eval-productivity-short" placeholder="schemaLabel" rows="5"}}
+			{{> afQuickField name='evaluation.productivity.long' id="eval-productivity-long" placeholder="schemaLabel" rows="5"}}
+
+			<h4>2. Måloppnåelse</h4>
+			{{> afQuickField name='evaluation.achievement.short' id="eval-achievement-short" placeholder="schemaLabel" rows="5"}}
+			{{> afQuickField name='evaluation.achievement.long' id="eval-achievement-long" placeholder="schemaLabel" rows="5"}}
+			
+			<h4>3. Virkninger</h4>
+			{{> afQuickField name='evaluation.effects.short' id="eval-effects-short" placeholder="schemaLabel" rows="5"}}
+			{{> afQuickField name='evaluation.effects.long' id="eval-effects-long" placeholder="schemaLabel" rows="5"}}
+
+			<h4>4. Relevans</h4>
+			{{> afQuickField name='evaluation.relevance.short' id="eval-relevance-short" placeholder="schemaLabel" rows="5"}}
+			{{> afQuickField name='evaluation.relevance.long' id="eval-relevance-long" placeholder="schemaLabel" rows="5"}}
+
+			<h4>5. Levedyktighet</h4>
+			{{> afQuickField name='evaluation.viability.short' id="eval-viability-short" placeholder="schemaLabel" rows="5"}}
+			{{> afQuickField name='evaluation.viability.long' id="eval-viability-long" placeholder="schemaLabel" rows="5"}}
+
+			<h4>6. Samfunnsøkonomisk lønnsomhet</h4>
+			{{> afQuickField name='evaluation.profitability.short' id="eval-profitability-short" placeholder="schemaLabel" rows="5"}}
+			{{> afQuickField name='evaluation.profitability.long' id="eval-profitability-long" placeholder="schemaLabel" rows="5"}}
+		</fieldset>
+		<fieldset>
+			<legend>Tallvurderinger</legend>
+			{{> RadioGroupFive name="num-eval-productivity" placeholder="1. Produktivitet" curval=doc.evaluation.productivity.value}}
+			{{> RadioGroupFive name="num-eval-achievement" placeholder="2. Måloppnåelse" curval=doc.evaluation.achievement.value}}
+			{{> RadioGroupFive name="num-eval-effects" placeholder="3. Virkninger" curval=doc.evaluation.effects.value}}
+			{{> RadioGroupFive name="num-eval-relevance" placeholder="4. Relevans" curval=doc.evaluation.relevance.value}}
+			{{> RadioGroupFive name="num-eval-viability" placeholder="5. Levedyktighet" curval=doc.evaluation.viability.value}}
+			{{> RadioGroupFive name="num-eval-profitability" placeholder="6. Samfunnsøkonomisk lønnsomhet" curval=doc.evaluation.profitability.value}}
+		</fieldset>
+		<fieldset>
+			<legend>Referanser</legend>
+			{{> Dropzone tp="files" typeDesc="filer" files=referencesList}}
+		</fieldset>
+		<fieldset>
+			<legend>Illustrasjoner</legend>
+			{{> Dropzone tp="images" typeDesc="bildefiler" files=imagesList}}
+		</fieldset>
+						  
+		{{#if currentRoute 'EditReport'}}
+			{{> afDeleteButton collection="Reports" doc=doc}}
+			<button type="submit" class="btn btn-primary pull-right">Lagre</button>
+		{{else}}
+			<button type="submit" class="btn btn-primary pull-right">Opprett</button>
+		{{/if}}
+		
+		<button type="button" class="btn btn-default pull-right cancel-btn">Avbryt</button>
+	{{/autoForm}}
 </template>
 
 <template name="RadioTrafficLight">
@@ -128,37 +147,30 @@
 
 <template name="RadioButton">
 	<label class="radio-inline">
-		<input type="radio" name="{{name}}" id="{{name}}-option1" value="{{value}}" checked={{#if $eq curval value}}checked{{else}}{{this.checked}}{{/if}} >
+		<input type="radio" name="{{name}}" id="{{name}}-option1" value="{{value}}" checked={{$checked curval value}}>
 		{{text}}
 	</label>
+</template>
+
+<template name="Dropzone">
+	<div class="row">
+		{{> DownloadListTable files=this.files type=this.tp}}
+		<div class="col-xs-12">
+		<div  class="dropzone text-center" id="dropzone-{{tp}}" style="text-aling:center;">
+			
+			<p style="padding:50px 10px;float:none;margin:auto;cursor:pointer;font-size:16px;"><b><i style="font-size:40px">Slipp {{typeDesc}} her</i></b><br>(eller klikk)</p>
+			
+			<input type="file" id="upload-{{tp}}" name="upload-{{tp}}" style="visibility: hidden; width: 1px; height: 1px" multiple />
+		
+		</div>
+		</div>
+	</div>
 </template>
 
 <template name="TextInput">
 	<div class="form-group">
 		<label for="{{id}}">{{placeholder}}</label>
 		<input type="text" class="form-control" id="{{id}}" placeholder="{{placeholder}}" value="{{#if currentRoute 'EditReport'}}{{value}}{{/if}}">
-	</div>
-</template>
-
-<template name="TextArea">
-	<div class="form-group">
-		<label for="{{id}}">{{placeholder}}</label>
-		<textarea class="form-control" rows="5" id="{{id}}" placeholder="{{placeholder}}">{{#if currentRoute 'EditReport'}}{{value}}{{/if}}</textarea>
-	</div>
-</template>
-
-<template name="Dropzone">
-	<div class="row">
-		{{> DownloadListTable files=this.files type=this.type}}
-		<div class="col-xs-12">
-		<div  class="dropzone text-center" id="dropzone-{{type}}" style="text-aling:center;">
-			
-			<p style="padding:50px 10px;float:none;margin:auto;cursor:pointer;font-size:16px;"><b><i style="font-size:40px">Slipp {{typeDesc}} her</i></b><br>(eller klikk)</p>
-			
-			<input type="file" id="upload-{{type}}" name="upload-{{type}}" style="visibility: hidden; width: 1px; height: 1px" multiple />
-		
-		</div>
-		</div>
 	</div>
 </template>
 

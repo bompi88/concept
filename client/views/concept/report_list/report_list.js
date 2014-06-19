@@ -133,7 +133,7 @@ var getReports = function() {
 
   var reportList = Reports.find({}).fetch();
 
-  reportList.sort(sortString);
+  reportList.sort(sortFunc);
   
   if (Session.get('sortOrder') === 'desc')
     reportList.reverse();
@@ -141,11 +141,26 @@ var getReports = function() {
   return reportList;
 }
 
-var sortString = function(a, b) {
+var sortFunc = function(a, b) {
   var sortBy = Session.get('sortBy');
-  var x = Object.byString(a, sortBy).toLowerCase(), y = Object.byString(b, sortBy).toLowerCase();
+  var as = Object.byString(a, sortBy), bs = Object.byString(b, sortBy);
+ 
+  if(isString(as) && isString(bs)) {
+    var x = as.toLowerCase(), y = bs.toLowerCase();
 
-  return x.localeCompare(y);
+    return x.localeCompare(y);
+  } else if(isNumber(as) || isNumber(bs)) {
+     return as - bs;
+  } else {
+    return as - bs;
+  }
+}
+var toString = Object.prototype.toString;
+
+function isNumber(obj) { return !isNaN(parseFloat(obj)) }
+
+var isString = function (obj) {
+  return  Object.prototype.toString.call(obj) === '[object String]';
 }
 
 Object.byString = function(o, s) {
@@ -186,19 +201,11 @@ Template.MapReportView.rendered = function () {
     var mapDiv =  L.DomUtil.create("div","lbqs");
     UI.insert(UI.renderWithData(Template.MapPopupBox,report), mapDiv);
 
-    //local debug to surpass undefined, to be removed..............................
-    if(report.project.location == "Eiksund" || report.project.location.name =="") {
-      report.project.location = {"coordinates":{"lat":63.43, "lng":10.39}};
-    }
-
-    console.log(report);
-    if(report) {
+    if(report && report.project && report.project.coordinates && report.project.coordinates.lat && report.project.coordinates.lng) {
         // add a marker in the given location, attach some popup content to it 
         var marker = L.marker([report.project.location.coordinates.lat, report.project.location.coordinates.lng]).bindLabel(report.project.name, {noHide: true}).addTo(map);
         marker.bindPopup(mapDiv);
-
       }
-
   });
 }
 

@@ -270,6 +270,7 @@ Template.TimelineReportView.rendered = function () {
         }
 
         storyjs_embedjs = new VMM.Timeline('timeline-embed', '100%', '550');
+        VMM.debug = false;
         if(storyjs_embedjs && timeline_config.source.timeline.date && timeline_config.source.timeline.date[0])
           storyjs_embedjs.init(timeline_config);
       }

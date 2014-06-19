@@ -2,8 +2,8 @@
 
 AuthRouteController = RouteController.extend({
 	onBeforeAction: function() {
-	    if(_.isNull(Meteor.user())) {
-	      Router.go(Router.path('ConceptIndex'));
+	    if(!Meteor.loggingIn() && !Meteor.user()) {
+	      this.redirect('ConceptIndex');
 	    }
   	}
 });
@@ -63,12 +63,16 @@ AdminEditReportController = AuthRouteController.extend({
 });
 
 AdminLogonController = RouteController.extend({
-	onBeforeAction: function() {
-		if (! Meteor.user()) {
-	    	if (Meteor.loggingIn()) {
-	      		Router.go(Router.path('ReportList'));
+	onBeforeAction: function(pause) {
+
+		if (Meteor.user()) {
+	    	if (!Meteor.loggingIn()) {
+	      		this.redirect('ReportList');
 	    	}
-    	}	
+    	}
+	},
+	action: function () {
+		this.render();
 	}
 });
 

@@ -22,7 +22,8 @@
       "leaflet-label": {},
       "leaflet-search": {},
       "collection2": {},
-      "autoform": {}
+      "autoform": {},
+      "ms-seo": {}
     },
     "packages": {
       "iron-router": {
@@ -99,6 +100,11 @@
         "git": "https://github.com/aldeed/meteor-autoform.git",
         "tag": "v0.12.0",
         "commit": "24b0284425e446f2d88760a81052eefe74a20bbf"
+      },
+      "ms-seo": {
+        "git": "https://github.com/DerMambo/ms-seo",
+        "tag": "v0.2.6",
+        "commit": "1a4ba31a1f6f29009d3941e9dd883829ff4e4b8b"
       },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",

@@ -8,7 +8,7 @@ AuthRouteController = RouteController.extend({
   	}
 });
 
-ConceptIndexController = AuthRouteController.extend({
+ConceptIndexController = RouteController.extend({
 	waitOn: function () {
 	},
 

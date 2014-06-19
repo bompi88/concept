@@ -48,7 +48,7 @@ AdminCreateReportController = AuthRouteController.extend({
 	}
 });
 
-AdminEditReportController = RouteController.extend({
+AdminEditReportController = AuthRouteController.extend({
 	waitOn: function () {
 		return [ Meteor.subscribe('images'), Meteor.subscribe('files'), Meteor.subscribe('report', this.params._id)];
 	},

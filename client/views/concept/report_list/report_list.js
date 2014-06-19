@@ -220,8 +220,8 @@ Template.TimelineReportView.rendered = function () {
       var elements = [];
       elements = _.map(reports, function(report){
         var res = {
-          "startDate":report.project.decisionYear,
-          "endDate":report.project.finishingYear,
+          "startDate":report.project.decisionYear.toString(),
+          "endDate":report.project.finishingYear.toString(),
           "headline":"<a href=\"/reports/"+report._id+"\">" + report.project.name +"</a>",
           "text":"<p>" + report.project.projectDescription.short + " " + "<a href=\"/reports/"+report._id+"\">" + "Les mer" +"</a>" + "</p>",
         };

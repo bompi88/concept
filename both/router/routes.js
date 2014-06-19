@@ -36,28 +36,17 @@ Router.map(function () {
     this.route('AdminLogon', {
       path: '/concept-admin'
     });
+
     this.route('AdminForgottonPassword', {
       path: '/concept-admin-forgotton-password'
     });
+
+    this.route('AboutConcept', {
+      path: '/about-concept'
+    });
+
+
 });
-
-
-// Meteor.startup(function() {
-//  if(Meteor.isClient){
-//       return SEO.config({
-//         title: 'Manuel Schoebel - MVP Development',
-//         meta: {
-//           'description': 'Manuel Schoebel develops Minimal Viable Producs (MVP) for Startups'
-//         },
-//         og: {
-//           'image': 'http://manuel-schoebel.com/images/authors/manuel-schoebel.jpg' 
-//         }
-//       });
-//     }
-// });
-
-
-
 
 SeoCollection.insert({
   route_name: 'ReportList',

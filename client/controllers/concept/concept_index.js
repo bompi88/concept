@@ -63,8 +63,10 @@ AdminEditReportController = AuthRouteController.extend({
 });
 
 AdminLogonController = RouteController.extend({
+	waitOn: function () {
+		return Meteor.user();
+	},
 	onBeforeAction: function(pause) {
-
 		if (Meteor.user()) {
 	    	if (!Meteor.loggingIn()) {
 	      		this.redirect('ReportList');
@@ -72,7 +74,9 @@ AdminLogonController = RouteController.extend({
     	}
 	},
 	action: function () {
-		this.render();
+		if (!Meteor.user() && !Meteor.loggingIn()) {
+			this.render();
+		}
 	}
 });
 

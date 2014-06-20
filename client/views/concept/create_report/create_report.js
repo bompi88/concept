@@ -270,7 +270,6 @@ Template.CreateReport.created = function () {
 Template.ReportForm.rendered = function () {
   uploadObject.reset();
   var report = Router.getData();
-  console.log(report);
   if(report) {
     if(report.images) {
       for(var i = 0; i < report.images.length; i++) {

@@ -100,6 +100,10 @@
 			<legend>Illustrasjoner</legend>
 			{{> Dropzone tp="images" typeDesc="bildefiler" files=imagesList}}
 		</fieldset>
+		<fieldset>
+			<legend>Innstillinger</legend>
+			{{> RadioDouble name="public-var" placeholder="Pubilsitet" curval=doc._public}}
+		</fieldset>
 						  
 		{{#if currentRoute 'EditReport'}}
 			{{> afDeleteButton collection="Reports" doc=doc}}
@@ -107,9 +111,22 @@
 		{{else}}
 			<button type="submit" class="btn btn-primary pull-right">Opprett</button>
 		{{/if}}
-		
 		<button type="button" class="btn btn-default pull-right cancel-btn">Avbryt</button>
 	{{/autoForm}}
+</template>
+
+<template name="RadioDouble">
+	<div class="control-group">
+        <label label-default="" class="control-label">{{placeholder}}</label>
+        <div class="controls">
+			{{#if curval}}
+				{{> RadioButton name=this.name value="1" text="Publiser" curval=curval}}
+			{{else}}
+				{{> RadioButton name=this.name value="1" text="Publiser" checked=1}}
+			{{/if}}
+			{{> RadioButton name=this.name value="0" text="Gjem" curval=curval}}
+		</div>
+    </div>
 </template>
 
 <template name="RadioTrafficLight">

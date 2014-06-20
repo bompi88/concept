@@ -63,6 +63,21 @@ Router.map(function () {
 
 });
 
+Meteor.startup(function() {
+ if(Meteor.isClient){
+      return SEO.config({
+        title: 'Concept NTNU',
+        meta: {
+          'description': 'Etterevaluering av en rekke statlige prosjekter gjort av Concept-programmet. På oppdrag fra Finansdepartementet'
+        },
+        og: {
+          'title': 'Rapporter - etterevaluering av statlige prosjekter',
+          'image': '/images/logo.jpg'
+        }
+      });
+    }
+});
+
 SeoCollection.insert({
   route_name: 'ReportList',
   title: 'Rapporter - etterevaluering av statlige prosjekter',
@@ -88,5 +103,62 @@ SeoCollection.insert({
   }
 });
 
+SeoCollection.insert({
+  route_name: 'CreateReport',
+  title: 'Lag rapport',
+  meta: {
+    'description': 'Etterevaluering av en rekke statlige prosjekter gjort av Concept-programmet. På oppdrag fra Finansdepartementet'
+  },
+  og: {
+    'title': 'Lag rapport',
+    'image': '/images/logo.jpg'
+  }
+});
 
+SeoCollection.insert({
+  route_name: 'EvaluationCriteria',
+  title: 'Evalueringskriterier',
+  meta: {
+    'description': 'Etterevaluering av en rekke statlige prosjekter gjort av Concept-programmet. På oppdrag fra Finansdepartementet'
+  },
+  og: {
+    'title': 'Evalueringskriterier',
+    'image': '/images/logo.jpg'
+  }
+});
 
+SeoCollection.insert({
+  route_name: 'AboutConcept',
+  title: 'Om Concept NTNU',
+  meta: {
+    'description': 'Etterevaluering av en rekke statlige prosjekter gjort av Concept-programmet. På oppdrag fra Finansdepartementet'
+  },
+  og: {
+    'title': 'Om Concept NTNU',
+    'image': '/images/logo.jpg'
+  }
+});
+
+SeoCollection.insert({
+  route_name: 'AdminLogon',
+  title: 'Logg på rapporteringsverktøyet',
+  meta: {
+    'description': 'Etterevaluering av en rekke statlige prosjekter gjort av Concept-programmet. På oppdrag fra Finansdepartementet'
+  },
+  og: {
+    'title': 'Logg på rapporteringsverktøyet',
+    'image': '/images/logo.jpg'
+  }
+});
+
+SeoCollection.insert({
+  route_name: 'AdminForgottonPassword',
+  title: 'Glemt passord',
+  meta: {
+    'description': 'Etterevaluering av en rekke statlige prosjekter gjort av Concept-programmet. På oppdrag fra Finansdepartementet'
+  },
+  og: {
+    'title': 'Glemt passord',
+    'image': '/images/logo.jpg'
+  }
+});

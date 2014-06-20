@@ -43,8 +43,16 @@ Router.map(function () {
     });
 
     this.route('AboutConcept', {
-      path: '/about-concept'
+      path: '/about-concept',
+      template: 'NotFound'
+
     });
+
+    this.route('EvaluationCriteria', {
+      path: '/evaluation-criteria',
+      template: 'NotFound'
+    });
+
 
 
 });
@@ -57,6 +65,19 @@ SeoCollection.insert({
   },
   og: {
     'title': 'Rapporter - etterevaluering av statlige prosjekter',
+    'image': '/images/logo.jpg'
+  }
+});
+
+
+SeoCollection.insert({
+  route_name: 'ConceptIndex',
+  title: 'Concept NTNU',
+  meta: {
+    'description': 'Etterevaluering av en rekke statlige prosjekter gjort av Concept-programmet. På oppdrag fra Finansdepartementet'
+  },
+  og: {
+    'title': 'Concept NTNU',
     'image': '/images/logo.jpg'
   }
 });

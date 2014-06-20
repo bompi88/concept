@@ -40,7 +40,8 @@ var createMofidiers = function(modifier, tmpl) {
         "evaluation.effects.value": parseInt(tmpl.find('input[name="num-eval-effects"]:checked').value),
         "evaluation.relevance.value": parseInt(tmpl.find('input[name="num-eval-relevance"]:checked').value),
         "evaluation.viability.value": parseInt(tmpl.find('input[name="num-eval-viability"]:checked').value),
-        "evaluation.profitability.value": parseInt(tmpl.find('input[name="num-eval-profitability"]:checked').value)
+        "evaluation.profitability.value": parseInt(tmpl.find('input[name="num-eval-profitability"]:checked').value),
+        "_public": parseInt(tmpl.find('input[name="public-var"]:checked').value) == 1
     };
         var imgs_ids = uploadObject.getImages();
       var imgs = [];
@@ -185,6 +186,8 @@ var createReport = function(tmpl) {
         files.push(file);
       }
       report.references = files;
+      report._public = parseInt(tmpl.find('input[name="public-var"]:checked').value) == 1;
+
       return report;
 }
 
@@ -492,20 +495,20 @@ Schemas.Report = new SimpleSchema({
     "images.$.title": {
     	type: String,
     	label: "Tittel",
-    	optional: true,
-		regEx: textFieldRegEx
+    	optional: true/*,
+		regEx: textFieldRegEx*/
     },
     "images.$.copyright": {
     	type: String,
     	label: "Kilde",
-    	optional: true,
-		regEx: textFieldRegEx
+    	optional: true/*,
+		regEx: textFieldRegEx*/
     },
     "images.$.link": {
     	type: String,
-    	label: "Kilde",
-    	optional: true,
-		regEx: SimpleSchema.RegEx.Url
+    	label: "Kilde-URL",
+    	optional: true/*,
+		regEx: SimpleSchema.RegEx.Url*/
     },
     "references": {
         type: [Object],
@@ -519,26 +522,30 @@ Schemas.Report = new SimpleSchema({
     "references.$.title": {
     	type: String,
     	label: "Tittel",
-    	optional: true,
-		regEx: textFieldRegEx
+    	optional: true/*,
+		regEx: textFieldRegEx*/
     },
     "references.$.typedoc": {
     	type: String,
     	label: "Dokumenttype",
-    	optional: true,
-		regEx: textFieldRegEx
+    	optional: true/*,
+		regEx: textFieldRegEx*/
     },
     "references.$.date": {
     	type: String,
     	label: "Dato",
-    	optional: true,
+    	optional: true/*,
 		regEx: /^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/
-    },
+    */},
     "_id": {
         type: String,
         denyInsert: true,
         optional: true,
         regEx: SimpleSchema.RegEx.Id
+    },
+    "_public": {
+        type: Boolean,
+        optional: false
     }
 });
 

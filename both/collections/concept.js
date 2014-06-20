@@ -1,6 +1,3 @@
-
-Concept = new Meteor.Collection('concept');
-
 Reports = new Meteor.Collection('reports');
 
 Images = new FS.Collection("images", {

@@ -20,6 +20,7 @@ Meteor.methods({
 		return Reports.remove({_id: id});
 	},
 	toggleReportPublic: function(id, publicity) {
-		return Reports.update({_id: id}, {$set: {public: publicity}});
+		console.log(publicity)
+		return Reports.update({_id: id}, {$set: {"_public": publicity}});
 	}
 });

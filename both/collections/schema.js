@@ -4,18 +4,30 @@ AutoForm.hooks({
     "report-form": {
         before: {
             insert: function(doc, tmpl) {
-                 var c = createReport(tmpl);
-                console.log(c)
-                return c;
+                return createReport(tmpl);
             },
             update: function(docId, modifier, tmpl) {
                 return createMofidiers(modifier, tmpl);
             },
-            onSuccess: function(operation, result, tmpl) {
-                console.log('sdf')
-                Router.go(Router.path('ReportList'));
-            }
-        }
+            remove: function (id, tmpl) {
+/*                console.log('jaha');
+                var report = Reports.findOne(id);
+                var img_ids = _.pluck(report.images, 'fileId');
+                var ref_ids = _.pluck(report.references, 'fileId');
+
+                Meteor.call('deleteImages', img_ids);
+                Meteor.call('deleteReferences', ref_ids);*/
+
+                return true;
+            } 
+        },
+        onSuccess: function(operation, result, tmpl) {
+            if (operation === 'update' )
+                return Router.go(Router.path('ReportList') + '/' + tmpl.data.doc._id);
+            else
+                return Router.go(Router.path('ReportList'));
+        },
+        onError: function(operation, error, template) { console.log(error);}
     }
 });
 }
@@ -41,7 +53,7 @@ var createMofidiers = function(modifier, tmpl) {
         "evaluation.relevance.value": parseInt(tmpl.find('input[name="num-eval-relevance"]:checked').value),
         "evaluation.viability.value": parseInt(tmpl.find('input[name="num-eval-viability"]:checked').value),
         "evaluation.profitability.value": parseInt(tmpl.find('input[name="num-eval-profitability"]:checked').value),
-        "_public": parseInt(tmpl.find('input[name="public-var"]:checked').value) == 1
+        "_public": parseInt(tmpl.find('input[name="public-var"]:checked').value) == 0
     };
         var imgs_ids = uploadObject.getImages();
       var imgs = [];
@@ -71,9 +83,8 @@ var createMofidiers = function(modifier, tmpl) {
       }
       mods["references"] = files;
 
-    console.log(mods)
     modifier.$set = _.extend(modifier.$set, mods);
-    console.log(modifier);
+
     return modifier;
 }
 
@@ -186,7 +197,7 @@ var createReport = function(tmpl) {
         files.push(file);
       }
       report.references = files;
-      report._public = parseInt(tmpl.find('input[name="public-var"]:checked').value) == 1;
+      report._public = parseInt(tmpl.find('input[name="public-var"]:checked').value) == 0;
 
       return report;
 }

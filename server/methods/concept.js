@@ -10,17 +10,19 @@ Meteor.methods({
   *  }
   *
   */
-  	insertReport: function(doc) {
-		return Reports.insert(doc);
+	deleteImages: function(ids) {
+		if(this.userId) {
+			Images.remove({_id: { $in: ids}});
+		}
 	},
-	updateReport: function(id, doc) {
-		return Reports.update({_id: id}, doc);
-	},
-	deleteReport: function(id, doc) {
-		return Reports.remove({_id: id});
+	deleteReferences: function(ids) {
+		if(this.userId) {
+		Files.remove({_id: { $in: ids}});
+		}
 	},
 	toggleReportPublic: function(id, publicity) {
-		console.log(publicity)
-		return Reports.update({_id: id}, {$set: {"_public": publicity}});
+		if(this.userId) {
+			return Reports.update({_id: id}, {$set: {"_public": publicity}});
+		}
 	}
 });

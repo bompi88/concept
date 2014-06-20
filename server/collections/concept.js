@@ -39,7 +39,6 @@ Images.allow({
       return false;
     }
   },
-
   update: function (userId, doc, fieldNames, modifier) {
     if(userId) {
       return true;
@@ -47,13 +46,15 @@ Images.allow({
       return false;
     }
   },
-
   remove: function (userId, doc) {
     if(userId) {
       return true;
     } else {
       return false;
     }
+  },
+  download: function() {
+    return true;
   }
 });
 
@@ -65,7 +66,6 @@ Files.allow({
       return false;
     }
   },
-
   update: function (userId, doc, fieldNames, modifier) {
     if(userId) {
       return true;
@@ -73,13 +73,15 @@ Files.allow({
       return false;
     }
   },
-
   remove: function (userId, doc) {
     if(userId) {
       return true;
     } else {
       return false;
     }
+  },
+  download: function() {
+    return true;
   }
 });
 

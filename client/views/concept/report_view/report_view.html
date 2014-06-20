@@ -108,11 +108,60 @@
 
 	</section>
 
-<!-- 	<section id="evaluator">
-		<header>
-			<h3>Evaluator <small> utført av {{responsible.organization}} ved {{responsible.person}}</small></h3>
-		</header>
-	</section> -->
+	<header>
+		<h3>Bilder</h3>
+	</header>
+
+
+	<section id="images">
+
+		<!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
+		<div id="blueimp-gallery" class="blueimp-gallery">
+			<!-- The container for the modal slides -->
+			<div class="slides"></div>
+			<!-- Controls for the borderless lightbox -->
+			<h3 class="title"></h3>
+			<p class="description"></p>
+			<a class="prev">‹</a>
+			<a class="next">›</a>
+			<a class="close">×</a>
+			<a class="play-pause"></a>
+			<ol class="indicator"></ol>
+			<!-- The modal dialog, which will be used to wrap the lightbox content -->
+			<div class="modal fade">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" aria-hidden="true">&times;</button>
+							<h4 class="modal-title"></h4>
+						</div>
+						<div class="modal-body next"></div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default pull-left prev">
+								<i class="glyphicon glyphicon-chevron-left"></i>
+								Forrige
+							</button>
+							<button type="button" class="btn btn-primary next">
+								Neste
+								<i class="glyphicon glyphicon-chevron-right"></i>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="links">
+
+			{{#each images}}
+			<a href="{{getImageUrl fileId}}" title="{{title}}" data-description="Foto: {{copyright}}" data-gallery>
+				<img src="{{getThumbUrl fileId}}" alt="title">
+			</a>
+
+
+			{{/each}}
+		</div>
+
+	</section>
 
 	{{>ProjectReferences}}
 
@@ -163,42 +212,42 @@
 
 <template name="ProjectInformationBox">
 	<div class="panel panel-info">
-  		
-  		<div class="panel-heading"><h4 class="panel-heading text-center">Prosjektinformasjon</h4>
+
+		<div class="panel-heading"><h4 class="panel-heading text-center">Prosjektinformasjon</h4>
 		</div>
 
 
-		  <div class="panel-body">
-    			<section id="faktaboks">
+		<div class="panel-body">
+			<section id="faktaboks">
 
-					<dl class="dl-horizontal ls-offset">
-						<dt>Prosjektnummer</dt>
-						<dd>{{project.projectNumber}}</dd>
-						<dt>Sektor</dt>
-						<dd>{{project.sector}}</dd>
-						<dt>Årstall påbegynt</dt>
-						<dd>{{project.decisionYear}}</dd>
-						<dt>Årstall ferdigstilt</dt>
-						<dd>{{project.finishingYear}}</dd>
-						<dt>Årstall evaluering</dt>
-						<dd>{{project.evaluationYear}}</dd>
-						<dt>Styringsramme</dt>
-						<dd>{{project.managementBudget.amount}} mill</dd>
-						<dt>Kostnadsramme</dt>
-						<dd>{{project.costBudget.amount}} mill</dd>
-						<dt>Sluttkostnad</dt>
-						<dd>{{project.costFinal.amount}} mill</dd>
-						<dt>Ansvarlig</dt>
-						<dd>{{responsible.organization}}</dd>
-						<dt>Oppdragsgiver</dt>
-						<dd>{{principal}}</dd>
+				<dl class="dl-horizontal ls-offset">
+					<dt>Prosjektnummer</dt>
+					<dd>{{project.projectNumber}}</dd>
+					<dt>Sektor</dt>
+					<dd>{{project.sector}}</dd>
+					<dt>Årstall påbegynt</dt>
+					<dd>{{project.decisionYear}}</dd>
+					<dt>Årstall ferdigstilt</dt>
+					<dd>{{project.finishingYear}}</dd>
+					<dt>Årstall evaluering</dt>
+					<dd>{{project.evaluationYear}}</dd>
+					<dt>Styringsramme</dt>
+					<dd>{{project.managementBudget.amount}} mill</dd>
+					<dt>Kostnadsramme</dt>
+					<dd>{{project.costBudget.amount}} mill</dd>
+					<dt>Sluttkostnad</dt>
+					<dd>{{project.costFinal.amount}} mill</dd>
+					<dt>Ansvarlig</dt>
+					<dd>{{responsible.organization}}</dd>
+					<dt>Oppdragsgiver</dt>
+					<dd>{{principal}}</dd>
 
-					</dl>
-				</section>
+				</dl>
+			</section>
 		</div>
 	</div>
- 		
-			
+
+
 </template>
 
 

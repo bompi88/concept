@@ -1,3 +1,12 @@
 <template name="MasterLayout">
-  {{> yield}}
+
+	<header>
+		{{> yield region ='header'}}
+	</header>
+
+	{{> yield}}
+	
+	<footer class="text-center" id="footer">
+		<p class="text-muted">&copy; Concept NTNU 2014</p>
+	</footer>
 </template>

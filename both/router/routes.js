@@ -6,11 +6,17 @@ Router.configure({
   loadingTemplate: 'Loading',
   notFoundTemplate: 'NotFound',
   templateNameConverter: 'upperCamelCase',
-  routeControllerNameConverter: 'upperCamelCase'
+  routeControllerNameConverter: 'upperCamelCase',
+  yieldTemplates: {
+    'TopNavbar':{to: 'header'}
+  }
 });
 
 Router.map(function () {
-	this.route('ConceptIndex', {path: '/'});
+	this.route('ConceptIndex', {
+    path: '/',
+
+  });
 
 	this.route('ReportList', {
     	path: '/reports',

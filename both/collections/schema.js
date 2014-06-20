@@ -53,7 +53,7 @@ var createMofidiers = function(modifier, tmpl) {
         "evaluation.relevance.value": parseInt(tmpl.find('input[name="num-eval-relevance"]:checked').value),
         "evaluation.viability.value": parseInt(tmpl.find('input[name="num-eval-viability"]:checked').value),
         "evaluation.profitability.value": parseInt(tmpl.find('input[name="num-eval-profitability"]:checked').value),
-        "_public": parseInt(tmpl.find('input[name="public-var"]:checked').value) == 0
+        "_public": parseInt(tmpl.find('input[name="public-var"]:checked').value) == 1
     };
         var imgs_ids = uploadObject.getImages();
       var imgs = [];
@@ -197,7 +197,7 @@ var createReport = function(tmpl) {
         files.push(file);
       }
       report.references = files;
-      report._public = parseInt(tmpl.find('input[name="public-var"]:checked').value) == 0;
+      report._public = parseInt(tmpl.find('input[name="public-var"]:checked').value) == 1;
 
       return report;
 }

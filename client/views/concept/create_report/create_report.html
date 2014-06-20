@@ -123,12 +123,12 @@
 	<div class="control-group">
         <label label-default="" class="control-label">{{placeholder}}</label>
         <div class="controls">
-				{{> RadioButton name=this.name value="0" text="Publiser" curval=curval}}
 			{{#if curval}}
-				{{> RadioButton name=this.name value="1" text="Gjem" curval=curval}}
+				{{> RadioButton name=this.name value="1" text="Publiser" curval=curval}}
 			{{else}}
-				{{> RadioButton name=this.name value="1" text="Gjem" checked=1}}
+				{{> RadioButton name=this.name value="1" text="Publiser" checked=1}}
 			{{/if}}
+			{{> RadioButton name=this.name value="0" text="Gjem" curval=curval}}
 		</div>
     </div>
 </template>

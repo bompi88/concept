@@ -8,7 +8,7 @@ Router.configure({
   templateNameConverter: 'upperCamelCase',
   routeControllerNameConverter: 'upperCamelCase',
   yieldTemplates: {
-    'TopNavbar':{to: 'header'}
+    'TopNavbar':{to: 'nav'}
   }
 });
 

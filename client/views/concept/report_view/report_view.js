@@ -118,7 +118,7 @@ var options = {
     //Boolean - Whether to show labels on the scale 
   scaleShowLabels : true,
     //Number - Scale label font size in pixels  
-  scaleFontSize : 18,
+  scaleFontSize : 20,
     //Boolean - If we show the scale above the chart data     
   //scaleOverlay : true,
   
@@ -134,7 +134,7 @@ var options = {
   scaleStartValue : 0,
 
     //Number - Point label font size in pixels  
-  pointLabelFontSize : 20,
+  pointLabelFontSize : 22,
     //String - Point label font colour  
   pointLabelFontColor : "rgba(0,0,0,0.8)",
     //String - Colour of the scale line 

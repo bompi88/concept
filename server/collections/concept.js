@@ -5,30 +5,80 @@
  *  }
  */
 
-Concept.allow({
+Reports.allow({
   insert: function (userId, doc) {
-    return true;
+    if(userId) {
+      return true;
+    } else {
+      return false;
+    }
   },
 
   update: function (userId, doc, fieldNames, modifier) {
-    return true;
+    if(userId) {
+      return true;
+    } else {
+      return false;
+    }
   },
 
   remove: function (userId, doc) {
-    return true;
+    if(userId) {
+      return true;
+    } else {
+      return false;
+    }
   }
 });
 
-Concept.deny({
+Images.allow({
   insert: function (userId, doc) {
-    return false;
+    if(userId) {
+      return true;
+    } else {
+      return false;
+    }
   },
 
   update: function (userId, doc, fieldNames, modifier) {
-    return false;
+    if(userId) {
+      return true;
+    } else {
+      return false;
+    }
   },
 
   remove: function (userId, doc) {
-    return false;
+    if(userId) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+});
+
+Files.allow({
+  insert: function (userId, doc) {
+    if(userId) {
+      return true;
+    } else {
+      return false;
+    }
+  },
+
+  update: function (userId, doc, fieldNames, modifier) {
+    if(userId) {
+      return true;
+    } else {
+      return false;
+    }
+  },
+
+  remove: function (userId, doc) {
+    if(userId) {
+      return true;
+    } else {
+      return false;
+    }
   }
 });

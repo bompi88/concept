@@ -190,6 +190,9 @@ var createReport = function(tmpl) {
 
 var Schemas = {};
 
+var textAreaRegEx = /^[a-z0-9A-z .,!;\n\r&:%"?æøåÆØÅèÈéÉ\/()-]*$/;
+var textFieldRegEx = /^[a-z0-9A-z .,æøåÆØÅèÈéÉ()-]{2,100}$/;
+
 Schemas.Report = new SimpleSchema({
     project: {
         type: Object,
@@ -199,7 +202,7 @@ Schemas.Report = new SimpleSchema({
     	type: String,
     	label: "Prosjektnavn",
     	optional: false,
-    	regEx: /^[a-z0-9A-z .,æøåè()-]{3,100}$/
+    	regEx: textFieldRegEx
     },
     "project.projectNumber": {
     	type: Number,
@@ -211,7 +214,7 @@ Schemas.Report = new SimpleSchema({
     	type: String,
     	label: "Sektor",
     	optional: false,
-		regEx: /^[a-z0-9A-z .,æøåè()-]{2,100}$/
+		regEx: textFieldRegEx
     },
     "project.location": {
         type: Object,
@@ -221,7 +224,7 @@ Schemas.Report = new SimpleSchema({
     	type: String,
     	label: "Lokasjonsbeskrivelse for evalueringsobjektet",
     	optional: true,
-    	regEx: /^[a-z0-9A-z .,æøåè()-]{3,100}$/
+    	regEx: textFieldRegEx
     },
     "project.location.coordinates": {
         type: Object,
@@ -248,13 +251,13 @@ Schemas.Report = new SimpleSchema({
     	type: String,
     	label: "Kort prosjektbeskrivelse",
     	optional: false,
-    	regEx: /^[a-z0-9A-z .,!;\n\r&:%"?æøåè\/()-]*$/
+    	regEx: textAreaRegEx
     },
     "project.projectDescription.long": {
     	type: String,
     	label: "Utdypende prosjektbeskrivelse og mål/bakgrunn for prosjektet",
     	optional: false,
-    	regEx: /^[a-z0-9A-z .,!;\n\r&:%"?æøåè\/()-]*$/
+    	regEx: textAreaRegEx
     },
     "project.finishingYear": {
     	type: Number,
@@ -337,13 +340,13 @@ Schemas.Report = new SimpleSchema({
     	type: String,
     	label: "Kort vurdering av produktivitet",
     	optional: true,
-    	regEx: /^[a-z0-9A-z .,!;\n\r&:%"?æøåè\/()-]*$/
+    	regEx: textAreaRegEx
     },
     "evaluation.productivity.long": {
     	type: String,
     	label: "Utdypende vurdering av produktivitet",
     	optional: true,
-    	regEx: /^[a-z0-9A-z .,!;\n\r&:%"?æøåè\/()-]*$/
+    	regEx: textAreaRegEx
     },
     "evaluation.productivity.value": {
     	type: Number,
@@ -358,13 +361,13 @@ Schemas.Report = new SimpleSchema({
     	type: String,
     	label: "Kort vurdering av måloppnåelse",
     	optional: true,
-    	regEx: /^[a-z0-9A-z .,!;\n\r&:%"?æøåè\/()-]*$/
+    	regEx: textAreaRegEx
     },
     "evaluation.achievement.long": {
     	type: String,
     	label: "Utdypende vurdering av måloppnåelse",
     	optional: true,
-    	regEx: /^[a-z0-9A-z .,!;\n\r&:%"?æøåè\/()-]*$/
+    	regEx: textAreaRegEx
     },
     "evaluation.achievement.value": {
     	type: Number,
@@ -379,13 +382,13 @@ Schemas.Report = new SimpleSchema({
     	type: String,
     	label: "Kort vurdering av virkninger",
     	optional: true,
-    	regEx: /^[a-z0-9A-z .,!;\n\r&:%"?æøåè\/()-]*$/
+    	regEx: textAreaRegEx
     },
     "evaluation.effects.long": {
     	type: String,
     	label: "Utdypende vurdering av virkninger",
     	optional: true,
-    	regEx: /^[a-z0-9A-z .,!;\n\r&:%"?æøåè\/()-]*$/
+    	regEx: textAreaRegEx
     },
     "evaluation.effects.value": {
     	type: Number,
@@ -400,13 +403,13 @@ Schemas.Report = new SimpleSchema({
     	type: String,
     	label: "Kort vurdering av relevans",
     	optional: true,
-    	regEx: /^[a-z0-9A-z .,!;\n\r&:%"?æøåè\/()-]*$/
+    	regEx: textAreaRegEx
     },
     "evaluation.relevance.long": {
     	type: String,
     	label: "Utdypende vurdering av relevans",
     	optional: true,
-    	regEx: /^[a-z0-9A-z .,!;\n\r&:%"?æøåè\/()-]*$/
+    	regEx: textAreaRegEx
     },
     "evaluation.relevance.value": {
     	type: Number,
@@ -421,13 +424,13 @@ Schemas.Report = new SimpleSchema({
     	type: String,
     	label: "Kort vurdering av levedyktighet",
     	optional: true,
-    	regEx: /^[a-z0-9A-z .,!;\n\r&:%"?æøåè\/()-]*$/
+    	regEx: textAreaRegEx
     },
     "evaluation.viability.long": {
     	type: String,
     	label: "Utdypende vurdering av levedyktighet",
     	optional: true,
-    	regEx: /^[a-z0-9A-z .,!;\n\r&:%"?æøåè\/()-]*$/
+    	regEx: textAreaRegEx
     },
     "evaluation.viability.value": {
     	type: Number,
@@ -442,13 +445,13 @@ Schemas.Report = new SimpleSchema({
     	type: String,
     	label: "Kort vurdering av samfunnsøkonomisk lønnsomhet",
     	optional: true,
-    	regEx: /^[a-z0-9A-z .,!;\n\r&:%"?æøåè\/()-]*$/
+    	regEx: textAreaRegEx
     },
     "evaluation.profitability.long": {
     	type: String,
     	label: "Utdypende vurdering av samfunnsøkonomisk lønnsomhet",
     	optional: true,
-    	regEx: /^[a-z0-9A-z .,!;\n\r&:%"?æøåè\/()-]*$/
+    	regEx: textAreaRegEx
     },
     "evaluation.profitability.value": {
     	type: Number,
@@ -463,19 +466,19 @@ Schemas.Report = new SimpleSchema({
     	type: String,
     	label: "Evalueringsansvarlig instans",
     	optional: false,
-		regEx: /^[a-z0-9A-z .,æøåè()-]{2,100}$/
+		regEx: textFieldRegEx
     },
     "responsible.person": {
     	type: String,
     	label: "Evalueringsansvarlig person",
     	optional: true,
-		regEx: /^[a-z0-9A-z .,æøåè()-]{2,100}$/
+		regEx: textFieldRegEx
     },
     "principal": {
     	type: String,
     	label: "Oppdragsgiver",
     	optional: false,
-		regEx: /^[a-z0-9A-z .,æøåè()-]{2,100}$/
+		regEx: textFieldRegEx
     },
     "images": {
         type: [Object],
@@ -490,13 +493,13 @@ Schemas.Report = new SimpleSchema({
     	type: String,
     	label: "Tittel",
     	optional: true,
-		regEx: /^[a-z0-9A-z .,æøåè()-]{2,100}$/
+		regEx: textFieldRegEx
     },
     "images.$.copyright": {
     	type: String,
     	label: "Kilde",
     	optional: true,
-		regEx: /^[a-z0-9A-z .,æøåè()-]{2,100}$/
+		regEx: textFieldRegEx
     },
     "images.$.link": {
     	type: String,
@@ -517,13 +520,13 @@ Schemas.Report = new SimpleSchema({
     	type: String,
     	label: "Tittel",
     	optional: true,
-		regEx: /^[a-z0-9A-z .,æøåè()-]{2,100}$/
+		regEx: textFieldRegEx
     },
     "references.$.typedoc": {
     	type: String,
     	label: "Dokumenttype",
     	optional: true,
-		regEx: /^[a-z0-9A-z .,æøåè()-]{2,100}$/
+		regEx: textFieldRegEx
     },
     "references.$.date": {
     	type: String,

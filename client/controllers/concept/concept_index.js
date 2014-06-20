@@ -93,9 +93,11 @@ ReportViewController = RouteController.extend({
 		this.render();
 	},
 	onAfterAction: function() {
-
+		
+	if (this.ready()) {
 		if(this.data()) {
 			var report = this.data();
+
 			SEO.set({
 				title: "Evaluering av " + report.project.name,
 				meta: {
@@ -107,9 +109,10 @@ ReportViewController = RouteController.extend({
 					//todo image 
 				}
 			});
+		} else {
+			this.redirect('ReportList');
 		}
-
-
+	}
 
 	}
 

@@ -23,7 +23,8 @@
       "leaflet-search": {},
       "collection2": {},
       "autoform": {},
-      "ms-seo": {}
+      "ms-seo": {},
+      "bootstrap-image-gallery": {}
     },
     "packages": {
       "iron-router": {
@@ -105,6 +106,11 @@
         "git": "https://github.com/DerMambo/ms-seo",
         "tag": "v0.2.6",
         "commit": "1a4ba31a1f6f29009d3941e9dd883829ff4e4b8b"
+      },
+      "bootstrap-image-gallery": {
+        "git": "https://github.com/and-fri/meteor-bootstrap-image-gallery.git",
+        "tag": "v0.0.5",
+        "commit": "460022716f6e92134410c60572bd959535deef41"
       },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",

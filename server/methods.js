@@ -3,13 +3,6 @@
 /*****************************************************************************/
 
 Meteor.methods({
- /*
-  * Example:
-  *  '/app/concept/update/email': function (email) {
-  *    Users.update({_id: this.userId}, {$set: {'profile.email': email}});
-  *  }
-  *
-  */
 	deleteImages: function(ids) {
 		if(this.userId) {
 			Images.remove({_id: { $in: ids}});
@@ -17,7 +10,7 @@ Meteor.methods({
 	},
 	deleteReferences: function(ids) {
 		if(this.userId) {
-		Files.remove({_id: { $in: ids}});
+			Files.remove({_id: { $in: ids}});
 		}
 	},
 	toggleReportPublic: function(id, publicity) {

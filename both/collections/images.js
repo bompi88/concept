@@ -1,5 +1,3 @@
-Reports = new Meteor.Collection('reports');
-
 Images = new FS.Collection("images", {
   stores: [
   new FS.Store.GridFS("original", {}),
@@ -16,14 +14,3 @@ Images = new FS.Collection("images", {
     }
   }
 });
-
-Files = new FS.Collection("files", {
-  stores: [ new FS.Store.GridFS("files", {})]
-});
-
-/*
- * Add query methods like this:
- *  Concept.findPublic = function () {
- *    return Concept.find({is_public: true});
- *  }
- */

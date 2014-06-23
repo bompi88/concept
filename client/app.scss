@@ -3,7 +3,6 @@
 /*****************************************************************************/
 
 @import 'packages/bootstrap3-sass/bootstrap';
-@import 'nprogress';
 
 html, body {
 	height: 100%;
@@ -24,4 +23,25 @@ body { padding-top: 50px;
 	padding: 10px;
 	border: 2px solid darken(#fff, 3%);
 	box-shadow: 0px 0px 20px darken(#fff, 20%)
+}
+
+/* NProgress overrides */
+
+#nprogress .bar {
+	z-index: 9999;
+	top:53px;
+	height:3px;
+}
+
+#nprogress .spinner {
+	z-index: 9999;
+	bottom: 15px;
+	top: auto;
+}
+
+@media (max-width: 767px) {
+
+	#nprogress .bar {
+		top:50px;
+	}
 }

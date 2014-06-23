@@ -6,7 +6,6 @@
       "git": "https://github.com/bompi88/meteor-accounts-ui-bootstrap-3.git"
     },
     "collectionFS": {},
-    "moment": {},
     "cfs-ui": {
       "git": "https://github.com/bompi88/Meteor-cfs-ui.git"
     },

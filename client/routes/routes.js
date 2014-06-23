@@ -42,8 +42,7 @@ Router.map(function () {
   });
 
   this.route('EvaluationCriteria', {
-    path: '/evaluation-criteria',
-    template: 'NotFound'
+    path: '/evaluation-criteria'
   });
 });
 

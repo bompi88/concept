@@ -19,16 +19,15 @@ App.helpers = {
 			return str;
 		}
 		return '';
+	},
+	currentRoute: function(route) {
+		var currentRoute = Router.current();
+		if (!currentRoute) return '';
+
+		return route === currentRoute.route.name ? true : false;
 	}
 };
 
 _.each(App.helpers, function (helper, key) {
-	Handlebars.registerHelper(key, helper);
-});
-
-UI.registerHelper("currentRoute", function(route) {
-	var currentRoute = Router.current();
-	if (!currentRoute) return '';
-
-	return route === currentRoute.route.name ? true : false;
+	UI.registerHelper(key, helper);
 });

@@ -5,7 +5,6 @@
 
 standard-app-packages
 iron-router
-d3
 bootstrap3-sass
 accounts-base
 accounts-password
@@ -14,7 +13,6 @@ accounts-ui-bootstrap-3
 collectionFS
 cfs-gridfs
 cfs-graphicsmagick
-moment
 cfs-ui
 chartjs
 handlebar-helpers

@@ -126,18 +126,13 @@
 	{{#if $.Session.equals 'sortBy' sortBy}}{{#if $.Session.equals 'sortOrder' 'asc'}}<span class="glyphicon glyphicon-chevron-down"></span>{{else}}<span class="glyphicon glyphicon-chevron-up"></span>{{/if}}{{/if}}
 </template>
 
-
-
-
 <template name="MapPopupBox"> 
 	<div class="panel panel-default">
-
 		<div class="panel-heading">
 			<h2 class="panel-title text-center">{{project.name}}</h2>
 		</div>
 		<div class="panel-body">   
-							<div class="overlay"></div>
-
+			<div class="overlay"></div>
 			<input type="hidden" name="id" class="id" value="{{_id}}">
 			<dl class="dl-horizontal">
 				<dt>Prosjektnummer</dt>
@@ -160,9 +155,7 @@
 				<dd>{{responsible.organization}}</dd>
 				<dt>Oppdragsgiver</dt>
 				<dd>{{principal}}</dd>
-
 			</dl>
-
 		</div>
 	</div>
 </template>

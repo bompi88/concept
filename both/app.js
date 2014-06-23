@@ -3,5 +3,4 @@
 /*****************************************************************************/
 App = {};
 
-
 Accounts.config({ forbidClientAccountCreation: true });

@@ -10,7 +10,4 @@ Meteor.methods({
   *  }
   *
   */
-  isLoggedIn: function() {
-  	return Meteor.userId();
-  }
 });

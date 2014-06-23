@@ -20,13 +20,10 @@ Template.AdminLogon.events({
       Alert.add(error, t);
     }
   },
-
   'click #forgot-password': function(e,t){
     Router.go('AdminForgottonPassword');
   }
 });
-
-
 
 Template.AdminForgottonPassword.events({
   'submit form': function(e,t) {
@@ -52,8 +49,6 @@ Template.AdminForgottonPassword.events({
     Router.go('AdminLogon');
   }
 });
-
-
 
 /*****************************************************************************/
 /* AdminLogon: Lifecycle Hooks */

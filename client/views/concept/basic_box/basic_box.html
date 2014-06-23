@@ -6,7 +6,6 @@
 			</div>
 			<input type="hidden" name="id" class="id" value="{{_id}}">
 			<section class="row col-xs-12" style="margin: 0;padding:0;">
-
 				<div class="col-xs-7 box-facts">
 					<ul class="list-group">
 						<li class="list-group-item"><span class="bold">Sektor:</span> <span class="pull-right">{{project.sector}}</span></li>
@@ -23,19 +22,14 @@
 				<div class="col-xs-5 box-image" style="height:100%;">
 					<img class="img-responsive" src="{{getThumbUrl store='thumbs'}}" style="margin: 0 auto; max-height:100px;" alt="Bilde knyttet til {{project.name}}.">
 				</div>
-
 			</section>
 			<section>
 				<div class="col-xs-12 box-desc"><p>{{cutText project.projectDescription.short 200}}</p></div>
 			</section>
 			<div class="overlay"></div>
 		</div>
-
 	</div>
 </template>
-
-
-
 
 <template name="TrafficLight">
 	<div id="light">

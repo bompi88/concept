@@ -1,10 +1,9 @@
-
 Session.setDefault('TextState','short');
-
 
 /*****************************************************************************/
 /* ReportView: Event Handlers and Helpers */
 /*****************************************************************************/
+
 Template.ReportView.events({
   /*
    * Example: 
@@ -24,14 +23,10 @@ Template.ReportView.events({
 });
 
 Template.ReportView.helpers({
-    textState: function () {
-      return Session.get('TextState');
+  textState: function () {
+    return Session.get('TextState');
   }
-
 });
-
-
-
 
 Template.ShortTextReport.helpers({
    getMainImageUrl: function() {
@@ -46,34 +41,31 @@ Template.ShortTextReport.helpers({
     }
     return false;
    },
-
 });
 
 Template.LongTextReport.helpers({
-     notEscapeHTML: function(text) {
-      if(text)
-        return Spacebars.SafeString(text);
-   }
+  notEscapeHTML: function(text) {
+    if(text)
+      return Spacebars.SafeString(text);
+  }
 });
 
-
 Template.ProjectReferences.helpers({
-
   getFileURL: function(fileId) {
     var file = Files.findOne({_id:fileId});
+    
     if (file) {
       return file.url();
     }
     else
       return false;
-
   }
-
-  });
+});
 
 /*****************************************************************************/
 /* ReportView: Lifecycle Hooks */
 /*****************************************************************************/
+
 Template.ReportView.created = function () {
 };
 
@@ -83,7 +75,6 @@ Template.ShortTextReport.rendered = function () {
     var report = Router.getData();
 
     if (report) {
-      
       var values = _.pluck(report.evaluation, 'value');
       
       var data = {
@@ -110,21 +101,17 @@ Template.ShortTextReport.rendered = function () {
 };
 
 Template.ReportView.destroyed = function () {
-
 };
 
 var options = {
-
-    //Boolean - Whether to show labels on the scale 
+  //Boolean - Whether to show labels on the scale 
   scaleShowLabels : true,
-    //Number - Scale label font size in pixels  
+  //Number - Scale label font size in pixels  
   scaleFontSize : 20,
-    //Boolean - If we show the scale above the chart data     
+  //Boolean - If we show the scale above the chart data     
   //scaleOverlay : true,
-  
   //Boolean - If we want to override with a hard coded scale
   scaleOverride : true,
-  
   //** Required if scaleOverride is true **
   //Number - The number of steps in a hard coded scale
   scaleSteps : 6,
@@ -132,17 +119,14 @@ var options = {
   scaleStepWidth : 1,
   //Number - The centre starting value
   scaleStartValue : 0,
-
-    //Number - Point label font size in pixels  
+  //Number - Point label font size in pixels  
   pointLabelFontSize : 22,
-    //String - Point label font colour  
+  //String - Point label font colour  
   pointLabelFontColor : "rgba(0,0,0,0.8)",
-    //String - Colour of the scale line 
+  //String - Colour of the scale line 
   scaleLineColor : "rgba(0,0,0,.4)",
-
-    //String - Scale label font colour  
+  //String - Scale label font colour  
   scaleFontColor : "rgba(0,0,0,0.5)",
-
-    //String - Point label font weight
+  //String - Point label font weight
   pointLabelFontStyle : "normal",
 }

@@ -5,6 +5,7 @@ Session.setDefault('sortOrder', 'asc');
 /*****************************************************************************/
 /* ReportList: Event Handlers and Helpers */
 /*****************************************************************************/
+
 Template.ReportList.events({
   'click #report-view-option1': function(event, tmpl) {
     Session.set('ReportViewState', 'box');
@@ -47,7 +48,6 @@ Template.ReportList.events({
 });
 
 Template.MapPopupBox.events({
-
   'click .panel': function(event, tmpl) {
     var id = tmpl.find('.id').value;
     Router.go('/reports/' + id);
@@ -81,7 +81,6 @@ Template.ReportList.helpers({
     } else if (curSort === 'principal') {
       text = 'Oppdragsgiver';
     }
-
     return text;
   },
   currentSortDirection: function() {
@@ -155,6 +154,7 @@ var sortFunc = function(a, b) {
     return as - bs;
   }
 }
+
 var toString = Object.prototype.toString;
 
 function isNumber(obj) { return !isNaN(parseFloat(obj)) }
@@ -164,25 +164,24 @@ var isString = function (obj) {
 }
 
 Object.byString = function(o, s) {
-    s = s.replace(/\[(\w+)\]/g, '.$1'); // convert indexes to properties
-    s = s.replace(/^\./, '');           // strip a leading dot
-    var a = s.split('.');
-    while (a.length) {
-        var n = a.shift();
-        if (n in o) {
-            o = o[n];
-        } else {
-            return;
-        }
+  s = s.replace(/\[(\w+)\]/g, '.$1'); // convert indexes to properties
+  s = s.replace(/^\./, '');           // strip a leading dot
+  var a = s.split('.');
+  while (a.length) {
+    var n = a.shift();
+    if (n in o) {
+      o = o[n];
+    } else {
+      return;
     }
-    return o;
+  }
+  return o;
 }
 
 /*****************************************************************************/
 /* ReportList: Lifecycle Hooks */
 /*****************************************************************************/
 Template.TimelineReportView.created = function () {
-
 };
 
 Template.MapReportView.rendered = function () {
@@ -220,30 +219,30 @@ Template.TimelineReportView.rendered = function () {
       var elements = [];
       elements = _.map(reports, function(report){
 
-        var reportRoute = Router.routes['ReportView'].path({_id: report._id});
+      var reportRoute = Router.routes['ReportView'].path({_id: report._id});
 
-        var res = {
-          "startDate":report.project.decisionYear.toString(),
-          "endDate":report.project.finishingYear.toString(),
-          "headline":"<a href=\""+reportRoute+"\">" + report.project.name +"</a>",
-          "text":"<p>" + report.project.projectDescription.short + " " + "<a href=\""+reportRoute+"\">" + "Les mer" +"</a>" + "</p>",
+      var res = {
+        "startDate":report.project.decisionYear.toString(),
+        "endDate":report.project.finishingYear.toString(),
+        "headline":"<a href=\""+reportRoute+"\">" + report.project.name +"</a>",
+        "text":"<p>" + report.project.projectDescription.short + " " + "<a href=\""+reportRoute+"\">" + "Les mer" +"</a>" + "</p>",
 
-        };
+      };
 
-        if (report.images && report.images[0]) {
-          var img_url = Images.findOne({_id:report.images[0].fileId}).url();
-          
-          if (!img_url)
-            img_url = "";
+      if (report.images && report.images[0]) {
+        var img_url = Images.findOne({_id:report.images[0].fileId}).url();
+        
+        if (!img_url)
+          img_url = "";
 
-          res["asset"] = {
-            "media": img_url,
-            "credit": "<a href=\""+report.images[0].link+"\">" + report.images[0].copyright +"</a>",
-            "caption":report.images[0].title
-          }
+        res["asset"] = {
+          "media": img_url,
+          "credit": "<a href=\""+report.images[0].link+"\">" + report.images[0].copyright +"</a>",
+          "caption":report.images[0].title
         }
-        return res;
-      });
+      }
+      return res;
+    });
       
       var data = {};
 
@@ -278,8 +277,38 @@ Template.TimelineReportView.rendered = function () {
   });
 };
 
-VMM.Language.no = {lang:"no",api:{wikipedia:"no"},date:{month:["Januar","Februar","Mars","April","Mai","Juni","Juli","August","September","Oktober","November","Desember"],month_abbr:["Jan.","Feb.","Mars","Apr.","Mai","Juni","Juli","Aug.","Sep.","Okt.","Nov.","Des."],day:["Søndag","Mandag","Tirsdag","Onsdag","Torsdag","Fredag","Lørdag"],day_abbr:["Søn.","Man.","Tir.","Ons.","Tor.","Fre.","Lør."]},dateformats:{year:"yyyy",month_short:"mmm",month:"mmmm yyyy",full_short:"d. mmm",full:"d. mmmm',' yyyy",time_no_seconds_short:"HH:MM",time_no_seconds_small_date:"HH:MM'<br/><small>'d. mmmm',' yyyy'</small>'",full_long:"dddd',' d. mmm',' yyyy 'kl.' HH:MM",full_long_small_date:"HH:MM'<br/><small>'dddd',' d. mmm',' yyyy'</small>'"},messages:{loading_timeline:"Laster tidslinje... ",return_to_title:"Tilbake til tittel",expand_timeline:"Utvid tidslinje",contract_timeline:"Krymp tidslinje",wikipedia:"Fra Wikipedia, den frie encyklopedi",loading_content:"Laster innhold",loading:"Laster"}};
+VMM.Language.no = {
+  lang:"no",
+  api:{
+    wikipedia:"no"
+  },
+  date:{
+    month:["Januar","Februar","Mars","April","Mai","Juni","Juli","August","September","Oktober","November","Desember"],
+    month_abbr:["Jan.","Feb.","Mars","Apr.","Mai","Juni","Juli","Aug.","Sep.","Okt.","Nov.","Des."],
+    day:["Søndag","Mandag","Tirsdag","Onsdag","Torsdag","Fredag","Lørdag"],
+    day_abbr:["Søn.","Man.","Tir.","Ons.","Tor.","Fre.","Lør."]
+  },
+  dateformats:{
+    year:"yyyy",
+    month_short:"mmm",
+    month:"mmmm yyyy",
+    full_short:"d. mmm",
+    full:"d. mmmm',' yyyy",
+    time_no_seconds_short:"HH:MM",
+    time_no_seconds_small_date:"HH:MM'<br/><small>'d. mmmm',' yyyy'</small>'",
+    full_long:"dddd',' d. mmm',' yyyy 'kl.' HH:MM",
+    full_long_small_date:"HH:MM'<br/><small>'dddd',' d. mmm',' yyyy'</small>'"
+  },
+  messages:{
+    loading_timeline:"Laster tidslinje... ",
+    return_to_title:"Tilbake til tittel",
+    expand_timeline:"Utvid tidslinje",
+    contract_timeline:"Krymp tidslinje",
+    wikipedia:"Fra Wikipedia, den frie encyklopedi",
+    loading_content:"Laster innhold",
+    loading:"Laster"
+  }
+};
 
 Template.TimelineReportView.destroyed = function () {
-
 };

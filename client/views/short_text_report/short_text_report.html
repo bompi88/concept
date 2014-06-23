@@ -1,0 +1,107 @@
+<template name="ShortTextReport">
+	<section id="desc">
+		<div class="row">
+			<div class="col-md-7">
+				<p>{{project.projectDescription.short}}</p>
+				<figure id="projectImage">
+					<img src="{{getMainImageUrl store='original'}}" class="img-responsive" style="max-height:350px;" alt="Beskrivese av sambandet Ørsta/Volda-Eiksund. Foto." >
+					<figcaption class="text-center">{{images.[0].title}}. Foto: <a href="{{images.[0].link}}"> {{images.[0].copyright}}</a></figcaption>
+				</figure>
+			</div>
+			<div class="col-md-5">
+				<div class="center-block">
+					{{>ProjectInformationBox}}
+				</div>
+			</div>
+		</div>
+	</section>
+	<section id="eval">
+		<header>
+			<h3>Evaluering <small> utført av {{responsible.organization}} ved {{responsible.person}}</small></h3>
+		</header>
+		<div class="row">
+			<section id="texteval">
+				<div class="col-md-7">
+					<h4>Produktivitet</h4>
+					<p>{{evaluation.productivity.short}} <b>{{evaluation.productivity.value}} av 6 poeng</b>.</p>
+
+					<h4>Måloppnåelse</h4>
+					<p>{{evaluation.achievement.short}} <b>{{evaluation.achievement.value}} av 6 poeng</b>.</p>
+
+					<h4>Virkninger</h4>
+					<p>{{evaluation.effects.short}} <b>{{evaluation.effects.value}} av 6 poeng</b>.</p>
+
+
+					<h4>Relevans</h4>
+					<p>{{evaluation.relevance.short}} <b>{{evaluation.relevance.value}} av 6 poeng</b>.</p>
+
+					<h4>Levedyktighet</h4>
+					<p>{{evaluation.viability.short}} <b>{{evaluation.viability.value}} av 6 poeng</b>.</p>
+
+					<h4>Samfunnsøkonomisk lønnsomhet</h4>
+					<p>{{evaluation.profitability.short}} <b>{{evaluation.profitability.value}} av 6 poeng</b>.</p>
+				</div>
+			</section>
+			<div class="col-md-5">
+				<figure id="radarChart">
+					<canvas id="spiderEvaluation" height="800" width="800"></canvas>
+					<figcaption class="text-center">Figur: Karakter til vurderingskriterier</figcaption>
+				</figure>
+			</div>
+		</div>
+	</section>
+
+	<header>
+		<h3>Bilder</h3>
+	</header>
+
+	<section id="images">
+
+		<!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
+		<div id="blueimp-gallery" class="blueimp-gallery">
+			<!-- The container for the modal slides -->
+			<div class="slides"></div>
+			<!-- Controls for the borderless lightbox -->
+			<h3 class="title"></h3>
+			<p class="description"></p>
+			<a class="prev">‹</a>
+			<a class="next">›</a>
+			<a class="close">×</a>
+			<a class="play-pause"></a>
+			<ol class="indicator"></ol>
+			<!-- The modal dialog, which will be used to wrap the lightbox content -->
+			<div class="modal fade">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" aria-hidden="true">&times;</button>
+							<h4 class="modal-title"></h4>
+						</div>
+						<div class="modal-body next"></div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default pull-left prev">
+								<i class="glyphicon glyphicon-chevron-left"></i>
+								Forrige
+							</button>
+							<button type="button" class="btn btn-primary next">
+								Neste
+								<i class="glyphicon glyphicon-chevron-right"></i>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="links">
+
+			{{#each images}}
+			<a href="{{getImageUrl fileId}}" title="{{title}}" data-description="Foto: {{copyright}}" data-gallery>
+				<img src="{{getThumbUrl fileId}}" alt="title">
+			</a>
+			{{/each}}
+		</div>
+
+	</section>
+
+	{{>ProjectReferences}}
+</template>

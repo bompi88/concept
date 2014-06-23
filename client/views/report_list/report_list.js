@@ -230,9 +230,12 @@ Template.TimelineReportView.rendered = function () {
       };
 
       if (report.images && report.images[0]) {
-        var img_url = Images.findOne({_id:report.images[0].fileId}).url();
+        var image = Images.findOne({_id:report.images[0].fileId});
+        var img_url;
         
-        if (!img_url)
+        if(image)
+          img_url = image.url();
+        else
           img_url = "";
 
         res["asset"] = {

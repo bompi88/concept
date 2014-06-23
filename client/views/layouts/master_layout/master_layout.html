@@ -3,12 +3,7 @@
 		<nav>
 			{{> yield region ='nav'}}
 		</nav>
-
 		{{> yield}}
 	</div>
-	<footer class="text-center" id="footer">
-		<div class="container">
-			<p class="text-muted">&copy; Concept NTNU 2014</p>
-		</div>
-	</footer>
+	{{> yield region = 'footer'}}
 </template>

@@ -1,14 +1,14 @@
-Template.AdminLogon.events({
+Template.AdminForgottonPassword.events({
   'submit form': function(e,t) {
     e.preventDefault();
     try{
       t.find('#submit').innerHTML = '<i class="fa fa-spinner fa-spin"></i>';
       $('.btn').attr("disabled", true);
-      Meteor.loginWithPassword(t.find('#username').value, t.find('#password').value, function(error){
+      Accounts.forgotPassword({email: t.find('#email').value}, function(error){
         if(error){
           Alert.add(error, t);
-        } else {
-          Router.go('ConceptIndex');
+        }else{
+          Router.go('AdminLogon');
         }
         t.find('#submit').innerHTML = 'Submit';
         $('.btn').attr("disabled", false);
@@ -17,11 +17,11 @@ Template.AdminLogon.events({
       Alert.add(error, t);
     }
   },
-  'click #forgot-password': function(e,t){
-    Router.go('AdminForgottonPassword');
+  'click #cancel': function(e,t){
+    e.preventDefault();
+    Router.go('AdminLogon');
   }
 });
-
 
 var Alert = {
   add: function (msg, t) {

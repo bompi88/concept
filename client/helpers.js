@@ -2,7 +2,6 @@
 /* Helper methods  */
 /*****************************************************************************/
 
-
 uploadImages = function(event) {
   FS.Utility.eachFile(event, function(image) {
     Images.insert(image, function (err, fileObj) {

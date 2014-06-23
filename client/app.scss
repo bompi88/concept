@@ -27,21 +27,20 @@ body { padding-top: 50px;
 
 /* NProgress overrides */
 
+/* Sets the position of nprogress bar and its z-index */
 #nprogress .bar {
 	z-index: 9999;
 	top:53px;
 	height:3px;
 }
 
-#nprogress .spinner {
-	z-index: 9999;
-	bottom: 15px;
-	top: auto;
-}
-
 @media (max-width: 767px) {
-
 	#nprogress .bar {
 		top:50px;
 	}
+}
+
+/* Disables the spinner */
+#nprogress .spinner {
+	display:none;
 }

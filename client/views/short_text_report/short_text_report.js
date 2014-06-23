@@ -36,7 +36,7 @@ Template.ShortTextReport.rendered = function () {
   Deps.autorun(function () {
 
     var report = Router.getData();
-
+ 
     if (report) {
       var values = _.pluck(report.evaluation, 'value');
       
@@ -80,7 +80,6 @@ Template.ShortTextReport.rendered = function () {
         pointLabelFontStyle : "normal"
       }
       var el = $("#spiderEvaluation");
-      console.log("chartt");
 
       if (el.get(0)) {
         var ctx = el.get(0).getContext("2d");

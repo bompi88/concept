@@ -38,8 +38,7 @@ Router.map(function () {
   });
 
   this.route('AboutConcept', {
-    path: '/about-concept',
-    template: 'NotFound'
+    path: '/about-concept'
   });
 
   this.route('EvaluationCriteria', {

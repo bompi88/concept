@@ -5,6 +5,7 @@ Router.configure({
   templateNameConverter: 'upperCamelCase',
   routeControllerNameConverter: 'upperCamelCase',
   yieldTemplates: {
-    'TopNavbar':{to: 'nav'}
+    'TopNavbar':{to: 'nav'},
+    'Footer': {to: 'footer'}
   }
 });

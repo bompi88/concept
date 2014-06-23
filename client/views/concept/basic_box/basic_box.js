@@ -42,21 +42,19 @@ Template.BasicBox.economyPercentage = function() {
 
   if(this.project.managementBudget && this.project.costFinal && this.project.managementBudget.amount && this.project.costFinal.amount ) {
 
-  var styringsramme = this.project.managementBudget.amount;
-  var sluttkostnad = this.project.costFinal.amount;
+    var styringsramme = this.project.managementBudget.amount;
+    var sluttkostnad = this.project.costFinal.amount;
 
-  var percentage = (sluttkostnad-styringsramme)*100 / styringsramme;
+    var percentage = (sluttkostnad-styringsramme)*100 / styringsramme;
 
-  percentage = percentage.toFixed(1);
-
-
-  var text = percentage < 0 ? " under styringsrammen." : " over styringsrammen.";
-
-  return percentage.toString() + "%";//+ " %" + text;
-}
-return false;
+    percentage = percentage.toFixed(1);
 
 
+    var text = percentage < 0 ? " under styringsrammen." : " over styringsrammen.";
+
+    return percentage.toString() + "%";//+ " %" + text;
+  }
+  return false;
 };
 
 /*****************************************************************************/

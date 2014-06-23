@@ -2,14 +2,14 @@
 /* ReportView: Style */
 /*****************************************************************************/
 
-  canvas{
-        width: 100% !important;
-        max-width: 800px;
-        height: auto !important;
-        margin-top: -50px;
-        margin-bottom: -80px;
+canvas{
+	width: 100% !important;
+	max-width: 800px;
+	height: auto !important;
+	margin-top: -50px;
+	margin-bottom: -80px;
 
-    }
+}
 
 .ls-offset {
 	width:70%;
@@ -17,82 +17,54 @@
 }
 
 #texteval {
-		
-
-	h4,
-	h5 {
-	  	margin-top: 20px;
+	h4, h5 {
+		margin-top: 20px;
 		margin-bottom: 5px;
-
 	}
-
 
 	p {
 		line-height: 1.5;
 	}
-
-
 }
 
-
 #desc {
-	
 	p {
 		margin-bottom: 20px;
 		line-height: 1.5;
 	}
-
-
 }
 
 #top {
 	h1{
 		margin-bottom: 40px;
 		text-align: center;
-
-
 	}
 }
 
-
-
 dt:after {
-    content: ":";
-  }
-
-
-
-
-.boxed {
-  outline: 1px solid black ;
-
+	content: ":";
 }
 
+.boxed {
+	outline: 1px solid black ;
+}
 
 #longText {
-		p {
+	p {
 		margin-bottom: 20px;
 		line-height: 1.7;
 	}
 
-		h4,
+	h4,
 	h5 {
-	  	margin-top: 20px;
+		margin-top: 20px;
 		margin-bottom: 5px;
-
 	}
-
-
 }
 
 #references {
-
 	h3{
-	  	margin-top: 20px;
+		margin-top: 20px;
 		margin-bottom: 5px;
 	}
 }
-
-
-
-

@@ -13,69 +13,64 @@ Router.configure({
 });
 
 Router.map(function () {
-	this.route('ConceptIndex', {
+  this.route('ConceptIndex', {
     path: '/',
-
   });
 
-	this.route('ReportList', {
-    	path: '/reports',
-    	controller: 'ReportListController'
-    });
+  this.route('ReportList', {
+    path: '/reports',
+    controller: 'ReportListController'
+  });
 
-    this.route('CreateReport', {
-    	path: '/create',
-    	controller: 'AdminCreateReportController'
-    });
+  this.route('CreateReport', {
+    path: '/create',
+    controller: 'AdminCreateReportController'
+  });
 
-    this.route('EditReport', {
-      path: '/reports/:_id/edit',
-      template: 'CreateReport',
-      controller: 'AdminEditReportController'
-    });
+  this.route('EditReport', {
+    path: '/reports/:_id/edit',
+    template: 'CreateReport',
+    controller: 'AdminEditReportController'
+  });
 
-    this.route('ReportView', {
-      path: '/reports/:_id',
-      controller: 'ReportViewController'
-    });
+  this.route('ReportView', {
+    path: '/reports/:_id',
+    controller: 'ReportViewController'
+  });
 
-    this.route('AdminLogon', {
-      path: '/concept-admin',
-      controller: 'AdminLogonController'
-    });
+  this.route('AdminLogon', {
+    path: '/concept-admin',
+    controller: 'AdminLogonController'
+  });
 
-    this.route('AdminForgottonPassword', {
-      path: '/concept-admin-forgotton-password'
-    });
+  this.route('AdminForgottonPassword', {
+    path: '/concept-admin-forgotton-password'
+  });
 
-    this.route('AboutConcept', {
-      path: '/about-concept',
-      template: 'NotFound'
+  this.route('AboutConcept', {
+    path: '/about-concept',
+    template: 'NotFound'
+  });
 
-    });
-
-    this.route('EvaluationCriteria', {
-      path: '/evaluation-criteria',
-      template: 'NotFound'
-    });
-
-
-
+  this.route('EvaluationCriteria', {
+    path: '/evaluation-criteria',
+    template: 'NotFound'
+  });
 });
 
 Meteor.startup(function() {
  if(Meteor.isClient){
-      return SEO.config({
-        title: 'Concept NTNU',
-        meta: {
-          'description': 'Etterevaluering av en rekke statlige prosjekter gjort av Concept-programmet. På oppdrag fra Finansdepartementet'
-        },
-        og: {
-          'title': 'Rapporter - etterevaluering av statlige prosjekter',
-          'image': '/images/logo.jpg'
-        }
-      });
-    }
+    return SEO.config({
+      title: 'Concept NTNU',
+      meta: {
+        'description': 'Etterevaluering av en rekke statlige prosjekter gjort av Concept-programmet. På oppdrag fra Finansdepartementet'
+      },
+      og: {
+        'title': 'Rapporter - etterevaluering av statlige prosjekter',
+        'image': '/images/logo.jpg'
+      }
+    });
+  }
 });
 
 SeoCollection.insert({

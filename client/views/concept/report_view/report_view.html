@@ -1,7 +1,6 @@
 
 <template name="ReportView">
 	<div class="container content-wrapper fill" style="padding-top:50px;">
-
 		<article>
 			<section id="top">
 				<div class="row">
@@ -11,10 +10,8 @@
 								<h1>{{project.name}}</h1>
 							</div>
 						</header>
-
 					</div>
-					<div class="col-md-5">
-						
+					<div class="col-md-5">	
 						<div class="btn-group" data-toggle="buttons">
 							<label class="btn btn-default {{#if $eq textState "short"}}active{{/if}}" id="text-view-short">
 								<input type="radio" name="text-view" ><span class="glyphicon glyphicon-tasks"></span> Kort versjon
@@ -23,37 +20,30 @@
 								<input type="radio" name="text-view" ><span class="glyphicon glyphicon-align-justify"></span> Lang tekstversjon
 							</label>
 							{{#if currentUser}}
-
-							<label class="btn btn-success edit-btn">
-								<input type="radio" name="text-view" ><span class="glyphicon glyphicon-edit"></span> Rediger
-							</label>
+								<label class="btn btn-success edit-btn">
+									<input type="radio" name="text-view" ><span class="glyphicon glyphicon-edit"></span> Rediger
+								</label>
 							{{/if}}
-
 						</div>
 					</div>
 				</div>
-
-
 			</section>
 			{{#if $eq textState "short"}}
-			{{> ShortTextReport}}
+				{{> ShortTextReport}}
 			{{else}}
-			{{> LongTextReport}}
+				{{> LongTextReport}}
 			{{/if}}
 		</article>
 	</div>
 </template>
 
-
 <template name="ShortTextReport">
-
 	<section id="desc">
 		<div class="row">
 			<div class="col-md-7">
 				<p>{{project.projectDescription.short}}</p>
-
 				<figure id="projectImage">
-					<img src="{{getMainImageUrl store='original'}}" class="img-responsive" alt="Beskrivese av sambandet Ørsta/Volda-Eiksund. Foto." >
+					<img src="{{getMainImageUrl store='original'}}" class="img-responsive" style="max-height:350px;" alt="Beskrivese av sambandet Ørsta/Volda-Eiksund. Foto." >
 					<figcaption class="text-center">{{images.[0].title}}. Foto: <a href="{{images.[0].link}}"> {{images.[0].copyright}}</a></figcaption>
 				</figure>
 			</div>
@@ -64,19 +54,12 @@
 			</div>
 		</div>
 	</section>
-
-
 	<section id="eval">
-
 		<header>
 			<h3>Evaluering <small> utført av {{responsible.organization}} ved {{responsible.person}}</small></h3>
 		</header>
-
-
 		<div class="row">
-
 			<section id="texteval">
-
 				<div class="col-md-7">
 					<h4>Produktivitet</h4>
 					<p>{{evaluation.productivity.short}} <b>{{evaluation.productivity.value}} av 6 poeng</b>.</p>
@@ -105,32 +88,22 @@
 				</figure>
 			</div>
 		</div>
-
 	</section>
-
-<!-- 	<section id="evaluator">
+	<!--<section id="evaluator">
 		<header>
 			<h3>Evaluator <small> utført av {{responsible.organization}} ved {{responsible.person}}</small></h3>
 		</header>
 	</section> -->
 
 	{{>ProjectReferences}}
-
-
-
 </template>
-
 
 <template name="LongTextReport">
 	<div class="container">
 		<div class="row">
-
 			<div class="col-xs-8 col-xs-offset-2" style="font-size:15px">
-
 				<div id="longText">
-
 					<p>{{project.projectDescription.long}}</p>
-
 
 					<h4>Produktivitet</h4>
 					<p>{{notEscapeHTML evaluation.productivity.long}}  <b>{{evaluation.productivity.value}} av 6 poeng</b>.</p>
@@ -141,7 +114,6 @@
 					<h4>Virkninger</h4>
 					<p>{{notEscapeHTML evaluation.effects.long}} <b>{{evaluation.effects.value}} av 6 poeng</b>.</p>
 
-
 					<h4>Relevans</h4>
 					<p>{{notEscapeHTML evaluation.relevance.long}} <b>{{evaluation.relevance.value}} av 6 poeng</b>.</p>
 
@@ -150,66 +122,51 @@
 
 					<h4>Samfunnsøkonomisk lønnsomhet</h4>
 					<p>{{notEscapeHTML evaluation.profitability.long}} <b>{{evaluation.profitability.value}} av 6 poeng</b>.</p>
-
 				</div>
 			</div>
 		</div>
-
 	</div>
 </template>
-
-
-
 
 <template name="ProjectInformationBox">
 	<div class="panel panel-info">
-  		
-  		<div class="panel-heading"><h4 class="panel-heading text-center">Prosjektinformasjon</h4>
+		<div class="panel-heading">
+			<h4 class="panel-heading text-center">Prosjektinformasjon</h4>
 		</div>
-
-
-		  <div class="panel-body">
-    			<section id="faktaboks">
-
-					<dl class="dl-horizontal ls-offset">
-						<dt>Prosjektnummer</dt>
-						<dd>{{project.projectNumber}}</dd>
-						<dt>Sektor</dt>
-						<dd>{{project.sector}}</dd>
-						<dt>Årstall påbegynt</dt>
-						<dd>{{project.decisionYear}}</dd>
-						<dt>Årstall ferdigstilt</dt>
-						<dd>{{project.finishingYear}}</dd>
-						<dt>Årstall evaluering</dt>
-						<dd>{{project.evaluationYear}}</dd>
-						<dt>Styringsramme</dt>
-						<dd>{{project.managementBudget.amount}} mill</dd>
-						<dt>Kostnadsramme</dt>
-						<dd>{{project.costBudget.amount}} mill</dd>
-						<dt>Sluttkostnad</dt>
-						<dd>{{project.costFinal.amount}} mill</dd>
-						<dt>Ansvarlig</dt>
-						<dd>{{responsible.organization}}</dd>
-						<dt>Oppdragsgiver</dt>
-						<dd>{{principal}}</dd>
-
-					</dl>
-				</section>
+		<div class="panel-body">
+			<section id="faktaboks">
+				<dl class="dl-horizontal ls-offset">
+					<dt>Prosjektnummer</dt>
+					<dd>{{project.projectNumber}}</dd>
+					<dt>Sektor</dt>
+					<dd>{{project.sector}}</dd>
+					<dt>Årstall påbegynt</dt>
+					<dd>{{project.decisionYear}}</dd>
+					<dt>Årstall ferdigstilt</dt>
+					<dd>{{project.finishingYear}}</dd>
+					<dt>Årstall evaluering</dt>
+					<dd>{{project.evaluationYear}}</dd>
+					<dt>Styringsramme</dt>
+					<dd>{{project.managementBudget.amount}} mill</dd>
+					<dt>Kostnadsramme</dt>
+					<dd>{{project.costBudget.amount}} mill</dd>
+					<dt>Sluttkostnad</dt>
+					<dd>{{project.costFinal.amount}} mill</dd>
+					<dt>Ansvarlig</dt>
+					<dd>{{responsible.organization}}</dd>
+					<dt>Oppdragsgiver</dt>
+					<dd>{{principal}}</dd>
+				</dl>
+			</section>
 		</div>
 	</div>
- 		
-			
 </template>
 
-
-
 <template name="ProjectReferences">
-
 	<section id="references">
 		<header>
 			<h3>Litteratur og referanser</h3>
 		</header>
-
 		<div class="row">
 			<div class="col-md-6">
 				<div class="table-responsive text-center">
@@ -232,26 +189,9 @@
 							</tr>
 							{{/each}}
 						</tbody>
-
-
-
 					</table>
 				</div>
 			</div>
 		</div>
-
 	</section>
-
-
-
 </template>
-
-
-
-
-
-
-
-
-
-

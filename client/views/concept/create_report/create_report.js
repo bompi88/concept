@@ -17,25 +17,25 @@ uploadObject = {
   addImage: function(fileObj) {
 
     this.Images.push(fileObj._id);
-    this.dep.changed();  //invalidates all dependent computations
+    this.dep.changed();
     return this.Images;
   },
   addReference: function(fileObj) {
 
     this.References.push(fileObj._id);
-    this.dep.changed();  //invalidates all dependent computations
+    this.dep.changed();
     return this.References;
   },
   removeImage: function(id) {
     this.Images = removeByFileId(this.Images, id);
 
-    this.dep.changed();  //invalidates all dependent computations
+    this.dep.changed();
     return this.Images;
   },
   removeReference: function(id) {
     this.References = removeByFileId(this.References, id);
     
-    this.dep.changed();  //invalidates all dependent computations
+    this.dep.changed();
     return this.References;
   },
   reset: function() {
@@ -62,7 +62,7 @@ locationObject = {
 
 var removeByFileId = function(array, id) {
     return _.reject(array, function(item) {
-        return item === id; // or some complex logic
+        return item === id;
     });
 };
 
@@ -104,7 +104,6 @@ var uploadImages = function(event) {
     Images.insert(image, function (err, fileObj) {
       if(fileObj)
         uploadObject.addImage(fileObj);
-
     });
   });
 };
@@ -118,12 +117,11 @@ var uploadFiles = function(event) {
   });
 };
 var currRoute = function(route) {
-    var currentRoute = Router.current();
-    if (!currentRoute) return '';
+  var currentRoute = Router.current();
+  if (!currentRoute) return '';
 
-    return route === currentRoute.route.name ? true : false;
-  };
-
+  return route === currentRoute.route.name ? true : false;
+};
 
 Template.ReportForm.helpers({
   imagesList: function() {
@@ -133,7 +131,6 @@ Template.ReportForm.helpers({
       if(report) {
         var new_img_ids = uploadObject.getImages();
         var old_img_ids = _.pluck(report.images, 'fileId');
-
 
       return Images.find({_id: {$in : new_img_ids.concat(old_img_ids)}});
       }
@@ -149,11 +146,9 @@ Template.ReportForm.helpers({
         var new_files_ids = uploadObject.getReferences();
         var old_files_ids = _.pluck(report.references, 'fileId');
 
-
         return Files.find({_id: {$in : new_files_ids.concat(old_files_ids)}});
       }
       return [];
-      
     }
     return Files.find({_id: {$in : uploadObject.getReferences()}});
   }
@@ -184,15 +179,12 @@ Template.MapLocationPicker.rendered = function () {
   // create a map in the "map" div, set the view to Trondheim and zoom to get most of Norway
   var map = L.map('map', {doubleClickZoom: false}).setView([63.43, 10.39], 5);
 
-
   map.addControl( new L.Control.Search({
     url: 'http://nominatim.openstreetmap.org/search?format=json&q={s}',
     jsonpParam: 'json_callback',
     propertyName: 'display_name',
     propertyLoc: ['lat','lon']
   }) );
-
-
 
   // add an OpenStreetMap tile layer
   L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
@@ -202,7 +194,6 @@ Template.MapLocationPicker.rendered = function () {
   var locationAdded = false;
 
   map.on('dblclick', function(e) {
-
     if(!locationAdded) {
       var marker = L.marker(e.latlng).addTo(map)
         .on('click', function(event) {
@@ -210,12 +201,10 @@ Template.MapLocationPicker.rendered = function () {
             map.removeLayer(marker);
             locationAdded = false;
           }
-
         });
       locationObject.setCoordinates(e.latlng);
       locationAdded = true;
     }
-
   });
 
   Deps.autorun(function () {
@@ -230,7 +219,6 @@ Template.MapLocationPicker.rendered = function () {
           map.removeLayer(marker);
           locationAdded = false;
         }
-
       });;
     }
   });
@@ -244,7 +232,6 @@ Template.DownloadListTable.helpers({
     if(options.hash && options.hash.parent && options.hash.parent.type) {
       if (options.hash.parent.type === 'images') {
         if(report && report.images){
-
             var img_data = _.find(report.images, function(img){ return img.fileId == id; });
 
             return _.extend(this, img_data);
@@ -252,7 +239,6 @@ Template.DownloadListTable.helpers({
         return this;
       } else if (options.hash.parent.type === 'files') {
         if(report && report.references){
-
             var ref_data = _.find(report.references, function(ref){ return ref.fileId == id; });
 
             return _.extend(this, ref_data);

@@ -1,11 +1,10 @@
 
-
 AuthRouteController = RouteController.extend({
 	onBeforeAction: function() {
-	    if(!Meteor.loggingIn() && !Meteor.user()) {
-	      this.redirect('ConceptIndex');
-	    }
-  	}
+		if(!Meteor.loggingIn() && !Meteor.user()) {
+			this.redirect('ConceptIndex');
+		}
+	}
 });
 
 ConceptIndexController = RouteController.extend({
@@ -21,16 +20,16 @@ ConceptIndexController = RouteController.extend({
 });
 
 ReportListController = RouteController.extend({
-  	waitOn: function () {
-  		return [Meteor.subscribe('images'), Meteor.subscribe('reports')];
-  	},
+	waitOn: function () {
+		return [ Meteor.subscribe('images'), Meteor.subscribe('reports') ];
+	},
 
-  	data: function () {
-  	},
+	data: function () {
+	},
 
-  	action: function () {
-    	this.render();
-  	}
+	action: function () {
+		this.render();
+	}
 
 });
 
@@ -50,7 +49,7 @@ AdminCreateReportController = AuthRouteController.extend({
 
 AdminEditReportController = AuthRouteController.extend({
 	waitOn: function () {
-		return [ Meteor.subscribe('images'), Meteor.subscribe('files'), Meteor.subscribe('report', this.params._id)];
+		return [ Meteor.subscribe('images'), Meteor.subscribe('files'), Meteor.subscribe('report', this.params._id) ];
 	},
 
 	data: function () {
@@ -68,10 +67,10 @@ AdminLogonController = RouteController.extend({
 	},
 	onBeforeAction: function(pause) {
 		if (Meteor.user()) {
-	    	if (!Meteor.loggingIn()) {
-	      		this.redirect('ReportList');
-	    	}
-    	}
+			if (!Meteor.loggingIn()) {
+				this.redirect('ReportList');
+			}
+		}
 	},
 	action: function () {
 		if (!Meteor.user() && !Meteor.loggingIn()) {
@@ -82,7 +81,7 @@ AdminLogonController = RouteController.extend({
 
 ReportViewController = RouteController.extend({
 	waitOn: function () {
-		return [Meteor.subscribe('report', this.params._id), Meteor.subscribe('images'), Meteor.subscribe('files')];
+		return [ Meteor.subscribe('report', this.params._id), Meteor.subscribe('images'), Meteor.subscribe('files') ];
 	},
 
 	data: function () {
@@ -94,26 +93,24 @@ ReportViewController = RouteController.extend({
 	},
 	onAfterAction: function() {
 		
-	if (this.ready()) {
-		if(this.data()) {
-			var report = this.data();
+		if (this.ready()) {
+			if(this.data()) {
+				var report = this.data();
 
-			SEO.set({
-				title: "Evaluering av " + report.project.name,
-				meta: {
-					'description': report.project.projectDescription.short
-				},
-				og: {
-					'title': "Evaluering av " + report.project.name,
-					'description': report.project.projectDescription.short
+				SEO.set({
+					title: "Evaluering av " + report.project.name,
+					meta: {
+						'description': report.project.projectDescription.short
+					},
+					og: {
+						'title': "Evaluering av " + report.project.name,
+						'description': report.project.projectDescription.short
 					//todo image 
-				}
-			});
-		} else {
-			this.redirect('ReportList');
+					}
+				});
+			} else {
+				this.redirect('ReportList');
+			}
 		}
 	}
-
-	}
-
 });

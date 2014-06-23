@@ -41,6 +41,20 @@ Template.ShortTextReport.helpers({
     }
     return false;
    },
+   getImageUrl: function(fileId) {
+      var image = Images.findOne({_id:fileId});
+      if(image)
+        return image.url();
+      else
+        return false;
+   },
+   getThumbUrl: function(fileId) {   
+      var image = Images.findOne({_id:fileId});
+      if(image)
+        return image.url({store:'thumbs'});
+      else
+        return false;
+   }
 });
 
 Template.LongTextReport.helpers({
@@ -70,8 +84,11 @@ Template.ReportView.created = function () {
 };
 
 Template.ShortTextReport.rendered = function () {
+
+
   
   Deps.autorun(function () {
+
     var report = Router.getData();
 
     if (report) {

@@ -15,12 +15,6 @@
 			<ul class="nav navbar-nav">
 				<li class="{{activeIfRouteIs 'ReportList'}}"><a href="{{pathFor 'ReportList'}}">Evalueringsrapporter</a></li>
 			</ul>
-			
-			{{#if isLoggedIn}}
-				<ul class="nav navbar-nav">
-					<li class="new-report {{activeIfRouteIs 'CreateReport'}}"><a href="{{pathFor 'CreateReport'}}">Opprett rapport</a></li>
-				</ul>
-			{{/if}}
 
 			<ul class="nav navbar-nav">
 				<li class="eval-criteria {{activeIfRouteIs 'EvaluationCriteria'}}"><a href="{{pathFor 'EvaluationCriteria'}}">Evalueringskriterier</a></li>
@@ -29,6 +23,12 @@
 			<ul class="nav navbar-nav">
 				<li class="about-concept {{activeIfRouteIs 'AboutConcept'}}"><a href="{{pathFor 'AboutConcept'}}">Om Concept</a></li>
 			</ul>
+
+			{{#if isLoggedIn}}
+			<ul class="nav navbar-nav">
+				<li class="new-report {{activeIfRouteIs 'CreateReport'}}"><a href="{{pathFor 'CreateReport'}}">Opprett rapport</a></li>
+			</ul>
+			{{/if}}
 
 			{{#if currentUser}}
 			<ul class="nav navbar-nav navbar-right">

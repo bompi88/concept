@@ -1,0 +1,89 @@
+<!--
+
+TextInput: A basic text input field, with bootstrap structure. It has a label equal to the placeholder text.
+
+================================================================================================
+Params:
+================================================================================================
+id			- Pass the id attribute of the html form tag.
+class		- Classes to add to the input element, e.g. class="big awesome radio"
+placeholder	- Placeholder for input field (Text inside field area.)
+value		- Pass a value to the input field.
+
+-->
+
+<template name="TextInput">
+	<div class="form-group">
+		<label for="{{id}}">{{placeholder}}</label>
+		<input type="text" class="form-control {{class}}" id="{{id}}" placeholder="{{placeholder}}" value="{{value}}">
+	</div>
+</template>
+
+<!--
+
+RadioButton: A regular bootstrap radio button.
+
+================================================================================================
+Params:
+================================================================================================
+id			- Pass the id attribute of the html form tag.
+class		- Classes to add to the input element, e.g. class="big awesome radio"
+type 		- Name of the radio group.
+value		- The value of the radio button, e.g. one radio has value 1, another has value 2 etc.
+curval		- The current selected or stored value, this evaluates the checked attribute.
+
+-->
+
+<template name="RadioButton">
+	<label class="radio-inline">
+		<input type="radio" class="{{class}}" name="{{name}}" id="{{name}}-option1" value="{{value}}" checked={{$checked curval value}}>
+		{{text}}
+	</label>
+</template>
+
+<template name="RadioDouble">
+	<div class="control-group">
+        <label label-default="" class="control-label">{{placeholder}}</label>
+        <div class="controls">
+			{{#if curval}}
+				{{> RadioButton name=this.name value="1" text="Publiser" curval=curval}}
+			{{else}}
+				{{> RadioButton name=this.name value="1" text="Publiser" checked=1}}
+			{{/if}}
+			{{> RadioButton name=this.name value="0" text="Gjem" curval=curval}}
+		</div>
+    </div>
+</template>
+
+<template name="RadioTrafficLight">
+	<div class="control-group">
+        <label label-default="" class="control-label">{{placeholder}}</label>
+        <div class="controls">
+			{{#if curval}}
+				{{> RadioButton name=this.name value="1" text="Rød" curval=curval}}
+			{{else}}
+				{{> RadioButton name=this.name value="1" text="Rød" checked=1}}
+			{{/if}}
+			{{> RadioButton name=this.name value="2" text="Gul" curval=curval}}
+			{{> RadioButton name=this.name value="3" text="Grønn" curval=curval}}
+		</div>
+    </div>
+</template>
+
+<template name="RadioGroupFive">
+	<div class="control-group">
+        <label label-default="" class="control-label">{{placeholder}}</label>
+        <div class="controls">
+			{{#if curval}}
+				{{> RadioButton name=this.name value="1" text="1" curval=curval}}
+			{{else}}
+				{{> RadioButton name=this.name value="1" text="1" checked=1}}
+			{{/if}}
+			{{> RadioButton name=this.name value="2" text="2" curval=curval}}
+			{{> RadioButton name=this.name value="3" text="3" curval=curval}}
+			{{> RadioButton name=this.name value="4" text="4" curval=curval}}
+			{{> RadioButton name=this.name value="5" text="5" curval=curval}}
+			{{> RadioButton name=this.name value="6" text="6" curval=curval}}
+		</div>
+	</div>
+</template>

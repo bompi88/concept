@@ -1,0 +1,119 @@
+<!--
+
+This template renders a form, with use of the autoform package. It acts either as a insert form 
+or as a edit form. 
+
+================================================================================================
+Params:
+================================================================================================
+id			- Pass the id attribute of the html form tag.
+doc			- The document being edited.
+type 		- Type of form; insert, update or remove.
+
+-->
+
+<template name="ReportForm">
+	{{#autoForm collection="Reports" id=this.id type=this.type doc=this.doc style="margin: 0 20px;"}}
+		<h2>Om prosjektet</h2>
+		<fieldset>
+		    <legend>Generelt</legend>
+		    {{> afQuickField name='project.name' id="name" placeholder="schemaLabel"}}
+		   	{{> afQuickField name='project.projectNumber' id="project-num" placeholder="schemaLabel"}}
+		   	{{> afQuickField name='project.sector' id="sector" placeholder="schemaLabel"}}
+
+			{{> RadioTrafficLight name="traffic-light" placeholder="Suksesskategori" curval=doc.project.successCategory}}
+		</fieldset>
+		<fieldset>
+			<legend>Lokasjon</legend>
+			<p>Velg ett sted med dobbel museklikk. Fjern sted med enkelt museklikk</p>
+			{{>MapLocationPicker}}
+
+			{{> afQuickField name='project.location.name' id="location" placeholder="schemaLabel"}}
+		</fieldset>
+		<fieldset>
+			<legend>Prosjektbeskrivelse</legend>
+			{{> afQuickField name='project.projectDescription.short' id="project-desc-short" placeholder="schemaLabel" rows="5"}}
+			{{> afQuickField name='project.projectDescription.long' id="project-desc-long" placeholder="schemaLabel" rows="5"}}
+		</fieldset>
+		<fieldset>
+			<legend>Tidsbeskrivelse</legend>
+			{{> afQuickField name='project.decisionYear' id="decision-year" placeholder="schemaLabel"}}
+			{{> afQuickField name='project.finishingYear' id="finishing-year" placeholder="schemaLabel"}}
+			{{> afQuickField name='project.evaluationYear' id="eval-year" placeholder="schemaLabel"}}
+		</fieldset>
+		<fieldset>
+			<legend>Økonomiske verdier</legend>
+			{{> afQuickField name='project.managementBudget.amount' id="management-budget" placeholder="schemaLabel"}}
+			{{> afQuickField name='project.costBudget.amount' id="cost-budget" placeholder="schemaLabel"}}
+			{{> afQuickField name='project.costFinal.amount' id="cost-final" placeholder="schemaLabel"}}
+		</fieldset>
+		<fieldset>
+			<legend>Ansvarlige</legend>
+			{{> afQuickField name='responsible.organization' id="eval-responsible-org" placeholder="schemaLabel"}}
+			{{> afQuickField name='responsible.person' id="eval-responsible-person" placeholder="schemaLabel"}}
+			{{> afQuickField name='principal' id="principal" placeholder="schemaLabel"}}
+		</fieldset>
+
+		<h2>Evaluering</h2>
+		<fieldset>
+			<legend>Tekstlige vurderinger</legend>
+			<h4>1. Produktivitet</h4>
+			{{> afQuickField name='evaluation.productivity.short' id="eval-productivity-short" placeholder="schemaLabel" rows="5"}}
+			{{> afQuickField name='evaluation.productivity.long' id="eval-productivity-long" placeholder="schemaLabel" rows="5"}}
+
+			<h4>2. Måloppnåelse</h4>
+			{{> afQuickField name='evaluation.achievement.short' id="eval-achievement-short" placeholder="schemaLabel" rows="5"}}
+			{{> afQuickField name='evaluation.achievement.long' id="eval-achievement-long" placeholder="schemaLabel" rows="5"}}
+			
+			<h4>3. Virkninger</h4>
+			{{> afQuickField name='evaluation.effects.short' id="eval-effects-short" placeholder="schemaLabel" rows="5"}}
+			{{> afQuickField name='evaluation.effects.long' id="eval-effects-long" placeholder="schemaLabel" rows="5"}}
+
+			<h4>4. Relevans</h4>
+			{{> afQuickField name='evaluation.relevance.short' id="eval-relevance-short" placeholder="schemaLabel" rows="5"}}
+			{{> afQuickField name='evaluation.relevance.long' id="eval-relevance-long" placeholder="schemaLabel" rows="5"}}
+
+			<h4>5. Levedyktighet</h4>
+			{{> afQuickField name='evaluation.viability.short' id="eval-viability-short" placeholder="schemaLabel" rows="5"}}
+			{{> afQuickField name='evaluation.viability.long' id="eval-viability-long" placeholder="schemaLabel" rows="5"}}
+
+			<h4>6. Samfunnsøkonomisk lønnsomhet</h4>
+			{{> afQuickField name='evaluation.profitability.short' id="eval-profitability-short" placeholder="schemaLabel" rows="5"}}
+			{{> afQuickField name='evaluation.profitability.long' id="eval-profitability-long" placeholder="schemaLabel" rows="5"}}
+		</fieldset>
+		<fieldset>
+			<legend>Tallvurderinger</legend>
+			{{> RadioGroupFive name="num-eval-productivity" placeholder="1. Produktivitet" curval=doc.evaluation.productivity.value}}
+			{{> RadioGroupFive name="num-eval-achievement" placeholder="2. Måloppnåelse" curval=doc.evaluation.achievement.value}}
+			{{> RadioGroupFive name="num-eval-effects" placeholder="3. Virkninger" curval=doc.evaluation.effects.value}}
+			{{> RadioGroupFive name="num-eval-relevance" placeholder="4. Relevans" curval=doc.evaluation.relevance.value}}
+			{{> RadioGroupFive name="num-eval-viability" placeholder="5. Levedyktighet" curval=doc.evaluation.viability.value}}
+			{{> RadioGroupFive name="num-eval-profitability" placeholder="6. Samfunnsøkonomisk lønnsomhet" curval=doc.evaluation.profitability.value}}
+		</fieldset>
+		<fieldset>
+			<legend>Referanser</legend>
+			{{> Dropzone tp="files" typeDesc="filer" files=referencesList}}
+		</fieldset>
+		<fieldset>
+			<legend>Illustrasjoner</legend>
+			{{> Dropzone tp="images" typeDesc="bildefiler" files=imagesList}}
+		</fieldset>
+		<fieldset>
+			<legend>Innstillinger</legend>
+			{{> RadioDouble name="public-var" placeholder="Publisitet" curval=doc._public}}
+		</fieldset>
+						  
+		{{#if currentRouteIs 'EditReport'}}
+			<button type="submit" class="btn btn-primary pull-right">Lagre</button>
+		{{else}}
+			<button type="submit" class="btn btn-primary pull-right">Opprett</button>
+		{{/if}}
+		<button type="button" class="btn btn-default pull-right cancel-btn">Avbryt</button>
+	{{/autoForm}}
+	
+	{{#if currentRoute 'EditReport'}}
+		{{#afDeleteButton collection="Reports" doc=this.doc}}
+		Slett
+		{{/afDeleteButton}}
+	{{/if}}
+</template>

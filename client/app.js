@@ -5,10 +5,11 @@
 _.extend(App, {
 });
 
+/*****************************************************************************/
+/* UI helper methods */
+/*****************************************************************************/
+
 App.helpers = {
-	isLoggedIn: function() {
-		return Meteor.userId();
-	},
 	cutText: function (str, n) {
 
 		if(str) {
@@ -20,14 +21,39 @@ App.helpers = {
 		}
 		return '';
 	},
-	currentRoute: function(route) {
+
+	currentRouteIs: function(route) {
 		var currentRoute = Router.current();
 		if (!currentRoute) return '';
 
 		return route === currentRoute.route.name ? true : false;
-	}
+	},
+
+	activeIfRouteIs: function(route) {
+		var curRoute = Router.current();
+    if (!curRoute) return '';
+
+		return curRoute && route === curRoute.route.name ? 'active' : '';
+  }
 };
 
 _.each(App.helpers, function (helper, key) {
 	UI.registerHelper(key, helper);
+});
+
+
+UI.registerHelper('$generateId', function (name, _id, options) {
+ return _.extend(options.hash, { id: name + '-' + _id});
+});
+
+UI.registerHelper('$checked', function (num, val) {
+  if (num === undefined && parseInt(val) == 1)
+    return true;
+  return (parseInt(val)) == num ? true : false;
+});
+
+UI.registerHelper('$isNotEmptyArray', function (array) {
+  if (!array || !array.count)
+    return false;
+ return array.count() > 0;
 });

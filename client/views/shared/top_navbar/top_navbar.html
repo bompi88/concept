@@ -1,3 +1,7 @@
+<!--
+This is the navbar located at the top.
+-->
+
 <template name="TopNavbar">
 	<div class="navbar navbar-default navbar-fixed-top" role="navigation">
 		<div class="navbar-header">
@@ -8,33 +12,30 @@
 				<span class="icon-bar"></span>
 			</button>
 			<a class="navbar-brand" rel="home" href="/" title="Til forside">
-				<img style="max-height:40px; margin-top: -10px;" src="/images/logo.jpg"> <span style="position:relative;top:-3px;padding-left:10px;">Concept</span>
+				<img src="/images/logo.jpg"> <span>Concept</span>
 			</a>
 		</div>
 		<div class="navbar-collapse collapse">
-			<ul class="nav navbar-nav">
-				<li class="{{activeIfRouteIs 'ReportList'}}"><a href="{{pathFor 'ReportList'}}">Evalueringsrapporter</a></li>
-			</ul>
-
-			<ul class="nav navbar-nav">
-				<li class="eval-criteria {{activeIfRouteIs 'EvaluationCriteria'}}"><a href="{{pathFor 'EvaluationCriteria'}}">Evalueringskriterier</a></li>
-			</ul>
-
-			<ul class="nav navbar-nav">
-				<li class="about-concept {{activeIfRouteIs 'AboutConcept'}}"><a href="{{pathFor 'AboutConcept'}}">Om Concept</a></li>
-			</ul>
-<!-- fix a new template for nav bar buttons -->
-			{{#if isLoggedIn}}
-			<ul class="nav navbar-nav">
-				<li class="new-report {{activeIfRouteIs 'CreateReport'}}"><a href="{{pathFor 'CreateReport'}}">Opprett rapport</a></li>
-			</ul>
-			{{/if}}
-
+			{{> NavBarButton route='ReportList' name='Evalueringsrapporter'}}
+			{{> NavBarButton route='EvaluationCriteria' name='Evalueringskriterier'}}
+			{{> NavBarButton route='AboutConcept' name='Om Concept'}}
+			
 			{{#if currentUser}}
-			<ul class="nav navbar-nav navbar-right">
-				{{> loginButtons}}
-			</ul>
+				{{> NavBarButton route='CreateReport' name='Opprett rapport'}}
+
+				<ul class="nav navbar-nav navbar-right">
+					{{> loginButtons}}
+				</ul>
 			{{/if}}
 		</div>
 	</div>
+</template>
+
+<!--
+This is the navbar buttons.
+-->
+<template name="NavBarButton">
+	<ul class="nav navbar-nav">
+		<li class="{{class}} {{activeIfRouteIs this.route}}" id="{{id}}"><a href="{{pathFor this.route}}">{{name}}</a></li>
+	</ul>
 </template>

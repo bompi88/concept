@@ -1,6 +1,6 @@
 <!--
 
-CreateReport: This template renders an update form if the user is at an edit route, otherwise 
+CreateReport: This template renders an update form if the user hits an edit route, otherwise 
 it renders an insert form.
 
 -->
@@ -9,7 +9,7 @@ it renders an insert form.
 	<div class="container" style="padding-top:50px;">
 		<div class="col-xs-8 col-xs-offset-2 content-wrapper fill" style="margin-bottom:30px;">
 			<div class="row" style="margin-bottom:30px;">
-				<div class="col-xs-12" >
+				<div class="col-xs-12">
 					{{#if currentRouteIs 'EditReport'}}
 						{{> ReportForm id='report-form' doc=this type="update"}}
 					{{else}}

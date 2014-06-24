@@ -8,6 +8,10 @@
 	padding: 40px 0;
 	border: 2px dashed darken(#fff, 10%);
 	border-radius: 20px;
+
+	p i {
+		font-weight: 400;
+	}
 }
 
 .dropzone:hover {

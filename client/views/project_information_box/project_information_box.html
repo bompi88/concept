@@ -1,11 +1,12 @@
 <template name="ProjectInformationBox">
-	<div class="panel panel-info">
+	<div class="panel {{#if mapPopup}} panel-default {{else}} panel-info{{/if}}">
 		<div class="panel-heading">
-			<h4 class="panel-heading text-center">Prosjektinformasjon</h4>
+			<h4 class="panel-heading text-center"> {{#if mapPopup}} {{project.name}} {{else}} Prosjektinformasjon {{/if}}</h4>
 		</div>
 		<div class="panel-body">
+			<div class="overlay"></div>
 			<section id="faktaboks">
-				<dl class="dl-horizontal ls-offset">
+				<dl class="dl-horizontal {{#unless mapPopup}} ls-offset {{/unless}}">
 					<dt>Prosjektnummer</dt>
 					<dd>{{project.projectNumber}}</dd>
 					<dt>Sektor</dt>

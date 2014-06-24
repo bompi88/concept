@@ -47,12 +47,6 @@ Template.ReportList.events({
   }
 });
 
-Template.MapPopupBox.events({
-  'click .panel': function(event, tmpl) {
-    var id = tmpl.find('.id').value;
-    Router.go('/reports/' + id);
-  }
-});
 
 Template.ReportList.helpers({
   viewState: function () {

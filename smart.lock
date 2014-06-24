@@ -23,7 +23,8 @@
       "collection2": {},
       "autoform": {},
       "ms-seo": {},
-      "bootstrap-image-gallery": {}
+      "bootstrap-image-gallery": {},
+      "animate-css": {}
     },
     "packages": {
       "iron-router": {
@@ -93,8 +94,8 @@
       },
       "autoform": {
         "git": "https://github.com/aldeed/meteor-autoform.git",
-        "tag": "v0.12.0",
-        "commit": "24b0284425e446f2d88760a81052eefe74a20bbf"
+        "tag": "v0.13.0",
+        "commit": "3f294ddf3ed0acae714d5ceb8a806b25cdcd0197"
       },
       "ms-seo": {
         "git": "https://github.com/DerMambo/ms-seo",
@@ -105,6 +106,11 @@
         "git": "https://github.com/and-fri/meteor-bootstrap-image-gallery.git",
         "tag": "v0.0.5",
         "commit": "460022716f6e92134410c60572bd959535deef41"
+      },
+      "animate-css": {
+        "git": "https://github.com/nate-strauser/meteor-animate-css.git",
+        "tag": "v3.1.1",
+        "commit": "59ce70b99dff5bc3d1227b789eefa43a761db158"
       },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",

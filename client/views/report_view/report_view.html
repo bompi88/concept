@@ -4,34 +4,35 @@
 		<article>
 			<section id="top">
 				<div class="row">
-					<div class="col-md-7">
+					<div class="col-md-12">
 						<header>
 							<div class="page-header text-center">
 								<h1>{{project.name}}</h1>
+								<div class="btn-group button-margin" data-toggle="buttons">
+									<label class="btn btn-default {{#if $eq textState "short"}}active{{/if}}" id="text-view-short">
+										<input type="radio" name="text-view" ><span class="glyphicon glyphicon-tasks"></span> Kort versjon
+									</label>
+									<label class="btn btn-default {{#if $eq textState "long"}}active{{/if}}" id="text-view-long">
+										<input type="radio" name="text-view" ><span class="glyphicon glyphicon-align-justify"></span> Lang tekstversjon
+									</label>
+									{{#if currentUser}}
+									<label class="btn btn-success edit-btn">
+										<input type="radio" name="text-view" ><span class="glyphicon glyphicon-edit"></span> Rediger
+									</label>
+									{{/if}}
+								</div>
+
+
 							</div>
 						</header>
-					</div>
-					<div class="col-md-5">	
-						<div class="btn-group" data-toggle="buttons">
-							<label class="btn btn-default {{#if $eq textState "short"}}active{{/if}}" id="text-view-short">
-								<input type="radio" name="text-view" ><span class="glyphicon glyphicon-tasks"></span> Kort versjon
-							</label>
-							<label class="btn btn-default {{#if $eq textState "long"}}active{{/if}}" id="text-view-long">
-								<input type="radio" name="text-view" ><span class="glyphicon glyphicon-align-justify"></span> Lang tekstversjon
-							</label>
-							{{#if currentUser}}
-								<label class="btn btn-success edit-btn">
-									<input type="radio" name="text-view" ><span class="glyphicon glyphicon-edit"></span> Rediger
-								</label>
-							{{/if}}
-						</div>
+
 					</div>
 				</div>
 			</section>
 			{{#if $eq textState "short"}}
-				{{> ShortTextReport}}
+			{{> ShortTextReport}}
 			{{else}}
-				{{> LongTextReport}}
+			{{> LongTextReport}}
 			{{/if}}
 		</article>
 	</div>

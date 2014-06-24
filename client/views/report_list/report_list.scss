@@ -20,9 +20,22 @@
 	border: 2px solid darken(#fff, 3%);
 	box-shadow: 0px 0px 20px darken(#fff, 20%);
 	
-	overflow-x: auto;
-}
+	overflow-x: -moz-scrollbars-vertical;
+    overflow-x: scroll;
 
+	-webkit-overflow-scrolling: auto;
+	&::-webkit-scrollbar {
+		-webkit-appearance: none;
+		width: 7px;
+	}
+	&::-webkit-scrollbar-thumb {
+		border-radius: 6px;
+		background-color: rgba(130, 130, 130, .5);
+		-webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+	}
+
+}
+	
 #timeline-embed {
 	position: relative;
 }

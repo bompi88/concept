@@ -1,3 +1,7 @@
+/*****************************************************************************/
+/* Reports Collection */
+/*****************************************************************************/
+
 Reports = new Meteor.Collection('reports');
 
 createMofidiers = function(modifier, tmpl) {

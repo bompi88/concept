@@ -46,6 +46,10 @@ Router.map(function () {
   });
 });
 
+/*****************************************************************************/
+/* SEO inserts for routes without route controller */
+/*****************************************************************************/
+
 SeoCollection.insert({
   route_name: 'EvaluationCriteria',
   title: 'Evalueringskriterier',

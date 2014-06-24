@@ -1,3 +1,7 @@
+/*****************************************************************************/
+/* Configuration of the Iron-router */
+/*****************************************************************************/
+
 Router.configure({
   layoutTemplate: 'MasterLayout',
   loadingTemplate: 'Loading',

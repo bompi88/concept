@@ -1,3 +1,7 @@
+/*****************************************************************************/
+/* ReportViewController */
+/*****************************************************************************/
+
 ReportViewController = RouteController.extend({
 	waitOn: function () {
 		return [ Meteor.subscribe('report', this.params._id), Meteor.subscribe('images'), Meteor.subscribe('files') ];

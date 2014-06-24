@@ -1,3 +1,7 @@
+/*****************************************************************************/
+/* CreateReportController */
+/*****************************************************************************/
+
 CreateReportController = AuthRouteController.extend({
 	waitOn: function () {
 		return [ Meteor.subscribe('images'), Meteor.subscribe('files') ];

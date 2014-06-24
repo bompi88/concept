@@ -31,29 +31,25 @@ App.helpers = {
 
 	activeIfRouteIs: function(route) {
 		var curRoute = Router.current();
-    if (!curRoute) return '';
+    	if (!curRoute) return '';
 
 		return curRoute && route === curRoute.route.name ? 'active' : '';
-  }
+  	},
+  	'$generateId': function (name, _id, options) {
+		return _.extend(options.hash, { id: name + '-' + _id});
+	},
+	'$checked': function (num, val) {
+		if (num === undefined && parseInt(val) == 1)
+			return true;
+		return (parseInt(val)) == num ? true : false;
+	},
+	'$isNotEmptyArray': function (array) {
+		if (!array || !array.count)
+			return false;
+		return array.count() > 0;
+	}
 };
 
 _.each(App.helpers, function (helper, key) {
 	UI.registerHelper(key, helper);
-});
-
-
-UI.registerHelper('$generateId', function (name, _id, options) {
- return _.extend(options.hash, { id: name + '-' + _id});
-});
-
-UI.registerHelper('$checked', function (num, val) {
-  if (num === undefined && parseInt(val) == 1)
-    return true;
-  return (parseInt(val)) == num ? true : false;
-});
-
-UI.registerHelper('$isNotEmptyArray', function (array) {
-  if (!array || !array.count)
-    return false;
- return array.count() > 0;
 });

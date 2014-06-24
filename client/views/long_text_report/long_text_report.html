@@ -1,8 +1,8 @@
 <template name="LongTextReport">
 	<div class="container">
 		<div class="row">
-			<div class="col-xs-8 col-xs-offset-2" style="font-size:15px">
-				<div id="longText">
+			<div class="col-md-8 col-md-offset-2 col-xs-12 col-xs-offset-0" style="font-size:15px">
+				<section id="longText">
 					<p>{{project.projectDescription.long}}</p>
 
 					<h4>Produktivitet</h4>
@@ -22,7 +22,7 @@
 
 					<h4>Samfunnsøkonomisk lønnsomhet</h4>
 					<p>{{notEscapeHTML evaluation.profitability.long}} <b>{{evaluation.profitability.value}} av 6 poeng</b>.</p>
-				</div>
+				</section>
 			</div>
 		</div>
 	</div>

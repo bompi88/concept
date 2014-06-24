@@ -2,7 +2,7 @@
 /* ReportView: Style */
 /*****************************************************************************/
 
-canvas{
+#spiderEvaluation{
 	width: 100% !important;
 	max-width: 800px;
 	height: auto !important;
@@ -11,60 +11,23 @@ canvas{
 
 }
 
-.ls-offset {
-	width:70%;
-	margin: 0 auto;
-}
-
-#texteval {
+#texteval, #desc, #top, #longText, #references, #images {
 	h4, h5 {
-		margin-top: 20px;
+		margin-top: 30px;
 		margin-bottom: 5px;
 	}
 
 	p {
 		line-height: 1.5;
-	}
-}
-
-#desc {
-	p {
 		margin-bottom: 20px;
-		line-height: 1.5;
 	}
-}
 
-#top {
 	h1{
-		margin-bottom: 40px;
-		text-align: center;
+		margin-bottom: 30px;
 	}
-}
-
-dt:after {
-	content: ":";
-}
-
-.boxed {
-	outline: 1px solid black ;
-}
-
-#longText {
-	p {
-		margin-bottom: 20px;
-		line-height: 1.7;
-	}
-
-	h4,
-	h5 {
-		margin-top: 20px;
-		margin-bottom: 5px;
-	}
-}
-
-#references {
 	h3{
-		margin-top: 20px;
-		margin-bottom: 5px;
+		margin-bottom: 30px;
+		margin-top: 30px;
 	}
+
 }

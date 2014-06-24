@@ -1,3 +1,7 @@
+/*****************************************************************************/
+/* AdminLogonController */
+/*****************************************************************************/
+
 AdminLogonController = RouteController.extend({
 	waitOn: function () {
 		return Meteor.user();

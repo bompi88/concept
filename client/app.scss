@@ -1,8 +1,10 @@
 /*****************************************************************************/
 /* Bootstrap configuration variables */
 /*****************************************************************************/
-
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600);
 $grid-float-breakpoint: 900px;
+$font-family-sans-serif:  "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+
 
 /*****************************************************************************/
 /* Global SCSS Styles */

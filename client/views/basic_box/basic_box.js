@@ -59,3 +59,9 @@ Template.BasicBox.helpers({
     }
   }
 });
+
+Template.TrafficLight.helpers({
+  isColor: function (c) {
+    return parseInt(c) === this.project.successCategory; 
+  }
+});

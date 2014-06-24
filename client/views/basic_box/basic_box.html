@@ -36,8 +36,8 @@
 
 <template name="TrafficLight">
 	<div id="light">
-		<span class="{{#if $eq project.successCategory "3" }} active {{else}} passive {{/if}}" id="green"></span>
-		<span class="{{#if $eq project.successCategory "2" }} active {{else}} passive {{/if}}" id="orange"></span>
-		<span class="{{#if $eq project.successCategory "1" }} active {{else}} passive {{/if}}" id="red"></span>
+		<span class="{{#if isColor "3" }} active {{else}} passive {{/if}}" id="green"></span>
+		<span class="{{#if isColor "2" }} active {{else}} passive {{/if}}" id="orange"></span>
+		<span class="{{#if isColor "1" }} active {{else}} passive {{/if}}" id="red"></span>
 	</div>
 </template>

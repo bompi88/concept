@@ -1,21 +1,15 @@
 <template name="ReportList">
 <div class="container-fluid background-basic fill">
-	<div class="container" style="margin: 50px auto;">
+	<div class="container">
 		<div class="row">
-			<div class="col-xs-12 col-md-6 col-md-offset-3 text-center">
+			<div class="col-xs-12 col-md-6 col-md-offset-3 text-center visible-xs">
+				<div class="btn-group btn-group-sm" data-toggle="buttons">
+					{{> Toolbar}}
+				</div>
+			</div>
+			<div class="col-xs-12 col-md-6 col-md-offset-3 text-center hidden-xs">
 				<div class="btn-group" data-toggle="buttons">
-					<label class="btn btn-default {{#if $eq viewState "box"}}active{{/if}}" id="report-view-option1">
-						<input type="radio" name="report-view" ><span class="glyphicon glyphicon-th"></span> Bokser
-					</label>
-					<label class="btn btn-default {{#if $eq viewState "table"}}active{{/if}}" id="report-view-option2">
-						<input type="radio" name="report-view" ><span class="glyphicon glyphicon-th-list"></span> Tabell
-					</label>
-					<label class="btn btn-default {{#if $eq viewState "map"}}active{{/if}}" id="report-view-option3">
-						<input type="radio" name="report-view" ><span class="glyphicon glyphicon-map-marker"></span> Kart
-					</label>
-					<label class="btn btn-default {{#if $eq viewState "timeline"}}active{{/if}}" id="report-view-option4">
-						<input type="radio" name="report-view" ><span class="glyphicon glyphicon-time"></span> Tidslinje
-					</label>
+					{{> Toolbar}}
 				</div>
 			</div>
 			{{#if showSortBox}}
@@ -67,6 +61,21 @@
 		</div>
 	</div>
 </div>
+</template>
+
+<template name="Toolbar">
+	<label class="btn btn-default {{#if $eq viewState "box"}}active{{/if}}" id="report-view-option1">
+		<input type="radio" name="report-view" ><span class="glyphicon glyphicon-th"></span> Bokser
+	</label>
+	<label class="btn btn-default {{#if $eq viewState "table"}}active{{/if}}" id="report-view-option2">
+		<input type="radio" name="report-view" ><span class="glyphicon glyphicon-th-list"></span> Tabell
+	</label>
+	<label class="btn btn-default {{#if $eq viewState "map"}}active{{/if}}" id="report-view-option3">
+		<input type="radio" name="report-view" ><span class="glyphicon glyphicon-map-marker"></span> Kart
+	</label>
+	<label class="btn btn-default {{#if $eq viewState "timeline"}}active{{/if}}" id="report-view-option4">
+		<input type="radio" name="report-view" ><span class="glyphicon glyphicon-time"></span> Tidslinje
+	</label>
 </template>
 
 <template name="BoxReportView">

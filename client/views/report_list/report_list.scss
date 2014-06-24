@@ -18,12 +18,21 @@
 	background-color: #fff;
 	padding: 10px;
 	border: 2px solid darken(#fff, 3%);
-	box-shadow: 0px 0px 20px darken(#fff, 20%)
+	box-shadow: 0px 0px 20px darken(#fff, 20%);
+	
+	overflow-x: auto;
 }
 
 #report-list-container .content-wrapper {
 	height:575px;
 	min-height:575px;
+}
+
+@media (max-width: 767px) {
+	#report-list-container .content-wrapper {
+		height:375px;
+		min-height:375px;
+	}
 }
 
 .table-row {

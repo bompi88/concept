@@ -13,7 +13,7 @@
 				</div>
 			</div>
 			{{#if showSortBox}}
-			<div class="col-md-3 hidden-xs hidden-sm">
+			<div class="col-md-3 hidden-xs hidden-sm animated fadeIn">
 				<div class="btn-group pull-right"> <a class="btn btn-default dropdown-toggle btn-select" data-toggle="dropdown" href="#"><span style="font-weight:500;">Sorter etter:</span> {{currentSort}} ({{currentSortDirection}}) <span class="caret"></span></a>
 		            <ul class="dropdown-menu" style="text-align:left;">
 		                <li class="sort-toggle" data-id="project-number"><a href="#">Prosjektnummer<div class="pull-right">{{> SortArrow sortBy='project.projectNumber'}}</div></a></li>
@@ -28,7 +28,7 @@
 		            </ul>
 		        </div>
 	        </div>
-	        <div class="col-xs-12 visible-xs visible-sm text-center" style="padding-top: 30px;">
+	        <div class="col-xs-12 visible-xs visible-sm text-center animated fadeIn" style="padding-top: 30px;">
 				<div class="btn-group"> <a class="btn btn-default dropdown-toggle btn-select" data-toggle="dropdown" href="#"><span style="font-weight:500;">Sorter etter:</span> {{currentSort}} ({{currentSortDirection}}) <span class="caret"></span></a>
 		            <ul class="dropdown-menu" style="text-align:left;">
 		                <li class="sort-toggle" data-id="project-number"><a href="#">Prosjektnummer<div class="pull-right">{{> SortArrow sortBy='project.projectNumber'}}</div></a></li>
@@ -85,7 +85,7 @@
 </template>
 
 <template name="TableReportView">
-	<div class="table-container table-responsive">
+	<div class="table-container table-responsive animated fadeIn">
 		<table class="table table-striped table-hover">
 			<thead>
 		        <tr>
@@ -120,7 +120,7 @@
 </template>
 
 <template name="TimelineReportView">
-	<div class="content-wrapper col-xs-12">
+	<div class="content-wrapper col-xs-12 animated fadeIn">
       	<div id="timeline-embed"></div>
     </div>
 </template>

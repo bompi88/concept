@@ -59,7 +59,7 @@
 				{{> TableReportView}}
 			{{/if}}
 			{{#if $eq viewState "map"}}
-				{{> MapReportView}}
+				{{> MapView state='reportLocation'}}
 			{{/if}}
 			{{#if $eq viewState "timeline"}}
 				{{> TimelineReportView}}
@@ -107,12 +107,6 @@
 			  	{{/each}}
 		  	</tbody>
 		</table>
-	</div>
-</template>
-
-<template name="MapReportView">
-	<div class="content-wrapper">
-		<div id="map"></div>
 	</div>
 </template>
 

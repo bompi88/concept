@@ -1,3 +1,46 @@
 /*****************************************************************************/
 /* ConceptIndex: Style */
 /*****************************************************************************/
+
+div.jumbotron {
+	p {
+		-ms-word-break: break-all;
+		word-break: break-all;
+		word-break: break-word;
+
+		-webkit-hyphens: auto;
+		-moz-hyphens: auto;
+		-ms-hyphens: auto;
+		hyphens: auto;
+
+		text-align: justify;
+	}
+
+	a {
+		font-size:20px;
+	}
+}
+
+div.row.p {
+		-ms-word-break: break-all;
+		word-break: break-all;
+		word-break: break-word;
+
+		-webkit-hyphens: auto;
+		-moz-hyphens: auto;
+		-ms-hyphens: auto;
+		hyphens: auto;
+
+		text-align: justify;
+	}
+
+@media (max-width: 450px) {
+	div.jumbotron {
+		padding: 40px 0;
+		
+		h1 {
+			font-weight: 600;
+			font-size: 25px;
+		}
+	}
+}

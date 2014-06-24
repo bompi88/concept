@@ -23,15 +23,37 @@
 	overflow-x: auto;
 }
 
+#timeline-embed {
+	position: relative;
+}
+
 #report-list-container .content-wrapper {
 	height:575px;
 	min-height:575px;
 }
 
+div.container {
+	margin: 50px auto;
+}
+
 @media (max-width: 767px) {
-	#report-list-container .content-wrapper {
-		height:375px;
-		min-height:375px;
+
+	div.container {
+		padding:0;
+	}
+
+	#report-list-container {
+		margin:50px 0;
+		padding:0;
+
+		div.box {
+			padding:0;
+		}
+
+		.content-wrapper {
+			height:auto;
+			min-height:375px;
+		}
 	}
 }
 

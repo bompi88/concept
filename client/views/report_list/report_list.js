@@ -6,6 +6,14 @@ Session.setDefault('sortOrder', 'asc');
 /* ReportList: Event Handlers and Helpers */
 /*****************************************************************************/
 
+
+
+Template.Toolbar.helpers({
+  viewState: function () {
+    return Session.get('ReportViewState');
+  }
+});
+
 Template.ReportList.events({
   'click #report-view-option1': function(event, tmpl) {
     Session.set('ReportViewState', 'box');
@@ -47,12 +55,6 @@ Template.ReportList.events({
   }
 });
 
-Template.MapPopupBox.events({
-  'click .panel': function(event, tmpl) {
-    var id = tmpl.find('.id').value;
-    Router.go('/reports/' + id);
-  }
-});
 
 Template.ReportList.helpers({
   viewState: function () {

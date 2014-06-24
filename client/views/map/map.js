@@ -66,7 +66,8 @@ Template.MapView.rendered = function () {
 
       reports.forEach(function (report) {
         var mapDiv =  L.DomUtil.create("div","lbqs");
-        UI.insert(UI.renderWithData(Template.MapPopupBox,report), mapDiv);
+        report.mapPopup = true;
+        UI.insert(UI.renderWithData(Template.ProjectInformationBox, report), mapDiv);
         if(report && report.project && report.project.location && report.project.location.coordinates && report.project.location.coordinates.lat && report.project.location.coordinates.lng) {
             // add a marker in the given location, attach some popup content to it 
             var marker = L.marker([report.project.location.coordinates.lat, report.project.location.coordinates.lng]).bindLabel(report.project.name, {noHide: true}).addTo(map);

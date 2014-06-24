@@ -262,7 +262,7 @@ Template.TimelineReportView.rendered = function () {
 
         var timeline_config = {
           type: 'timeline',
-          width: "96%",
+          width: "100%",
           height: "550",
           source: data,
           embed_id: 'timeline-embed',

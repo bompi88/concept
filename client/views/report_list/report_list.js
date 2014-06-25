@@ -211,7 +211,7 @@ Template.TimelineReportView.rendered = function () {
 
         res["asset"] = {
           "media": img_url,
-          "credit": "<a href=\""+report.images[0].link+"\">" + report.images[0].copyright +"</a>",
+          "credit": "<a href=\""+report.images[0].link+"\" target=\"_blank\">" + report.images[0].copyright +"</a>",
           "caption":report.images[0].title
         }
       }

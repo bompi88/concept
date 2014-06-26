@@ -100,9 +100,9 @@ createReport = function(tmpl) {
     report.project.costBudget = {};
     report.project.costFinal = {};
 
-    report.project.managementBudget.year = parseInt(tmpl.find('#decision-year').value);
-    report.project.costBudget.year = parseInt(tmpl.find('#decision-year').value);
-    report.project.costFinal.year = parseInt(tmpl.find('#finishing-year').value);
+    report.project.managementBudget.year = parseInt(tmpl.find('#management-budget-year').value);
+    report.project.costBudget.year = parseInt(tmpl.find('#cost-budget-year').value);
+    report.project.costFinal.year = parseInt(tmpl.find('#cost-final-year').value);
 
     report.project.managementBudget.amount = parseInt(tmpl.find('#management-budget').value);
     report.project.costBudget.amount = parseInt(tmpl.find('#cost-budget').value);

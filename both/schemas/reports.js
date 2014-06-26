@@ -101,7 +101,10 @@ ReportScheme = new SimpleSchema({
     },
     "project.managementBudget.year": {
         type: Number,
+        label: "Årstall (Styringsramme)",
         optional: false,
+        max:9999,
+        min:1900,
         regEx: /^[0-9]{4}$/
     },
     "project.managementBudget.amount": {
@@ -116,7 +119,10 @@ ReportScheme = new SimpleSchema({
     },
     "project.costBudget.year": {
         type: Number,
+        label: "Årstall (Kostnadsramme)",
         optional: false,
+        max:9999,
+        min:1900,
         regEx: /^[0-9]{4}$/
     },
     "project.costBudget.amount": {
@@ -131,7 +137,10 @@ ReportScheme = new SimpleSchema({
     },
     "project.costFinal.year": {
         type: Number,
+        label: "Årstall (Sluttkostnad)",
         optional: false,
+        max:9999,
+        min:1900,
         regEx: /^[0-9]{4}$/
     },
     "project.costFinal.amount": {

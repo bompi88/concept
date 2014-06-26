@@ -23,7 +23,7 @@ Router.map(function () {
     controller: 'EditReportController'
   });
 
-  this.route('ReportView', {
+  this.route('Report', {
     path: '/reports/:_id',
     controller: 'ReportViewController'
   });

@@ -7,10 +7,10 @@
 			<div class="overlay"></div>
 			<section id="faktaboks">
 				<dl class="dl-horizontal {{#unless mapPopup}} ls-offset {{/unless}}">
-					<dt>Prosjektnummer</dt>
-					<dd>{{project.projectNumber}}</dd>
 					<dt>Sektor</dt>
 					<dd>{{project.sector}}</dd>
+					<dt>Suksess</dt>
+					<dd>{{>TrafficLight}}</dd>
 					<dt>Årstall påbegynt</dt>
 					<dd>{{project.decisionYear}}</dd>
 					<dt>Årstall ferdigstilt</dt>
@@ -25,8 +25,6 @@
 					<dd>{{project.costFinal.amount}} mill</dd>
 					<dt>Ansvarlig</dt>
 					<dd>{{responsible.organization}}</dd>
-					<dt>Oppdragsgiver</dt>
-					<dd>{{principal}}</dd>
 				</dl>
 			</section>
 		</div>

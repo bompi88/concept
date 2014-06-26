@@ -21,6 +21,7 @@
     "ms-seo": {},
     "bootstrap-image-gallery": {},
     "animate-css": {},
-    "bootboxjs": {}
+    "bootboxjs": {},
+    "pdfkit": {}
   }
 }

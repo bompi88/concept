@@ -25,8 +25,8 @@
       "ms-seo": {},
       "bootstrap-image-gallery": {},
       "animate-css": {},
-      "bootboxjs": {}
-    },
+      "bootboxjs": {},
+      "pdfkit": {}
     "packages": {
       "iron-router": {
         "git": "https://github.com/EventedMind/iron-router.git",
@@ -117,6 +117,11 @@
         "git": "https://github.com/TimHeckel/meteor-bootboxjs.git",
         "tag": "v4.2.0",
         "commit": "2b7d18ad028d9e7b37238ecf2a8a7970735cebd1"
+      },
+      "pdfkit": {
+        "git": "https://github.com/pascoual/meteor-pdfkit.git",
+        "tag": "v1.0.2",
+        "commit": "172677e29ad066e9992f62237d0a0302fbc8efa6"
       },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",

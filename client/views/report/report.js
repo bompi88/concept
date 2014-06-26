@@ -12,7 +12,9 @@ Template.Report.events({
   'click #text-view-long': function(event, tmpl) {
     Session.set('TextState', 'long');
   },
-
+  'click #export-text': function(event, tmpl) {
+    window.open('/generate-pdf/' + this._id);
+  },
   'click .edit-btn': function(event, tmpl) {
     Router.go('/reports/' + this._id + '/edit');
   },

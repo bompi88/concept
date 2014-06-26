@@ -16,7 +16,8 @@ GeneratePdfController = RouteController.extend({
           if (error)
             console.log(error);
           
-          window.location = result;
+          if(result)
+            window.location = result;
         });
       }
       }

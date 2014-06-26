@@ -18,6 +18,21 @@ Template.Report.events({
   'click .edit-btn': function(event, tmpl) {
     Router.go('/reports/' + this._id + '/edit');
   },
+  'click #over-button': function(event, tmpl) {
+
+    bootbox.dialog({
+      message: this.evaluation.overall.long,
+      title: "Samlet vurdering",
+      buttons: {
+        close: {
+          label: "Lukk",
+          className: "btn-default"
+        }
+      }
+    });
+    
+    
+  },
   'click #prod-button': function(event, tmpl) {
 
     bootbox.dialog({

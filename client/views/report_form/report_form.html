@@ -63,6 +63,10 @@ type 		- Type of form; insert, update or remove.
 		<h2>Evaluering</h2>
 		<fieldset>
 			<legend>Tekstlige vurderinger</legend>
+			<h4>Samlet vurdering</h4>
+			{{> afQuickField name='evaluation.overall.short' id="eval-overall-short" placeholder="schemaLabel" rows="5"}}
+			{{> afQuickField name='evaluation.overall.long' id="eval-overall-long" placeholder="schemaLabel" rows="5"}}
+
 			<h4>1. Produktivitet</h4>
 			{{> afQuickField name='evaluation.productivity.short' id="eval-productivity-short" placeholder="schemaLabel" rows="5"}}
 			{{> afQuickField name='evaluation.productivity.long' id="eval-productivity-long" placeholder="schemaLabel" rows="5"}}

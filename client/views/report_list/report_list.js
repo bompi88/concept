@@ -190,7 +190,7 @@ Template.TimelineReportView.rendered = function () {
       var elements = [];
       elements = _.map(reports, function(report){
 
-      var reportRoute = Router.routes['ReportView'].path({_id: report._id});
+      var reportRoute = Router.routes['Report'].path({_id: report._id});
 
       var res = {
         "startDate":report.project.decisionYear.toString(),

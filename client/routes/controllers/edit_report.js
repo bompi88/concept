@@ -13,6 +13,22 @@ EditReportController = AuthRouteController.extend({
 
 	action: function () {
 		this.render();
+	},
+	onAfterAction: function() {
+		uploadObject.reset();
+		var report = this.data();
+		if(report) {
+			if(report.images) {
+				for(var i = 0; i < report.images.length; i++) {
+					uploadObject.addImage({_id:report.images[i].fileId});
+				}
+			}
+			if(report.references) {
+				for(var i = 0; i < report.references.length; i++) {
+					uploadObject.addReference({_id:report.references[i].fileId});
+				}
+			}
+		}
 	}
 });
 

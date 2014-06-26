@@ -127,24 +127,3 @@ Template.ReportForm.helpers({
     return Files.find({_id: {$in : uploadObject.getReferences()}});
   }
 });
-
-/*****************************************************************************/
-/* ReportForm: Lifecycle hooks */
-/*****************************************************************************/
-
-Template.ReportForm.rendered = function () {
-  uploadObject.reset();
-  var report = Router.getData();
-  if(report) {
-    if(report.images) {
-      for(var i = 0; i < report.images.length; i++) {
-        uploadObject.addImage({_id:report.images[i].fileId});
-      }
-    }
-    if(report.references) {
-      for(var i = 0; i < report.references.length; i++) {
-        uploadObject.addReference({_id:report.references[i].fileId});
-      }
-    }
-  }
-};

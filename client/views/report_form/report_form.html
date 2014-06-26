@@ -43,9 +43,16 @@ type 		- Type of form; insert, update or remove.
 		</fieldset>
 		<fieldset>
 			<legend>Økonomiske verdier</legend>
-			{{> afQuickField name='project.managementBudget.amount' id="management-budget" placeholder="schemaLabel"}}
-			{{> afQuickField name='project.costBudget.amount' id="cost-budget" placeholder="schemaLabel"}}
-			{{> afQuickField name='project.costFinal.amount' id="cost-final" placeholder="schemaLabel"}}
+			<div class="col-xs-12 col-sm-6">
+				{{> afQuickField name='project.managementBudget.amount' id="management-budget" placeholder="schemaLabel"}}
+				{{> afQuickField name='project.costBudget.amount' id="cost-budget" placeholder="schemaLabel"}}
+				{{> afQuickField name='project.costFinal.amount' id="cost-final" placeholder="schemaLabel"}}
+			</div>
+			<div class="col-xs-12 col-sm-6">
+				{{> afQuickField name='project.managementBudget.year' id="management-budget-year" placeholder="schemaLabel"}}
+				{{> afQuickField name='project.costBudget.year' id="cost-budget-year" placeholder="schemaLabel"}}
+				{{> afQuickField name='project.costFinal.year' id="cost-final-year" placeholder="schemaLabel"}}
+			</div>
 		</fieldset>
 		<fieldset>
 			<legend>Ansvarlige</legend>

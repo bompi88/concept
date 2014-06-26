@@ -33,6 +33,11 @@ Router.map(function () {
     controller: 'AdminLogonController'
   });
 
+  this.route('GeneratePdf', {
+    path: '/generate-pdf/:_id',
+    controller: 'GeneratePdfController'
+  });
+
   this.route('AdminForgottonPassword', {
     path: '/concept-admin-forgotton-password'
   });

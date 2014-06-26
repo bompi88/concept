@@ -286,12 +286,6 @@ ReportScheme = new SimpleSchema({
         optional: true,
         regEx: textFieldRegEx
     },
-    "principal": {
-        type: String,
-        label: "Oppdragsgiver",
-        optional: false,
-        regEx: textFieldRegEx
-    },
     "images": {
         type: [Object],
         optional: false

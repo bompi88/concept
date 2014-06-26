@@ -197,8 +197,8 @@ Template.Report.rendered = function() {
     var report = Router.getData();
  
     if (report) {
-      var values = _.pluck(report.evaluation, 'value');
-      
+      var values = _.pluck(_.omit(report.evaluation,'overall'), 'value');
+
       var data = {
         labels : ["Produktivitet", "Måloppnåelse", "Virkninger", "Relevans", "Levedyktighet", "Samf.øk. lønnsomhet"],
         datasets : [

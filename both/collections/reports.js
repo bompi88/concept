@@ -77,7 +77,7 @@ createReport = function(tmpl) {
 
     report.project.location = {};
 
-    report.project.location.name = tmpl.find('#location').value || null;
+    report.project.location.name = tmpl.find('#location').value || "";
 
     var coords = locationObject.getCoordinates();
 
@@ -109,9 +109,9 @@ createReport = function(tmpl) {
     report.project.costFinal.amount = parseInt(tmpl.find('#cost-final').value);
 
     report.responsible = {};
-    report.responsible.organization = tmpl.find('#eval-responsible-org').value || null;
-    report.responsible.person = tmpl.find('#eval-responsible-person').value || null;
-    report.principal = tmpl.find('#principal').value || null;
+    report.responsible.organization = tmpl.find('#eval-responsible-org').value || "";
+    report.responsible.person = tmpl.find('#eval-responsible-person').value || "";
+    report.principal = tmpl.find('#principal').value || "";
 
     report.evaluation.productivity = {};
     report.evaluation.achievement = {};
@@ -120,23 +120,23 @@ createReport = function(tmpl) {
     report.evaluation.viability = {};
     report.evaluation.profitability = {};
 
-    report.evaluation.productivity.short = tmpl.find('#eval-productivity-short').value || null;
-    report.evaluation.productivity.long = tmpl.find('#eval-productivity-long').value || null;
+    report.evaluation.productivity.short = tmpl.find('#eval-productivity-short').value || "";
+    report.evaluation.productivity.long = tmpl.find('#eval-productivity-long').value || "";
 
-    report.evaluation.achievement.short = tmpl.find('#eval-achievement-short').value || null;
-    report.evaluation.achievement.long = tmpl.find('#eval-achievement-long').value || null;
+    report.evaluation.achievement.short = tmpl.find('#eval-achievement-short').value || "";
+    report.evaluation.achievement.long = tmpl.find('#eval-achievement-long').value || "";
 
-    report.evaluation.effects.short = tmpl.find('#eval-effects-short').value || null;
-    report.evaluation.effects.long = tmpl.find('#eval-effects-long').value || null;
+    report.evaluation.effects.short = tmpl.find('#eval-effects-short').value || "";
+    report.evaluation.effects.long = tmpl.find('#eval-effects-long').value || "";
 
-    report.evaluation.relevance.short = tmpl.find('#eval-relevance-short').value || null;
-    report.evaluation.relevance.long = tmpl.find('#eval-relevance-long').value || null;
+    report.evaluation.relevance.short = tmpl.find('#eval-relevance-short').value || "";
+    report.evaluation.relevance.long = tmpl.find('#eval-relevance-long').value || "";
 
-    report.evaluation.viability.short = tmpl.find('#eval-viability-short').value || null;
-    report.evaluation.viability.long = tmpl.find('#eval-viability-long').value || null;
+    report.evaluation.viability.short = tmpl.find('#eval-viability-short').value || "";
+    report.evaluation.viability.long = tmpl.find('#eval-viability-long').value || "";
 
-    report.evaluation.profitability.short = tmpl.find('#eval-profitability-short').value || null;
-    report.evaluation.profitability.long = tmpl.find('#eval-profitability-long').value || null;
+    report.evaluation.profitability.short = tmpl.find('#eval-profitability-short').value || "";
+    report.evaluation.profitability.long = tmpl.find('#eval-profitability-long').value || "";
 
     report.evaluation.productivity.value = parseInt(tmpl.find('input[name="num-eval-productivity"]:checked').value);
     report.evaluation.achievement.value = parseInt(tmpl.find('input[name="num-eval-achievement"]:checked').value);

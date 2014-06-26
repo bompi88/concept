@@ -15,16 +15,26 @@ createMofidiers = function(modifier, tmpl) {
         lng = coords.lng.toString();
     }
 
+    var productivity_value = parseInt(tmpl.find('input[name="num-eval-productivity"]:checked').value);
+    var achievement_value = parseInt(tmpl.find('input[name="num-eval-achievement"]:checked').value);
+    var effects_value = parseInt(tmpl.find('input[name="num-eval-effects"]:checked').value);
+    var relevance_value = parseInt(tmpl.find('input[name="num-eval-relevance"]:checked').value);
+    var viability_value = parseInt(tmpl.find('input[name="num-eval-viability"]:checked').value);
+    var profitability_value = parseInt(tmpl.find('input[name="num-eval-profitability"]:checked').value);
+
+    var success = Math.round((((productivity_value + achievement_value + effects_value + relevance_value + viability_value + profitability_value - 6)/31) + (1/6)) * 3);
+
+    console.log(success)
     var mods = {
         "project.location.coordinates.lat": lat,
         "project.location.coordinates.lng": lng,
-        "project.successCategory": parseInt(tmpl.find('input[name="traffic-light"]:checked').value),
-        "evaluation.productivity.value": parseInt(tmpl.find('input[name="num-eval-productivity"]:checked').value),
-        "evaluation.achievement.value": parseInt(tmpl.find('input[name="num-eval-achievement"]:checked').value),
-        "evaluation.effects.value": parseInt(tmpl.find('input[name="num-eval-effects"]:checked').value),
-        "evaluation.relevance.value": parseInt(tmpl.find('input[name="num-eval-relevance"]:checked').value),
-        "evaluation.viability.value": parseInt(tmpl.find('input[name="num-eval-viability"]:checked').value),
-        "evaluation.profitability.value": parseInt(tmpl.find('input[name="num-eval-profitability"]:checked').value),
+        "project.successCategory": success,
+        "evaluation.productivity.value": productivity_value,
+        "evaluation.achievement.value": achievement_value,
+        "evaluation.effects.value": effects_value,
+        "evaluation.relevance.value": relevance_value,
+        "evaluation.viability.value": viability_value,
+        "evaluation.profitability.value": profitability_value,
         "_public": parseInt(tmpl.find('input[name="public-var"]:checked').value) == 1
     };
 
@@ -86,8 +96,6 @@ createReport = function(tmpl) {
     report.project.location.coordinates.lat = coords.lat;
     report.project.location.coordinates.lng = coords.lng;
 
-    report.project.successCategory = parseInt(tmpl.find('input[name="traffic-light"]:checked').value);
-
     report.project.projectDescription = {};
     report.project.projectDescription.short = tmpl.find('#project-desc-short').value;
     report.project.projectDescription.long = tmpl.find('#project-desc-long').value;
@@ -141,12 +149,21 @@ createReport = function(tmpl) {
     report.evaluation.profitability.short = tmpl.find('#eval-profitability-short').value || "";
     report.evaluation.profitability.long = tmpl.find('#eval-profitability-long').value || "";
 
-    report.evaluation.productivity.value = parseInt(tmpl.find('input[name="num-eval-productivity"]:checked').value);
-    report.evaluation.achievement.value = parseInt(tmpl.find('input[name="num-eval-achievement"]:checked').value);
-    report.evaluation.effects.value = parseInt(tmpl.find('input[name="num-eval-effects"]:checked').value);
-    report.evaluation.relevance.value = parseInt(tmpl.find('input[name="num-eval-relevance"]:checked').value);
-    report.evaluation.viability.value = parseInt(tmpl.find('input[name="num-eval-viability"]:checked').value);
-    report.evaluation.profitability.value = parseInt(tmpl.find('input[name="num-eval-profitability"]:checked').value);
+    var productivity_value = parseInt(tmpl.find('input[name="num-eval-productivity"]:checked').value);
+    var achievement_value = parseInt(tmpl.find('input[name="num-eval-achievement"]:checked').value);
+    var effects_value = parseInt(tmpl.find('input[name="num-eval-effects"]:checked').value);
+    var relevance_value = parseInt(tmpl.find('input[name="num-eval-relevance"]:checked').value);
+    var viability_value = parseInt(tmpl.find('input[name="num-eval-viability"]:checked').value);
+    var profitability_value = parseInt(tmpl.find('input[name="num-eval-profitability"]:checked').value);
+
+    report.evaluation.productivity.value = productivity_value;
+    report.evaluation.achievement.value = achievement_value;
+    report.evaluation.effects.value = effects_value;
+    report.evaluation.relevance.value = relevance_value;
+    report.evaluation.viability.value = viability_value;
+    report.evaluation.profitability.value = profitability_value;
+
+    report.project.successCategory = Math.round((((productivity_value + achievement_value + effects_value + relevance_value + viability_value + profitability_value - 6)/31) + (1/6)) * 3);
 
     var imgs_ids = uploadObject.getImages();
     var imgs = [];

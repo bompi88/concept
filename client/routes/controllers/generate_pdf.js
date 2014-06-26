@@ -1,6 +1,6 @@
 GeneratePdfController = RouteController.extend({
   waitOn: function () {
-    return [ Meteor.subscribe('report', this.params._id), Meteor.subscribe('images'), Meteor.subscribe('files') ];
+    return Meteor.subscribe('report', this.params._id);
   },
 
   data: function () {
@@ -9,7 +9,7 @@ GeneratePdfController = RouteController.extend({
 
 	action: function () {
     if(this.ready()) {
-      if(this.params._id !== 'undefined') {
+      if(typeof this.params._id !== 'undefined' && this.params._id !== 'undefined') {
         Meteor.call('createPdf', Router.getData(), function (error, result) {
           if (error)
             console.log(error);

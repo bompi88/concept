@@ -19,15 +19,19 @@
 	margin-top: 20px;
 }
 
-canvas{
+/*canvas{
 	width: 100% !important;
 	max-width: 800px;
 	height: auto !important;
 	margin-top: 100px;
 	margin-bottom: -80px;
 
-}
+}*/
 
+
+figcaption {
+  margin-top: -80px;
+}
 
 
 @media (min-width: 979px) {

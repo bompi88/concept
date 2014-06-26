@@ -32,12 +32,34 @@ Template.ShortTextReport.helpers({
 Template.ShortTextReport.rendered = function () {
 
 
+
+
   
   Deps.autorun(function () {
+
 
     var report = Router.getData();
  
     if (report) {
+// blueimp.Gallery(
+//           $('#links a'), {
+//               onslide: function (index, slide) {
+
+//                 var text = this.list[index].getAttribute('data-description');
+
+//             if (text) {
+// console.log(slide)
+//                 var footer = $(slide).find(".modal-footer");
+//                 var desc = footer.find(".desc");
+//                 console.log(footer)
+//                 console.log(desc)
+
+//                   footer.prepend("<div class=\"desc text-center\">" + text + "</div>");
+                
+//             }
+//               },
+//               container: '#blueimp-gallery'
+//           });
       var values = _.pluck(report.evaluation, 'value');
       
       var data = {
@@ -87,4 +109,6 @@ Template.ShortTextReport.rendered = function () {
       }
     }
   });
+
+ 
 };

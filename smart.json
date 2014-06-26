@@ -20,6 +20,7 @@
     "autoform": {},
     "ms-seo": {},
     "bootstrap-image-gallery": {},
-    "animate-css": {}
+    "animate-css": {},
+    "bootboxjs": {}
   }
 }

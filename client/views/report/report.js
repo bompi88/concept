@@ -15,7 +15,115 @@ Template.Report.events({
 
   'click .edit-btn': function(event, tmpl) {
     Router.go('/reports/' + this._id + '/edit');
+  },
+  'click #prod-button': function(event, tmpl) {
+
+    bootbox.dialog({
+      message: this.evaluation.productivity.long,
+      title: "Produktivitet",
+      buttons: {
+        close: {
+          label: "Lukk",
+          className: "btn-default"
+        }
+      }
+    });
+    
+    
+  },
+
+  'click #eff-button': function(event, tmpl) {
+
+    bootbox.dialog({
+      message: this.evaluation.effects.long,
+      title: "Virkninger",
+      buttons: {
+        close: {
+          label: "Lukk",
+          className: "btn-default"
+        }
+      }
+    });
+    
+    
+  },
+
+  'click #rel-button': function(event, tmpl) {
+
+    bootbox.dialog({
+      message: this.evaluation.relevance.long,
+      title: "Relevans",
+      buttons: {
+        close: {
+          label: "Lukk",
+          className: "btn-default"
+        }
+      }
+    });
+    
+    
+  },
+  'click #via-button': function(event, tmpl) {
+
+    bootbox.dialog({
+      message: this.evaluation.viability.long,
+      title: "Levedyktighet",
+      buttons: {
+        close: {
+          label: "Lukk",
+          className: "btn-default"
+        }
+      }
+    });
+    
+    
+  },
+  'click #prof-button': function(event, tmpl) {
+
+    bootbox.dialog({
+      message: this.evaluation.profitability.long,
+      title: "Samfunnsøkonomisk lønnsomhet",
+      buttons: {
+        close: {
+          label: "Lukk",
+          className: "btn-default"
+        }
+      }
+    });
+    
+    
+  },
+  'click #ach-button': function(event, tmpl) {
+
+    bootbox.dialog({
+      message: this.evaluation.achievement.long,
+      title: "Måloppnåelse",
+      buttons: {
+        close: {
+          label: "Lukk",
+          className: "btn-default"
+        }
+      }
+    });
+    
+    
+  },
+  'click #desc-button': function(event, tmpl) {
+
+    bootbox.dialog({
+      message: this.project.projectDescription.long,
+      title: "Prosjektbeskrivelse og mål",
+      buttons: {
+        close: {
+          label: "Lukk",
+          className: "btn-default"
+        }
+      }
+    });
+    
+    
   }
+
 });
 
 /*****************************************************************************/

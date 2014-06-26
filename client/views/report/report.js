@@ -1,5 +1,43 @@
-Template.ShortTextReport.helpers({
-   getMainImageUrl: function() {
+Session.setDefault('TextState','short');
+
+/*****************************************************************************/
+/* ReportView: Event Handlers */
+/*****************************************************************************/
+
+Template.Report.events({
+  'click #text-view-short': function(event, tmpl) {
+    Session.set('TextState', 'short');
+  },
+
+  'click #text-view-long': function(event, tmpl) {
+    Session.set('TextState', 'long');
+  },
+  'click #export-text': function(event, tmpl) {
+    window.open('/generate-pdf/' + this._id);
+  },
+  'click .edit-btn': function(event, tmpl) {
+    Router.go('/reports/' + this._id + '/edit');
+  }
+});
+
+/*****************************************************************************/
+/* ReportView: Helpers */
+/*****************************************************************************/
+
+Template.Report.helpers({
+  textState: function () {
+    return Session.get('TextState');
+  },
+  getFileURL: function(fileId) {
+    var file = Files.findOne({_id:fileId});
+    
+    if (file) {
+      return file.url();
+    }
+    else
+      return false;
+  },
+     getMainImageUrl: function() {
     if(this.images && this.images[0]) {
       var original = Images.findOne({_id:this.images[0].fileId});
 
@@ -28,38 +66,14 @@ Template.ShortTextReport.helpers({
 });
 
 
-
-Template.ShortTextReport.rendered = function () {
-
+Template.Report.rendered = function() {
 
 
-
-  
   Deps.autorun(function () {
-
 
     var report = Router.getData();
  
     if (report) {
-// blueimp.Gallery(
-//           $('#links a'), {
-//               onslide: function (index, slide) {
-
-//                 var text = this.list[index].getAttribute('data-description');
-
-//             if (text) {
-// console.log(slide)
-//                 var footer = $(slide).find(".modal-footer");
-//                 var desc = footer.find(".desc");
-//                 console.log(footer)
-//                 console.log(desc)
-
-//                   footer.prepend("<div class=\"desc text-center\">" + text + "</div>");
-                
-//             }
-//               },
-//               container: '#blueimp-gallery'
-//           });
       var values = _.pluck(report.evaluation, 'value');
       
       var data = {
@@ -78,7 +92,7 @@ Template.ShortTextReport.rendered = function () {
         //Boolean - Whether to show labels on the scale 
         scaleShowLabels : true,
         //Number - Scale label font size in pixels  
-        scaleFontSize : 20,
+        scaleFontSize : 22,
         //Boolean - If we show the scale above the chart data     
         //scaleOverlay : true,
         //Boolean - If we want to override with a hard coded scale
@@ -91,7 +105,7 @@ Template.ShortTextReport.rendered = function () {
         //Number - The centre starting value
         scaleStartValue : 0,
         //Number - Point label font size in pixels  
-        pointLabelFontSize : 22,
+        pointLabelFontSize : 24,
         //String - Point label font colour  
         pointLabelFontColor : "rgba(0,0,0,0.8)",
         //String - Colour of the scale line 
@@ -110,5 +124,22 @@ Template.ShortTextReport.rendered = function () {
     }
   });
 
- 
-};
+  $('body').scrollspy({ target: '#sidebar'});
+
+          // figure out a nice offset from the top of the page
+        var scrollTopOffset = 55; // + 50;
+        // catch clicks on sidebar navigation links and handle them
+        $('#sidebar li a').on('click', function(evt){
+            // stop the default browser behaviour for the click 
+            // on the sidebar navigation link
+            evt.preventDefault();
+            // get a handle on the target element of the clicked link
+            var $target = $($(this).attr('href'));
+            // manually scroll the window vertically to the correct
+            // offset to nicely display the target element at the top
+            $(window).scrollTop($target.offset().top-(scrollTopOffset));
+        }); 
+
+
+}
+

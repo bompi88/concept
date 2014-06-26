@@ -111,7 +111,6 @@ createReport = function(tmpl) {
     report.responsible = {};
     report.responsible.organization = tmpl.find('#eval-responsible-org').value || "";
     report.responsible.person = tmpl.find('#eval-responsible-person').value || "";
-    report.principal = tmpl.find('#principal').value || "";
 
     report.evaluation.productivity = {};
     report.evaluation.achievement = {};

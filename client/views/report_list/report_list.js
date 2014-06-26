@@ -34,6 +34,8 @@ Template.ReportList.events({
       orderBy('project.projectNumber');
     } else if (t === 'name') {
       orderBy('project.name');
+    } else if (t === 'success') {
+      orderBy('project.successCategory', -1);
     } else if (t === 'sector') {
       orderBy('project.sector');
     } else if (t === 'finishing-year') {
@@ -68,6 +70,8 @@ Template.ReportList.helpers({
       text = 'Prosjektnummer';
     } else if (curSort === 'project.name') {
       text = 'Navn';
+    } else if (curSort === 'project.successCategory') {
+      text = 'Suksesskategori';
     } else if (curSort === 'project.sector') {
       text = 'Sektor';
     } else if (curSort === 'project.finishingYear') {
@@ -113,12 +117,16 @@ Template.BoxReportView.helpers({
   }
 });
 
-var orderBy = function(attr) {
+var orderBy = function(attr, asc) {
   if(Session.get('sortBy') === attr) {
     reverseOrder();
   } else {
     Session.set('sortBy', attr);
-    Session.set('sortOrder', 'asc');
+    if(asc == -1) {
+      Session.set('sortOrder', 'desc');
+    } else {
+      Session.set('sortOrder', 'asc');
+    }
   }
 };
 

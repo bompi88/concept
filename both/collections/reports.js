@@ -112,12 +112,16 @@ createReport = function(tmpl) {
     report.responsible.organization = tmpl.find('#eval-responsible-org').value || "";
     report.responsible.person = tmpl.find('#eval-responsible-person').value || "";
 
+    report.evaluation.overall = {};
     report.evaluation.productivity = {};
     report.evaluation.achievement = {};
     report.evaluation.effects = {};
     report.evaluation.relevance = {};
     report.evaluation.viability = {};
     report.evaluation.profitability = {};
+
+    report.evaluation.overall.short = tmpl.find('#eval-overall-short').value || "";
+    report.evaluation.overall.long = tmpl.find('#eval-overall-long').value || "";
 
     report.evaluation.productivity.short = tmpl.find('#eval-productivity-short').value || "";
     report.evaluation.productivity.long = tmpl.find('#eval-productivity-long').value || "";

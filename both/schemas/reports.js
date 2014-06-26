@@ -153,6 +153,22 @@ ReportScheme = new SimpleSchema({
         type: Object,
         optional: false
     },
+    "evaluation.overall": {
+        type: Object,
+        optional: false
+    },
+    "evaluation.overall.short": {
+        type: String,
+        label: "Kort samlet vurdering",
+        optional: true,
+        regEx: textAreaRegEx
+    },
+    "evaluation.overall.long": {
+        type: String,
+        label: "Utdypende samlet vurdering",
+        optional: true,
+        regEx: textAreaRegEx
+    },
     "evaluation.productivity": {
         type: Object,
         optional: false

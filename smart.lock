@@ -27,6 +27,7 @@
       "animate-css": {},
       "bootboxjs": {},
       "pdfkit": {}
+    },
     "packages": {
       "iron-router": {
         "git": "https://github.com/EventedMind/iron-router.git",

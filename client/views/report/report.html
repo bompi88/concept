@@ -1,5 +1,6 @@
 <template name="Report">
 	<div class="container content-wrapper animated fadeIn" id="mycontent">
+
 		<header>
 			<div class="page-header text-center">
 				<h1 id="information">{{project.name}}</h1>
@@ -22,11 +23,13 @@
 		</header>
 
 		<div class="row">
-			<div class="col-md-10">
+			<div class="col-xs-12 col-lg-10">
 
 				<div class="row section-padding">
 					<div class="col-md-7">
-						<p>{{project.projectDescription.short}}</p>
+						<p>{{project.projectDescription.short}}
+							<a href="#" id="desc-button"> Les mer &raquo;</a>
+						</p>
 						<figure id="projectImage">
 							<img src="{{getMainImageUrl store='original'}}" class="img-responsive" style="max-height:350px;" alt="Beskrivese av sambandet Ørsta/Volda-Eiksund. Foto." >
 							<figcaption class="text-center">{{images.[0].title}}. Foto: <a href="{{images.[0].link}}"> {{images.[0].copyright}}</a></figcaption>
@@ -53,28 +56,43 @@
 					</div>
 
 					<div class="col-md-7">
+
 						<h2>Evaluering <small> utført av {{responsible.organization}} ved {{responsible.person}}</small></h2>
 
 						<h3 id="evaluation-overall">Samlet vurdering</h3>
-						<p>Integer nec aliquam massa. Praesent et porttitor lectus, a vulputate nisl. Nam non risus ut neque aliquam dapibus id a.</p>
+						<p>Integer nec aliquam massa. Praesent et porttitor lectus, a vulputate nisl. Nam non risus ut neque aliquam dapibus id a.
+							<a href="#" id="over-button">Les mer &raquo;</a>
+						</p>
 
 						<h4 id="evaluation-productivity">Produktivitet</h4>
-						<p>{{evaluation.productivity.short}} <b>{{evaluation.productivity.value}} av 6 poeng</b>.</p>
+						<p>{{evaluation.productivity.short}} <b>{{evaluation.productivity.value}} av 6 poeng</b>.
+							<a href="#" id="prod-button">Les mer &raquo;</a>
+						</p>
 
 						<h4 id="evaluation-achievement">Måloppnåelse</h4>
-						<p>{{evaluation.achievement.short}} <b>{{evaluation.achievement.value}} av 6 poeng</b>.</p>
+						<p>{{evaluation.achievement.short}} <b>{{evaluation.achievement.value}} av 6 poeng</b>.
+							<a href="#" id="ach-button">Les mer &raquo;</a>
+						</p>
 
 						<h4 id="evaluation-effects">Virkninger</h4>
-						<p>{{evaluation.effects.short}} <b>{{evaluation.effects.value}} av 6 poeng</b>.</p>
+						<p>{{evaluation.effects.short}} <b>{{evaluation.effects.value}} av 6 poeng</b>.
+							<a href="#" id="eff-button">Les mer &raquo;</a>
+						</p>
 
 						<h4 id="evaluation-relevance">Relevans</h4>
-						<p>{{evaluation.relevance.short}} <b>{{evaluation.relevance.value}} av 6 poeng</b>.</p>
+						<p>{{evaluation.relevance.short}} <b>{{evaluation.relevance.value}} av 6 poeng</b>.
+							<a href="#" id="rel-button">Les mer &raquo;</a>
+						</p>
 
 						<h4 id="evaluation-viability">Levedyktighet</h4>
-						<p>{{evaluation.viability.short}} <b>{{evaluation.viability.value}} av 6 poeng</b>.</p>
+						<p>{{evaluation.viability.short}} <b>{{evaluation.viability.value}} av 6 poeng</b>.
+							<a href="#" id="via-button">Les mer &raquo;</a>
+						</p>
 
 						<h4 id="evaluation-profitability">Samfunnsøkonomisk lønnsomhet</h4>
-						<p>{{evaluation.profitability.short}} <b>{{evaluation.profitability.value}} av 6 poeng</b>.</p>
+						<p>{{evaluation.profitability.short}} <b>{{evaluation.profitability.value}} av 6 poeng</b>.
+							<a href="#" id="prof-button">Les mer&raquo;</a>
+						</p>
 					</div>
 
 				</div>
@@ -187,5 +205,6 @@
 		</div>
 
 	</div>
+
 
 </template>

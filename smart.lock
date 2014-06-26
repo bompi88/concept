@@ -25,6 +25,7 @@
       "ms-seo": {},
       "bootstrap-image-gallery": {},
       "animate-css": {},
+      "bootboxjs": {},
       "pdfkit": {}
     },
     "packages": {
@@ -113,6 +114,11 @@
         "tag": "v3.1.1",
         "commit": "59ce70b99dff5bc3d1227b789eefa43a761db158"
       },
+      "bootboxjs": {
+        "git": "https://github.com/TimHeckel/meteor-bootboxjs.git",
+        "tag": "v4.2.0",
+        "commit": "2b7d18ad028d9e7b37238ecf2a8a7970735cebd1"
+      },
       "pdfkit": {
         "git": "https://github.com/pascoual/meteor-pdfkit.git",
         "tag": "v1.0.2",
@@ -177,6 +183,11 @@
         "git": "https://github.com/acreeger/meteor-moment.git",
         "tag": "v2.6.0",
         "commit": "26156df681750fd6e6ed77043eef32b6653ebbdf"
+      },
+      "bootstrap-3": {
+        "git": "https://github.com/mangasocial/meteor-bootstrap-3.git",
+        "tag": "v3.1.1-1",
+        "commit": "63dd38968828bb8963636df93e9a1c45e2dfe67e"
       },
       "cfs-filesaver": {
         "git": "https://github.com/CollectionFS/Meteor-cfs-filesaver.git",

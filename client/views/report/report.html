@@ -1,0 +1,191 @@
+<template name="Report">
+	<div class="container content-wrapper animated fadeIn" id="mycontent">
+		<header>
+			<div class="page-header text-center">
+				<h1 id="information">{{project.name}}</h1>
+				<div class="btn-group button-margin" data-toggle="buttons">
+					<label class="btn btn-default {{#if $eq textState "short"}}active{{/if}}" id="text-view-short">
+						<input type="radio" name="text-view" ><span class="glyphicon glyphicon-tasks"></span> Kort versjon
+					</label>
+					<label class="btn btn-default {{#if $eq textState "long"}}active{{/if}}" id="text-view-long">
+						<input type="radio" name="text-view" ><span class="glyphicon glyphicon-align-justify"></span> Eksporter
+					</label>
+					{{#if currentUser}}
+					<label class="btn btn-success edit-btn">
+						<input type="radio" name="text-view" ><span class="glyphicon glyphicon-edit"></span> Rediger
+					</label>
+					{{/if}}
+				</div>
+
+
+			</div>
+		</header>
+
+		<div class="row">
+			<div class="col-md-10">
+
+				<div class="row section-padding">
+					<div class="col-md-7">
+						<p>{{project.projectDescription.short}}</p>
+						<figure id="projectImage">
+							<img src="{{getMainImageUrl store='original'}}" class="img-responsive" style="max-height:350px;" alt="Beskrivese av sambandet Ørsta/Volda-Eiksund. Foto." >
+							<figcaption class="text-center">{{images.[0].title}}. Foto: <a href="{{images.[0].link}}"> {{images.[0].copyright}}</a></figcaption>
+						</figure>
+					</div>
+
+					<div class="col-md-5">
+						<div class="center-block">
+							{{>ProjectInformationBox}}
+						</div>
+					</div>
+
+				</div>
+
+
+				<hr>
+
+				<div class="row section-padding" id="evaluation">
+					<div class="col-md-5">
+						<figure id="radarChart">
+							<canvas id="spiderEvaluation" height="800" width="800"></canvas>
+							<figcaption class="text-center">Figur: Karakter til vurderingskriterier</figcaption>
+						</figure>
+					</div>
+
+					<div class="col-md-7">
+						<h2>Evaluering <small> utført av {{responsible.organization}} ved {{responsible.person}}</small></h2>
+
+						<h3 id="evaluation-overall">Samlet vurdering</h3>
+						<p>Integer nec aliquam massa. Praesent et porttitor lectus, a vulputate nisl. Nam non risus ut neque aliquam dapibus id a.</p>
+
+						<h4 id="evaluation-productivity">Produktivitet</h4>
+						<p>{{evaluation.productivity.short}} <b>{{evaluation.productivity.value}} av 6 poeng</b>.</p>
+
+						<h4 id="evaluation-achievement">Måloppnåelse</h4>
+						<p>{{evaluation.achievement.short}} <b>{{evaluation.achievement.value}} av 6 poeng</b>.</p>
+
+						<h4 id="evaluation-effects">Virkninger</h4>
+						<p>{{evaluation.effects.short}} <b>{{evaluation.effects.value}} av 6 poeng</b>.</p>
+
+						<h4 id="evaluation-relevance">Relevans</h4>
+						<p>{{evaluation.relevance.short}} <b>{{evaluation.relevance.value}} av 6 poeng</b>.</p>
+
+						<h4 id="evaluation-viability">Levedyktighet</h4>
+						<p>{{evaluation.viability.short}} <b>{{evaluation.viability.value}} av 6 poeng</b>.</p>
+
+						<h4 id="evaluation-profitability">Samfunnsøkonomisk lønnsomhet</h4>
+						<p>{{evaluation.profitability.short}} <b>{{evaluation.profitability.value}} av 6 poeng</b>.</p>
+					</div>
+
+				</div>
+
+				<hr>
+
+				<div class="section-padding" id="images">
+					<h2>Bilder</h2>
+					<!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
+					<div id="blueimp-gallery" class="blueimp-gallery">
+						<!-- The container for the modal slides -->
+						<div class="slides"></div>
+						<!-- Controls for the borderless lightbox -->
+						<h3 class="title"></h3>
+						<p class="description"></p>
+						<a class="prev">‹</a>
+						<a class="next">›</a>
+						<a class="close">×</a>
+						<a class="play-pause"></a>
+						<ol class="indicator"></ol>
+						<!-- The modal dialog, which will be used to wrap the lightbox content -->
+						<div class="modal fade">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" aria-hidden="true">&times;</button>
+										<h4 class="modal-title"></h4>
+									</div>
+									<div class="modal-body next"></div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default pull-left prev">
+											<i class="glyphicon glyphicon-chevron-left"></i>
+											Forrige
+										</button>
+										<button type="button" class="btn btn-primary next">
+											Neste
+											<i class="glyphicon glyphicon-chevron-right"></i>
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="links">
+
+						{{#each images}}
+						<a href="{{getImageUrl fileId}}" title="{{title}}" data-description="Foto: {{copyright}}" data-gallery>
+							<img src="{{getThumbUrl fileId}}" alt="title">
+						</a>
+						{{/each}}
+					</div>
+				</div>
+
+				<hr>
+
+				<div class="section-padding" id="references">
+
+					<h2>Litteratur og referanser</h2>
+
+					<div class="col-md-6">
+						<div class="table-responsive text-center">
+							<table class="table table-condensed">
+								<thead>
+									<tr>
+										<th>Tittel</th>
+										<th>Dato</th>
+										<th>Type dokument</th>
+										<th>Lenke</th>
+									</tr>
+								</thead>
+								<tbody>
+									{{#each references}}
+									<tr>
+										<td>{{title}}</td>
+										<td>{{date}}</td>
+										<td>{{typedoc}}</td>
+										<td><a href="{{getFileURL fileId}}">Last ned</a></td>
+									</tr>
+									{{/each}}
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="col-md-2 hidden-md" id="body-right">
+				<nav class="bs-docs-sidebar" id="sidebar">
+					<ul id="mynav" data-spy="affix" data-offset="60" class="nav nav-stacked fixed">
+						<li><a href="#information" class="">Prosjektinformasjon</a></li>
+						<li><a href="#evaluation" class="" contenteditable="false">Evaluering</a>
+							<ul class="nav nav-stacked">
+								<li><a href="#evaluation-overall" class="">Samlet vurdering</a></li>
+								<li><a href="#evaluation-productivity" class="">Produktivitet</a></li>
+								<li><a href="#evaluation-achievement" class="">Måloppnåelse</a></li>
+								<li><a href="#evaluation-effects" class="">Virkninger</a></li>
+								<li><a href="#evaluation-relevance" class="">Relevans</a></li>
+								<li><a href="#evaluation-viability" class="">Levedyktighet</a></li>
+								<li><a href="#evaluation-profitability" class="">Samfunnsøkonomisk lønnsomhet</a></li>
+							</ul>
+						</li>
+						<li><a href="#images" class="" contenteditable="false">Bilder</a></li>
+						<li><a href="#references" class="" contenteditable="false">Referanser</a></li>
+					</ul>
+				</nav>
+
+			</div>
+	
+		</div>
+
+	</div>
+
+</template>

@@ -18,6 +18,7 @@
 		            <ul class="dropdown-menu" style="text-align:left;">
 		                <li class="sort-toggle" data-id="project-number"><a href="#">Prosjektnummer<div class="pull-right">{{> SortArrow sortBy='project.projectNumber'}}</div></a></li>
 		                <li class="sort-toggle" data-id="name"><a href="#">Navn<div class="pull-right">{{> SortArrow sortBy='project.name'}}</div></a></li>
+		                <li class="sort-toggle" data-id="success"><a href="#">Suksesskategori<div class="pull-right">{{> SortArrow sortBy='project.successCategory' reversed="1"}}</div></a></li>
 			            <li class="sort-toggle" data-id="sector"><a href="#">Sektor<div class="pull-right">{{> SortArrow sortBy='project.sector'}}</div></a></li>
 			            <li class="sort-toggle" data-id="finishing-year"><a href="#">Årstall ferdigstilt<div class="pull-right">{{> SortArrow sortBy='project.finishingYear'}}</div></a></li>
 			            <li class="sort-toggle" data-id="evaluation-year"><a href="#">Årstall evaluering<div class="pull-right">{{> SortArrow sortBy='project.evaluationYear'}}</div></a></li>
@@ -33,6 +34,7 @@
 		            <ul class="dropdown-menu" style="text-align:left;">
 		                <li class="sort-toggle" data-id="project-number"><a href="#">Prosjektnummer<div class="pull-right">{{> SortArrow sortBy='project.projectNumber'}}</div></a></li>
 		                <li class="sort-toggle" data-id="name"><a href="#">Navn<div class="pull-right">{{> SortArrow sortBy='project.name'}}</div></a></li>
+		                <li class="sort-toggle" data-id="success"><a href="#">Suksesskategori<div class="pull-right">{{> SortArrow sortBy='project.successCategory' reversed="1"}}</div></a></li>
 			            <li class="sort-toggle" data-id="sector"><a href="#">Sektor<div class="pull-right">{{> SortArrow sortBy='project.sector'}}</div></a></li>
 			            <li class="sort-toggle" data-id="finishing-year"><a href="#">Årstall ferdigstilt<div class="pull-right">{{> SortArrow sortBy='project.finishingYear'}}</div></a></li>
 			            <li class="sort-toggle" data-id="evaluation-year"><a href="#">Årstall evaluering<div class="pull-right">{{> SortArrow sortBy='project.evaluationYear'}}</div></a></li>
@@ -92,6 +94,7 @@
 			<thead>
 		        <tr>
 		            <th class="sort-toggle table-header" data-id="name">Navn {{> SortArrow sortBy='project.name'}}</th>
+		            <th class="sort-toggle table-header" data-id="success">Suksesskategori {{> SortArrow sortBy='project.successCategory' reversed="1"}}</th>
 		            <th class="sort-toggle table-header" data-id="sector">Sektor {{> SortArrow sortBy='project.sector'}}</th>
 		            <th class="sort-toggle table-header" data-id="finishing-year">Årstall ferdigstilt {{> SortArrow sortBy='project.finishingYear'}}</th>
 		            <th class="sort-toggle table-header" data-id="evaluation-year">Årstall evaluering {{> SortArrow sortBy='project.evaluationYear'}}</th>
@@ -104,6 +107,7 @@
 				{{#each reports}}
 			  		<tr class="table-row">
 			            <td>{{project.name}}</td>
+			            <td>{{> TrafficLight}}</td>
 			            <td>{{project.sector}}</td>
 			            <td>{{project.finishingYear}}</td>
 			            <td>{{project.evaluationYear}}</td>
@@ -124,5 +128,9 @@
 </template>
 
 <template name="SortArrow">
-	{{#if $.Session.equals 'sortBy' sortBy}}{{#if $.Session.equals 'sortOrder' 'asc'}}<span class="glyphicon glyphicon-chevron-down"></span>{{else}}<span class="glyphicon glyphicon-chevron-up"></span>{{/if}}{{/if}}
+	{{#if reversed}}
+		{{#if $.Session.equals 'sortBy' sortBy}}{{#if $.Session.equals 'sortOrder' 'desc'}}<span class="glyphicon glyphicon-chevron-down"></span>{{else}}<span class="glyphicon glyphicon-chevron-up"></span>{{/if}}{{/if}}
+	{{else}}
+		{{#if $.Session.equals 'sortBy' sortBy}}{{#if $.Session.equals 'sortOrder' 'asc'}}<span class="glyphicon glyphicon-chevron-down"></span>{{else}}<span class="glyphicon glyphicon-chevron-up"></span>{{/if}}{{/if}}
+	{{/if}}
 </template>

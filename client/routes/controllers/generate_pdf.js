@@ -9,15 +9,16 @@ GeneratePdfController = RouteController.extend({
 
 	action: function () {
     if(this.ready()) {
-      if(typeof this.params._id !== 'undefined' && this.params._id !== 'undefined') {
+      console.log(this.params._id)
+      if(this.params._id != null && this.params._id !== 'undefined') {
+        if (this.data) {
         Meteor.call('createPdf', Router.getData(), function (error, result) {
           if (error)
             console.log(error);
           
           window.location = result;
         });
-      } else {
-        window.location = '/';
+      }
       }
     }
 	}

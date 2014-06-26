@@ -20,7 +20,7 @@ Meteor.methods({
 	},
 	// creates a pdf and returns the path
 	createPdf: function(report) {
-		if(typeof report === 'undefined')
+		if(!report || typeof report === 'undefined')
 			return false;
 
 		var doc = new PDFDocument({size: 'A4', margin: 50});

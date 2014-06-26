@@ -24,7 +24,8 @@
       "autoform": {},
       "ms-seo": {},
       "bootstrap-image-gallery": {},
-      "animate-css": {}
+      "animate-css": {},
+      "bootboxjs": {}
     },
     "packages": {
       "iron-router": {
@@ -34,8 +35,8 @@
       },
       "bootstrap3-sass": {
         "git": "https://github.com/reywood/meteor-bootstrap3-sass.git",
-        "tag": "v3.1.1-4",
-        "commit": "398582dc4d07d7126b9a1c6a244d1a0deec31732"
+        "tag": "v3.1.1-5",
+        "commit": "d61b7c69aecf1c2033db6b8d283fcfabe9788451"
       },
       "accounts-ui-bootstrap-3": {
         "git": "https://github.com/bompi88/meteor-accounts-ui-bootstrap-3.git",
@@ -94,8 +95,8 @@
       },
       "autoform": {
         "git": "https://github.com/aldeed/meteor-autoform.git",
-        "tag": "v0.13.0",
-        "commit": "3f294ddf3ed0acae714d5ceb8a806b25cdcd0197"
+        "tag": "v0.13.3",
+        "commit": "23a7ba0754f353513fda44f666b600e69c62a208"
       },
       "ms-seo": {
         "git": "https://github.com/DerMambo/ms-seo",
@@ -112,6 +113,11 @@
         "tag": "v3.1.1",
         "commit": "59ce70b99dff5bc3d1227b789eefa43a761db158"
       },
+      "bootboxjs": {
+        "git": "https://github.com/TimHeckel/meteor-bootboxjs.git",
+        "tag": "v4.2.0",
+        "commit": "2b7d18ad028d9e7b37238ecf2a8a7970735cebd1"
+      },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",
         "tag": "v0.2.4",
@@ -119,8 +125,8 @@
       },
       "scss": {
         "git": "https://github.com/fourseven/meteor-scss.git",
-        "tag": "v0.8.4",
-        "commit": "11af0da643944d241fe7d173af76162c4b670dee"
+        "tag": "v0.9.3",
+        "commit": "185f3b2787fb85e653f7b7bf603d1493ed14943d"
       },
       "cfs-base-package": {
         "git": "https://github.com/CollectionFS/Meteor-cfs-base-package.git",
@@ -172,6 +178,11 @@
         "tag": "v2.6.0",
         "commit": "26156df681750fd6e6ed77043eef32b6653ebbdf"
       },
+      "bootstrap-3": {
+        "git": "https://github.com/mangasocial/meteor-bootstrap-3.git",
+        "tag": "v3.1.1-1",
+        "commit": "63dd38968828bb8963636df93e9a1c45e2dfe67e"
+      },
       "cfs-filesaver": {
         "git": "https://github.com/CollectionFS/Meteor-cfs-filesaver.git",
         "tag": "v0.0.3",
@@ -179,8 +190,8 @@
       },
       "cfs-storage-adapter": {
         "git": "https://github.com/CollectionFS/Meteor-cfs-storage-adapter.git",
-        "tag": "v0.0.26",
-        "commit": "cb9808ec519f8673d2cc4cc881b6eda9e56bdead"
+        "tag": "v0.0.27",
+        "commit": "cb9c89450762396418c09a14b5a48609b4e62fc8"
       },
       "http-methods": {
         "git": "https://github.com/CollectionFS/Meteor-http-methods.git",

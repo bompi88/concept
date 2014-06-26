@@ -215,7 +215,7 @@ Template.Report.rendered = function() {
         //Boolean - Whether to show labels on the scale 
         scaleShowLabels : true,
         //Number - Scale label font size in pixels  
-        scaleFontSize : 22,
+        scaleFontSize : 10,
         //Boolean - If we show the scale above the chart data     
         //scaleOverlay : true,
         //Boolean - If we want to override with a hard coded scale
@@ -228,7 +228,7 @@ Template.Report.rendered = function() {
         //Number - The centre starting value
         scaleStartValue : 0,
         //Number - Point label font size in pixels  
-        pointLabelFontSize : 24,
+        pointLabelFontSize : 10,
         //String - Point label font colour  
         pointLabelFontColor : "rgba(0,0,0,0.8)",
         //String - Colour of the scale line 
@@ -236,14 +236,24 @@ Template.Report.rendered = function() {
         //String - Scale label font colour  
         scaleFontColor : "rgba(0,0,0,0.5)",
         //String - Point label font weight
-        pointLabelFontStyle : "normal"
+        pointLabelFontStyle : "bold"
       }
+
       var el = $("#spiderEvaluation");
 
-      if (el.get(0)) {
-        var ctx = el.get(0).getContext("2d");
-        var chart = new Chart(ctx).Radar(data, options);
-      }
+        if (el.get(0)) 
+          var ctx = el.get(0).getContext("2d");
+
+        var width = $('canvas').parent().width();
+
+        $('canvas').attr("width",width);
+        new Chart(ctx).Radar(data,options);
+        window.onresize = function(event){
+          var width = $('canvas').parent().width();
+          $('canvas').attr("width",width);
+          new Chart(ctx).Radar(data,options);
+        };
+
     }
   });
 

@@ -32,3 +32,24 @@ removeItem = function(array, id) {
         return item === id;
     });
 };
+
+convertLineBreaks = function(text) {
+  if (text != null) {
+    text = text.replace(/(?:\r\n|\r|\n)/g, '<br />');
+    return text.trim();
+  }
+  return null;
+};
+
+createModalDialog = function(title, body) {
+  bootbox.dialog({
+    message: convertLineBreaks(body),
+    title: title,
+    buttons: {
+      close: {
+        label: "Lukk",
+        className: "btn-default"
+      }
+    }
+  });
+};

@@ -21,7 +21,10 @@
     "ms-seo": {},
     "bootstrap-image-gallery": {},
     "animate-css": {},
-    "bootboxjs": {},
+    "bootboxjs": {
+        "git": "https://github.com/TimHeckel/meteor-bootboxjs.git",
+        "branch": "master"
+        },
     "pdfkit": {}
   }
 }

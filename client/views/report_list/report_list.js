@@ -30,9 +30,7 @@ Template.ReportList.events({
   'click .sort-toggle': function(event, tmpl) {
     var t = $(event.currentTarget).attr("data-id");
 
-    if (t === 'project-number') {
-      orderBy('project.projectNumber');
-    } else if (t === 'name') {
+    if (t === 'name') {
       orderBy('project.name');
     } else if (t === 'success') {
       orderBy('project.successCategory', -1);
@@ -48,8 +46,6 @@ Template.ReportList.events({
       orderBy('project.costFinal.amount');
     } else if (t === 'responsible-org') {
       orderBy('responsible.organization');
-    } else if (t === 'principal') {
-      orderBy('principal');
     }
   },
   'click .edit-btn': function(event, tmpl) {
@@ -65,10 +61,8 @@ Template.ReportList.helpers({
   currentSort: function() {
     var text = '';
     var curSort = Session.get('sortBy');
-    
-    if (curSort === 'project.projectNumber') {
-      text = 'Prosjektnummer';
-    } else if (curSort === 'project.name') {
+      
+    if (curSort === 'project.name') {
       text = 'Navn';
     } else if (curSort === 'project.successCategory') {
       text = 'Suksesskategori';
@@ -84,8 +78,6 @@ Template.ReportList.helpers({
       text = 'Sluttkostnad';
     } else if (curSort === 'responsible.organization') {
       text = 'Ansvarlig';
-    } else if (curSort === 'principal') {
-      text = 'Oppdragsgiver';
     }
     return text;
   },

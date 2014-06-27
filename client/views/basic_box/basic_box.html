@@ -11,7 +11,7 @@
 						<li class="list-group-item"><span class="bold">Sektor:</span> <span class="pull-right">{{project.sector}}</span></li>
 						<li class="list-group-item"><span class="bold">Ferdigstilt:</span> <span class="pull-right">{{project.finishingYear}}</span></li>
 						<li class="list-group-item"><span class="bold">Sluttkostnad:</span> <span class="pull-right">{{project.costFinal.amount}} mill ({{economyPercentage}})</span></li>
-						<li class="list-group-item"><span class="bold">Suksess:</span> <span class="pull-right">{{>TrafficLight}} {{successColor}}</span></li>
+						<li class="list-group-item"><span class="bold">Suksess:</span> <span class="pull-right">{{>TrafficLight}}</span></li>
 					</ul>
 					{{#if currentUser}}
 					<div class="btn-group btn-group-xs pull-left" style="z-index:100;">
@@ -35,9 +35,9 @@
 </template>
 
 <template name="TrafficLight">
-	<div id="light">
-		<span class="{{#if isColor "3" }} active {{else}} passive {{/if}}" id="green"></span>
-		<span class="{{#if isColor "2" }} active {{else}} passive {{/if}}" id="orange"></span>
-		<span class="{{#if isColor "1" }} active {{else}} passive {{/if}}" id="red"></span>
+	<div class="light tool-top" data-toggle="tooltip" data-placement="left" title="{{successColor}}">
+		<span class="green {{#if isColor "3" }} active {{else}} passive {{/if}}"></span>
+		<span class="orange {{#if isColor "2" }} active {{else}} passive {{/if}}"></span>
+		<span class="red {{#if isColor "1" }} active {{else}} passive {{/if}}"></span>
 	</div>
 </template>

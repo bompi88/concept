@@ -26,6 +26,10 @@ Template.ConceptIndex.created = function () {
 };
 
 Template.ConceptIndex.rendered = function () {
+  Hyphenator.config({
+    minwordlength : 4
+  });
+  Hyphenator.run();
 };
 
 Template.ConceptIndex.destroyed = function () {

@@ -60,6 +60,13 @@ Template.BasicBox.helpers({
   }
 });
 
+Template.BasicBox.rendered = function () {
+  Hyphenator.config({
+    minwordlength : 4
+  });
+  Hyphenator.run();
+};
+
 Template.TrafficLight.helpers({
   isColor: function (c) {
     if(this.project && this.project.successCategory)

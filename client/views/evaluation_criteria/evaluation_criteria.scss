@@ -1,0 +1,30 @@
+
+
+div.header-with-icon {
+	height:60px;
+	width:100%;
+	display:table;
+	margin: 20px 0 10px 0;
+	vertical-align:middle;
+
+
+	span {
+		height:60px;
+		top:50%;
+		margin-top:15px;
+		margin-bottom:-15px;
+		margin-right:15px;
+		margin-left: 5px;
+		display:table-cell;
+		vertical-align:middle;
+		font-size:25px;
+	}
+
+	h1, h2, h3, h4, h5 {
+		width:100%;
+		margin:0;
+		margin-left: -20px;
+		display:table-cell;
+		vertical-align:middle;
+	}
+}

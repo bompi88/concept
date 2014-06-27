@@ -38,15 +38,18 @@ figcaption {
   }
 }
 
+.affix,.affix-top {
+   position:static;
+}
 
 @media (min-width: 979px) {
-  .affix-top {
-    position: fixed;
+  #sidebar.affix-top {
+    position: static;
   	margin-top: 0px;
   	width:170px;
   }
   
-  .affix {
+  #sidebar.affix {
     position: fixed;
     top:280px;
     width:170px;

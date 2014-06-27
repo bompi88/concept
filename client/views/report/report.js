@@ -5,6 +5,14 @@ Session.setDefault('TextState','short');
 /*****************************************************************************/
 
 Template.Report.events({
+
+  'click #image-link': function(event, tmpl) {
+    bootbox.dialog({
+      title: this.title,
+      message: "<img src='" + getImageUrl(this.fileId) + "' class='img-responsive'>" + "<br/>" + "<p class='text-center'>" + "Kilde: " + this.copyright +"</p>"
+    });
+  },
+
   'click #text-view-short': function(event, tmpl) {
     Session.set('TextState', 'short');
   },

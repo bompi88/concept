@@ -33,6 +33,15 @@ removeItem = function(array, id) {
     });
 };
 
+getImageUrl = function(fileId) {
+  var image = Images.findOne({_id:fileId});
+  if(image)
+    return image.url();
+  else
+    return false;
+};
+
+
 convertLineBreaks = function(text) {
   if (text != null) {
     text = text.replace(/(?:\r\n|\r|\n)/g, '<br />');

@@ -19,12 +19,11 @@
     "collection2": {},
     "autoform": {},
     "ms-seo": {},
-    "bootstrap-image-gallery": {},
     "animate-css": {},
     "bootboxjs": {
-        "git": "https://github.com/TimHeckel/meteor-bootboxjs.git",
-        "branch": "master"
-        },
+      "git": "https://github.com/TimHeckel/meteor-bootboxjs.git",
+      "branch": "master"
+    },
     "pdfkit": {}
   }
 }

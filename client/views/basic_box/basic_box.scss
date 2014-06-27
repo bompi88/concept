@@ -34,7 +34,7 @@ $header-section-background-color: darken(#fff, 2%);
 }
 
 .thumbnail-normal:hover {
-
+	cursor: pointer;
 	border-color: darken(#fff, 20%);
 
 	h4 {
@@ -45,7 +45,6 @@ $header-section-background-color: darken(#fff, 2%);
 		display:block;
 		background-color:darken(#fff, 40%);
 		opacity:0.1;
-		cursor: pointer;
 	}
 	.box-desc{
 		color:#008cba;

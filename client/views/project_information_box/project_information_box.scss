@@ -27,3 +27,25 @@ dt:after {
 		color:#008cba !important;
 	}
 }
+
+
+	.dl-horizontal.ls-offset {
+		margin:0;
+		width:100%;
+		display: block;
+
+		dt {
+			text-align:right;
+			display: inline-block;
+			width:49%;
+			margin: 0;
+			padding-right: 5px;
+		}	
+
+		dd {	
+			display: inline-block;
+			width:49%;
+			margin:0;
+			padding-left: 5px;
+		}
+	}

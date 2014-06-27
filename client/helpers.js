@@ -32,3 +32,11 @@ removeItem = function(array, id) {
         return item === id;
     });
 };
+
+getImageUrl = function(fileId) {
+  var image = Images.findOne({_id:fileId});
+  if(image)
+    return image.url();
+  else
+    return false;
+}

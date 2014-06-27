@@ -30,9 +30,9 @@ dt:after {
 
 
 	.dl-horizontal.ls-offset {
-		margin:0;
 		width:100%;
 		display: block;
+
 
 		dt {
 			text-align:right;
@@ -49,3 +49,9 @@ dt:after {
 			padding-left: 5px;
 		}
 	}
+
+@media (max-width: 991px) {
+	div.panel.panel-info{
+		margin-top: 40px;
+	}
+}

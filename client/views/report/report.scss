@@ -30,7 +30,12 @@
 
 
 figcaption {
-  margin-top: -80px;
+  position: relative;
+  top:-80px;
+  
+  a {
+    z-index:1000;
+  }
 }
 
 

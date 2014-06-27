@@ -20,135 +20,46 @@ Template.Report.events({
   'click #text-view-long': function(event, tmpl) {
     Session.set('TextState', 'long');
   },
+
   'click #export-text': function(event, tmpl) {
     window.open('/generate-pdf/' + this._id);
   },
+
   'click .edit-btn': function(event, tmpl) {
     Router.go('/reports/' + this._id + '/edit');
   },
+
   'click #over-button': function(event, tmpl) {
-
-    bootbox.dialog({
-      message: this.evaluation.overall.long,
-      title: "Samlet vurdering",
-      buttons: {
-        close: {
-          label: "Lukk",
-          className: "btn-default"
-        }
-      }
-    });
-    
-    
+    createModalDialog("Samlet vurdering", this.evaluation.overall.long);    
   },
-  'click #prod-button': function(event, tmpl) {
 
-    bootbox.dialog({
-      message: this.evaluation.productivity.long,
-      title: "Produktivitet",
-      buttons: {
-        close: {
-          label: "Lukk",
-          className: "btn-default"
-        }
-      }
-    });
-    
-    
+  'click #prod-button': function(event, tmpl) {
+    createModalDialog("Produktivitet", this.evaluation.productivity.long);   
   },
 
   'click #eff-button': function(event, tmpl) {
-
-    bootbox.dialog({
-      message: this.evaluation.effects.long,
-      title: "Virkninger",
-      buttons: {
-        close: {
-          label: "Lukk",
-          className: "btn-default"
-        }
-      }
-    });
-    
-    
+    createModalDialog("Virkninger", this.evaluation.effects.long);
   },
 
   'click #rel-button': function(event, tmpl) {
-
-    bootbox.dialog({
-      message: this.evaluation.relevance.long,
-      title: "Relevans",
-      buttons: {
-        close: {
-          label: "Lukk",
-          className: "btn-default"
-        }
-      }
-    });
-    
-    
+    createModalDialog("Relevans", this.evaluation.relevance.long);
   },
+
   'click #via-button': function(event, tmpl) {
-
-    bootbox.dialog({
-      message: this.evaluation.viability.long,
-      title: "Levedyktighet",
-      buttons: {
-        close: {
-          label: "Lukk",
-          className: "btn-default"
-        }
-      }
-    });
-    
-    
+    createModalDialog("Levedyktighet", this.evaluation.viability.long);  
   },
+
   'click #prof-button': function(event, tmpl) {
-
-    bootbox.dialog({
-      message: this.evaluation.profitability.long,
-      title: "Samfunnsøkonomisk lønnsomhet",
-      buttons: {
-        close: {
-          label: "Lukk",
-          className: "btn-default"
-        }
-      }
-    });
-    
-    
+    createModalDialog("Samfunnsøkonomisk lønnsomhet", this.evaluation.profitability.long); 
   },
+
   'click #ach-button': function(event, tmpl) {
-
-    bootbox.dialog({
-      message: this.evaluation.achievement.long,
-      title: "Måloppnåelse",
-      buttons: {
-        close: {
-          label: "Lukk",
-          className: "btn-default"
-        }
-      }
-    });
-    
-    
+    createModalDialog("Måloppnåelse", this.evaluation.achievement.long); 
   },
+
   'click #desc-button': function(event, tmpl) {
-
-    bootbox.dialog({
-      message: this.project.projectDescription.long,
-      title: "Prosjektbeskrivelse og mål",
-      buttons: {
-        close: {
-          label: "Lukk",
-          className: "btn-default"
-        }
-      }
-    });
-    
-    
+    createModalDialog("Prosjektbeskrivelse og mål", this.project.projectDescription.long);
   }
-
 });
 
 /*****************************************************************************/
@@ -193,6 +104,9 @@ Template.Report.helpers({
         return image.url({store:'thumbs'});
       else
         return false;
+   },
+   convertLineBreaks: function(text) {
+    return convertLineBreaks(text);
    }
 });
 

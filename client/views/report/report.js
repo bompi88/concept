@@ -260,7 +260,7 @@ Template.Report.rendered = function() {
   $('body').scrollspy({ target: '#sidebar'});
 
           // figure out a nice offset from the top of the page
-        var scrollTopOffset = 55; // + 50;
+        var scrollTopOffset = 20; // + 50;
         // catch clicks on sidebar navigation links and handle them
         $('#sidebar li a').on('click', function(evt){
             // stop the default browser behaviour for the click 
@@ -272,7 +272,5 @@ Template.Report.rendered = function() {
             // offset to nicely display the target element at the top
             $(window).scrollTop($target.offset().top-(scrollTopOffset));
         }); 
-
-
 }
 

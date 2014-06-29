@@ -1,6 +1,15 @@
 /*****************************************************************************/
 /* Map: Lifecycle hooks */
 /*****************************************************************************/
+Template.MapView.events({
+  'click .panel': function(event, tmpl) {
+    //this is ugly
+    var id = document.getElementsByClassName('report-id')[0].id;
+    Router.go('/reports/' + id);
+  }
+});
+
+
 
 Template.MapView.rendered = function () {
 
@@ -19,6 +28,7 @@ Template.MapView.rendered = function () {
         };
         map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions); 
         map.setCenter(new google.maps.LatLng( 63.43, 10.39 ));
+        var infowindow = new google.maps.InfoWindow();
         var markerSize = { x: 22, y: 40 };
 
         google.maps.Marker.prototype.setLabel = function(label){
@@ -54,15 +64,15 @@ Template.MapView.rendered = function () {
         if(state === 'reportLocationPicker') {
           var locationAdded = false;
 
-          google.maps.event.addListener(map, 'dblclick', function(event) {
+          google.maps.event.addListener(map, 'click', function(e) {
             if(!locationAdded) {
               var marker = new google.maps.Marker({
-                  position: event.latlng,
-                 map: map
+                position: e.latLng,
+                map: map
               });
               marker.setMap(map);
 
-              google.maps.event.addListener(marker, 'click', function(event) {
+              google.maps.event.addListener(marker, 'dblclick', function(event) {
                 if(locationAdded) {
                   marker.setMap(null);
                   locationAdded = false;
@@ -70,7 +80,7 @@ Template.MapView.rendered = function () {
                 }
               });
 
-              locationObject.setCoordinates(e.latlng);
+              locationObject.setCoordinates({"lat":e.latLng.lat().toString(), "lng":e.latLng.lng().toString()});
               locationAdded = true;
 
 
@@ -79,20 +89,24 @@ Template.MapView.rendered = function () {
 
           Deps.autorun(function () {
             var report = Router.getData();
-            if(report && report.project && report.project.location && report.project.location.coordinates && report.project.location.coordinates.lat) {
+            if(report && report.project && report.project.location && report.project.location.coordinates && report.project.location.coordinates.lat && report.project.location.coordinates.lng) {
               var coords = report.project.location.coordinates;
+              console.log(coords);
               locationObject.setCoordinates(coords);  
               locationAdded = true
 
-            var marker = new google.maps.Marker({
-                  position: locationObject,
+              var pos = new google.maps.LatLng(parseFloat(coords.lat), parseFloat(coords.lng));
+
+              var marker = new google.maps.Marker({
+                position: pos,
                 map: map
               });
               marker.setMap(map);
-              google.maps.event.addListener(marker, 'click', function(event) {
+              google.maps.event.addListener(marker, 'dblclick', function(event) {
                 if(locationAdded) {
                   marker.setMap(null);
                   locationAdded = false;
+                  locationObject.setCoordinates({});
                 }
               });
 
@@ -119,9 +133,10 @@ Template.MapView.rendered = function () {
 
                   UI.insert(UI.renderWithData(Template.ProjectInformationBox, report), div);
 
-                  var infowindow = new google.maps.InfoWindow({
-                    content: div.innerHTML
-                  });
+                  //an ugly hack to map a report id to a infowindow
+                  $('<div id="' + report._id + '" class="report-id"> </div>').appendTo(div.getElementsByClassName('panel-default'));
+
+                  infowindow.setContent(div.innerHTML);
 
                   var marker = new google.maps.Marker({
                   position: new google.maps.LatLng(report.project.location.coordinates.lat, report.project.location.coordinates.lng),

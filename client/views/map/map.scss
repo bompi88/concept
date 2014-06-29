@@ -2,8 +2,15 @@
 /* Map: Style */
 /*****************************************************************************/
 
-#map {
+#map-canvas {
 	height: 550px;
+}
+
+.map-marker-label{
+    position: absolute;
+    //color: #707070;
+    font-size: 13px;
+    font-weight: bold;
 }
 
 @media (max-width: 767px) {

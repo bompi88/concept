@@ -10,12 +10,14 @@ Files = new FS.Collection("files", {
 		allow: {
 			contentTypes: [
 				'application/pdf',
+				// MS Office standard files
 				'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
 				'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
 				'application/vnd.openxmlformats-officedocument.presentationml.presentation',
 				'application/msword',
 				'application/vnd.ms-excel',
 				'application/vnd.ms-powerpoint',
+				// iWork standard files
 				'application/x-iwork-keynote-sffkey',
 				'application/x-iwork-pages-sffpages',
 				'application/x-iwork-numbers-sffnumbers'

@@ -4,6 +4,6 @@
 
 StandardController = RouteController.extend({
 	waitOn: function () {
-		return null;
+		return;
 	}
 });

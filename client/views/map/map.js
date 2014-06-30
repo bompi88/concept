@@ -25,6 +25,7 @@ Template.MapView.rendered = function () {
         var markers = [];
         var mapOptions = {
             zoom: 5,
+            maxZoom: 15,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
         map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions); 

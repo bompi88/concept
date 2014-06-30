@@ -15,6 +15,8 @@ uploadObject = {
     return this.References;
   },
   addImage: function(fileObj) {
+    
+    Meteor.subscribe('image', fileObj._id);
 
     this.Images.push(fileObj._id);
     this.dep.changed();
@@ -22,6 +24,7 @@ uploadObject = {
   },
   addReference: function(fileObj) {
 
+    Meteor.subscribe('file', fileObj._id);
     this.References.push(fileObj._id);
     this.dep.changed();
     return this.References;
@@ -110,6 +113,7 @@ Template.ReportForm.helpers({
       }
       return [];
     }
+
     return Images.find({_id: {$in : uploadObject.getImages()}});
   },
   referencesList: function() {

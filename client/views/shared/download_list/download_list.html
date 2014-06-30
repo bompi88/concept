@@ -28,7 +28,7 @@ files		- An reactive object where the files is stored.
 							{{#unless this.isUploaded}}
 								<span class="glyphicon glyphicon-file" style="font-size:75px;"></span>
 							{{else}}
-								<img src="{{this.url store='original'}}" class="img-responsive" style="margin:auto;">
+								{{> Img getUrl this "original"}}
 							{{/unless}}
 						{{else}}
 							<span class="glyphicon glyphicon-file" style="font-size:75px;"></span>
@@ -63,4 +63,8 @@ files		- An reactive object where the files is stored.
 			</tbody>
 		</table>
 	{{/if}}
+</template>
+
+<template name="Img">
+	<img src="{{this}}" class="img-responsive" style="margin:auto;">
 </template>

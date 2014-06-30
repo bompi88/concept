@@ -4,9 +4,7 @@
 
 Template.DownloadList.helpers({
   getData: function(id, options) {
-    
     var report = Router.getData();
-
     if(options.hash && options.hash.parent && options.hash.parent.type) {
       if (options.hash.parent.type === 'images') {
         if(report && report.images){
@@ -23,6 +21,21 @@ Template.DownloadList.helpers({
         }
         return this;
       }
+    }
+    return null;
+
+  },
+  getUrl: function(img, store) {
+    uploadObject.dep.depend();
+    
+    if (img) {
+      if (store) {
+        console.log(store);
+        return img.url(store);
+
+      }
+      else
+        return img.url();
     }
     return null;
   }

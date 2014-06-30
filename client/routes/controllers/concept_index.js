@@ -4,6 +4,7 @@
 
 ConceptIndexController = RouteController.extend({
 	waitOn: function () {
+    return null;
 	},
 
 	data: function () {

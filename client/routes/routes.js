@@ -5,6 +5,7 @@
 Router.map(function () {
   this.route('ConceptIndex', {
     path: '/',
+    controller: 'StandardController'
   });
 
   this.route('ReportList', {
@@ -39,15 +40,18 @@ Router.map(function () {
   });
 
   this.route('AdminForgottonPassword', {
-    path: '/concept-admin-forgotton-password'
+    path: '/concept-admin-forgotton-password',
+    controller: 'StandardController'
   });
 
   this.route('AboutConcept', {
-    path: '/about-concept'
+    path: '/about-concept',
+    controller: 'StandardController'
   });
 
   this.route('EvaluationCriteria', {
-    path: '/evaluation-criteria'
+    path: '/evaluation-criteria',
+    controller: 'StandardController'
   });
 });
 

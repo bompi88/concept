@@ -1,0 +1,41 @@
+<!--
+This is the navbar located at the top.
+-->
+
+<template name="TopNavbar">
+	<div class="navbar navbar-default navbar-fixed-top animated fadeInDown" role="navigation">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" rel="home" href="/" title="Til forside">
+				<img src="/images/concept_logo.png" alt="Logoen til Concept"> <span>Concept</span>
+			</a>
+		</div>
+		<div class="navbar-collapse collapse">
+			{{> NavBarButton route='ReportList' name='Evalueringsrapporter'}}
+			{{> NavBarButton route='EvaluationCriteria' name='Evalueringskriterier'}}
+			{{> NavBarButton route='AboutConcept' name='Om Concept'}}
+			
+			{{#if currentUser}}
+				{{> NavBarButton route='CreateReport' name='Opprett rapport'}}
+
+				<ul class="nav navbar-nav navbar-right" style="margin-right:5px;">
+					{{> loginButtons}}
+				</ul>
+			{{/if}}
+		</div>
+	</div>
+</template>
+
+<!--
+This is the navbar buttons.
+-->
+<template name="NavBarButton">
+	<ul class="nav navbar-nav">
+		<li class="{{class}} {{activeIfRouteIs this.route}}" data-toggle="collapse" data-target=".in" id="{{id}}"><a href="{{pathFor this.route}}">{{name}}</a></li>
+	</ul>
+</template>

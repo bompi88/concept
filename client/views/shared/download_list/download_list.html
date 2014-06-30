@@ -1,0 +1,70 @@
+<!--
+
+DownloadList: Creates an editable list for a list of files.
+
+================================================================================================
+Params:
+================================================================================================
+files		- An reactive object where the files is stored.
+
+-->
+
+<template name="DownloadList">
+	{{#if $isNotEmptyArray files}}
+		<table class="table table-striped table-condensed">
+			<thead>
+				<tr>
+					<th style="width:15%;"></th>
+					<th style="width:50%;"></th>
+					<th style="width:30%;"></th>
+					<th style="width:5%;"></th>
+				</tr>
+			</thead>
+			<tbody>
+				{{#each files}}
+				<tr class="listview">
+					<td class="text-center vert-align">
+						{{#if $eq collectionName "images"}}
+							{{#unless this.isUploaded}}
+								<span class="glyphicon glyphicon-file" style="font-size:75px;"></span>
+							{{else}}
+								{{> Img getUrl this "original"}}
+							{{/unless}}
+						{{else}}
+							<span class="glyphicon glyphicon-file" style="font-size:75px;"></span>
+						{{/if}}
+					</td>
+					{{#with getData this._id parent=..}}
+					<td class="vert-align">
+						<h5>Navn: {{this.name}}</h5>
+						{{#if $eq collectionName "images"}}
+							{{> TextInput $generateId 'title' this._id placeholder="Tittel" value=title}}
+							{{> TextInput $generateId 'copyright' this._id  placeholder="Kilde" value=copyright}}
+							{{> TextInput $generateId 'link' this._id  placeholder="Kilde-url" value=link}}
+						{{else}}
+							{{> TextInput $generateId 'title' this._id  placeholder="Tittel" value=title}}
+							{{> TextInput $generateId 'typedoc' this._id  placeholder="Type dokument" value=typedoc}}
+							{{> TextInput $generateId 'date' this._id  placeholder="Dato" value=date}}
+						{{/if}}
+					</td>
+					<td class="vert-align" style="padding-top:25px;">
+						{{#unless this.isUploaded}}
+							{{> FS.UploadProgressBar bootstrap=true}}
+						{{else}}
+							{{> FS.UploadProgressBar bootstrap=true class="progress-bar-success"}}
+						{{/unless}}
+					</td>
+					<td class="text-center vert-align">
+						{{#FS.DeleteButton type=type class="btn btn-danger btn-xs"}}Slett{{/FS.DeleteButton}}
+					</td>
+					{{/with}}
+				</tr>
+				{{/each}}
+			</tbody>
+		</table>
+	{{/if}}
+</template>
+
+<template name="Img">
+	<img src="{{this}}" class="img-responsive" style="margin:auto;">
+</template>

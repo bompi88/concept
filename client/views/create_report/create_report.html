@@ -1,0 +1,22 @@
+<!--
+
+CreateReport: This template renders an update form if the user hits an edit route, otherwise 
+it renders an insert form.
+
+-->
+
+<template name="CreateReport">
+	<div class="container animated fadeIn">
+		<div class="col-xs-12 col-md-8 col-md-offset-2 content-wrapper" style="margin-bottom:30px;">
+			<div class="row" style="margin-bottom:30px;">
+				<div class="col-xs-12">
+					{{#if currentRouteIs 'EditReport'}}
+						{{> ReportForm id='report-form' doc=this type="update"}}
+					{{else}}
+						{{> ReportForm id='report-form' type="insert"}}
+					{{/if}}
+				</div>
+			</div>
+		</div>
+	</div>
+</template>

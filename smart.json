@@ -13,9 +13,6 @@
     "handlebar-helpers": {},
     "auto-nprogress": {},
     "timeline-js": {},
-    "leaflet": {},
-    "leaflet-label": {},
-    "leaflet-search": {},
     "collection2": {},
     "autoform": {},
     "ms-seo": {},
@@ -24,6 +21,9 @@
       "git": "https://github.com/TimHeckel/meteor-bootboxjs.git",
       "branch": "master"
     },
-    "pdfkit": {}
+    "pdfkit": {},
+    "googlemaps": {
+        "git": "https://github.com/bompi88/meteor-googlemaps.git"
+    }
   }
 }

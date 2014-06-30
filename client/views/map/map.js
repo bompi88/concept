@@ -91,7 +91,6 @@ Template.MapView.rendered = function () {
             var report = Router.getData();
             if(report && report.project && report.project.location && report.project.location.coordinates && report.project.location.coordinates.lat && report.project.location.coordinates.lng) {
               var coords = report.project.location.coordinates;
-              console.log(coords);
               locationObject.setCoordinates(coords);  
               locationAdded = true
 

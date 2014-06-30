@@ -1,0 +1,32 @@
+<template name="ProjectInformationBox">
+	<div class="panel {{#if mapPopup}} panel-default {{else}} panel-info{{/if}}">
+		<div class="panel-heading">
+			<h4 class="panel-heading text-center"> {{#if mapPopup}} {{project.name}} {{else}} Prosjektinformasjon {{/if}}</h4>
+		</div>
+		<div class="panel-body">
+			<div class="overlay"></div>
+			<section id="faktaboks">
+				<dl class="dl-horizontal {{#unless mapPopup}} ls-offset {{/unless}}">
+					<dt>Sektor</dt>
+					<dd>{{project.sector}}</dd>
+					<dt>Suksess</dt>
+					<dd>{{>TrafficLight}}</dd>
+					<dt>Årstall påbegynt</dt>
+					<dd>{{project.decisionYear}}</dd>
+					<dt>Årstall ferdigstilt</dt>
+					<dd>{{project.finishingYear}}</dd>
+					<dt>Årstall evaluering</dt>
+					<dd>{{project.evaluationYear}}</dd>
+					<dt>Styringsramme</dt>
+					<dd>{{project.managementBudget.amount}} mill (i år {{project.managementBudget.year}})</dd>
+					<dt>Kostnadsramme</dt>
+					<dd>{{project.costBudget.amount}} mill (i år {{project.costBudget.year}})</dd>
+					<dt>Sluttkostnad</dt>
+					<dd>{{project.costFinal.amount}} mill (i år {{project.costFinal.year}})</dd>
+					<dt>Evaluator</dt>
+					<dd>{{responsible.organization}}</dd>
+				</dl>
+			</section>
+		</div>
+	</div>
+</template>

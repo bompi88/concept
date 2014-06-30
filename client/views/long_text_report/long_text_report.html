@@ -1,0 +1,29 @@
+<template name="LongTextReport">
+	<div class="container animated fadeIn">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2 col-xs-12 col-xs-offset-0" style="font-size:15px">
+				<section id="longText">
+					<p>{{project.projectDescription.long}}</p>
+
+					<h4>Produktivitet</h4>
+					<p>{{notEscapeHTML evaluation.productivity.long}}  <b>{{evaluation.productivity.value}} av 6 poeng</b>.</p>
+
+					<h4>Måloppnåelse</h4>
+					<p>{{notEscapeHTML evaluation.achievement.long}} <b>{{evaluation.achievement.value}} av 6 poeng</b>.</p>
+
+					<h4>Virkninger</h4>
+					<p>{{notEscapeHTML evaluation.effects.long}} <b>{{evaluation.effects.value}} av 6 poeng</b>.</p>
+
+					<h4>Relevans</h4>
+					<p>{{notEscapeHTML evaluation.relevance.long}} <b>{{evaluation.relevance.value}} av 6 poeng</b>.</p>
+
+					<h4>Levedyktighet</h4>
+					<p>{{notEscapeHTML evaluation.viability.long}} <b>{{evaluation.viability.value}} av 6 poeng</b>.</p>
+
+					<h4>Samfunnsøkonomisk lønnsomhet</h4>
+					<p>{{notEscapeHTML evaluation.profitability.long}} <b>{{evaluation.profitability.value}} av 6 poeng</b>.</p>
+				</section>
+			</div>
+		</div>
+	</div>
+</template>

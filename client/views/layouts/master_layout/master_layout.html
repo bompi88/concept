@@ -1,3 +1,9 @@
 <template name="MasterLayout">
-  {{> yield}}
+	<div class="animated fadeIn" id="wrap">
+		<nav>
+			{{> yield region ='nav'}}
+		</nav>
+		{{> yield}}
+	</div>
+	{{> yield region = 'footer'}}
 </template>

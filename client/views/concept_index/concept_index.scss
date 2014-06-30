@@ -1,0 +1,28 @@
+/*****************************************************************************/
+/* ConceptIndex: Style */
+/*****************************************************************************/
+
+div.jumbotron {
+	p {
+		text-align: justify;
+	}
+
+	a {
+		font-size:20px;
+	}
+}
+
+div.row.p {
+		text-align: justify;
+	}
+
+@media (max-width: 450px) {
+	div.jumbotron {
+		padding: 40px 0;
+		
+		h1 {
+			font-weight: 600;
+			font-size: 25px;
+		}
+	}
+}

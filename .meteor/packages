@@ -5,9 +5,7 @@
 
 standard-app-packages
 iron-router
-d3
 bootstrap3-sass
-insecure
 accounts-base
 accounts-password
 scss
@@ -15,7 +13,6 @@ accounts-ui-bootstrap-3
 collectionFS
 cfs-gridfs
 cfs-graphicsmagick
-moment
 cfs-ui
 chartjs
 handlebar-helpers
@@ -24,3 +21,12 @@ timeline-js
 leaflet
 leaflet-label
 leaflet-search
+collection2
+autoform
+ms-seo
+spiderable
+animate-css
+bootboxjs
+pdfkit
+appcache
+googlemaps

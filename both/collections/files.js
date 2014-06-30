@@ -17,10 +17,6 @@ Files = new FS.Collection("files", {
 				'application/msword',
 				'application/vnd.ms-excel',
 				'application/vnd.ms-powerpoint',
-				// iWork standard files
-				'application/x-iwork-keynote-sffkey',
-				'application/x-iwork-pages-sffpages',
-				'application/x-iwork-numbers-sffnumbers'
 			]
 		}
 	}

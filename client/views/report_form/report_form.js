@@ -73,6 +73,13 @@ Template.ReportForm.events({
       Router.go(Router.path('ReportList'));
     });
   },
+
+  'keydown #map-canvas':function(event, tmpl) {
+    if (event.which === 13) {
+      event.preventDefault();
+    }
+  },
+
   'click .cancel-btn': function(event, tmpl) {
     Router.go('/reports/' + this._id);
   },

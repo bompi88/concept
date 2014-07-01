@@ -1,6 +1,6 @@
-/*****************************************************************************/
-/* ReportViewController */
-/*****************************************************************************/
+/**
+ * ReportViewController: A detailed view for a report.
+ */
 
 ReportViewController = RouteController.extend({
 	waitOn: function () {
@@ -11,12 +11,12 @@ ReportViewController = RouteController.extend({
 
 		if (report) {
 			var subs = [];
-
+      // Subscribe to images and files
 			if (report.images.length > 0)
 				subs.push(Meteor.subscribe('images', _.pluck(report.images, 'fileId')));
 			if (report.references.length > 0)
 				subs.push(Meteor.subscribe('files', _.pluck(report.references, 'fileId')));
-			
+
 			return subs;
 		}
 		return;
@@ -26,16 +26,13 @@ ReportViewController = RouteController.extend({
 		return Reports.findOne({_id: this.params._id});
 	},
 
-	action: function () {
-		this.render();
-	},
-	
 	onAfterAction: function() {
-		
-		if (this.ready()) {
-			if(this.data()) {
-				var report = this.data();
 
+		if (this.ready()) {
+      var report = this.data();
+
+			if(report) {
+        // Dynamic SEO configuration for each project's route
 				SEO.set({
 					title: "Evaluering av " + report.project.name,
 					meta: {
@@ -44,7 +41,7 @@ ReportViewController = RouteController.extend({
 					og: {
 						'title': "Evaluering av " + report.project.name,
 						'description': report.project.projectDescription.short
-					//todo image 
+            //todo: image
 					}
 				});
 			} else {

@@ -1,21 +1,24 @@
-/*****************************************************************************/
-/* EditReportController */
-/*****************************************************************************/
+/**
+ * EditReportController: Fetches report, images and files and renders
+ * an edit report form.
+ */
 
 EditReportController = AuthRouteController.extend({
 	waitOn: function () {
 		Meteor.subscribe('report', this.params._id);
 
+    // Find the report
 		var report = Reports.findOne({_id: this.params._id});
-
+    console.log("inside")
 		if (report) {
 			var subs = [];
 
+      // Subscribe only to the images and files we actually need
 			if (report.images.length > 0)
 				subs.push(Meteor.subscribe('images', _.pluck(report.images, 'fileId')));
 			if (report.references.length > 0)
 				subs.push(Meteor.subscribe('files', _.pluck(report.references, 'fileId')));
-			
+
 			return subs;
 		}
 		return;
@@ -25,9 +28,8 @@ EditReportController = AuthRouteController.extend({
 		return Reports.findOne({_id: this.params._id});
 	},
 
-	action: function () {
-		this.render();
-	},
+  // Adds files and images already stored
+  // to the upload object.
 	onAfterAction: function() {
 		uploadObject.reset();
 		var report = this.data();
@@ -44,16 +46,4 @@ EditReportController = AuthRouteController.extend({
 			}
 		}
 	}
-});
-
-SeoCollection.insert({
-  route_name: 'EditReport',
-  title: 'Rediger rapport',
-  meta: {
-    'description': 'Etterevaluering av en rekke statlige prosjekter gjort av Concept-programmet. På oppdrag fra Finansdepartementet'
-  },
-  og: {
-    'title': 'Rediger rapport',
-    'image': '/images/logo.jpg'
-  }
 });

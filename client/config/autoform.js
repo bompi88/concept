@@ -6,10 +6,10 @@ AutoForm.hooks({
     "report-form": {
         before: {
             insert: function(doc, tmpl) {
-                return createReport(tmpl);
+                return Reports.createReport(tmpl);
             },
             update: function(docId, modifier, tmpl) {
-                return createMofidiers(modifier, tmpl);
+                return Reports.createMofidiers(modifier, tmpl);
             },
             remove: function (id, tmpl) {
                 /* console.log('jaha');
@@ -24,7 +24,7 @@ AutoForm.hooks({
             } 
         },
         onSuccess: function(operation, result, tmpl) {
-            if (operation === 'update' )
+            if (operation === 'update')
                 return Router.go(Router.path('ReportList') + '/' + tmpl.data.doc._id);
             else
                 return Router.go(Router.path('ReportList'));

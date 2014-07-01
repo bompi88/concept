@@ -1,3 +1,5 @@
+[![Build Status](https://secure.travis-ci.org/bompi88/concept?branch=master)](https://travis-ci.org/bompi88/concept)
+
 #Presentation tool for Concept
 
 ## Installation and running

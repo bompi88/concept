@@ -1,3 +1,5 @@
+"use strict";
+
 Meteor.publish('reports', function() {
 	if(this.userId) {
 		return Reports.find();

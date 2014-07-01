@@ -27,5 +27,5 @@ Meteor.startup(function() {
 
 
 
-
+i18n.setLanguage('nb_NO');
 });

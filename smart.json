@@ -3,7 +3,8 @@
     "iron-router": {},
     "bootstrap3-sass": {},
     "accounts-ui-bootstrap-3": {
-      "git": "https://github.com/bompi88/meteor-accounts-ui-bootstrap-3.git"
+      "git": "https://github.com/todi01/meteor-accounts-ui-bootstrap-3.git",
+      "branch": "master"
     },
     "collectionFS": {},
     "cfs-ui": {
@@ -23,7 +24,8 @@
     },
     "pdfkit": {},
     "googlemaps": {
-        "git": "https://github.com/bompi88/meteor-googlemaps.git"
-    }
+      "git": "https://github.com/bompi88/meteor-googlemaps.git"
+    },
+    "just-i18n": {}
   }
 }

@@ -1,32 +1,26 @@
 /*****************************************************************************/
 /* Meteor Methods */
 /*****************************************************************************/
+"use strict";
 
 Meteor.methods({
-	deleteImages: function(ids) {
-		if(this.userId) {
-			Images.remove({_id: { $in: ids}});
-		}
-	},
-	deleteReferences: function(ids) {
-		if(this.userId) {
-			Files.remove({_id: { $in: ids}});
-		}
-	},
 	toggleReportPublic: function(id, publicity) {
 		if(this.userId) {
 			return Reports.update({_id: id}, {$set: {"_public": publicity}});
+		} else {
+			return false;
 		}
 	},
 	// creates a pdf and returns the path
 	createPdf: function(report) {
-		if(!report || typeof report === 'undefined')
+
+		if(!report || typeof report === 'undefined') {
 			return false;
+		}
 
 		var doc = new PDFDocument({size: 'A4', margin: 20});
-		// var imageBase64 = Meteor.users.findOne(this.userId).profile.picture;
-		// var imageBuffer2 = new Buffer(imageBase64.replace('data:image/png;base64,','') || '', 'base64');
-		//doc.image(imageBuffer2, 10, 10, {height: 75});
+		var defNaNText = "Ingen tekst tilgjengelig...";
+
 		doc
 	   		.fontSize(25)
 	   		.text(report.project.name, 100, 100);
@@ -61,7 +55,7 @@ Meteor.methods({
 
 	   	doc
 	   		.fontSize(12)
-	   		.text(report.evaluation.productivity.long || "Ingen tekst tilgjengelig...");
+	   		.text(report.evaluation.productivity.long || defNaNText);
 		
 		doc.moveDown();
 
@@ -72,7 +66,7 @@ Meteor.methods({
 
 	   	doc
 	   		.fontSize(12)
-	   		.text(report.evaluation.achievement.long || "Ingen tekst tilgjengelig...");
+	   		.text(report.evaluation.achievement.long || defNaNText);
 
 	   	doc.moveDown();
 
@@ -82,7 +76,7 @@ Meteor.methods({
 
 	   	doc
 	   		.fontSize(12)
-	   		.text(report.evaluation.effects.long || "Ingen tekst tilgjengelig...");
+	   		.text(report.evaluation.effects.long || defNaNText);
 
 	   	doc.moveDown();
 
@@ -92,7 +86,7 @@ Meteor.methods({
 
 	   	doc
 	   		.fontSize(12)
-	   		.text(report.evaluation.relevance.long || "Ingen tekst tilgjengelig...");
+	   		.text(report.evaluation.relevance.long || defNaNText);
 
 	   	doc.moveDown();
 
@@ -102,7 +96,7 @@ Meteor.methods({
 
 	   	doc
 	   		.fontSize(12)
-	   		.text(report.evaluation.viability.long || "Ingen tekst tilgjengelig...");
+	   		.text(report.evaluation.viability.long || defNaNText);
 
 	   	doc.moveDown();
 
@@ -112,7 +106,7 @@ Meteor.methods({
 
 	   	doc
 	   		.fontSize(12)
-	   		.text(report.evaluation.profitability.long || "Ingen tekst tilgjengelig...");
+	   		.text(report.evaluation.profitability.long || defNaNText);
 
 	   	doc.moveDown();
 

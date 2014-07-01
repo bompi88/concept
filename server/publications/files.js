@@ -1,9 +1,12 @@
+"use strict";
+
 Meteor.publish('files', function(ids) {
 
-	if(ids)
+	if(ids) {
 		return Files.find({ _id: {$in: ids}});
-	else
+	} else {
 		return Files.find({});
+	}
 });
 
 Meteor.publish('file', function(id) {

@@ -4,7 +4,8 @@
 
 Reports = new Meteor.Collection('reports');
 
-createMofidiers = function(modifier, tmpl) {
+Reports.createMofidiers = function(modifier, tmpl) {
+    "use strict";
 
     var coords = locationObject.getCoordinates();
     var lat = "";
@@ -15,65 +16,67 @@ createMofidiers = function(modifier, tmpl) {
         lng = coords.lng.toString();
     }
 
-    var productivity_value = parseInt(tmpl.find('input[name="num-eval-productivity"]:checked').value);
-    var achievement_value = parseInt(tmpl.find('input[name="num-eval-achievement"]:checked').value);
-    var effects_value = parseInt(tmpl.find('input[name="num-eval-effects"]:checked').value);
-    var relevance_value = parseInt(tmpl.find('input[name="num-eval-relevance"]:checked').value);
-    var viability_value = parseInt(tmpl.find('input[name="num-eval-viability"]:checked').value);
-    var profitability_value = parseInt(tmpl.find('input[name="num-eval-profitability"]:checked').value);
+    var productivityValue = parseInt(tmpl.find('input[name="num-eval-productivity"]:checked').value);
+    var achievementValue = parseInt(tmpl.find('input[name="num-eval-achievement"]:checked').value);
+    var effectsValue = parseInt(tmpl.find('input[name="num-eval-effects"]:checked').value);
+    var relevanceValue = parseInt(tmpl.find('input[name="num-eval-relevance"]:checked').value);
+    var viabilityValue = parseInt(tmpl.find('input[name="num-eval-viability"]:checked').value);
+    var profitabilityValue = parseInt(tmpl.find('input[name="num-eval-profitability"]:checked').value);
 
-    var success = Math.round((((productivity_value + achievement_value + effects_value + relevance_value + viability_value + profitability_value - 6)/31) + (1/6)) * 3);
+    var success = Math.round((((productivityValue + achievementValue + effectsValue + 
+        relevanceValue + viabilityValue + profitabilityValue - 6)/31) + (1/6)) * 3);
 
     console.log(success)
     var mods = {
         "project.location.coordinates.lat": lat,
         "project.location.coordinates.lng": lng,
         "project.successCategory": success,
-        "evaluation.productivity.value": productivity_value,
-        "evaluation.achievement.value": achievement_value,
-        "evaluation.effects.value": effects_value,
-        "evaluation.relevance.value": relevance_value,
-        "evaluation.viability.value": viability_value,
-        "evaluation.profitability.value": profitability_value,
-        "_public": parseInt(tmpl.find('input[name="public-var"]:checked').value) == 1
+        "evaluation.productivity.value": productivityValue,
+        "evaluation.achievement.value": achievementValue,
+        "evaluation.effects.value": effectsValue,
+        "evaluation.relevance.value": relevanceValue,
+        "evaluation.viability.value": viabilityValue,
+        "evaluation.profitability.value": profitabilityValue,
+        "_public": parseInt(tmpl.find('input[name="public-var"]:checked').value) === 1
     };
 
-    var imgs_ids = uploadObject.getImages();
+    var imgsIds = uploadObject.getImages();
     var imgs = [];
 
-    for (var i = 0; i < imgs_ids.length; i++){
+    for (var i = 0; i < imgsIds.length; i++){
         var img = {
-            fileId: imgs_ids[i],
-            title: tmpl.find('#title-' + imgs_ids[i]).value,
-            copyright: tmpl.find('#copyright-' + imgs_ids[i]).value,
-            link: tmpl.find('#link-' + imgs_ids[i]).value
+            fileId: imgsIds[i],
+            title: tmpl.find('#title-' + imgsIds[i]).value,
+            copyright: tmpl.find('#copyright-' + imgsIds[i]).value,
+            link: tmpl.find('#link-' + imgsIds[i]).value
         };
         imgs.push(img);
     }
-    mods["images"] = imgs;
+    mods.images = imgs;
   
-    var files_ids = uploadObject.getReferences();
+    var filesIds = uploadObject.getReferences();
     var files = [];
   
-    for (var i = 0; i < files_ids.length; i++){
+    for (var i = 0; i < filesIds.length; i++){
         var file = {
-            fileId: files_ids[i],
-            title: tmpl.find('#title-' + files_ids[i]).value,
-            typedoc: tmpl.find('#typedoc-' + files_ids[i]).value,
-            date: tmpl.find('#date-' + files_ids[i]).value
+            fileId: filesIds[i],
+            title: tmpl.find('#title-' + filesIds[i]).value,
+            typedoc: tmpl.find('#typedoc-' + filesIds[i]).value,
+            date: tmpl.find('#date-' + filesIds[i]).value
         };
         files.push(file);
     }
 
-    mods["references"] = files;
+    mods.references = files;
 
     modifier.$set = _.extend(modifier.$set, mods);
 
     return modifier;
-}
+};
 
-createReport = function(tmpl) {
-    
+Reports.createReport = function(tmpl) {
+    "use strict";
+
     // our report document
     var report = {
         project: {},
@@ -149,52 +152,53 @@ createReport = function(tmpl) {
     report.evaluation.profitability.short = tmpl.find('#eval-profitability-short').value || "";
     report.evaluation.profitability.long = tmpl.find('#eval-profitability-long').value || "";
 
-    var productivity_value = parseInt(tmpl.find('input[name="num-eval-productivity"]:checked').value);
-    var achievement_value = parseInt(tmpl.find('input[name="num-eval-achievement"]:checked').value);
-    var effects_value = parseInt(tmpl.find('input[name="num-eval-effects"]:checked').value);
-    var relevance_value = parseInt(tmpl.find('input[name="num-eval-relevance"]:checked').value);
-    var viability_value = parseInt(tmpl.find('input[name="num-eval-viability"]:checked').value);
-    var profitability_value = parseInt(tmpl.find('input[name="num-eval-profitability"]:checked').value);
+    var productivityValue = parseInt(tmpl.find('input[name="num-eval-productivity"]:checked').value);
+    var achievementValue = parseInt(tmpl.find('input[name="num-eval-achievement"]:checked').value);
+    var effectsValue = parseInt(tmpl.find('input[name="num-eval-effects"]:checked').value);
+    var relevanceValue = parseInt(tmpl.find('input[name="num-eval-relevance"]:checked').value);
+    var viabilityValue = parseInt(tmpl.find('input[name="num-eval-viability"]:checked').value);
+    var profitabilityValue = parseInt(tmpl.find('input[name="num-eval-profitability"]:checked').value);
 
-    report.evaluation.productivity.value = productivity_value;
-    report.evaluation.achievement.value = achievement_value;
-    report.evaluation.effects.value = effects_value;
-    report.evaluation.relevance.value = relevance_value;
-    report.evaluation.viability.value = viability_value;
-    report.evaluation.profitability.value = profitability_value;
+    report.evaluation.productivity.value = productivityValue;
+    report.evaluation.achievement.value = achievementValue;
+    report.evaluation.effects.value = effectsValue;
+    report.evaluation.relevance.value = relevanceValue;
+    report.evaluation.viability.value = viabilityValue;
+    report.evaluation.profitability.value = profitabilityValue;
 
-    report.project.successCategory = Math.round((((productivity_value + achievement_value + effects_value + relevance_value + viability_value + profitability_value - 6)/31) + (1/6)) * 3);
+    report.project.successCategory = Math.round((((productivityValue + achievementValue + effectsValue + 
+        relevanceValue + viabilityValue + profitabilityValue - 6)/31) + (1/6)) * 3);
 
-    var imgs_ids = uploadObject.getImages();
+    var imgsIds = uploadObject.getImages();
     var imgs = [];
 
-    for (var i = 0; i < imgs_ids.length; i++){
+    for (var i = 0; i < imgsIds.length; i++){
         var img = {
-            fileId: imgs_ids[i],
-            title: tmpl.find('#title-' + imgs_ids[i]).value,
-            copyright: tmpl.find('#copyright-' + imgs_ids[i]).value,
-            link: tmpl.find('#link-' + imgs_ids[i]).value
+            fileId: imgsIds[i],
+            title: tmpl.find('#title-' + imgsIds[i]).value,
+            copyright: tmpl.find('#copyright-' + imgsIds[i]).value,
+            link: tmpl.find('#link-' + imgsIds[i]).value
         };
         imgs.push(img);
     }
 
     report.images = imgs;
 
-    var files_ids = uploadObject.getReferences();
+    var filesIds = uploadObject.getReferences();
     var files = [];
 
-    for (var i = 0; i < files_ids.length; i++){
+    for (var i = 0; i < filesIds.length; i++){
         var file = {
-            fileId: files_ids[i],
-            title: tmpl.find('#title-' + files_ids[i]).value,
-            typedoc: tmpl.find('#typedoc-' + files_ids[i]).value,
-            date: tmpl.find('#date-' + files_ids[i]).value
+            fileId: filesIds[i],
+            title: tmpl.find('#title-' + filesIds[i]).value,
+            typedoc: tmpl.find('#typedoc-' + filesIds[i]).value,
+            date: tmpl.find('#date-' + filesIds[i]).value
         };
         files.push(file);
     }
 
     report.references = files;
-    report._public = parseInt(tmpl.find('input[name="public-var"]:checked').value) == 1;
+    report._public = parseInt(tmpl.find('input[name="public-var"]:checked').value) === 1;
 
     return report;
-}
+};

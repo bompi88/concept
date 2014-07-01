@@ -5,7 +5,7 @@
       "iron-router": {},
       "bootstrap3-sass": {},
       "accounts-ui-bootstrap-3": {
-        "git": "https://github.com/bompi88/meteor-accounts-ui-bootstrap-3.git",
+        "git": "https://github.com/todi01/meteor-accounts-ui-bootstrap-3.git",
         "branch": "master"
       },
       "collectionFS": {},
@@ -29,7 +29,8 @@
       "googlemaps": {
         "git": "https://github.com/bompi88/meteor-googlemaps.git",
         "branch": "master"
-      }
+      },
+      "just-i18n": {}
     },
     "packages": {
       "iron-router": {
@@ -43,9 +44,9 @@
         "commit": "d61b7c69aecf1c2033db6b8d283fcfabe9788451"
       },
       "accounts-ui-bootstrap-3": {
-        "git": "https://github.com/bompi88/meteor-accounts-ui-bootstrap-3.git",
+        "git": "https://github.com/todi01/meteor-accounts-ui-bootstrap-3.git",
         "branch": "master",
-        "commit": "85bd309d5cab4624735b0e609e03ef5343b1523f"
+        "commit": "a83cf0210df3113cceda124f35d51f98b099cad5"
       },
       "collectionFS": {
         "git": "https://github.com/CollectionFS/Meteor-CollectionFS.git",
@@ -111,6 +112,11 @@
         "git": "https://github.com/bompi88/meteor-googlemaps.git",
         "branch": "master",
         "commit": "919830fa99312db79320645999f6ee2fedee503b"
+      },
+      "just-i18n": {
+        "git": "https://github.com/subhog/meteor-just-i18n.git",
+        "tag": "v0.3.0",
+        "commit": "a60e7f4350fb9648d6f6b4a01acbbc114c4f4343"
       },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",

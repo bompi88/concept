@@ -168,12 +168,14 @@ Template.Report.rendered = function() {
 
         var width = $('canvas').parent().width();
 
+        var chart;
+        
         $('canvas').attr("width",width);
-        new Chart(ctx).Radar(data,options);
+        chart = new Chart(ctx).Radar(data,options);
         window.onresize = function(event){
           var width = $('canvas').parent().width();
           $('canvas').attr("width",width);
-          new Chart(ctx).Radar(data,options);
+          chart = new Chart(ctx).Radar(data,options);
         };
 
     }

@@ -9,30 +9,18 @@ GeneratePdfController = RouteController.extend({
 
 	action: function () {
     if(this.ready()) {
-      console.log(this.params._id)
+      // Check if a id is present
       if(this.params._id != null && this.params._id !== 'undefined') {
+        // Make sure the report is there
         if (this.data) {
-        Meteor.call('createPdf', Router.getData(), function (error, result) {
-          if (error)
-            console.log(error);
-          
-          if(result)
-            window.location = result;
-        });
-      }
+          // Generate a pdf document on the server, based on report
+          Meteor.call('createPdf', Router.getData(), function (error, result) {
+            // If we got a URL, redirect to that address
+            if(result)
+              window.location = result;
+          });
+        }
       }
     }
 	}
-});
-
-SeoCollection.insert({
-  route_name: 'GeneratePdf',
-  title: 'Concept NTNU - genererer pdf...',
-  meta: {
-    'description': 'Etterevaluering av en rekke statlige prosjekter gjort av Concept-programmet. På oppdrag fra Finansdepartementet'
-  },
-  og: {
-    'title': 'Concept NTNU - genererer pdf...',
-    'image': '/images/logo.jpg'
-  }
 });

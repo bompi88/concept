@@ -17,7 +17,7 @@ Template.Report.events({
     var w = window.open('/pdf/' + this._id);
     setTimeout(function() {
       w.close();
-    }, 400)
+    }, 2000)
   },
 
   'click .edit-btn': function(event, tmpl) {

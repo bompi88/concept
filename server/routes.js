@@ -6,7 +6,7 @@ Router.map(function() {
     path: '/pdf/:_id',
     action: function() {
       var report = Reports.find({_id: this.params._id}).fetch()[0];
-      console.log(report)
+
       if(report) {
 
         var file = generatePdf(report);
@@ -24,18 +24,26 @@ Router.map(function() {
   });
 });
 
+var getImg = Meteor._wrapAsync(function(img, callback) {
+  gm(img.createReadStream()).toBuffer(function (err, buffer) {
+    if (err) return handle(err);
+
+    callback(null, buffer);
+  });
+});
+
 var generatePdf = function(report) {
 
     if(!report || typeof report === 'undefined') {
       return false;
     }
 
-    var doc = new PDFDocument({size: 'A4', margin: 20});
+    var doc = new PDFDocument({size: 'A4'});
     var defNaNText = "Ingen tekst tilgjengelig...";
 
     doc
         .fontSize(25)
-        .text(report.project.name, 100, 100);
+        .text(report.project.name || defNaNText, 100, 100);
 
     doc.moveDown();
 
@@ -45,9 +53,30 @@ var generatePdf = function(report) {
 
       doc
         .fontSize(12)
-        .text(report.project.projectDescription.long);
+        .text(report.project.projectDescription.long || defNaNText, {width: 400});
 
     doc.moveDown();
+
+    if(report.images && report.images.length > 0) {
+      var image = Images.findOne(report.images[0].fileId);
+      var buffer = getImg(image);
+
+      doc.image(buffer, { fit: [250, 250]});
+
+      doc.moveDown();
+
+      var width = doc.widthOfString(report.images[0].copyright);
+      var height = doc.currentLineHeight();
+      var titleWidth = doc.widthOfString(report.images[0].title + ". Foto: " + report.images[0].copyright);
+
+      doc .text(report.images[0].title + ". Foto: " + report.images[0].copyright)
+          .fontSize(14)
+          .underline(doc.x + titleWidth - width, doc.y - height, width, height, {color: 'blue'})
+          .link(doc.x + titleWidth - width, doc.y - height, width, height, report.images[0].link);
+
+      doc.moveDown();
+      doc.moveDown();
+    }
 
     doc
         .fontSize(18)
@@ -121,8 +150,6 @@ var generatePdf = function(report) {
         .text(report.evaluation.profitability.long || defNaNText);
 
       doc.moveDown();
-
-
 
     return doc.outputSync();
 }

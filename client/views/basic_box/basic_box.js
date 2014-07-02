@@ -9,8 +9,5 @@ Template.BasicBox.events({
 });
 
 Template.BasicBox.rendered = function () {
-  Hyphenator.config({
-    minwordlength : 4
-  });
-  Hyphenator.run();
+  $('.hyphenate').hyphenate('no-nb');
 };

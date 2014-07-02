@@ -81,8 +81,8 @@ Template.LoginForm.events({
  */
 var toggleButtons = function(btn, disable, label) {
 
-  if (arguments.length > 2 && disable) {
-    submitButton.innerHTML = label;
+  if (arguments.length > 2) {
+    btn.innerHTML = label;
     $('.btn').attr("disabled", disable);
   } else {
     $('.btn').attr("disabled", disable);

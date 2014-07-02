@@ -21,7 +21,7 @@ App.helpers = {
 	'$cutText': function (str, n, m) {
 
     // swap n and m if m is present
-    if(arguments.length > 2) {
+    if(arguments.length > 3) {
       var tmp = n;
 
       n = m;

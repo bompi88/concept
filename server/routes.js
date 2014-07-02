@@ -9,7 +9,7 @@ Router.map(function() {
 
       if(report) {
 
-        var file = generatePdf(report);
+        var file = generatePdf(report, this.params.spider);
         var filename = report.project.name + '.pdf';
 
         var headers = {
@@ -32,7 +32,7 @@ var getImg = Meteor._wrapAsync(function(img, callback) {
   });
 });
 
-var generatePdf = function(report) {
+var generatePdf = function(report, spider) {
 
     if(!report || typeof report === 'undefined') {
       return false;
@@ -88,6 +88,18 @@ var generatePdf = function(report) {
         .fontSize(16)
         .text('Samlet vurdering');
 
+      doc
+        .fontSize(12)
+        .text(report.evaluation.overall.long || defNaNText);
+
+      doc.moveDown();
+      doc.addPage();
+      // Spider diagram
+
+      var spiderBuffer = new Buffer(spider.replace('data:image/png;base64,','') || '', 'base64');
+      doc.image(spiderBuffer, (525 - 200) / 2, doc.y, { fit: [400, 300]});
+
+      doc.moveDown();
       doc.moveDown();
 
     doc

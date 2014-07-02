@@ -23,16 +23,16 @@ Template.DownloadList.helpers({
       }
     }
     return null;
-  },
 
-  // TODO: fix bad code
-  // Runs for every image file in list, each time uploadObject changes
+  },
   getUrl: function(img, store) {
     uploadObject.dep.depend();
-
+    
     if (img) {
       if (store) {
+        console.log(store);
         return img.url(store);
+
       }
       else
         return img.url();

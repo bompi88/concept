@@ -1,3 +1,6 @@
+
+
+
 dt:after {
 	content: ":";
 }
@@ -7,6 +10,7 @@ dt:after {
 	width:90%;
 	margin: 0 auto;
 }
+
 
 .panel-default:hover {
 
@@ -24,26 +28,27 @@ dt:after {
 	}
 }
 
-.dl-horizontal.ls-offset {
-	width:100%;
-	display: block;
+
+	.dl-horizontal.ls-offset {
+		width:100%;
+		display: block;
 
 
-	dt {
-		text-align:right;
-		display: inline-block;
-		width:49%;
-		margin: 0;
-		padding-right: 5px;
-	}	
+		dt {
+			text-align:right;
+			display: inline-block;
+			width:49%;
+			margin: 0;
+			padding-right: 5px;
+		}	
 
-	dd {	
-		display: inline-block;
-		width:49%;
-		margin:0;
-		padding-left: 5px;
+		dd {	
+			display: inline-block;
+			width:49%;
+			margin:0;
+			padding-left: 5px;
+		}
 	}
-}
 
 @media (max-width: 991px) {
 	div.panel.panel-info{

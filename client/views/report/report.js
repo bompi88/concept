@@ -14,7 +14,10 @@ Template.Report.events({
   },
 
   'click #export-text': function(event, tmpl) {
-    window.open('/generate-pdf/' + this._id);
+    var w = window.open('/pdf/' + this._id);
+    setTimeout(function() {
+      w.close();
+    }, 400)
   },
 
   'click .edit-btn': function(event, tmpl) {

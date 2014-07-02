@@ -14,7 +14,14 @@ Template.Report.events({
   },
 
   'click #export-text': function(event, tmpl) {
-    var w = window.open('/pdf/' + this._id);
+    var canvas = document.getElementById('spiderEvaluation');
+
+    // get the canvas as image
+    var dataURL = canvas.toDataURL();
+
+    // open a window or a tab and direct it to the pdf.
+    // And send the spider image over as a parameter.
+    var w = window.open('/pdf/' + this._id + "?spider=" + dataURL);
     setTimeout(function() {
       w.close();
     }, 2000)

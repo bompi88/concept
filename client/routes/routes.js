@@ -1,7 +1,6 @@
 /**
  * Client Routes
  */
-
 Router.map(function () {
 
   this.route('ConceptIndex', {
@@ -40,11 +39,13 @@ Router.map(function () {
 
   this.route('AdminLogon', {
     path: '/concept-admin',
-    controller: 'AdminLogonController'
+    controller: 'AdminLogonController',
+    template: 'LoginForm'
   });
 
   this.route('AdminForgottonPassword', {
-    path: '/concept-admin-forgotton-password'
+    path: '/concept-admin-forgotton-password',
+    template: 'LoginForm'
   });
 
   // -- Miscellaneous routes ---------------------------------------------

@@ -1,3 +1,5 @@
+[![Build Status](https://magnum.travis-ci.com/bompi88/concept.svg?token=hseESc15r1zHkVm476ia&branch=master)](https://magnum.travis-ci.com/bompi88/concept)
+
 #Presentation tool for Concept
 
 ## Installation and running

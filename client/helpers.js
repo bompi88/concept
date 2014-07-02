@@ -28,34 +28,17 @@ currentRouteIs = function(route) {
 };
 
 removeItem = function(array, id) {
-  return _.reject(array, function(item) {
-    return item === id;
-  });
+    return _.reject(array, function(item) {
+        return item === id;
+    });
 };
 
-getUrlById = function(id, col, args) {
-
-  if(!id || !col)
+getImageUrl = function(fileId) {
+  var image = Images.findOne({_id:fileId});
+  if(image)
+    return image.url();
+  else
     return false;
-
-  var query = { _id: id };
-
-  var store = args || args.hash || args.hash.store || null;
-
-  var file;
-
-  if (col === 'images') {
-    file = Images.findOne(query);
-  } else if (col === 'files') {
-    file = Files.findOne(query);
-  }
-
-  if (file) {
-    return file.url(store);
-  } else {
-    return false;
-  }
-  return false;
 };
 
 
@@ -78,18 +61,4 @@ createModalDialog = function(title, body) {
       }
     }
   });
-};
-
-replaceWithTemplate = function (msg, tmpl, meteorTemplate, selector) {
-  // DOM element to hook our template to
-  var parent = tmpl.find(selector);
-
-  while (parent.firstChild) {
-    parent.removeChild(parent.firstChild);
-  }
-  // renders our alert box template
-  var template = UI.renderWithData(meteorTemplate, msg);
-
-  // insert alert box template as a child
-  UI.insert(template, parent);
 };

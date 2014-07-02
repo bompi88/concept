@@ -10,7 +10,7 @@ it renders an insert form.
 		<div class="col-xs-12 col-md-8 col-md-offset-2 content-wrapper" style="margin-bottom:30px;">
 			<div class="row" style="margin-bottom:30px;">
 				<div class="col-xs-12">
-					{{#if $currentRouteIs 'EditReport'}}
+					{{#if currentRouteIs 'EditReport'}}
 						{{> ReportForm id='report-form' doc=this type="update"}}
 					{{else}}
 						{{> ReportForm id='report-form' type="insert"}}

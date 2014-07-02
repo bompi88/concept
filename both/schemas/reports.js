@@ -1,6 +1,6 @@
-/*****************************************************************************/
-/* Reports Scheme */
-/*****************************************************************************/
+/**
+ * Reports Scheme
+ */
 
 var textAreaRegEx = /^[a-z0-9A-z .,!;\n\r&:%"?æøåÆØÅèÈéÉ\/()<>-]*$/;
 var textFieldRegEx = /^[a-z0-9A-z .,æøåÆØÅèÈéÉ()-]{2,100}$/;
@@ -377,6 +377,10 @@ ReportScheme = new SimpleSchema({
     }
 });
 
+/**
+ * Translation of the schema messages
+ */
+
 ReportScheme.messages({
     required: "[label] må fylles ut",
     minString: "[label] må inneholde minimum [min] tegn",
@@ -398,4 +402,5 @@ ReportScheme.messages({
     regEx: "[label] feilet ved regulær sjekk av innholdet"
 });
 
+// Attach the schema to the collection
 Reports.attachSchema(ReportScheme);

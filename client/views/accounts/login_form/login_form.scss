@@ -1,22 +1,12 @@
-/*****************************************************************************/
-/* AdminLogon: Style */
-/*****************************************************************************/
+/**
+ * AdminLogon: SCSS styles
+ */
 
 .form-signin, .form-password-lookup
 {
     max-width: 330px;
     padding: 15px;
     margin: 0 auto;
-}
-
-.form-signin .form-signin-heading, .form-signin .checkbox
-{
-    margin-bottom: 10px;
-}
-
-.form-signin .checkbox
-{
-    font-weight: normal;
 }
 
 .form-signin .form-control, .form-password-lookup .form-control
@@ -72,18 +62,8 @@
     display: block;
 }
 
-.profile-img
-{   
-    width: 96px;
-    height: 96px;
-    margin: 0 auto 10px;
-    display: block;
-    -moz-border-radius: 50%;
-    -webkit-border-radius: 50%;
-    border-radius: 50%;
-}
 
-.new-account
+.new-pass
 {
     display: block;
     margin-top: 10px;

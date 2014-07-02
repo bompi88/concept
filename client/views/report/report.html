@@ -51,19 +51,19 @@
 
 						<h2>Evaluering <small> utført av {{responsible.organization}} ved {{responsible.person}}</small></h2>
 
-						{{> EvaluationParagraph header="Samlet vurdering" ref=evaluation.overall id="evaluation-overall" btnId="over-button" hSize="large"}}
+						{{> EvaluationParagraph header="Samlet vurdering" ref=evaluation.overall id="evaluation-overall" hSize="large"}}
 
-						{{> EvaluationParagraph header="Produktivitet" ref=evaluation.productivity id="evaluation-productivity" btnId="prod-button"}}
+						{{> EvaluationParagraph header="Produktivitet" ref=evaluation.productivity id="evaluation-productivity"}}
 
-						{{> EvaluationParagraph header="Måloppnåelse" ref=evaluation.achievement id="evaluation-achievement" btnId="ach-button"}}
+						{{> EvaluationParagraph header="Måloppnåelse" ref=evaluation.achievement id="evaluation-achievement"}}
 
-						{{> EvaluationParagraph header="Virkninger" ref=evaluation.effects id="evaluation-effects" btnId="eff-button"}}
+						{{> EvaluationParagraph header="Virkninger" ref=evaluation.effects id="evaluation-effects"}}
 
-						{{> EvaluationParagraph header="Relevans" ref=evaluation.relevance id="evaluation-relevance" btnId="rel-button"}}
+						{{> EvaluationParagraph header="Relevans" ref=evaluation.relevance id="evaluation-relevance"}}
 
-						{{> EvaluationParagraph header="Levedyktighet" ref=evaluation.viability id="evaluation-viability" btnId="via-button"}}
+						{{> EvaluationParagraph header="Levedyktighet" ref=evaluation.viability id="evaluation-viability"}}
 
-						{{> EvaluationParagraph header="Samfunnsøkonomisk lønnsomhet" ref=evaluation.profitability id="evaluation-profitability" btnId="prof-button"}}
+						{{> EvaluationParagraph header="Samfunnsøkonomisk lønnsomhet" ref=evaluation.profitability id="evaluation-profitability"}}
 
 					</div>
 				</div>
@@ -114,6 +114,7 @@
 <template name="SideBarElement">
 	<li class="{{class}} {{#if active}}active{{/if}}">
 		<a href="#{{to}}" contenteditable="false">{{name}}</a>
+		
 		{{#if multiple}}
 			<ul class="nav nav-stacked">
 				{{> UI.contentBlock}}
@@ -126,12 +127,12 @@
 	{{#if $eq hSize 'large'}}
 		<h3 id="{{id}}">{{header}}</h3>
 		<p>{{ref.short}}
-			<span>&nbsp;<a href="#" id="{{btnId}}">Les mer &raquo;</a></span>
+			<span>&nbsp;<a href="#" class="read-more">Les mer &raquo;</a></span>
 		</p>
 	{{else}}
 		<h4 id="{{id}}">{{header}}</h4>
 		<p>{{{ref.short}}}<b>&nbsp;{{ref.value}} av 6 poeng</b>.
-			<span>&nbsp;<a href="#" id="{{btnId}}">Les mer &raquo;</a></span>
+			<span>&nbsp;<a href="#" class="read-more">Les mer &raquo;</a></span>
 		</p>
 	{{/if}}
 </template>

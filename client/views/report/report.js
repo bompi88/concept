@@ -33,36 +33,8 @@ Template.Report.events({
 });
 
 Template.EvaluationParagraph.events({
-  'click #over-button': function(event, tmpl) {
-    createModalDialog("Samlet vurdering", this.evaluation.overall.long);
-  },
-
-  'click #prod-button': function(event, tmpl) {
-    createModalDialog("Produktivitet", this.evaluation.productivity.long);
-  },
-
-  'click #eff-button': function(event, tmpl) {
-    createModalDialog("Virkninger", this.evaluation.effects.long);
-  },
-
-  'click #rel-button': function(event, tmpl) {
-    createModalDialog("Relevans", this.evaluation.relevance.long);
-  },
-
-  'click #via-button': function(event, tmpl) {
-    createModalDialog("Levedyktighet", this.evaluation.viability.long);
-  },
-
-  'click #prof-button': function(event, tmpl) {
-    createModalDialog("Samfunnsøkonomisk lønnsomhet", this.evaluation.profitability.long);
-  },
-
-  'click #ach-button': function(event, tmpl) {
-    createModalDialog("Måloppnåelse", this.evaluation.achievement.long);
-  },
-
-  'click #desc-button': function(event, tmpl) {
-    createModalDialog("Prosjektbeskrivelse og mål", this.project.projectDescription.long);
+  'click .read-more': function(event, tmpl) {
+    createModalDialog(this.header, this.ref.long);
   }
 });
 

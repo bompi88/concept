@@ -10,7 +10,7 @@ Router.map(function() {
       if(report) {
 
         var file = generatePdf(report);
-        var filename = report.project.name + '.zip';
+        var filename = report.project.name + '.pdf';
 
         var headers = {
           'Content-type': 'application/pdf',

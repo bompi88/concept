@@ -29,6 +29,10 @@ Template.Report.events({
 
   'click .edit-btn': function(event, tmpl) {
     Router.go('/reports/' + this._id + '/edit');
+  },
+
+  'click #desc-button': function(event, tmpl) {
+    createModalDialog("Prosjektbeskrivelse", this.project.projectDescription.long);
   }
 });
 

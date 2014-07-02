@@ -1,10 +1,10 @@
-/*****************************************************************************/
-/* Reports Collection */
-/*****************************************************************************/
+/**
+ * Reports Collection
+ */
 
 Reports = new Meteor.Collection('reports');
 
-Reports.createMofidiers = function(modifier, tmpl) {
+createMofidiers = function(modifier, tmpl) {
     "use strict";
 
     var coords = locationObject.getCoordinates();
@@ -23,7 +23,7 @@ Reports.createMofidiers = function(modifier, tmpl) {
     var viabilityValue = parseInt(tmpl.find('input[name="num-eval-viability"]:checked').value);
     var profitabilityValue = parseInt(tmpl.find('input[name="num-eval-profitability"]:checked').value);
 
-    var success = Math.round((((productivityValue + achievementValue + effectsValue + 
+    var success = Math.round((((productivityValue + achievementValue + effectsValue +
         relevanceValue + viabilityValue + profitabilityValue - 6)/31) + (1/6)) * 3);
 
     console.log(success)
@@ -53,10 +53,10 @@ Reports.createMofidiers = function(modifier, tmpl) {
         imgs.push(img);
     }
     mods.images = imgs;
-  
+
     var filesIds = uploadObject.getReferences();
     var files = [];
-  
+
     for (var i = 0; i < filesIds.length; i++){
         var file = {
             fileId: filesIds[i],
@@ -74,7 +74,7 @@ Reports.createMofidiers = function(modifier, tmpl) {
     return modifier;
 };
 
-Reports.createReport = function(tmpl) {
+createReport = function(tmpl) {
     "use strict";
 
     // our report document
@@ -166,7 +166,7 @@ Reports.createReport = function(tmpl) {
     report.evaluation.viability.value = viabilityValue;
     report.evaluation.profitability.value = profitabilityValue;
 
-    report.project.successCategory = Math.round((((productivityValue + achievementValue + effectsValue + 
+    report.project.successCategory = Math.round((((productivityValue + achievementValue + effectsValue +
         relevanceValue + viabilityValue + profitabilityValue - 6)/31) + (1/6)) * 3);
 
     var imgsIds = uploadObject.getImages();

@@ -3,6 +3,6 @@
  */
 ReportListController = RouteController.extend({
 	waitOn: function () {
-		return [ Meteor.subscribe('reports'), Meteor.subscribe('images'), Meteor.subscribe('reports') ];
+		return [ Meteor.subscribe('reports'), Meteor.subscribe('images') ];
 	}
 });

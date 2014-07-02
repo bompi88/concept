@@ -1,3 +1,6 @@
+/**
+ * GeneratePdfController:
+ */
 GeneratePdfController = RouteController.extend({
   waitOn: function () {
     return Meteor.subscribe('report', this.params._id);

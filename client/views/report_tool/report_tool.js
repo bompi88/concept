@@ -5,9 +5,38 @@
 
 //this session variable holds the applied report filters to support reactivity
 Session.setDefault('filters', []);
+//all the reports ready for csv export
+var reportsExport;
 
 
 // -- Events --------------------------------------------------------
+
+
+Template.ReportTool.events({
+
+  //handles csv export
+  'click #download' : function(event, tmpl) {
+    var reportids = "?reports=";
+    var i;
+
+    //append report id from all filtered reports
+    for(i = 0; i < reportsExport.length; i++) {
+
+      var r = reportsExport[i];
+      if(i === reportsExport.length - 1)
+        reportids += r._id;
+      else
+        reportids += r._id + ',';
+    }
+
+    //send all ids to csv route for export
+    var w = window.open('/csv/' + reportids);
+    setTimeout(function() {
+      w.close();
+    }, 2000);
+  }
+});
+
 
 Template.Filter.events({
 
@@ -30,11 +59,11 @@ Template.Filter.events({
 	'click #add-filter' : function(event, tmpl) {
 		var value = tmpl.find('#value-picker').value;
 
-		//parse value to int if possible 
-		if(!isNaN(value)) 
+		//parse value to int if possible
+		if(!isNaN(value))
 			value = parseInt(value);
 
-		//create a filter object 
+		//create a filter object
 		var filter = {
 			"attribute": tmpl.find('#attribute-picker').text.trim(),
 			"operator": tmpl.find('#operator-picker').text.trim(),
@@ -52,9 +81,10 @@ Template.Filter.events({
 			bootbox.alert("Sjekk at attributt, operator og verdi gir mening sammen.");
 		}
 
-		
 
-	}
+
+	},
+
 
 });
 
@@ -85,6 +115,7 @@ Template.FilterList.filters = function() {
 Template.FilterReportTable.reports = function() {
 	var filters = Session.get('filters');
 	var reports = filterReports(Reports.find({}).fetch(), filters);
+  reportsExport = reports;
 	return reports;
 };
 
@@ -116,7 +147,7 @@ function filterReports(reports, filters) {
 				if(contains(filter.attribute, filter.value, report))
 					continue;
 				else return false;
-				
+
 			}
 			else if(filter.operator == "større enn") {
 
@@ -125,7 +156,7 @@ function filterReports(reports, filters) {
 				else {
 					return false;
 				}
-				
+
 			}
 			else if(filter.operator == "mindre enn") {
 
@@ -176,7 +207,7 @@ function lessThan(att, value, report) {
 
 function nameToAttribute(attribute, report) {
 
-	if(attribute === 'Sektor') 
+	if(attribute === 'Sektor')
 		return report.project.sector;
 	else if(attribute === 'Navn')
 		return report.project.name;
@@ -210,7 +241,7 @@ function nameToAttribute(attribute, report) {
 
 /**
  * All possible filter combinations are allowed from the user interface.
- * Therefore they have to pass through this validate method. 
+ * Therefore they have to pass through this validate method.
  */
 
 function validateFilter(filter) {

@@ -1,7 +1,7 @@
 <template name="ReportTool">
 	<div class="container">
 		<h1 class="text-center">Hent ut fra databasen</h1>
-		<a href="#" class="btn btn-default pull-right" role="button" id="download"><span class="glyphicon glyphicon-export"></span>Eksporter til Excel</a>
+		<a href="#" class="btn btn-default pull-right" role="button" id="download"><span class="glyphicon glyphicon-export"></span>Eksporter valgte rapporter til Excel</a>
 		{{> Filter}}
 		{{> FilterList}}
 		{{> FilterReportTable}}
@@ -95,6 +95,7 @@
 		        	<th class="sort-toggle table-header" data-id="management-budget">Styringsramme {{> SortArrow sortBy='project.managementBudget.amount'}}</th>
 		        	<th class="sort-toggle table-header" data-id="cost-final">Sluttkostnad {{> SortArrow sortBy='project.costFinal.amount'}}</th>
 		        	<th class="sort-toggle table-header" data-id="responsible-org">Evaluator {{> SortArrow sortBy='responsible.organization'}}</th>
+		        	<th class="sort-toggle table-header" data-id="responsible-org">Valgt {{> SortArrow sortBy='responsible.organization'}}</th>
 		        </tr>
 		    </thead>
 		    <tbody>
@@ -108,6 +109,7 @@
 			            <td>{{project.managementBudget.amount}}</td>
 			            <td>{{project.costFinal.amount}}</td>
 			            <td>{{responsible.organization}}</td>
+			            <td><div class="checkbox"><input type="checkbox" value="{{_id}}" checked></div></td>
 			        </tr>
 			  	{{/each}}
 		  	</tbody>

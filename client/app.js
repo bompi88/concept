@@ -62,7 +62,7 @@ App.helpers = {
 	'$activeIfRouteIs': function(route, rValue) {
     var returnValue = 'active';
 
-    if(rValue) {
+    if(arguments.length > 2) {
       returnValue = rValue;
     }
 

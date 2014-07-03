@@ -106,7 +106,7 @@
       "googlemaps": {
         "git": "https://github.com/bompi88/meteor-googlemaps.git",
         "branch": "master",
-        "commit": "919830fa99312db79320645999f6ee2fedee503b"
+        "commit": "eb0985eb5583c95ef15d2c2a00b58d1fd71acc6e"
       },
       "just-i18n": {
         "git": "https://github.com/subhog/meteor-just-i18n.git",

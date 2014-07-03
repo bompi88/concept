@@ -15,7 +15,7 @@ uploadObject = {
     return this.References;
   },
   addImage: function(fileObj) {
-    
+
     Meteor.subscribe('image', fileObj._id);
 
     this.Images.push(fileObj._id);
@@ -25,6 +25,7 @@ uploadObject = {
   addReference: function(fileObj) {
 
     Meteor.subscribe('file', fileObj._id);
+
     this.References.push(fileObj._id);
     this.dep.changed();
     return this.References;
@@ -37,7 +38,7 @@ uploadObject = {
   },
   removeReference: function(id) {
     this.References = removeItem(this.References, id);
-    
+
     this.dep.changed();
     return this.References;
   },
@@ -53,12 +54,12 @@ locationObject = {
   dep: new Deps.Dependency,
   getCoordinates: function() {
     this.dep.depend();
-    
+
     return this.coordinates;
   },
   setCoordinates: function(c) {
     this.coordinates = c;
-    this.dep.changed();  
+    this.dep.changed();
     return this.coordinates;
   }
 }

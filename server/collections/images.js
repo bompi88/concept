@@ -1,5 +1,7 @@
+"use strict";
+
 Images.allow({
-  insert: function (userId, doc) {
+  insert: function (userId) {
     if(userId) {
       return true;
     } else {
@@ -7,7 +9,7 @@ Images.allow({
     }
   },
 
-  update: function (userId, doc, fieldNames, modifier) {
+  update: function (userId) {
     if(userId) {
       return true;
     } else {
@@ -15,7 +17,7 @@ Images.allow({
     }
   },
 
-  remove: function (userId, doc) {
+  remove: function (userId) {
     if(userId) {
       return true;
     } else {

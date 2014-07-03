@@ -1,5 +1,5 @@
-/*****************************************************************************/
-/* Configuration of the accounts package */
-/*****************************************************************************/
+/**
+ * Configuration of the accounts package
+ */
 
 Accounts.config({ forbidClientAccountCreation: true });

@@ -104,6 +104,34 @@ Template.FilterList.events({
 });
 
 
+Template.FilterReportTable.events({
+
+  'click .checkbox': function(event, tmpl) {
+    var that = this;
+
+    //checked fører til at rapporten klargjøres for eksportering
+    if($(event.target).prop("checked") == true) {
+      reportsExport.push(that);
+    }
+
+    //hvis ikke må rapporten fjernes fra eksportering
+    else{
+     var result = _.reject(reportsExport, function(report) {
+
+      if(report._id === that._id)
+        return true;
+
+      return false;
+
+    });
+    reportsExport = result;
+   }
+
+ }
+
+});
+
+
 // -- Template Helpers --------------------------------------------------------
 
 

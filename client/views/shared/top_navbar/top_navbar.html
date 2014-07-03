@@ -36,6 +36,6 @@ This is the navbar buttons.
 -->
 <template name="NavBarButton">
 	<ul class="nav navbar-nav">
-		<li class="{{class}} {{activeIfRouteIs this.route}}" data-toggle="collapse" data-target=".in" id="{{id}}"><a href="{{pathFor this.route}}">{{name}}</a></li>
+		<li class="{{class}} {{$activeIfRouteIs this.route}}" data-toggle="collapse" data-target=".in" id="{{id}}"><a href="{{pathFor this.route}}">{{name}}</a></li>
 	</ul>
 </template>

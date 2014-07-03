@@ -1,5 +1,7 @@
+"use strict";
+
 SeoCollection.allow({
-  insert: function(userId, doc) {
+  insert: function() {
     return true;
   }
 });

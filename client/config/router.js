@@ -1,10 +1,8 @@
-/*****************************************************************************/
-/* Configuration of the Iron-router */
-/*****************************************************************************/
-
+/**
+ * Configuration of the Iron-router
+ */
 Router.configure({
   layoutTemplate: 'MasterLayout',
-  loadingTemplate: 'Loading',
   notFoundTemplate: 'NotFound',
   templateNameConverter: 'upperCamelCase',
   routeControllerNameConverter: 'upperCamelCase',

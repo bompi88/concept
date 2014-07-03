@@ -113,35 +113,3 @@ $header-section-background-color: darken(#fff, 2%);
 	top:0px;
 	left:0px;
 }
-
-/*! Light */
-.light {
-	display: block;
-	background-color: #ccc;
-	box-shadow: 0 0 2.5px rgba(0,0,0, .8);
-	overflow: hidden;
-	padding: 1.3px 0 0 1px;
-	height: 18px !important;
-	width: 61px !important;
-}
-
-.light span {
-	border-radius: 7.5px;
-	display: inline-block;
-	height: 15px !important;
-	margin: 1px 1px 0 1px;
-	padding: 0 -5px;
-	opacity: .20;
-	width: 15px !important;
-}
-
-/*! Light colours */
-.red    { background-color: red; }
-.orange { background-color: orange; }
-.green  { background-color: green; }
-
-/*! Active states */
-.light span.active    { opacity: 1; }
-.light .red.active    { box-shadow: 0 0 5px red; }
-.light .orange.active { box-shadow: 0 0 5px orange; }
-.light .green.active  { box-shadow: 0 0 5px green; }

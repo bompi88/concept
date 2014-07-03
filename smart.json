@@ -22,6 +22,9 @@
       "branch": "master"
     },
     "pdfkit": {},
-    "googlemaps": {}
+    "googlemaps": {
+      "git": "https://github.com/bompi88/meteor-googlemaps.git"
+    }
+
   }
 }

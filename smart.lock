@@ -26,7 +26,10 @@
         "branch": "master"
       },
       "pdfkit": {},
-      "googlemaps": {}
+      "googlemaps": {
+        "git": "https://github.com/bompi88/meteor-googlemaps.git",
+        "branch": "master"
+      }
     },
     "packages": {
       "iron-router": {
@@ -105,9 +108,9 @@
         "commit": "172677e29ad066e9992f62237d0a0302fbc8efa6"
       },
       "googlemaps": {
-        "git": "https://github.com/drewjw81/meteor-googlemaps.git",
-        "tag": "v0.0.2",
-        "commit": "da8785c82cfd7de0111f898ef10728e7ed24e361"
+        "git": "https://github.com/bompi88/meteor-googlemaps.git",
+        "branch": "master",
+        "commit": "919830fa99312db79320645999f6ee2fedee503b"
       },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",

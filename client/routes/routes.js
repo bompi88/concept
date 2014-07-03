@@ -30,11 +30,6 @@ Router.map(function () {
     controller: 'ReportViewController'
   });
 
-  this.route('GeneratePdf', {
-    path: '/generate-pdf/:_id',
-    controller: 'GeneratePdfController'
-  });
-
   this.route('ReportTool', {
     path: '/report-tool',
     controller: 'ReportToolController'

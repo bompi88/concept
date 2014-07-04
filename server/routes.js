@@ -22,7 +22,63 @@ Router.map(function() {
       }
     }
   });
+
+  this.route('csvFile', {
+    where: 'server',
+    path: '/csv',
+    action: function() {
+
+      var reportids = this.params.reports.split(',');
+      var reports = Reports.find({_id: {$in: reportids}}).fetch();
+
+      if(reports) {
+
+        var file = generateCSV(reports);
+        var filename = 'rapportutvalg' + '.csv';
+
+        var headers = {
+          'Content-Type': 'text/csv; charset=utf-8',
+          'Content-Disposition': "attachment; filename=" + filename
+        };
+
+        this.response.writeHead(200, headers);
+        return this.response.end(file);
+      }
+    }
+
+
+
+  })
 });
+
+
+var generateCSV = function(reports) {
+
+  var rows = [];
+  reports.forEach(function(r) {
+    var row = {
+      "Navn": r.project.name,
+      "Sektor": r.project.sector,
+      "Prosjektnummer": r.project.projectNumber,
+      "Styringsramme": r.project.managementBudget.amount + "(" + r.project.managementBudget.year + ")",
+      "Kostnadsramme": r.project.costBudget.amount + "(" + r.project.costBudget.year + ")",
+      "Sluttkostnad": r.project.costFinal.amount + "(" + r.project.costFinal.year + ")",
+      "Evaluator": r.responsible.organization,
+      "Suksesskategori": r.project.successCategory,
+      "Produktivitet": r.evaluation.productivity.value,
+      "Maaloppnaaelse": r.evaluation.achievement.value,
+      "Virkninger": r.evaluation.effects.value,
+      "Relevans": r.evaluation.relevance.value,
+      "Levedyktighet": r.evaluation.viability.value,
+      "Samf.aak loennsomhet": r.evaluation.profitability.value
+
+    };
+    rows.push(row);
+  });
+
+  var csv =  json2csv(rows, true, false);
+  return csv;
+};
 
 var getImg = Meteor._wrapAsync(function(img, callback) {
   gm(img.createReadStream()).toBuffer(function (err, buffer) {

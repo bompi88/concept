@@ -1,10 +1,12 @@
 <template name="ReportTool">
-	<div class="container">
-		<h1 class="text-center">Hent ut fra databasen</h1>
-		<a href="#" class="btn btn-default pull-right" role="button" id="download"><span class="glyphicon glyphicon-export"></span>Eksporter valgte rapporter til Excel</a>
-		{{> Filter}}
-		{{> FilterList}}
-		{{> FilterReportTable}}
+	<div class="container-fluid background-basic">
+		<div class="container">
+			<h1 class="text-center">Hent ut fra databasen</h1>
+			<a href="#" class="btn btn-default pull-right" role="button" id="download"><span class="glyphicon glyphicon-export"></span>Eksporter valgte rapporter til Excel</a>
+			{{> Filter}}
+			{{> FilterList}}
+			{{> FilterReportTable}}
+		</div>
 	</div>
 </template>
 

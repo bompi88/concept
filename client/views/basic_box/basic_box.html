@@ -41,7 +41,7 @@
 
 <template name="SmallInfoBox">
 	{{! A small information box which shows basic information about a project}}
-	<ul class="list-group">
+	<ul class="list-group infobox">
 		<li class="list-group-item">
 			<span class="bold">Sektor:</span>
 			<span class="pull-right">{{project.sector}}</span>
@@ -52,7 +52,7 @@
 		</li>
 		<li class="list-group-item">
 			<span class="bold">Sluttkostnad:</span>
-			<span class="pull-right">{{project.costFinal.amount}} mill (år {{project.costFinal.year}})</span>
+			<span class="pull-right">{{project.costFinal.amount}} mill.</span>
 		</li>
 		<li class="list-group-item">
 			<span class="bold">Suksess:</span>

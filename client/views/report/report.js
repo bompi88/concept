@@ -54,7 +54,7 @@ Template.Report.rendered = function() {
       var values = _.pluck(_.omit(report.evaluation,'overall'), 'value');
 
       var data = {
-        labels : ["Produktivitet", "Måloppnåelse", "Virkninger", "Relevans", "Levedyktighet", "Samf.øk. lønnsomhet"],
+        labels : ["Måloppnåelse", "Virkninger", "Produktivitet", "Samf.øk. lønnsomhet", "Relevans", "Levedyktighet"],
         datasets : [
           {
             fillColor : "rgba(0, 140, 186, 0.3)",

@@ -12,7 +12,9 @@ tp			- Which collection to upload to.
 
 <template name="Dropzone">
 	<div class="row">
-		{{> DownloadList files=this.files type=this.tp}}
+		<div class="col-xs-12">
+			{{> DownloadList files=this.files type=this.tp}}
+		</div>
 		<div class="col-xs-12">
 			<div  class="dropzone text-center" id="dropzone-{{tp}}" style="text-aling:center;">
 				<p style="padding:50px 10px;float:none;margin:auto;cursor:pointer;font-size:16px;"><b><i style="font-size:40px">Slipp {{typeDesc}} her</i></b><br>(eller klikk)</p>

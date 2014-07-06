@@ -14,6 +14,36 @@ Template.Toolbar.helpers({
   }
 });
 
+Template.SortBox.helpers({
+  currentSort: function() {
+    var text = '';
+    var curSort = Session.get('sortBy');
+
+    if (curSort === 'project.name') {
+      text = 'Navn';
+    } else if (curSort === 'project.successCategory') {
+      text = 'Suksesskategori';
+    } else if (curSort === 'project.sector') {
+      text = 'Sektor';
+    } else if (curSort === 'project.finishingYear') {
+      text = 'Årstall ferdigstilt';
+    } else if (curSort === 'project.evaluationYear') {
+      text = 'Årstall evaluering';
+    } else if (curSort === 'project.managementBudget.amount') {
+      text = 'Styringsramme';
+    } else if (curSort === 'project.costFinal.amount') {
+      text = 'Sluttkostnad';
+    } else if (curSort === 'responsible.organization') {
+      text = 'Ansvarlig';
+    }
+    return text;
+  },
+  currentSortDirection: function() {
+    return Session.get('sortOrder') === 'asc' ? 'stigende' : 'synkende';
+  }
+
+});
+
 Template.ReportList.events({
   'click #report-view-option1': function(event, tmpl) {
     Session.set('ReportViewState', 'box');
@@ -57,32 +87,6 @@ Template.ReportList.events({
 Template.ReportList.helpers({
   viewState: function () {
     return Session.get('ReportViewState');
-  },
-  currentSort: function() {
-    var text = '';
-    var curSort = Session.get('sortBy');
-      
-    if (curSort === 'project.name') {
-      text = 'Navn';
-    } else if (curSort === 'project.successCategory') {
-      text = 'Suksesskategori';
-    } else if (curSort === 'project.sector') {
-      text = 'Sektor';
-    } else if (curSort === 'project.finishingYear') {
-      text = 'Årstall ferdigstilt';
-    } else if (curSort === 'project.evaluationYear') {
-      text = 'Årstall evaluering';
-    } else if (curSort === 'project.managementBudget.amount') {
-      text = 'Styringsramme';
-    } else if (curSort === 'project.costFinal.amount') {
-      text = 'Sluttkostnad';
-    } else if (curSort === 'responsible.organization') {
-      text = 'Ansvarlig';
-    }
-    return text;
-  },
-  currentSortDirection: function() {
-    return Session.get('sortOrder') === 'asc' ? 'stigende' : 'synkende';
   },
   showSortBox: function() {
     var listState = Session.get('ReportViewState');
@@ -135,7 +139,7 @@ var getReports = function() {
   var reportList = Reports.find({}).fetch();
 
   reportList.sort(sortFunc);
-  
+
   if (Session.get('sortOrder') === 'desc')
     reportList.reverse();
 
@@ -145,7 +149,7 @@ var getReports = function() {
 var sortFunc = function(a, b) {
   var sortBy = Session.get('sortBy');
   var as = Object.byString(a, sortBy), bs = Object.byString(b, sortBy);
- 
+
   if(isString(as) && isString(bs)) {
     var x = as.toLowerCase(), y = bs.toLowerCase();
 
@@ -179,110 +183,3 @@ Object.byString = function(o, s) {
   }
   return o;
 }
-
-Template.TimelineReportView.rendered = function () {
-
-  Deps.autorun(function() {
-  
-    var reports = Reports.find({}).fetch();
-    
-    if (reports) {
-      var elements = [];
-      elements = _.map(reports, function(report){
-
-      var reportRoute = Router.routes['Report'].path({_id: report._id});
-
-      var res = {
-        "startDate":report.project.decisionYear.toString(),
-        "endDate":report.project.finishingYear.toString(),
-        "headline":"<a href=\""+reportRoute+"\">" + report.project.name +"</a>",
-        "text":"<p>" + report.project.projectDescription.short + " " + "<a href=\""+reportRoute+"\">" + "Les mer" +"</a>" + "</p>",
-
-      };
-
-      if (report.images && report.images[0]) {
-        var image = Images.findOne({_id:report.images[0].fileId});
-        var img_url;
-        
-        if(image)
-          img_url = image.url();
-        else
-          img_url = "";
-
-        res["asset"] = {
-          "media": img_url,
-          "credit": "<a href=\""+report.images[0].link+"\" target=\"_blank\">" + report.images[0].copyright +"</a>",
-          "caption":report.images[0].title
-        }
-      }
-      return res;
-    });
-      
-      var data = {};
-
-      if (elements) {
-        data = {
-          "timeline":
-          {
-              "headline":"Concept-rapporter",
-              "type":"default",
-              "text":"Evalueringsrapporter av statlige prosjekter.",
-              "date": elements
-          }
-        } 
-
-        var timeline_config = {
-          type: 'timeline',
-          width: "100%",
-          height: "550",
-          source: data,
-          embed_id: 'timeline-embed',
-          start_at_end: true,
-          language: VMM.Language.no,
-          debug:false
-        }
-
-        storyjs_embedjs = new VMM.Timeline('timeline-embed', '100%', '550');
-        VMM.debug = false;
-        if(storyjs_embedjs && timeline_config.source.timeline.date && timeline_config.source.timeline.date[0])
-          storyjs_embedjs.init(timeline_config);
-      }
-    }
-  });
-};
-
-VMM.Language.no = {
-  lang:"no",
-  api:{
-    wikipedia:"no"
-  },
-  date:{
-    month:["Januar","Februar","Mars","April","Mai","Juni","Juli","August","September","Oktober","November","Desember"],
-    month_abbr:["Jan.","Feb.","Mars","Apr.","Mai","Juni","Juli","Aug.","Sep.","Okt.","Nov.","Des."],
-    day:["Søndag","Mandag","Tirsdag","Onsdag","Torsdag","Fredag","Lørdag"],
-    day_abbr:["Søn.","Man.","Tir.","Ons.","Tor.","Fre.","Lør."]
-  },
-  dateformats:{
-    year:"yyyy",
-    month_short:"mmm",
-    month:"mmmm yyyy",
-    full_short:"d. mmm",
-    full:"d. mmmm',' yyyy",
-    time_no_seconds_short:"HH:MM",
-    time_no_seconds_small_date:"HH:MM'<br/><small>'d. mmmm',' yyyy'</small>'",
-    full_long:"dddd',' d. mmm',' yyyy 'kl.' HH:MM",
-    full_long_small_date:"HH:MM'<br/><small>'dddd',' d. mmm',' yyyy'</small>'"
-  },
-  messages:{
-    loading_timeline:"Laster tidslinje... ",
-    return_to_title:"Tilbake til tittel",
-    expand_timeline:"Utvid tidslinje",
-    contract_timeline:"Krymp tidslinje",
-    wikipedia:"Fra Wikipedia, den frie encyklopedi",
-    loading_content:"Laster innhold",
-    loading:"Laster"
-  }
-};
-
-Template.TimelineReportView.destroyed = function () {
-};

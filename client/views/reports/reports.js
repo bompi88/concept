@@ -1,63 +1,21 @@
+
+
 Session.setDefault('ReportViewState','box');
 Session.setDefault('sortBy', 'project.name');
 Session.setDefault('sortOrder', 'asc');
 Session.setDefault('sortType', 'string');
+Session.setDefault('showFilter', false);
+Session.setDefault('filters', []);
+Session.setDefault('query', {})
+Session.setDefault('uncheckedReportIds', []);
+
 
 /*****************************************************************************/
-/* ReportList: Event Handlers and Helpers */
+/* Reports: Event Handlers and Helpers */
 /*****************************************************************************/
 
 
 
-Template.Toolbar.helpers({
-  viewState: function () {
-    return Session.get('ReportViewState');
-  }
-});
-
-Template.SortBox.helpers({
-  currentSort: function() {
-    var text = '';
-    var curSort = Session.get('sortBy');
-
-    if (curSort === 'project.name') {
-      text = 'Navn';
-    } else if (curSort === 'project.successCategory') {
-      text = 'Suksesskategori';
-    } else if (curSort === 'project.sector') {
-      text = 'Sektor';
-    } else if (curSort === 'project.finishingYear') {
-      text = 'Årstall ferdigstilt';
-    } else if (curSort === 'project.evaluationYear') {
-      text = 'Årstall evaluering';
-    } else if (curSort === 'project.managementBudget.amount') {
-      text = 'Styringsramme';
-    } else if (curSort === 'project.costFinal.amount') {
-      text = 'Sluttkostnad';
-    } else if (curSort === 'responsible.organization') {
-      text = 'Evaluator';
-    }
-    return text;
-  },
-  currentSortDirection: function() {
-    var order = Session.get('sortOrder');
-    var type = Session.get('sortType');
-    if(order === 'asc') {
-      if(type === 'string')
-        return 'glyphicon glyphicon-sort-by-alphabet';
-      else
-        return 'glyphicon glyphicon-sort-by-order';
-    }
-    else {
-      if(type === 'string')
-        return 'glyphicon glyphicon-sort-by-alphabet-alt';
-      else
-        return 'glyphicon glyphicon-sort-by-order-alt';
-    }
-
-  }
-
-});
 
 Template.Reports.events({
   'click #report-view-option1': function(event, tmpl) {
@@ -95,6 +53,42 @@ Template.Reports.events({
   },
   'click .edit-btn': function(event, tmpl) {
     Router.go('/reports/' + this._id + '/edit');
+  },
+  'click #btn-filter' : function(event, tmpl) {
+    //lose focus on the clicked element
+    event.currentTarget.blur();
+    var state = Session.get('showFilter');
+    if(state)
+      Session.set('showFilter', false);
+    else
+      Session.set('showFilter', true);
+  },
+  //handles csv export
+  'click #download' : function(event, tmpl) {
+    var reportids = "?reports=";
+    var i;
+    var q = Session.get('query');
+    var s = {sort: {}};
+    s.sort[Session.get('sortBy')] = Session.get('sortOrder') == 'asc' ? 1 : -1;
+    var reports = Reports.find(q, s).fetch();
+
+    //append report id from all filtered reports
+    for(i = 0; i < reports.length; i++) {
+
+      var r = reports[i];
+
+      if(! _.contains(Session.get('uncheckedReportIds'), r._id)) {
+        if(i === reports.length - 1)
+          reportids += r._id;
+        else
+          reportids += r._id + ',';
+      }
+    }
+    //send all ids to csv route for export
+    var w = window.open('/csv/' + reportids);
+    setTimeout(function() {
+      w.close();
+    }, 2000);
   }
 });
 
@@ -110,31 +104,13 @@ Template.Reports.helpers({
   }
 });
 
-Template.TableReportView.helpers({
-  reports: function() {
-    return getReports();
-  }
-});
-
-Template.TableReportView.events({
-  'click .table-row': function(event, tmpl) {
-    Router.go('/reports/' + this._id);
-  }
-});
-
-Template.BoxReportView.helpers({
-  reports: function() {
-    return getReports();
-  }
-});
-
-
 
 var orderBy = function(attr, asc, type) {
   Session.set('sortType', type);
   if(Session.get('sortBy') === attr) {
     reverseOrder();
-  } else {
+  }
+  else {
     Session.set('sortBy', attr);
     if(asc == -1) {
       Session.set('sortOrder', 'desc');
@@ -150,54 +126,4 @@ var reverseOrder = function() {
   } else {
     Session.set('sortOrder', 'asc');
   }
-}
-
-var getReports = function() {
-
-  var reportList = Reports.find({}).fetch();
-
-  reportList.sort(sortFunc);
-
-  if (Session.get('sortOrder') === 'desc')
-    reportList.reverse();
-
-  return reportList;
-}
-
-var sortFunc = function(a, b) {
-  var sortBy = Session.get('sortBy');
-  var as = Object.byString(a, sortBy), bs = Object.byString(b, sortBy);
-
-  if(isString(as) && isString(bs)) {
-    var x = as.toLowerCase(), y = bs.toLowerCase();
-
-    return x.localeCompare(y);
-  } else if(isNumber(as) || isNumber(bs)) {
-     return as - bs;
-  } else {
-    return as - bs;
-  }
-}
-
-var toString = Object.prototype.toString;
-
-function isNumber(obj) { return !isNaN(parseFloat(obj)) }
-
-var isString = function (obj) {
-  return  Object.prototype.toString.call(obj) === '[object String]';
-}
-
-Object.byString = function(o, s) {
-  s = s.replace(/\[(\w+)\]/g, '.$1'); // convert indexes to properties
-  s = s.replace(/^\./, '');           // strip a leading dot
-  var a = s.split('.');
-  while (a.length) {
-    var n = a.shift();
-    if (n in o) {
-      o = o[n];
-    } else {
-      return;
-    }
-  }
-  return o;
 }

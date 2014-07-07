@@ -1,6 +1,7 @@
 Session.setDefault('ReportViewState','box');
 Session.setDefault('sortBy', 'project.name');
 Session.setDefault('sortOrder', 'asc');
+Session.setDefault('sortType', 'string');
 
 /*****************************************************************************/
 /* ReportList: Event Handlers and Helpers */
@@ -34,12 +35,26 @@ Template.SortBox.helpers({
     } else if (curSort === 'project.costFinal.amount') {
       text = 'Sluttkostnad';
     } else if (curSort === 'responsible.organization') {
-      text = 'Ansvarlig';
+      text = 'Evaluator';
     }
     return text;
   },
   currentSortDirection: function() {
-    return Session.get('sortOrder') === 'asc' ? 'stigende' : 'synkende';
+    var order = Session.get('sortOrder');
+    var type = Session.get('sortType');
+    if(order === 'asc') {
+      if(type === 'string')
+        return 'glyphicon glyphicon-sort-by-alphabet';
+      else
+        return 'glyphicon glyphicon-sort-by-order';
+    }
+    else {
+      if(type === 'string')
+        return 'glyphicon glyphicon-sort-by-alphabet-alt';
+      else
+        return 'glyphicon glyphicon-sort-by-order-alt';
+    }
+
   }
 
 });
@@ -61,21 +76,21 @@ Template.Reports.events({
     var t = $(event.currentTarget).attr("data-id");
 
     if (t === 'name') {
-      orderBy('project.name');
+      orderBy('project.name', undefined, 'string');
     } else if (t === 'success') {
-      orderBy('project.successCategory', -1);
+      orderBy('project.successCategory', -1, 'number');
     } else if (t === 'sector') {
-      orderBy('project.sector');
+      orderBy('project.sector', undefined, 'string');
     } else if (t === 'finishing-year') {
-      orderBy('project.finishingYear');
+      orderBy('project.finishingYear', undefined, 'number');
     } else if (t === 'evaluation-year') {
-      orderBy('project.evaluationYear');
+      orderBy('project.evaluationYear', undefined, 'number');
     } else if (t === 'management-budget') {
-      orderBy('project.managementBudget.amount');
+      orderBy('project.managementBudget.amount', undefined, 'number');
     } else if (t === 'cost-final') {
-      orderBy('project.costFinal.amount');
+      orderBy('project.costFinal.amount', undefined, 'number');
     } else if (t === 'responsible-org') {
-      orderBy('responsible.organization');
+      orderBy('responsible.organization', undefined, 'string');
     }
   },
   'click .edit-btn': function(event, tmpl) {
@@ -113,7 +128,10 @@ Template.BoxReportView.helpers({
   }
 });
 
-var orderBy = function(attr, asc) {
+
+
+var orderBy = function(attr, asc, type) {
+  Session.set('sortType', type);
   if(Session.get('sortBy') === attr) {
     reverseOrder();
   } else {

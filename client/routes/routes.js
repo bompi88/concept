@@ -9,7 +9,7 @@ Router.map(function () {
 
   // -- Report routes ---------------------------------------------------
 
-  this.route('ReportList', {
+  this.route('Reports', {
     path: '/reports',
     controller: 'ReportListController'
   });

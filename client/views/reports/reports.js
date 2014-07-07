@@ -44,7 +44,7 @@ Template.SortBox.helpers({
 
 });
 
-Template.ReportList.events({
+Template.Reports.events({
   'click #report-view-option1': function(event, tmpl) {
     Session.set('ReportViewState', 'box');
   },
@@ -84,7 +84,7 @@ Template.ReportList.events({
 });
 
 
-Template.ReportList.helpers({
+Template.Reports.helpers({
   viewState: function () {
     return Session.get('ReportViewState');
   },

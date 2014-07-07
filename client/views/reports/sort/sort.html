@@ -1,0 +1,22 @@
+<template name="SortArrow">
+	{{#if reversed}}
+		{{#if $.Session.equals 'sortBy' sortBy}}{{#if $.Session.equals 'sortOrder' 'desc'}}<span class="glyphicon glyphicon-chevron-down"></span>{{else}}<span class="glyphicon glyphicon-chevron-up"></span>{{/if}}{{/if}}
+	{{else}}
+		{{#if $.Session.equals 'sortBy' sortBy}}{{#if $.Session.equals 'sortOrder' 'asc'}}<span class="glyphicon glyphicon-chevron-down"></span>{{else}}<span class="glyphicon glyphicon-chevron-up"></span>{{/if}}{{/if}}
+	{{/if}}
+</template>
+
+<template name="SortBox">
+	<div class="{{class}}"> <a class="btn btn-default dropdown-toggle btn-select" data-toggle="dropdown" href="#"><span style="font-weight:500;">Sorter etter:</span> {{currentSort}} <span class="{{currentSortDirection}}"></span> <span class="caret"></span></a>
+		<ul class="dropdown-menu" style="text-align:left;">
+			<li class="sort-toggle" data-id="name"><a href="#">Navn<div class="pull-right">{{> SortArrow sortBy='project.name'}}</div></a></li>
+			<li class="sort-toggle" data-id="success"><a href="#">Suksesskategori<div class="pull-right">{{> SortArrow sortBy='project.successCategory' reversed="1"}}</div></a></li>
+			<li class="sort-toggle" data-id="sector"><a href="#">Sektor<div class="pull-right">{{> SortArrow sortBy='project.sector'}}</div></a></li>
+			<li class="sort-toggle" data-id="finishing-year"><a href="#">Årstall ferdigstilt<div class="pull-right">{{> SortArrow sortBy='project.finishingYear'}}</div></a></li>
+			<li class="sort-toggle" data-id="evaluation-year"><a href="#">Årstall evaluering<div class="pull-right">{{> SortArrow sortBy='project.evaluationYear'}}</div></a></li>
+			<li class="sort-toggle" data-id="management-budget"><a href="#">Styringsramme<div class="pull-right">{{> SortArrow sortBy='project.managementBudget.amount'}}</div></a></li>
+			<li class="sort-toggle" data-id="cost-final"><a href="#">Sluttkostnad<div class="pull-right">{{> SortArrow sortBy='project.costFinal.amount'}}</div></a></li>
+			<li class="sort-toggle" data-id="responsible-org"><a href="#">Evaluator<div class="pull-right">{{> SortArrow sortBy='responsible.organization'}}</div></a></li>
+		</ul>
+	</div>
+</template>

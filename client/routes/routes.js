@@ -30,11 +30,6 @@ Router.map(function () {
     controller: 'ReportViewController'
   });
 
-  this.route('ReportTool', {
-    path: '/report-tool',
-    controller: 'ReportToolController'
-  });
-
   // -- Accounts routes --------------------------------------------------
 
   this.route('AdminLogon', {

@@ -3,11 +3,11 @@
 	<div class="container" style="padding: 0;">
 		<div class="row animated fadeIn" style="z-index:1000;">
 			{{#if showSortBox}}
-			<div class="col-md-3 text-center">
-				<button type="button" class="btn btn-default {{#if showFilter}} active {{/if}}">
-					<span class="glyphicon glyphicon-filter"></span> Filtrer
-				</button>
-			</div>
+				<div class="col-md-3 text-center">
+					<button type="button" class="btn btn-default">
+						<span class="glyphicon glyphicon-export"></span> Eksporter
+					</button>
+				</div>
 			{{/if}}
 
 			<div class="col-xs-12 col-md-6 text-center visible-xs">
@@ -21,13 +21,18 @@
 				</div>
 			</div>
 			{{#if showSortBox}}
-			<div class="col-md-3 hidden-xs hidden-sm animated fadeIn" style="z-index:1001;">
-				{{> SortBox class="btn-group pull-right"}}
-	        </div>
-	        <div class="col-xs-12 visible-xs visible-sm text-center animated fadeIn" style="padding-top: 30px;">
-				{{> SortBox class="btn-group"}}
-	        </div>
-	        {{/if}}
+				<div class="col-md-3 hidden-xs hidden-sm animated fadeIn" style="z-index:1001;">
+					<div class="btn-group">
+						{{> SortBox class="btn-group pull-right"}}
+						<button type="button" class="btn btn-default {{#if showFilter}} active {{/if}}">
+							<span class="glyphicon glyphicon-filter"></span> Filtrer
+						</button>
+					</div>
+				</div>
+				<div class="col-xs-12 visible-xs visible-sm text-center animated fadeIn" style="padding-top: 30px;">
+					{{> SortBox class="btn-group"}}
+				</div>
+			{{/if}}
 		</div>
 		<div class="row" id="report-list-container">
 			{{#if $eq viewState "box"}}
@@ -106,7 +111,7 @@
 </template>
 
 <template name="SortBox">
-	<div class="{{class}}"> <a class="btn btn-default dropdown-toggle btn-select" data-toggle="dropdown" href="#"><span style="font-weight:500;">Sorter etter:</span> {{currentSort}} ({{currentSortDirection}}) <span class="caret"></span></a>
+	<div class="{{class}}"> <a class="btn btn-default dropdown-toggle btn-select" data-toggle="dropdown" href="#"><span style="font-weight:500;">Sorter etter:</span> {{currentSort}} <span class="{{currentSortDirection}}"></span> <span class="caret"></span></a>
 		<ul class="dropdown-menu" style="text-align:left;">
 			<li class="sort-toggle" data-id="name"><a href="#">Navn<div class="pull-right">{{> SortArrow sortBy='project.name'}}</div></a></li>
 			<li class="sort-toggle" data-id="success"><a href="#">Suksesskategori<div class="pull-right">{{> SortArrow sortBy='project.successCategory' reversed="1"}}</div></a></li>

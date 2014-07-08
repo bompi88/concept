@@ -9,7 +9,7 @@ Router.map(function () {
 
   // -- Report routes ---------------------------------------------------
 
-  this.route('ReportList', {
+  this.route('Reports', {
     path: '/reports',
     controller: 'ReportListController'
   });
@@ -28,11 +28,6 @@ Router.map(function () {
   this.route('Report', {
     path: '/reports/:_id',
     controller: 'ReportViewController'
-  });
-
-  this.route('ReportTool', {
-    path: '/report-tool',
-    controller: 'ReportToolController'
   });
 
   // -- Accounts routes --------------------------------------------------

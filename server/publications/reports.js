@@ -15,7 +15,7 @@ Meteor.publish('reports', function(from, amount, sort) {
     _.extend(aggr, { $skip: from });
   }
   if(amount) {
-    _extend(aggr, { $limit: amount});
+    _.extend(aggr, { $limit: amount});
   }
   if(sort) {
     _.extend(aggr, { $sort: sort });

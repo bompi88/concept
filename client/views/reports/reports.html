@@ -2,14 +2,14 @@
 <div class="container-fluid background-basic">
 	<div class="container" style="padding: 0;">
 		<div class="row animated fadeIn" style="z-index:1000;">
-			{{#if showSortBox}}
-				<div class="col-md-3 text-center">
-					<button type="button" class="btn btn-default" id="download">
-						<span class="glyphicon glyphicon-export"></span> Eksporter
-					</button>
-				</div>
-			{{/if}}
+			<div class="col-md-3 text-center">
+				{{#if showSortBox}}
+				<button type="button" class="btn btn-default" id="download">
+					<span class="glyphicon glyphicon-export"></span> Eksporter
+				</button>
+				{{/if}}
 
+			</div>
 			<div class="col-xs-12 col-md-6 text-center visible-xs">
 				<div class="btn-group btn-group-sm" data-toggle="buttons">
 					{{> Toolbar}}

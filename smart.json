@@ -10,10 +10,12 @@
     "cfs-ui": {
       "git": "https://github.com/bompi88/Meteor-cfs-ui.git"
     },
-    "chartjs": {},
+    "chartjs": {
+      "git": "https://github.com/donskifarrell/meteor-chartjs.git",
+      "commit": "9d5e88fae172de55775ee49ac182dbe82f21a302"
+    },
     "handlebar-helpers": {},
     "auto-nprogress": {},
-    "timeline-js": {},
     "collection2": {},
     "autoform": {},
     "ms-seo": {},

@@ -6,7 +6,7 @@ Template.MapView.events({
   'click .panel': function(event, tmpl) {
     //this is ugly
     var id = document.getElementsByClassName('report-id')[0].id;
-    Router.go('/reports/' + id);
+    Router.go('/report/' + id);
   }
 });
 

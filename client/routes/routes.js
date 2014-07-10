@@ -10,8 +10,8 @@ Router.map(function () {
   // -- Report routes ---------------------------------------------------
 
   this.route('Reports', {
-    path: '/reports',
-    controller: 'ReportListController'
+    path: '/reports/:page',
+    controller: 'ReportsController'
   });
 
   this.route('CreateReport', {
@@ -20,13 +20,13 @@ Router.map(function () {
   });
 
   this.route('EditReport', {
-    path: '/reports/:_id/edit',
+    path: '/report/:_id/edit',
     template: 'CreateReport',
     controller: 'EditReportController'
   });
 
   this.route('Report', {
-    path: '/reports/:_id',
+    path: '/report/:_id',
     controller: 'ReportViewController'
   });
 

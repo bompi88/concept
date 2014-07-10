@@ -28,7 +28,7 @@ Template.Report.events({
   },
 
   'click .edit-btn': function(event, tmpl) {
-    Router.go('/reports/' + this._id + '/edit');
+    Router.go('/report/' + this._id + '/edit');
   },
 
   'click #desc-button': function(event, tmpl) {
@@ -96,20 +96,21 @@ Template.Report.rendered = function() {
 
       var el = $("#spiderEvaluation");
 
-      if (el.get(0))
+      if (el.get(0)) {
         var ctx = el.get(0).getContext("2d");
 
-      var width = $('canvas').parent().width();
-
-      var chart;
-
-      $('canvas').attr("width",width);
-      chart = new Chart(ctx).Radar(data,options);
-      window.onresize = function(event){
         var width = $('canvas').parent().width();
+
+        var chart;
+
         $('canvas').attr("width",width);
         chart = new Chart(ctx).Radar(data,options);
-      };
+        window.onresize = function(event){
+          var width = $('canvas').parent().width();
+          $('canvas').attr("width",width);
+          chart = new Chart(ctx).Radar(data,options);
+        };
+      }
     }
   });
 

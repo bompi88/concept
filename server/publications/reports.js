@@ -1,31 +1,50 @@
 "use strict";
 
 /**
- * Publishes a set of reports, sorted and paginated.
+ * Publishes a set of reports, sorted, filtered, paginated and just the fields we need.
+ * Also publishes an image associated with each report
  *
- * @from: return report from this number in list
- * @amount: number of reports to return
- * @sort: mongodb sort data
+ * @query: filters report based on criterias
+ * @aggr: object with different projections: sorting, limitation, skipping etc
  */
-Meteor.publish('reports', function(from, amount, sort) {
+Meteor.publish('reportsWithImage', function(query, aggr) {
+  //fields to remove in the db query
+  aggr.fields = {
+    'evaluation.overall.short': 0,
+    'evaluation.overall.long': 0,
+    'evaluation.productivity.short': 0,
+    'evaluation.productivity.long': 0,
+    'evaluation.achievement.short': 0,
+    'evaluation.achievement.long': 0,
+    'evaluation.effects.long': 0,
+    'evaluation.effects.short': 0,
+    'evaluation.relevance.long': 0,
+    'evaluation.relevance.short': 0,
+    'evaluation.viability.long': 0,
+    'evaluation.viability.short': 0,
+    'evaluation.profitability.long': 0,
+    'evaluation.profitability.short': 0,
+    'references': 0,
+    'project.projectDescription.long' : 0
 
-  var aggr = {};
+  };
 
-  if(from) {
-    _.extend(aggr, { $skip: from });
-  }
-  if(amount) {
-    _.extend(aggr, { $limit: amount});
-  }
-  if(sort) {
-    _.extend(aggr, { $sort: sort });
-  }
+  var reportsCursor;
 
 	if(this.userId) {
-		return Reports.find({}, aggr);
-	} else {
-		return Reports.find({ _public: true}, aggr);
+		reportsCursor = Reports.find(query, aggr);
 	}
+  else {
+    query._public = true;
+		reportsCursor = Reports.find(query, aggr);
+	}
+
+  var imageIds = reportsCursor.map(function(report) {
+        if(report.images && report.images[0] && report.images[0].fileId)
+          return report.images[0].fileId;
+  });
+
+  return [reportsCursor, Images.find({ _id: { $in : imageIds}})]
 });
 
 /**

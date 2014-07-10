@@ -10,5 +10,8 @@ Meteor.methods({
 		} else {
 			return false;
 		}
-	}
+	},
+  totalCount: function(query) {
+    return Reports.find(query).count();
+  }
 });

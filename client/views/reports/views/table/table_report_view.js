@@ -25,3 +25,10 @@ Template.TableReportView.events({
 
  }
 });
+
+Template.TableReportView.isChecked = function() {
+  var blacklist = Session.get('uncheckedReportIds');
+  if(!_.contains(blacklist, this._id))
+    return true;
+  return false;
+}

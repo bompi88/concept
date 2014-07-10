@@ -8,13 +8,12 @@ Session.setDefault('showFilter', false);
 Session.setDefault('filters', []);
 Session.setDefault('query', {})
 Session.setDefault('uncheckedReportIds', []);
+Session.setDefault('currentPage', 1);
 
 
 /*****************************************************************************/
 /* Reports: Event Handlers and Helpers */
 /*****************************************************************************/
-
-
 
 
 Template.Reports.events({
@@ -52,7 +51,7 @@ Template.Reports.events({
     }
   },
   'click .edit-btn': function(event, tmpl) {
-    Router.go('/reports/' + this._id + '/edit');
+    Router.go('/report/' + this._id + '/edit');
   },
   'click #btn-filter' : function(event, tmpl) {
     //lose focus on the clicked element
@@ -89,6 +88,12 @@ Template.Reports.events({
     setTimeout(function() {
       w.close();
     }, 2000);
+  },
+  'click .paging': function(event, tmpl) {
+    event.currentTarget.blur();
+    var newPage = parseInt(tmpl.find(event.target).textContent);
+    Session.set('currentPage', newPage);
+    Router.go('/reports/' + (newPage - 1));
   }
 });
 
@@ -101,6 +106,25 @@ Template.Reports.helpers({
     var listState = Session.get('ReportViewState');
 
     return listState === 'box' || listState === 'table';
+  },
+  pages: function() {
+    var pages = [];
+    Meteor.call('totalCount', Session.get('query'), function(err, numberOfReports) {
+      Session.set('reportCount', numberOfReports);
+    });
+
+    var numberOfReports = Session.get('reportCount');
+    var numberOfPages = Math.ceil(numberOfReports/20);
+    for(var i = 0; i < numberOfPages; i++) {
+      var page = {number: i+1};
+      if(i == 0)
+        page.active = 'active';
+      pages.push(page);
+
+    }
+
+    return pages;
+
   }
 });
 

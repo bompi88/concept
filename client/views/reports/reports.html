@@ -1,26 +1,26 @@
 <template name="Reports">
-<div class="container-fluid background-basic">
-	<div class="container" style="padding: 0;">
-		<div class="row animated fadeIn" style="z-index:1000;">
-			<div class="col-md-3 text-center">
-				{{#if showSortBox}}
-				<button type="button" class="btn btn-default" id="download">
-					<span class="glyphicon glyphicon-export"></span> Eksporter
-				</button>
-				{{/if}}
+	<div class="container-fluid background-basic">
+		<div class="container" style="padding: 0;">
+			<div class="row animated fadeIn" style="z-index:1000;">
+				<div class="col-md-3 text-center">
+					{{#if showSortBox}}
+					<button type="button" class="btn btn-default" id="download">
+						<span class="glyphicon glyphicon-export"></span> Eksporter
+					</button>
+					{{/if}}
 
-			</div>
-			<div class="col-xs-12 col-md-6 text-center visible-xs">
-				<div class="btn-group btn-group-sm" data-toggle="buttons">
-					{{> Toolbar}}
 				</div>
-			</div>
-			<div class="col-xs-12 col-md-6 text-center hidden-xs">
-				<div class="btn-group" data-toggle="buttons">
-					{{> Toolbar}}
+				<div class="col-xs-12 col-md-6 text-center visible-xs">
+					<div class="btn-group btn-group-sm" data-toggle="buttons">
+						{{> Toolbar}}
+					</div>
 				</div>
-			</div>
-			{{#if showSortBox}}
+				<div class="col-xs-12 col-md-6 text-center hidden-xs">
+					<div class="btn-group" data-toggle="buttons">
+						{{> Toolbar}}
+					</div>
+				</div>
+				{{#if showSortBox}}
 				{{!-- Filtering is only supported for large devices --}}
 				<div class="col-md-3 hidden-xs hidden-sm animated fadeIn" style="z-index:1001;">
 					<div class="btn-group">
@@ -33,27 +33,38 @@
 				<div class="col-xs-12 visible-xs visible-sm text-center animated fadeIn" style="padding-top: 30px;">
 					{{> SortBox class="btn-group"}}
 				</div>
+				{{/if}}
+			</div>
+
+			{{#if $.Session.equals 'showFilter' true}}
+			{{> Filter}}
+			{{> FilterList}}
 			{{/if}}
-		</div>
+			{{#if showSortBox}}
+			<div class="row">
+				<div class="col-md-4 col-md-offset-4 text-center">
+					<div class="btn-group text-center paging">
+						{{#each pages}}
+						<button type="button" class="btn btn-default {{#if $.Session.equals 'currentPage' number}} active {{/if}}">{{number}}</button>
+						{{/each}}
+					</div>
+				</div>
+			</div>
+			{{/if}}
 
-		{{#if $.Session.equals 'showFilter' true}}
-		{{> Filter}}
-		{{> FilterList}}
-		{{/if}}
-
-		<div class="row" id="report-list-container">
-			{{#if $eq viewState "box"}}
+			<div class="row" id="report-list-container">
+				{{#if $.Session.equals 'ReportViewState' 'box'}}
 				{{> BoxReportView}}
-			{{/if}}
-			{{#if $eq viewState "table"}}
+				{{/if}}
+				{{#if $.Session.equals 'ReportViewState' 'table'}}
 				{{> TableReportView}}
-			{{/if}}
-			{{#if $eq viewState "map"}}
+				{{/if}}
+				{{#if $.Session.equals 'ReportViewState' 'map'}}
 				{{> MapView state='reportLocation'}}
-			{{/if}}
+				{{/if}}
+			</div>
 		</div>
 	</div>
-</div>
 </template>
 
 

@@ -20,9 +20,9 @@ EditReportController = AuthRouteController.extend({
 
 		if(report) {
       // Subscribe only to the images and files we actually need
-      if (report.images.length > 0)
+      if (report.images && report.images.length > 0)
         Meteor.subscribe('images', _.pluck(report.images, 'fileId'));
-      if (report.references.length > 0)
+      if (report.references && report.references.length > 0)
         Meteor.subscribe('files', _.pluck(report.references, 'fileId'));
 
 			if(report.images) {

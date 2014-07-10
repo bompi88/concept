@@ -12,7 +12,8 @@
     },
     "chartjs": {
       "git": "https://github.com/donskifarrell/meteor-chartjs.git",
-      "commit": "9d5e88fae172de55775ee49ac182dbe82f21a302"
+      "branch": "master",
+      "commit": "d3785356d3a35c3ab0b9c7f3e5da486a8dfe6b9c"
     },
     "handlebar-helpers": {},
     "auto-nprogress": {},

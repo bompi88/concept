@@ -71,7 +71,7 @@ locationObject = {
 Template.ReportForm.events({
   'click .delete-btn': function(event, tmpl) {
     Meteor.call('deleteReport', this._id, function (error, result) {
-      Router.go(Router.path('ReportList'));
+      Router.go(Router.path('Reports', {page: 0}));
     });
   },
 

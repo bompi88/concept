@@ -15,6 +15,10 @@ Session.setDefault('currentPage', 1);
 /* Reports: Event Handlers and Helpers */
 /*****************************************************************************/
 
+Template.Reports.rendered = function() {
+  Session.set('uncheckedReportIds', []);
+};
+
 
 Template.Reports.events({
   'click #report-view-option1': function(event, tmpl) {

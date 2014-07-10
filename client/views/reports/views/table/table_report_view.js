@@ -1,6 +1,6 @@
 Template.TableReportView.events({
   'click .row-item': function(event, tmpl) {
-    Router.go('/reports/' + this._id);
+    Router.go(Router.path('Report', {_id: this._id}));
   },
   'click .checkbox': function(event, tmpl) {
     var that = this;

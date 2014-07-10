@@ -29,10 +29,11 @@ Router.map(function() {
     action: function() {
 
       var reportids = this.params.reports.split(',');
-      var reports = Reports.find({_id: {$in: reportids}}).fetch();
+      var query = JSON.parse(this.params.query);
+      var sort = JSON.parse(this.params.sort);
+      var reports = Reports.find({$and: [{_id: {$nin: reportids}}, query]}, sort).fetch();
 
       if(reports) {
-
         var file = generateCSV(reports);
         var filename = 'rapportutvalg' + '.csv';
 

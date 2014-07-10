@@ -64,27 +64,15 @@ Template.Reports.events({
   },
   //handles csv export
   'click #download' : function(event, tmpl) {
-    var reportids = "?reports=";
-    var i;
-    var q = Session.get('query');
+    var reportids = "?reports=" + Session.get('uncheckedReportIds').join();
+    var query = "&query=" + JSON.stringify(Session.get('query'));
     var s = {sort: {}};
     s.sort[Session.get('sortBy')] = Session.get('sortOrder') == 'asc' ? 1 : -1;
-    var reports = Reports.find(q, s).fetch();
 
-    //append report id from all filtered reports
-    for(i = 0; i < reports.length; i++) {
+    var sort = "&sort=" + JSON.stringify(s);
 
-      var r = reports[i];
-
-      if(! _.contains(Session.get('uncheckedReportIds'), r._id)) {
-        if(i === reports.length - 1)
-          reportids += r._id;
-        else
-          reportids += r._id + ',';
-      }
-    }
     //send all ids to csv route for export
-    var w = window.open('/csv/' + reportids);
+    var w = window.open('/csv/' + reportids + query + sort);
     setTimeout(function() {
       w.close();
     }, 2000);
@@ -96,7 +84,6 @@ Template.Reports.events({
     Router.go('/reports/' + (newPage - 1));
   }
 });
-
 
 Template.Reports.helpers({
   viewState: function () {

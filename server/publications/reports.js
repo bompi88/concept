@@ -35,8 +35,7 @@ Meteor.publish('reportsWithImage', function(query, aggr) {
 		reportsCursor = Reports.find(query, aggr);
 	}
   else {
-    query._public = true;
-		reportsCursor = Reports.find(query, aggr);
+		reportsCursor = Reports.find({$and: [{_public: true}, query]}, aggr);
 	}
 
   var imageIds = reportsCursor.map(function(report) {

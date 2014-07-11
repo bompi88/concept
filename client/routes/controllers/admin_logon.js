@@ -12,7 +12,7 @@ AdminLogonController = RouteController.extend({
     // Redirects user if allready logged in
 		if (Meteor.user()) {
 			if (!Meteor.loggingIn()) {
-				this.redirect('ReportList');
+				this.redirect(Router.path('Reports', {page:0}));
 			}
 		}
 	},

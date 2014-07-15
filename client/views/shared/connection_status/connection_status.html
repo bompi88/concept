@@ -1,0 +1,7 @@
+<template name="ConnectionStatus">
+  {{#if $neq status "connected"}}
+    <div class="alert alert-danger text-center status-bar animated fadeIn" role="alert">
+      Mistet forbindelsen med serveren. <b>Vennligst vent...</b>
+    </div>
+  {{/if}}
+</template>

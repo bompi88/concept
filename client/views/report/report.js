@@ -38,12 +38,12 @@ Template.EvaluationParagraph.events({
 
 Template.Report.rendered = function() {
 
-  $('#projectImage a').magnificPopup({
-    type:'image'}
-  );
+  $('#projectImage a.image-link').magnificPopup({
+    type:'image'
+  });
 
   $('#links').magnificPopup({
-    delegate: 'a',
+    delegate: 'a.image-link',
     type:'image',
     gallery: {
       enabled: true

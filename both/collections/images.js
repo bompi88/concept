@@ -12,6 +12,13 @@ Images = new FS.Collection("images", {
           .setFormat("PNG").stream().pipe(writeStream);
       }
     }),
+  new FS.Store.GridFS("medium", {
+    transformWrite: function(fileObj, readStream, writeStream) {
+        // Transform the image into a thumbnail
+        gm(readStream, fileObj.name).resize('500', '350')
+          .setFormat("PNG").stream().pipe(writeStream);
+      }
+    }),
   new FS.Store.GridFS("thumbs", {
     transformWrite: function(fileObj, readStream, writeStream) {
         // Transform the image into a thumbnail

@@ -24,8 +24,8 @@
 							<span> <a href="#" class="read-more" id="desc-button">Les mer &raquo;</a></span>
 						</p>
 						<figure id="projectImage">
-              <a href="{{$getUrlById images.[0].fileId 'images' store='original'}}" title="<h5>{{images.[0].title}}.</h5> Foto: <a href='{{images.[0].link}}' style='color: #6b8eaf'>{{images.[0].copyright}}</a></br></br>">
-                <img src="{{$getUrlById images.[0].fileId 'images' store='original'}}" class="img-responsive" style="max-height:350px;margin: 0 auto;" alt="{{images.[0].title}}. Foto.">
+              <a href="{{$getUrlById images.[0].fileId 'images' store='original'}}" title="<h5>{{images.[0].title}}.</h5> Foto: <a href='{{images.[0].link}}' style='color: #6b8eaf'>{{images.[0].copyright}}</a></br></br>" class="image-link">
+                <img src="{{$getUrlById images.[0].fileId 'images' store='medium'}}" class="img-responsive" style="max-height:350px;margin: 0 auto;" alt="{{images.[0].title}}. Foto.">
               </a>
                 <figcaption class="text-center">{{images.[0].title}}. Foto: <a href="{{images.[0].link}}"> {{images.[0].copyright}}</a></figcaption>
 						</figure>
@@ -76,7 +76,7 @@
 					<h2>Bilder</h2>
 					<div id="links" style="padding-top:25px;">
 						{{#each images}}
-  						<a href="{{$getUrlById fileId 'images' store='original'}}" title="<h5>{{title}}.</h5> Foto: <a href='{{link}}' style='color: #6b8eaf'>{{copyright}}</a></br></br>" data-title="<b>{{title}}.</b> Foto: <a href='{{link}}'>{{copyright}}</a></br>">
+  						<a href="{{$getUrlById fileId 'images' store='original'}}" title="<h5>{{title}}.</h5> Foto: <a href='{{link}}' style='color: #6b8eaf'>{{copyright}}</a></br></br>" data-title="<b>{{title}}.</b> Foto: <a href='{{link}}'>{{copyright}}</a></br>" class="image-link">
   							<img src="{{$getUrlById fileId 'images' store='thumbs'}}" style="max-height:150px;" alt="{{title}}">
   						</a>
 						{{/each}}

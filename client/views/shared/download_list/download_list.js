@@ -38,5 +38,15 @@ Template.DownloadList.helpers({
         return img.url();
     }
     return null;
+  },
+
+  isChoosenasMainResource: function(resource) {
+    return uploadObject.getImages().indexOf(resource) === 0;
+  }
+});
+
+Template.DownloadList.events({
+  'click .set-main-img': function (evt, tmpl) {
+    uploadObject.setAsMainImg(this.fileId);
   }
 });

@@ -6,13 +6,6 @@ Session.setDefault('TextState','short');
 
 Template.Report.events({
 
-  'click #image-link': function(event, tmpl) {
-    bootbox.dialog({
-      title: this.title,
-      message: "<img src='" + getUrlById(this.fileId, 'images', {store: 'original'}) + "' class='img-responsive'>" + "<br/>" + "<p class='text-center'>" + "Kilde: " + this.copyright +"</p>"
-    });
-  },
-
   'click #export-text': function(event, tmpl) {
     var canvas = document.getElementById('spiderEvaluation');
 
@@ -45,6 +38,17 @@ Template.EvaluationParagraph.events({
 
 Template.Report.rendered = function() {
 
+  $('#projectImage a').magnificPopup({
+    type:'image'}
+  );
+
+  $('#links').magnificPopup({
+    delegate: 'a',
+    type:'image',
+    gallery: {
+      enabled: true
+    }
+  });
 
   Deps.autorun(function () {
 

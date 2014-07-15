@@ -9,6 +9,7 @@
           <th class="sort-toggle table-header" data-id="finishing-year">Årstall ferdigstilt {{> SortArrow sortBy='project.finishingYear'}}</th>
           <th class="sort-toggle table-header" data-id="evaluation-year">Årstall evaluering {{> SortArrow sortBy='project.evaluationYear'}}</th>
         	<th class="sort-toggle table-header" data-id="management-budget">Styringsramme {{> SortArrow sortBy='project.managementBudget.amount'}}</th>
+          <th class="sort-toggle table-header" data-id="cost-budget">Kostnadsramme {{> SortArrow sortBy='project.costBudget.amount'}}</th>
         	<th class="sort-toggle table-header" data-id="cost-final">Sluttkostnad {{> SortArrow sortBy='project.costFinal.amount'}}</th>
         	<th class="sort-toggle table-header" data-id="responsible-org">Evaluator {{> SortArrow sortBy='responsible.organization'}}</th>
         	{{#if currentUser}}
@@ -25,6 +26,7 @@
             <td class="row-item">{{project.finishingYear}}</td>
             <td class="row-item">{{project.evaluationYear}}</td>
             <td class="row-item">{{project.managementBudget.amount}}</td>
+            <td class="row-item">{{project.costBudget.amount}}</td>
             <td class="row-item">{{project.costFinal.amount}}</td>
             <td class="row-item">{{responsible.organization}}</td>
      		    {{#if currentUser}}

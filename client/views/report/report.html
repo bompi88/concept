@@ -25,9 +25,9 @@
 						</p>
 						<figure id="projectImage">
               <a href="{{$getUrlById images.[0].fileId 'images' store='original'}}" title="<h5>{{images.[0].title}}.</h5> Foto: <a href='{{images.[0].link}}' style='color: #6b8eaf'>{{images.[0].copyright}}</a></br></br>">
-                <img src="{{$getUrlById images.[0].fileId 'images' store='original'}}" class="img-responsive" style="max-height:350px;" alt="{{images.[0].title}}. Foto.">
-                <figcaption class="text-center">{{images.[0].title}}. Foto: <a href="{{images.[0].link}}"> {{images.[0].copyright}}</a></figcaption>
+                <img src="{{$getUrlById images.[0].fileId 'images' store='original'}}" class="img-responsive" style="max-height:350px;margin: 0 auto;" alt="{{images.[0].title}}. Foto.">
               </a>
+                <figcaption class="text-center">{{images.[0].title}}. Foto: <a href="{{images.[0].link}}"> {{images.[0].copyright}}</a></figcaption>
 						</figure>
 					</div>
 

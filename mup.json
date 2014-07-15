@@ -36,7 +36,7 @@
     "PORT": 80,
     // needs to be set to the correct domain name
     "ROOT_URL": "http://129.241.88.77",
-    // needs to be set to a valid user
+    // needs to be set to a valid user (username: without @stud.ntnu.no)
     "MAIL_URL": "smtp://username:password@smtp.stud.ntnu.no:587/"
   },
 

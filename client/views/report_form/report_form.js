@@ -42,6 +42,17 @@ uploadObject = {
     this.dep.changed();
     return this.References;
   },
+  setAsMainImg: function(id) {
+
+    this.Images = _.reject(this.Images, function(fileId) {
+      return fileId === id;
+    });
+
+    this.Images.splice(0, 0, id);
+
+    this.dep.changed();
+    return this.Images;
+  },
   reset: function() {
     this.Images = [];
     this.References = [];

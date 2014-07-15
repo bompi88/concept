@@ -2,78 +2,87 @@
  * Filter: Filter projects
  */
 
-
-//all the reports ready for csv export
-var reportsExport;
-
-
 // -- Events --------------------------------------------------------
 
-Template.Filter.events({
+Template.AttributePicker.events({
+  'click .dropdown-menu li': function(event, tmpl) {
+    var chosenAttribute = $(event.currentTarget).text();
 
-	'click .dropdown-menu li': function(event, tmpl) {
-		var chosenAttribute = $(event.currentTarget).text();
-		var elementType = $(event.currentTarget).attr('class');
-		var dropdownType = "";
-
-		//which dropdown was clicked?
-		if(elementType === "attribute-item")
-			dropdownType = "#attribute-picker";
-		else if(elementType == "operator-item")
-			dropdownType = "#operator-picker";
-
-		//replace button text in dropdown with chosen element
-  		$('.btn-group').find(dropdownType).html(chosenAttribute+' <span class="caret"></span>');
-
-	},
-
-	'click #add-filter' : function(event, tmpl) {
-		var value = tmpl.find('#value-picker').value;
-
-		//parse value to int if possible
-		if(!isNaN(value))
-			value = parseInt(value);
-
-		//create a filter object
-		var filter = {
-			"attribute": tmpl.find('#attribute-picker').text.trim(),
-			"operator": tmpl.find('#operator-picker').text.trim(),
-			"value": value
-		}
-
-		//if the filter validates, set new session variable
-		if(validateFilter(filter)) {
-			var filters = Session.get('filters');
-			filters.push(filter);
-			Session.set('filters', filters);
-      queryBuilder();
-
-		}
-		else {
-			//TODO: Red text in page instead of modal?
-			bootbox.alert("Sjekk at attributt, operator og verdi gir mening sammen.");
-		}
-
-
-
-	},
-
-
+    //replace button text in dropdown with chosen element
+    $('#attribute-picker').html(chosenAttribute + ' <span class="caret"></span>');
+  }
 });
 
+Template.OperatorPicker.events({
+  'click .dropdown-menu li': function(event, tmpl) {
+    var chosenAttribute = $(event.currentTarget).text();
+
+    //replace button text in dropdown with chosen element
+    $('#operator-picker').html(chosenAttribute + ' <span class="caret"></span>');
+  }
+});
+
+Template.Filter.events({
+  'submit form.form-inline': function(evt, tmpl) {
+    evt.preventDefault();
+    evt.stopPropagation();
+    addFilter(evt, tmpl);
+  }
+});
+
+var addFilter = function(evt, tmpl) {
+  var el = tmpl.find('#value-picker');
+  var value = el.value;
+
+  if(!isNaN(parseInt(value, 10))) {
+    value = parseInt(value, 10);
+  } else {
+    value = value.trim().toLowerCase();
+  }
+
+  if (value === '') {
+    return false;
+  }
+
+  //create a filter object
+  var filter = {
+    "attribute": $('#attribute-picker').text().trim(),
+    "operator": $('#operator-picker').text().trim(),
+    "value": value
+  }
+
+  //if the filter validates, set new session variable
+  if(validateFilter(filter)) {
+    var filters = Session.get('filters');
+    filters.push(filter);
+
+    filters = _.unique(filters, false, function(filter) {
+      return filter.attribute + filter.operator + filter.value;
+    });
+
+    Session.set('filters', filters);
+    queryBuilder();
+
+    el.value = "";
+  } else {
+    //TODO: Red text in page instead of modal?
+    bootbox.alert("Sjekk at attributt, operator og verdi gir mening sammen.");
+  }
+}
+
 Template.FilterList.events({
-	'click #remove-filter': function(event, tmpl) {
+	'click .remove-filter': function(event, tmpl) {
 		var filters = Session.get('filters');
 		var oldFilter = this;
 		//use underscorejs reject to remove the old filter and update session variable
 		var newFilters = _.reject(filters, function(filter){
-			if(filter.attribute===oldFilter.attribute && filter.operator===oldFilter.operator && filter.value===oldFilter.value)
-				return true
-			});
-		Session.set('filters', newFilters);
+      if(filter.attribute===oldFilter.attribute && filter.operator===oldFilter.operator && filter.value===oldFilter.value) {
+  			return true
+      }
+		});
+
+    Session.set('filters', newFilters);
     queryBuilder();
-
-
 	}
 });
 
@@ -90,62 +99,46 @@ var queryBuilder = function() {
   var filters = Session.get('filters');
   var query = {};
 
-  if(filters.length > 1) {
-
+  if(filters && filters.length)
     query['$and'] = [];
 
-    var i;
-    for (i = 0; i < filters.length; i++) {
-      var filter = filters[i];
-      var field = attToField(filter.attribute).toString();
-      var value = filter.value;
-      var operator = filter.operator;
+  _.each(filters, function(filter) {
 
-      if(operator == 'er lik') {
-        var q = {};
-        q[field] = value;
-        query['$and'].push(q);
-      }
-      else if(operator == 'inneholder') {
-        var q = {};
-        q[field] = {$regex: value, $options: 'i'};
-        query['$and'].push(q);
-      }
-      else if(operator == 'større enn') {
-        var q = {};
-        q[field] = {$gt: value};
-        query['$and'].push(q);
-      }
-      else if(operator == 'mindre enn') {
-        var q = {};
-        q[field] = {$lt: value};
-        query['$and'].push(q);
-      }
-
-    }
-  }
-
-  else if(filters.length === 1) {
-    var filter = filters[0];
-    var value = filter.value
-    var operator = filter.operator;
     var field = attToField(filter.attribute).toString();
+    var value = filter.value;
+    var operator = filter.operator;
 
-    if(operator == 'er lik')
-      query[field] = value;
-    else if(operator == 'inneholder')
-      query[field] = {$regex: value, $options: 'i'};
-    else if(operator == 'større enn')
-      query[field] = {$gt: value};
-    else if(operator == 'mindre enn')
-      query[field] = {$lt: value};
+    if(operator === 'er lik') {
+      var q = {};
+      if(_.isString(value)) {
+        value = value.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, "\\$&");
+        q[field] = { $regex: "^" + value + "$", $options: 'i' };
+      } else {
+         q[field] = value;
+      }
 
+      this.push(q);
+    }
+    else if(operator === 'inneholder') {
+      var q = {};
+      value = value.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, "\\$&");
+      q[field] = { $regex: value, $options: 'i' };
+      this.push(q);
+    }
+    else if(operator === 'større enn') {
+      var q = {};
+      q[field] = { $gt: value };
+      this.push(q);
+    }
+    else if(operator === 'mindre enn') {
+      var q = {};
+      q[field] = { $lt: value };
+      this.push(q);
+    }
+  }, query['$and']);
 
-  }
   Session.set('query', query);
 };
-
-
 
 var attToField = function(attribute) {
   if(attribute === 'Sektor')
@@ -165,17 +158,17 @@ var attToField = function(attribute) {
   else if(attribute === 'Sluttkostnad')
     return 'project.costFinal.amount';
   else if(attribute === 'Produktivitet')
-    return 'project.evaluation.productivity.value';
+    return 'evaluation.productivity.value';
   else if(attribute === 'Måloppnåelse')
-    return 'project.evaluation.achievement.value';
+    return 'evaluation.achievement.value';
   else if(attribute === 'Virkninger')
-    return 'project.evaluation.effects.value';
+    return 'evaluation.effects.value';
   else if(attribute === 'Relevans')
-    return 'project.evaluation.relevance.value';
+    return 'evaluation.relevance.value';
   else if(attribute === 'Levedyktighet')
-    return 'project.evaluation.viability.value';
+    return 'evaluation.viability.value';
   else if(attribute === 'Samf.øk lønnsomhet')
-    return 'project.evaluation.profitability.value';
+    return 'evaluation.profitability.value';
   else return false;
 };
 
@@ -207,7 +200,6 @@ function validateFilter(filter) {
 				return true;
 			}
 		}
-
 	}
 	//check the attribute is in the number allowed attributes
 	else if(_.contains(checklist.number.attributes, filter.attribute)) {
@@ -219,7 +211,5 @@ function validateFilter(filter) {
 			}
 		}
 	}
-
 	return false;
-
 }

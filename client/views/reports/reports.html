@@ -1,70 +1,121 @@
 <template name="Reports">
 	<div class="container-fluid background-basic">
-		<div class="container" style="padding: 0;">
-			<div class="row animated fadeIn" style="z-index:1000;">
-				<div class="col-md-3 text-center">
-					{{#if showSortBox}}
-					<button type="button" class="btn btn-default" id="download">
-						<span class="glyphicon glyphicon-export"></span> Eksporter
-					</button>
-					{{/if}}
+		<div class="container animated fadeIn" style="padding: 0;">
 
-				</div>
-				<div class="col-xs-12 col-md-6 text-center visible-xs">
-					<div class="btn-group btn-group-sm" data-toggle="buttons">
+        {{!-- Filtering is only supported for large devices --}}
+        <div class="col-md-4 hidden-xs hidden-sm animated fadeIn">
+          {{!-- Show export and filtering options for large screens if a user is logged in --}}
+					{{#if currentUser}}
+            {{#if showSortBox}}
+              <div class="btn-group">
+                <button type="button" class="btn btn-default {{#if $.Session.equals 'showFilter' true}} active{{/if}}" id="btn-filter">
+                  <span class="glyphicon glyphicon-filter"></span> Filtrer
+                </button>
+                <button type="button" class="btn btn-default" id="download">
+    				      <span class="glyphicon glyphicon-export"></span> Eksporter
+                </button>
+              </div>
+  					{{/if}}
+          {{/if}}
+        </div>
+
+				{{!-- Toolbar for small screen sizes --}}
+				<div class="col-xs-12 text-center visible-xs">
 						{{> Toolbar}}
-					</div>
 				</div>
-				<div class="col-xs-12 col-md-6 text-center hidden-xs">
-					<div class="btn-group" data-toggle="buttons">
-						{{> Toolbar}}
-					</div>
-				</div>
-				{{#if showSortBox}}
-				{{!-- Filtering is only supported for large devices --}}
-				<div class="col-md-3 hidden-xs hidden-sm animated fadeIn" style="z-index:1001;">
-					<div class="btn-group">
-						{{> SortBox class="btn-group pull-right"}}
-						<button type="button" class="btn btn-default {{#if $.Session.equals 'showFilter' true}} active{{/if}}" id="btn-filter">
-							<span class="glyphicon glyphicon-filter"></span> Filtrer
-						</button>
-					</div>
-				</div>
-				<div class="col-xs-12 visible-xs visible-sm text-center animated fadeIn" style="padding-top: 30px;">
-					{{> SortBox class="btn-group"}}
-				</div>
-				{{/if}}
-			</div>
 
-			{{#if $.Session.equals 'showFilter' true}}
-			{{> Filter}}
-			{{> FilterList}}
-			{{/if}}
-			{{#if showSortBox}}
-			<div class="row">
-				<div class="col-md-4 col-md-offset-4 text-center">
-					<div class="btn-group text-center paging">
-						{{#each pages}}
-						<button type="button" class="btn btn-default {{#if $.Session.equals 'currentPage' number}} active {{/if}}">{{number}}</button>
-						{{/each}}
-					</div>
+        {{!-- Toolbar for large screen sizes --}}
+				<div class="col-md-4 text-center hidden-xs">
+					{{> Toolbar}}
 				</div>
-			</div>
-			{{/if}}
 
-			<div class="row" id="report-list-container">
-				{{#if $.Session.equals 'ReportViewState' 'box'}}
-				{{> BoxReportView}}
-				{{/if}}
-				{{#if $.Session.equals 'ReportViewState' 'table'}}
-				{{> TableReportView}}
-				{{/if}}
-				{{#if $.Session.equals 'ReportViewState' 'map'}}
-				{{> MapView state='reportLocation'}}
-				{{/if}}
-			</div>
-		</div>
+        {{!-- Show export and filtering options for small screens if a user is logged in --}}
+        <div class="col-xs-12 visible-xs visible-sm text-center animated fadeIn" style="margin-top: 20px;">
+          {{#if currentUser}}
+            {{#if showSortBox}}
+              <div class="btn-group">
+                <button type="button" class="btn btn-default" id="download">
+                  <span class="glyphicon glyphicon-export"></span> Eksporter
+                </button>
+              </div>
+            {{/if}}
+          {{/if}}
+        </div>
+
+				{{!-- Render a sort box --}}
+        {{#if showSortBox}}
+          {{!-- Pull sort box to the right on large screens --}}
+          <div class="col-md-4 hidden-xs hidden-sm animated fadeIn" style="z-index:100;">
+            {{> SortBox class="pull-right"}}
+          </div>
+
+          {{!-- Center sort box on small screens --}}
+          <div class="col-xs-12 visible-xs visible-sm text-center animated fadeIn" style="padding-top: 20px;z-index:100;">
+            {{> SortBox}}
+          </div>
+        {{/if}}
+
+
+      {{!-- Show filter section if filter button is toggeled and
+            if a user is logged in --}}
+      {{#if currentUser}}
+        {{#if showSortBox}}
+    			{{#if $.Session.equals 'showFilter' true}}
+            <div class="col-xs-12">
+              <div class="col-xs-12 hidden-xs hidden-sm content-wrapper animated fadeIn" style="margin-top:30px;z-index:10;">
+          			{{> Filter}}
+          			{{> FilterList}}
+              </div>
+            </div>
+    			{{/if}}
+        {{/if}}
+      {{/if}}
+
+      {{!-- Render a pagination section if the number of pages is
+            greater than one --}}
+      {{#if pages}}
+        {{#if $gt pages.length 1}}
+    			<div class="col-xs-12 text-center" style="margin-top:30px;">
+      			<div class="btn-group text-center paging">
+              {{#each pages}}
+      				  <button type="button" class="btn btn-default {{#if $.Session.equals 'currentPage' number}} active {{/if}}">{{number}}</button>
+      				{{/each}}
+      			</div>
+          </div>
+        {{/if}}
+      {{/if}}
+
+      {{!-- Presentation view for large screens --}}
+      <div class="row hidden-xs">
+  			<div class="col-xs-12" id="report-list-container">
+  				{{> PresentationView}}
+  			</div>
+  		</div>
+
+      {{!-- Presentation view for small screens --}}
+      <div class="col-xs-12 visible-xs" id="report-list-container">
+        {{> PresentationView}}
+      </div>
+    </div>
 	</div>
 </template>
 
+<template name="PresentationView">
+  {{!-- Render the selected presentation view --}}
+  {{#if $.Session.equals 'ReportViewState' 'box'}}
+    {{> BoxReportView}}
+  {{/if}}
 
+  {{#if $.Session.equals 'ReportViewState' 'table'}}
+    <div class="col-xs-12 hidden-xs">
+      {{> TableReportView}}
+    </div>
+    <div class="col-xs-12 visible-xs" style="padding:0;">
+      {{> TableReportView}}
+    </div>
+  {{/if}}
+
+  {{#if $.Session.equals 'ReportViewState' 'map'}}
+    {{> MapView state='reportLocation'}}
+  {{/if}}
+</template>

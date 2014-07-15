@@ -1,22 +1,60 @@
+<!--
+  Arrow which indicate if its ASC or DESC sorting
+-->
 <template name="SortArrow">
 	{{#if reversed}}
-		{{#if $.Session.equals 'sortBy' sortBy}}{{#if $.Session.equals 'sortOrder' 'desc'}}<span class="glyphicon glyphicon-chevron-down"></span>{{else}}<span class="glyphicon glyphicon-chevron-up"></span>{{/if}}{{/if}}
-	{{else}}
-		{{#if $.Session.equals 'sortBy' sortBy}}{{#if $.Session.equals 'sortOrder' 'asc'}}<span class="glyphicon glyphicon-chevron-down"></span>{{else}}<span class="glyphicon glyphicon-chevron-up"></span>{{/if}}{{/if}}
-	{{/if}}
+    {{#if $.Session.equals 'sortBy' sortBy}}
+      {{#if $.Session.equals 'sortOrder' 'desc'}}
+        <span class="glyphicon glyphicon-chevron-down"></span>
+      {{else}}
+        <span class="glyphicon glyphicon-chevron-up"></span>
+      {{/if}}
+    {{/if}}
+  {{else}}
+    {{#if $.Session.equals 'sortBy' sortBy}}
+      {{#if $.Session.equals 'sortOrder' 'asc'}}
+        <span class="glyphicon glyphicon-chevron-down"></span>
+      {{else}}
+        <span class="glyphicon glyphicon-chevron-up"></span>
+      {{/if}}
+    {{/if}}
+  {{/if}}
 </template>
 
+<!--
+  Renders a report sort box
+-->
 <template name="SortBox">
-	<div class="{{class}}"> <a class="btn btn-default dropdown-toggle btn-select" data-toggle="dropdown" href="#"><span style="font-weight:500;">Sorter etter:</span> {{currentSort}} <span class="{{currentSortDirection}}"></span> <span class="caret"></span></a>
-		<ul class="dropdown-menu" style="text-align:left;">
-			<li class="sort-toggle" data-id="name"><a href="#">Navn<div class="pull-right">{{> SortArrow sortBy='project.name'}}</div></a></li>
-			<li class="sort-toggle" data-id="success"><a href="#">Suksesskategori<div class="pull-right">{{> SortArrow sortBy='project.successCategory' reversed="1"}}</div></a></li>
-			<li class="sort-toggle" data-id="sector"><a href="#">Sektor<div class="pull-right">{{> SortArrow sortBy='project.sector'}}</div></a></li>
-			<li class="sort-toggle" data-id="finishing-year"><a href="#">Årstall ferdigstilt<div class="pull-right">{{> SortArrow sortBy='project.finishingYear'}}</div></a></li>
-			<li class="sort-toggle" data-id="evaluation-year"><a href="#">Årstall evaluering<div class="pull-right">{{> SortArrow sortBy='project.evaluationYear'}}</div></a></li>
-			<li class="sort-toggle" data-id="management-budget"><a href="#">Styringsramme<div class="pull-right">{{> SortArrow sortBy='project.managementBudget.amount'}}</div></a></li>
-			<li class="sort-toggle" data-id="cost-final"><a href="#">Sluttkostnad<div class="pull-right">{{> SortArrow sortBy='project.costFinal.amount'}}</div></a></li>
-			<li class="sort-toggle" data-id="responsible-org"><a href="#">Evaluator<div class="pull-right">{{> SortArrow sortBy='responsible.organization'}}</div></a></li>
-		</ul>
-	</div>
+	<div class="btn-group {{class}}">
+
+    {{!-- dropdown button --}}
+    <a class="btn btn-default dropdown-toggle btn-select" data-toggle="dropdown" href="#">
+      <span style="font-weight:500;">Sorter etter: </span>
+      {{currentSort}}
+      <span class="{{currentSortDirection}}"></span>
+      <span class="caret"></span>
+    </a>
+
+    {{!-- dropdown options --}}
+    <ul class="dropdown-menu" role="menu" style="text-align:left;">
+      {{> DropdownItem name='Navn' dataId='name' sortBy='project.name'}}
+      {{> DropdownItem name='Suksesskategori' dataId='success' sortBy='project.successCategory' reversed='1'}}
+      {{> DropdownItem name='Sektor' dataId='sector' sortBy='project.sector'}}
+      {{> DropdownItem name='Årstall ferdigstilt' dataId='finishing-year' sortBy='project.finishingYear'}}
+      {{> DropdownItem name='Årstall evaluering' dataId='evaluation-year' sortBy='project.evaluationYear'}}
+      {{> DropdownItem name='Styringsramme' dataId='management-budget' sortBy='project.managementBudget.amount'}}
+      {{> DropdownItem name='Sluttkostnad' dataId='cost-final' sortBy='project.costFinal.amount'}}
+      {{> DropdownItem name='Evaluator' dataId='responsible-org' sortBy='responsible.organization'}}
+    </ul>
+  </div>
+</template>
+
+<template name="DropdownItem">
+  <li class="sort-toggle" data-id="{{dataId}}">
+    <a href="#">{{name}}
+      <div class="pull-right">
+        {{> SortArrow sortBy=this.sortBy reversed=this.reversed}}
+      </div>
+    </a>
+  </li>
 </template>

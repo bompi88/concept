@@ -6,7 +6,7 @@ Template.TableReportView.events({
     var that = this;
 
     //unchecked fører til at vi må svarteliste rapporten globalt
-    if($(event.currentTarget).prop("checked") === false) {
+    if($(event.target).prop("checked") === false) {
       var blacklist = Session.get('uncheckedReportIds');
       blacklist.push(that._id);
       Session.set('uncheckedReportIds', blacklist);

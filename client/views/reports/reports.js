@@ -50,6 +50,8 @@ Template.Reports.events({
       orderBy('project.managementBudget.amount', undefined, 'number');
     } else if (t === 'cost-final') {
       orderBy('project.costFinal.amount', undefined, 'number');
+    } else if (t === 'cost-budget') {
+      orderBy('project.costBudget.amount', undefined, 'number');
     } else if (t === 'responsible-org') {
       orderBy('responsible.organization', undefined, 'string');
     }

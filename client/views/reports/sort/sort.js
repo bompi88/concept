@@ -17,6 +17,8 @@ Template.SortBox.helpers({
       text = 'Styringsramme';
     } else if (curSort === 'project.costFinal.amount') {
       text = 'Sluttkostnad';
+    } else if (curSort === 'project.costBudget.amount') {
+      text = 'Kostnadsramme';
     } else if (curSort === 'responsible.organization') {
       text = 'Evaluator';
     }

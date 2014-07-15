@@ -28,11 +28,8 @@
         "branch": "master"
       },
       "pdfkit": {},
-      "googlemaps": {
-        "git": "https://github.com/bompi88/meteor-googlemaps.git",
-        "branch": "master"
-      },
-      "just-i18n": {}
+      "just-i18n": {},
+      "googlemaps": {}
     },
     "packages": {
       "iron-router": {
@@ -105,15 +102,15 @@
         "tag": "v1.0.2",
         "commit": "172677e29ad066e9992f62237d0a0302fbc8efa6"
       },
-      "googlemaps": {
-        "git": "https://github.com/bompi88/meteor-googlemaps.git",
-        "branch": "master",
-        "commit": "919830fa99312db79320645999f6ee2fedee503b"
-      },
       "just-i18n": {
         "git": "https://github.com/subhog/meteor-just-i18n.git",
         "tag": "v0.3.0",
         "commit": "a60e7f4350fb9648d6f6b4a01acbbc114c4f4343"
+      },
+      "googlemaps": {
+        "git": "https://github.com/drewjw81/meteor-googlemaps.git",
+        "tag": "v0.0.2",
+        "commit": "da8785c82cfd7de0111f898ef10728e7ed24e361"
       },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",

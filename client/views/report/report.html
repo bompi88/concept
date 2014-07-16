@@ -25,7 +25,7 @@
 						</p>
 						<figure id="projectImage">
               <a href="{{$getUrlById images.[0].fileId 'images' store='original'}}" title="<h5>{{images.[0].title}}.</h5> Foto: {{#if images.[0].link}}<a href='{{images.[0].link}}' style='color: #6b8eaf'>{{images.[0].copyright}}</a>{{else}}{{images.[0].copyright}}{{/if}}</br></br>" class="image-link">
-                <img src="{{$getUrlById images.[0].fileId 'images' store='medium'}}" class="img-responsive" style="max-height:350px;margin: 0 auto;" alt="{{images.[0].title}}. Foto.">
+                <img src="{{$getUrlById images.[0].fileId 'images' store='medium'}}" class="img-responsive" style="max-height:350px;margin: 0 auto;" title="{{images.[0].title}}. Foto: {{copyright}}">
               </a>
                 <figcaption class="text-center">{{images.[0].title}}. Foto: {{#if images.[0].link}}<a href="{{images.[0].link}}">{{images.[0].copyright}}</a>{{else}}{{images.[0].copyright}}{{/if}}</figcaption>
 						</figure>
@@ -77,7 +77,7 @@
 					<div id="links" style="padding-top:25px;">
 						{{#each images}}
   						<a href="{{$getUrlById fileId 'images' store='original'}}" title="<h5>{{title}}.</h5> Foto: {{#if link}}<a href='{{link}}' style='color: #6b8eaf'>{{copyright}}</a>{{else}}{{copyright}}{{/if}}</br></br>" class="image-link">
-  							<img src="{{$getUrlById fileId 'images' store='thumbs'}}" style="max-height:150px;" alt="{{title}}">
+  							<img src="{{$getUrlById fileId 'images' store='thumbs'}}" style="max-height:150px;" title="{{images.[0].title}}. Foto: {{copyright}}">
   						</a>
 						{{/each}}
 					</div>

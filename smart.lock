@@ -30,7 +30,10 @@
       "pdfkit": {},
       "just-i18n": {},
       "googlemaps": {},
-      "iconv-lite": {}
+      "iconv-lite": {
+        "git": "https://github.com/bompi88/meteor-iconv-lite.git",
+        "branch": "master"
+      }
     },
     "packages": {
       "iron-router": {
@@ -114,9 +117,9 @@
         "commit": "da8785c82cfd7de0111f898ef10728e7ed24e361"
       },
       "iconv-lite": {
-        "git": "https://github.com/wulx/meteor-iconv-lite.git",
-        "tag": "v1.0.2",
-        "commit": "db0300ffc7954c9a3a52c6760bbf519d197a1983"
+        "git": "https://github.com/bompi88/meteor-iconv-lite.git",
+        "branch": "master",
+        "commit": "4db96f3fa2f89a8e67eac73723cfb6666ef2f80d"
       },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",

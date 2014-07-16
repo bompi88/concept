@@ -1,7 +1,7 @@
 <!--
 
-This template renders a form, with use of the autoform package. It acts either as a insert form 
-or as a edit form. 
+This template renders a form, with use of the autoform package. It acts either as a insert form
+or as a edit form.
 
 ================================================================================================
 Params:
@@ -14,7 +14,9 @@ type 		- Type of form; insert, update or remove.
 
 <template name="ReportForm">
 	{{#autoForm collection="Reports" id=this.id type=this.type doc=this.doc style="margin: 0 20px;"}}
+
 		<h2>Om prosjektet</h2>
+
 		<fieldset>
 		    <legend>Generelt</legend>
 		    {{> afQuickField name='project.name' id="name" placeholder="schemaLabel"}}
@@ -22,6 +24,7 @@ type 		- Type of form; insert, update or remove.
 		   	{{> afQuickField name='project.sector' id="sector" placeholder="schemaLabel"}}
 
 		</fieldset>
+
 		<fieldset>
 			<legend>Lokasjon</legend>
 			<p>Velg ett sted med dobbel museklikk. Fjern sted med enkelt museklikk</p>
@@ -29,17 +32,20 @@ type 		- Type of form; insert, update or remove.
 
 			{{> afQuickField name='project.location.name' id="location" placeholder="schemaLabel"}}
 		</fieldset>
+
 		<fieldset>
 			<legend>Prosjektbeskrivelse</legend>
 			{{> afQuickField name='project.projectDescription.short' id="project-desc-short" placeholder="schemaLabel" rows="5"}}
 			{{> afQuickField name='project.projectDescription.long' id="project-desc-long" placeholder="schemaLabel" rows="5"}}
 		</fieldset>
+
 		<fieldset>
 			<legend>Tidsbeskrivelse</legend>
 			{{> afQuickField name='project.decisionYear' id="decision-year" placeholder="schemaLabel"}}
 			{{> afQuickField name='project.finishingYear' id="finishing-year" placeholder="schemaLabel"}}
 			{{> afQuickField name='project.evaluationYear' id="eval-year" placeholder="schemaLabel"}}
 		</fieldset>
+
 		<fieldset>
 			<legend>Økonomiske verdier</legend>
 			<div class="col-xs-12 col-sm-6">
@@ -53,6 +59,7 @@ type 		- Type of form; insert, update or remove.
 				{{> afQuickField name='project.costFinal.year' id="cost-final-year" placeholder="schemaLabel"}}
 			</div>
 		</fieldset>
+
 		<fieldset>
 			<legend>Ansvarlige</legend>
 			{{> afQuickField name='responsible.organization' id="eval-responsible-org" placeholder="schemaLabel"}}
@@ -60,6 +67,7 @@ type 		- Type of form; insert, update or remove.
 		</fieldset>
 
 		<h2>Evaluering</h2>
+
 		<fieldset>
 			<legend>Tekstlige vurderinger</legend>
 			<h4>Samlet vurdering</h4>
@@ -73,7 +81,7 @@ type 		- Type of form; insert, update or remove.
 			<h4>2. Måloppnåelse</h4>
 			{{> afQuickField name='evaluation.achievement.short' id="eval-achievement-short" placeholder="schemaLabel" rows="5"}}
 			{{> afQuickField name='evaluation.achievement.long' id="eval-achievement-long" placeholder="schemaLabel" rows="5"}}
-			
+
 			<h4>3. Virkninger</h4>
 			{{> afQuickField name='evaluation.effects.short' id="eval-effects-short" placeholder="schemaLabel" rows="5"}}
 			{{> afQuickField name='evaluation.effects.long' id="eval-effects-long" placeholder="schemaLabel" rows="5"}}
@@ -90,6 +98,7 @@ type 		- Type of form; insert, update or remove.
 			{{> afQuickField name='evaluation.profitability.short' id="eval-profitability-short" placeholder="schemaLabel" rows="5"}}
 			{{> afQuickField name='evaluation.profitability.long' id="eval-profitability-long" placeholder="schemaLabel" rows="5"}}
 		</fieldset>
+
 		<fieldset>
 			<legend>Tallvurderinger</legend>
 			{{> RadioGroupFive name="num-eval-productivity" placeholder="1. Produktivitet" curval=doc.evaluation.productivity.value}}
@@ -99,29 +108,32 @@ type 		- Type of form; insert, update or remove.
 			{{> RadioGroupFive name="num-eval-viability" placeholder="5. Levedyktighet" curval=doc.evaluation.viability.value}}
 			{{> RadioGroupFive name="num-eval-profitability" placeholder="6. Samfunnsøkonomisk lønnsomhet" curval=doc.evaluation.profitability.value}}
 		</fieldset>
+
 		<fieldset>
 			<legend>Referanser</legend>
-			{{> Dropzone tp="files" typeDesc="filer" files=referencesList}}
+			{{> Dropzone tp="files" typeDesc="dokumenter" files=referencesList}}
 		</fieldset>
+
 		<fieldset>
 			<legend>Illustrasjoner</legend>
 			{{> Dropzone tp="images" typeDesc="bildefiler" files=imagesList}}
 		</fieldset>
+
 		<fieldset>
 			<legend>Innstillinger</legend>
 			{{> RadioDouble name="public-var" placeholder="Publisitet" curval=doc._public}}
 		</fieldset>
-						  
-		{{#if currentRouteIs 'EditReport'}}
+
+		{{#if $currentRouteIs 'EditReport'}}
 			<button type="submit" class="btn btn-primary pull-right">Lagre</button>
 		{{else}}
 			<button type="submit" class="btn btn-primary pull-right">Opprett</button>
 		{{/if}}
 		<button type="button" class="btn btn-default pull-right cancel-btn">Avbryt</button>
 	{{/autoForm}}
-	
-	{{#if currentRoute 'EditReport'}}
-		{{#afDeleteButton collection="Reports" doc=this.doc}}
+
+	{{#if $currentRouteIs 'EditReport'}}
+		{{#afDeleteButton collection="Reports" doc=this.doc class="delete-btn"}}
 		Slett
 		{{/afDeleteButton}}
 	{{/if}}

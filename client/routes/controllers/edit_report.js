@@ -1,37 +1,30 @@
-/*****************************************************************************/
-/* EditReportController */
-/*****************************************************************************/
-
+/**
+ * EditReportController: Fetches report, images and files and renders
+ * an edit report form.
+ */
 EditReportController = AuthRouteController.extend({
 	waitOn: function () {
-		Meteor.subscribe('report', this.params._id);
-
-		var report = Reports.findOne({_id: this.params._id});
-
-		if (report) {
-			var subs = [];
-
-			if (report.images.length > 0)
-				subs.push(Meteor.subscribe('images', _.pluck(report.images, 'fileId')));
-			if (report.references.length > 0)
-				subs.push(Meteor.subscribe('files', _.pluck(report.references, 'fileId')));
-			
-			return subs;
-		}
-		return;
+		return Meteor.subscribe('report', this.params._id);
 	},
 
 	data: function () {
 		return Reports.findOne({_id: this.params._id});
 	},
 
-	action: function () {
-		this.render();
-	},
+  // Adds files and images already stored
+  // to the upload object.
 	onAfterAction: function() {
+
 		uploadObject.reset();
 		var report = this.data();
+
 		if(report) {
+      // Subscribe only to the images and files we actually need
+      if (report.images && report.images.length > 0)
+        Meteor.subscribe('images', _.pluck(report.images, 'fileId'));
+      if (report.references && report.references.length > 0)
+        Meteor.subscribe('files', _.pluck(report.references, 'fileId'));
+
 			if(report.images) {
 				for(var i = 0; i < report.images.length; i++) {
 					uploadObject.addImage({_id:report.images[i].fileId});
@@ -44,16 +37,4 @@ EditReportController = AuthRouteController.extend({
 			}
 		}
 	}
-});
-
-SeoCollection.insert({
-  route_name: 'EditReport',
-  title: 'Rediger rapport',
-  meta: {
-    'description': 'Etterevaluering av en rekke statlige prosjekter gjort av Concept-programmet. På oppdrag fra Finansdepartementet'
-  },
-  og: {
-    'title': 'Rediger rapport',
-    'image': '/images/logo.jpg'
-  }
 });

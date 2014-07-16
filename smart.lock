@@ -5,7 +5,7 @@
       "iron-router": {},
       "bootstrap3-sass": {},
       "accounts-ui-bootstrap-3": {
-        "git": "https://github.com/bompi88/meteor-accounts-ui-bootstrap-3.git",
+        "git": "https://github.com/todi01/meteor-accounts-ui-bootstrap-3.git",
         "branch": "master"
       },
       "collectionFS": {},
@@ -13,10 +13,12 @@
         "git": "https://github.com/bompi88/Meteor-cfs-ui.git",
         "branch": "master"
       },
-      "chartjs": {},
+      "chartjs": {
+        "git": "https://github.com/donskifarrell/meteor-chartjs.git",
+        "branch": "master"
+      },
       "handlebar-helpers": {},
       "auto-nprogress": {},
-      "timeline-js": {},
       "collection2": {},
       "autoform": {},
       "ms-seo": {},
@@ -26,10 +28,8 @@
         "branch": "master"
       },
       "pdfkit": {},
-      "googlemaps": {
-        "git": "https://github.com/bompi88/meteor-googlemaps.git",
-        "branch": "master"
-      }
+      "just-i18n": {},
+      "googlemaps": {}
     },
     "packages": {
       "iron-router": {
@@ -43,9 +43,9 @@
         "commit": "d61b7c69aecf1c2033db6b8d283fcfabe9788451"
       },
       "accounts-ui-bootstrap-3": {
-        "git": "https://github.com/bompi88/meteor-accounts-ui-bootstrap-3.git",
+        "git": "https://github.com/todi01/meteor-accounts-ui-bootstrap-3.git",
         "branch": "master",
-        "commit": "85bd309d5cab4624735b0e609e03ef5343b1523f"
+        "commit": "a83cf0210df3113cceda124f35d51f98b099cad5"
       },
       "collectionFS": {
         "git": "https://github.com/CollectionFS/Meteor-CollectionFS.git",
@@ -59,8 +59,8 @@
       },
       "chartjs": {
         "git": "https://github.com/donskifarrell/meteor-chartjs.git",
-        "tag": "v0.0.4",
-        "commit": "9d2adcd1de3728c8227e8eb7da0dcb2e0df21d0b"
+        "branch": "master",
+        "commit": "d3785356d3a35c3ab0b9c7f3e5da486a8dfe6b9c"
       },
       "handlebar-helpers": {
         "git": "https://github.com/raix/Meteor-handlebar-helpers.git",
@@ -72,11 +72,6 @@
         "tag": "v0.2.7",
         "commit": "3fa87d5244e140cc5b49696585cd23b110c36467"
       },
-      "timeline-js": {
-        "git": "https://github.com/andrei-miulescu/timeline-js.git",
-        "tag": "v0.0.7",
-        "commit": "50a695ecbcf0d79e731ac77e53447537e430febb"
-      },
       "collection2": {
         "git": "https://github.com/aldeed/meteor-collection2.git",
         "tag": "v0.4.2",
@@ -84,8 +79,8 @@
       },
       "autoform": {
         "git": "https://github.com/aldeed/meteor-autoform.git",
-        "tag": "v0.13.5",
-        "commit": "27dd5b912eeba687b228a6a7c2c14eef63b12cca"
+        "tag": "v0.14.0",
+        "commit": "30de032833052ea61e9d37bca5523264309d4478"
       },
       "ms-seo": {
         "git": "https://github.com/DerMambo/ms-seo",
@@ -107,10 +102,15 @@
         "tag": "v1.0.2",
         "commit": "172677e29ad066e9992f62237d0a0302fbc8efa6"
       },
+      "just-i18n": {
+        "git": "https://github.com/subhog/meteor-just-i18n.git",
+        "tag": "v0.3.0",
+        "commit": "a60e7f4350fb9648d6f6b4a01acbbc114c4f4343"
+      },
       "googlemaps": {
-        "git": "https://github.com/bompi88/meteor-googlemaps.git",
-        "branch": "master",
-        "commit": "919830fa99312db79320645999f6ee2fedee503b"
+        "git": "https://github.com/drewjw81/meteor-googlemaps.git",
+        "tag": "v0.0.2",
+        "commit": "da8785c82cfd7de0111f898ef10728e7ed24e361"
       },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",
@@ -129,8 +129,8 @@
       },
       "cfs-file": {
         "git": "https://github.com/CollectionFS/Meteor-cfs-file.git",
-        "tag": "v0.1.7",
-        "commit": "9fb8dcb9afd25c9f737497e102e266a2c81e481b"
+        "tag": "v0.1.8",
+        "commit": "0b576c546cc38efad02877d160c9852914574b02"
       },
       "cfs-collection": {
         "git": "https://github.com/CollectionFS/Meteor-cfs-collection.git",
@@ -144,8 +144,8 @@
       },
       "cfs-access-point": {
         "git": "https://github.com/CollectionFS/Meteor-cfs-access-point.git",
-        "tag": "v0.0.30",
-        "commit": "a1a02ef8d145aae414bf9fe483f5944a24e35bf5"
+        "tag": "v0.0.31",
+        "commit": "e2ccc9cdcfdf1a26d40acaeff3f3a6b5324e1ef6"
       },
       "cfs-worker": {
         "git": "https://github.com/CollectionFS/Meteor-cfs-worker.git",
@@ -179,8 +179,8 @@
       },
       "cfs-storage-adapter": {
         "git": "https://github.com/CollectionFS/Meteor-cfs-storage-adapter.git",
-        "tag": "v0.0.28",
-        "commit": "8e0513815501d79b3d531a64f80717b4e9a34a42"
+        "tag": "v0.0.29",
+        "commit": "2bcc5c730f7f4d2536af5bd8b0187a60feb1e0e8"
       },
       "http-methods": {
         "git": "https://github.com/CollectionFS/Meteor-http-methods.git",
@@ -195,7 +195,7 @@
       "data-man": {
         "git": "https://github.com/CollectionFS/Meteor-data-man.git",
         "branch": "master",
-        "commit": "b929af5d64113c23480d4e2432bef836346d0b46"
+        "commit": "ec2034e133c3e27d770ecc4ad848089c66d2266c"
       },
       "cfs-upload-ddp": {
         "git": "https://github.com/CollectionFS/Meteor-cfs-upload-ddp.git",

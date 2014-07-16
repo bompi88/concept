@@ -16,7 +16,7 @@ This is the navbar located at the top.
 			</a>
 		</div>
 		<div class="navbar-collapse collapse">
-			{{> NavBarButton route='ReportList' name='Evalueringsrapporter'}}
+			{{> NavBarButton route='Reports' name='Evalueringsrapporter' page='0'}}
 			{{> NavBarButton route='EvaluationCriteria' name='Evalueringskriterier'}}
 			{{> NavBarButton route='AboutConcept' name='Om Concept'}}
 			
@@ -36,6 +36,6 @@ This is the navbar buttons.
 -->
 <template name="NavBarButton">
 	<ul class="nav navbar-nav">
-		<li class="{{class}} {{activeIfRouteIs this.route}}" data-toggle="collapse" data-target=".in" id="{{id}}"><a href="{{pathFor this.route}}">{{name}}</a></li>
+		<li class="{{class}} {{$activeIfRouteIs this.route}}" data-toggle="collapse" data-target=".in" id="{{id}}"><a href="{{pathFor this.route page=this.page}}">{{name}}</a></li>
 	</ul>
 </template>

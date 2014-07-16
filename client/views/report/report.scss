@@ -1,10 +1,7 @@
-
 .section-padding {
 	margin-bottom: 50px;
 	margin-top: 25px;
 }
-
-
 
 #mycontent {
 	h1,h2,h3,h4,h5,h6{
@@ -12,22 +9,18 @@
 		padding-top: 10px;
 
 	}
+
+  padding: 0 25px;
+}
+
+figure#projectImage {
+  margin-top: 30px;
 }
 
 .button-margin {
 	margin-bottom: 20px;
 	margin-top: 20px;
 }
-
-/*canvas{
-	width: 100% !important;
-	max-width: 800px;
-	height: auto !important;
-	margin-top: 100px;
-	margin-bottom: -80px;
-
-}*/
-
 
 #spider-caption {
   position: relative;
@@ -36,6 +29,10 @@
   a {
     z-index:1000;
   }
+}
+
+.read-more {
+  display: inline-block;
 }
 
 .affix,.affix-top {
@@ -56,18 +53,16 @@
   }
 }
 
+@media (max-width: 500px) {
+  h1#information { 
+    font-size: 20px;
+    word-break: all;
+  }
+}
+
 .modal-title {
 	text-align: center;
 }
-
-
-/* sidebar 
-.bs-docs-sidebar {
-  padding-left: 20px;
-  margin-top: 60px;
-  margin-bottom: 20px;
-}
-*/
 
 /* all links */
 .bs-docs-sidebar .nav>li>a {
@@ -117,9 +112,8 @@
   display: block;           
 }
 
-
 @media all and (max-width: 1170px) {
   .bs-docs-sidebar {
-      display: none;
-    }	
-  }
+    display: none;
+  }	
+}

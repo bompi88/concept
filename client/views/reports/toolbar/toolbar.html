@@ -1,0 +1,13 @@
+<template name="Toolbar">
+  <div class="btn-group" data-toggle="buttons">
+  	<label class="btn btn-default {{#if $eq viewState "box"}}active{{/if}}" id="report-view-option1">
+  		<input type="radio" name="report-view" ><span class="glyphicon glyphicon-th"></span> Bokser
+  	</label>
+  	<label class="btn btn-default {{#if $eq viewState "table"}}active{{/if}}" id="report-view-option2">
+  		<input type="radio" name="report-view" ><span class="glyphicon glyphicon-th-list"></span> Tabell
+  	</label>
+  	<label class="btn btn-default {{#if $eq viewState "map"}}active{{/if}}" id="report-view-option3">
+  		<input type="radio" name="report-view" ><span class="glyphicon glyphicon-map-marker"></span> Kart
+  	</label>
+  </div>
+</template>

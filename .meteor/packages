@@ -17,7 +17,6 @@ cfs-ui
 chartjs
 handlebar-helpers
 auto-nprogress
-timeline-js
 collection2
 autoform
 ms-seo
@@ -25,5 +24,6 @@ spiderable
 animate-css
 bootboxjs
 pdfkit
+just-i18n
 appcache
 googlemaps

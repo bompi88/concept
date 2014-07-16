@@ -1,0 +1,40 @@
+<template name="TableReportView">
+	<div class="table-container table-responsive animated fadeIn">
+		<table class="table table-striped table-hover">
+			<thead>
+        <tr>
+          <th class="sort-toggle table-header" data-id="name">Navn {{> SortArrow sortBy='project.name'}}</th>
+          <th class="sort-toggle table-header" data-id="success">Suksesskategori {{> SortArrow sortBy='project.successCategory' reversed="1"}}</th>
+          <th class="sort-toggle table-header" data-id="sector">Sektor {{> SortArrow sortBy='project.sector'}}</th>
+          <th class="sort-toggle table-header" data-id="finishing-year">Årstall ferdigstilt {{> SortArrow sortBy='project.finishingYear'}}</th>
+          <th class="sort-toggle table-header" data-id="evaluation-year">Årstall evaluering {{> SortArrow sortBy='project.evaluationYear'}}</th>
+        	<th class="sort-toggle table-header" data-id="management-budget">Styringsramme {{> SortArrow sortBy='project.managementBudget.amount'}}</th>
+          <th class="sort-toggle table-header" data-id="cost-budget">Kostnadsramme {{> SortArrow sortBy='project.costBudget.amount'}}</th>
+        	<th class="sort-toggle table-header" data-id="cost-final">Sluttkostnad {{> SortArrow sortBy='project.costFinal.amount'}}</th>
+        	<th class="sort-toggle table-header" data-id="responsible-org">Evaluator {{> SortArrow sortBy='responsible.organization'}}</th>
+        	{{#if currentUser}}
+            <th class="table-header">Valgt</th>
+          {{/if}}
+        </tr>
+      </thead>
+      <tbody>
+  		  {{#each reports}}
+  	  		<tr class="table-row">
+            <td class="row-item">{{project.name}}</td>
+            <td class="row-item">{{> TrafficLight}}</td>
+            <td class="row-item">{{project.sector}}</td>
+            <td class="row-item">{{project.finishingYear}}</td>
+            <td class="row-item">{{project.evaluationYear}}</td>
+            <td class="row-item">{{project.managementBudget.amount}}</td>
+            <td class="row-item">{{project.costBudget.amount}}</td>
+            <td class="row-item">{{project.costFinal.amount}}</td>
+            <td class="row-item">{{responsible.organization}}</td>
+     		    {{#if currentUser}}
+              <td><div class="checkbox"><input type="checkbox" value="{{_id}}" checked="{{isChecked}}"></div></td>
+            {{/if}}
+          </tr>
+  	  	{{/each}}
+    	</tbody>
+		</table>
+	</div>
+</template>

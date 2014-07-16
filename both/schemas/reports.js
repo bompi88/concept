@@ -1,8 +1,8 @@
-/*****************************************************************************/
-/* Reports Scheme */
-/*****************************************************************************/
+/**
+ * Reports Scheme
+ */
 
-var textAreaRegEx = /^[a-z0-9A-z .,!;\n\r&:%"?æøåÆØÅèÈéÉ\/()-]*$/;
+var textAreaRegEx = /^[a-z0-9A-z .,!;\n\r&:%"?æøåÆØÅèÈéÉ\/()<«»>-]*$/;
 var textFieldRegEx = /^[a-z0-9A-z .,æøåÆØÅèÈéÉ()-]{2,100}$/;
 
 ReportScheme = new SimpleSchema({
@@ -323,20 +323,20 @@ ReportScheme = new SimpleSchema({
     "images.$.title": {
         type: String,
         label: "Tittel",
-        optional: true/*,
-        regEx: textFieldRegEx*/
+        optional: true,
+        regEx: textFieldRegEx
     },
     "images.$.copyright": {
         type: String,
         label: "Kilde",
-        optional: true/*,
-        regEx: textFieldRegEx*/
+        optional: true,
+        regEx: textFieldRegEx
     },
     "images.$.link": {
         type: String,
         label: "Kilde-URL",
-        optional: true/*,
-        regEx: SimpleSchema.RegEx.Url*/
+        optional: true,
+        regEx: SimpleSchema.RegEx.Url
     },
     "references": {
         type: [Object],
@@ -350,20 +350,20 @@ ReportScheme = new SimpleSchema({
     "references.$.title": {
         type: String,
         label: "Tittel",
-        optional: true/*,
-        regEx: textFieldRegEx*/
+        optional: true,
+        regEx: textFieldRegEx
     },
     "references.$.typedoc": {
         type: String,
         label: "Dokumenttype",
-        optional: true/*,
-        regEx: textFieldRegEx*/
+        optional: true,
+        regEx: textFieldRegEx
     },
     "references.$.date": {
         type: String,
         label: "Dato",
-        optional: true/*,
-        regEx: /^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/*/
+        optional: true,
+        regEx: /^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/
     },
     "_id": {
         type: String,
@@ -376,6 +376,10 @@ ReportScheme = new SimpleSchema({
         optional: false
     }
 });
+
+/**
+ * Translation of the schema messages
+ */
 
 ReportScheme.messages({
     required: "[label] må fylles ut",
@@ -398,4 +402,5 @@ ReportScheme.messages({
     regEx: "[label] feilet ved regulær sjekk av innholdet"
 });
 
+// Attach the schema to the collection
 Reports.attachSchema(ReportScheme);

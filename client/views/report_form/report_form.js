@@ -93,7 +93,7 @@ Template.ReportForm.events({
   },
 
   'click .cancel-btn': function(event, tmpl) {
-    Router.go('/reports/' + this._id);
+    Router.go('/report/' + this._id);
   },
   'change #dropzone-images': function(event, tmpl) {
     uploadImages(event);
@@ -122,6 +122,7 @@ Template.ReportForm.events({
 Template.ReportForm.helpers({
   imagesList: function() {
     if(currentRouteIs('EditReport')) {
+
       var report = Router.getData();
 
       if(report) {

@@ -1,0 +1,91 @@
+
+<template name="Filter">
+	<div class="col-xs-12" style="margin-bottom:20px;">
+		<h4>Filtrer rapporter</h4>
+
+    <form class="form-inline text-center" role="form">
+  		<div class="form-group" style="text-align:left;">
+  			{{> AttributePicker id='attribute-picker'}}
+  		</div>
+
+  		<div class="form-group" style="text-align:left;">
+        {{> OperatorPicker id='operator-picker'}}
+  		</div>
+
+  		<div class="form-group">
+        <div class="form-group">
+          <input type="text" class="form-control" id="value-picker" placeholder="Skriv inn operand" autocomplete="off">
+        </div>
+  		</div>
+
+  		<div class="form-group">
+  			<div class="btn-group">
+  				<button id="add-filter" type="submit" class="btn btn-success">Legg til filter</button>
+  			</div>
+  		</div>
+    </form>
+	</div>
+</template>
+
+
+<template name="FilterList">
+  {{#if filters}}
+    <div class="col-xs-12" style="margin-bottom:20px;">
+    	<h4>Filtre lagt til</h4>
+    	<table class="table">
+        <thead>
+          <tr>
+            <th style="width:20%; text-align:left;">Attributt</th>
+            <th style="width:20%; text-align:left;">Operator</th>
+            <th style="width:50%; text-align:left;">Operand</th>
+            <th style="width:10%;">Fjern</th>
+          </tr>
+        </thead>
+    		<tbody>
+    			{{#each filters}}
+    				<tr>
+    					<td>{{attribute}}</td>
+    					<td>{{operator}}</td>
+    					<td>{{value}}</td>
+    					<td class="text-center"><button type="button" class="btn btn-xs btn-danger remove-filter">Fjern filter</button></td>
+    				</tr>
+    			{{/each}}
+    		</tbody>
+    	</table>
+    </div>
+  {{/if}}
+</template>
+
+<template name="OperatorPicker">
+  <div class="btn-group">
+    <a id="{{id}}" class="btn btn-default dropdown-toggle btn-select" data-toggle="dropdown" href="#">Velg operator <span class="caret"></span></a>
+    <ul class="dropdown-menu" role="menu">
+      <li class="operator-item"><a href="#">er lik</a></li>
+      <li class="operator-item"><a href="#">mindre enn</a></li>
+      <li class="operator-item"><a href="#">større enn</a></li>
+      <li class="operator-item"><a href="#">inneholder</a></li>
+    </ul>
+  </div>
+</template>
+
+<template name="AttributePicker">
+  <div class="btn-group">
+    <a id="{{id}}" class="btn btn-default dropdown-toggle btn-select" data-toggle="dropdown" href="#">Velg attributt <span class="caret"></span></a>
+    <ul class="dropdown-menu" role="menu">
+      <li class="attribute-item"><a href="#">Sektor</a></li>
+      <li class="attribute-item"><a href="#">Navn</a></li>
+      <li class="attribute-item"><a href="#">Suksesskategori</a></li>
+      <li class="attribute-item"><a href="#">Årstall ferdigstilt</a></li>
+      <li class="attribute-item"><a href="#">Årstall evaluering</a></li>
+      <li class="attribute-item"><a href="#">Evaluator</a></li>
+      <li class="attribute-item"><a href="#">Styringsramme</a></li>
+      <li class="attribute-item"><a href="#">Sluttkostnad</a></li>
+      <li class="attribute-item"><a href="#">Produktivitet</a></li>
+      <li class="attribute-item"><a href="#">Måloppnåelse</a></li>
+      <li class="attribute-item"><a href="#">Samf.øk lønnsomhet</a></li>
+      <li class="attribute-item"><a href="#">Virkninger</a></li>
+      <li class="attribute-item"><a href="#">Levedyktighet</a></li>
+      <li class="attribute-item"><a href="#">Relevans</a></li>
+    </ul>
+  </div>
+</template>

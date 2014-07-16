@@ -23,20 +23,30 @@ Template.DownloadList.helpers({
       }
     }
     return null;
-
   },
+
+  // TODO: fix bad code
+  // Runs for every image file in list, each time uploadObject changes
   getUrl: function(img, store) {
     uploadObject.dep.depend();
-    
+
     if (img) {
       if (store) {
-        console.log(store);
         return img.url(store);
-
       }
       else
         return img.url();
     }
     return null;
+  },
+
+  isChoosenasMainResource: function(resource) {
+    return uploadObject.getImages().indexOf(resource) === 0;
+  }
+});
+
+Template.DownloadList.events({
+  'click .set-main-img': function (evt, tmpl) {
+    uploadObject.setAsMainImg(this.fileId);
   }
 });

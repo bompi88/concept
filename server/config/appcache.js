@@ -1,1 +1,1 @@
-Meteor.AppCache.config({onlineOnly: ['/reports/']});
+Meteor.AppCache.config({onlineOnly: ['/cfs/']});

@@ -1,10 +1,12 @@
+"use strict";
+
 Meteor.publish('images', function(ids) {
 
-	if(ids)
+	if(ids) {
 		return Images.find({ _id: { $in : ids}});
-	else
+	} else {
 		return Images.find({});
-	
+	}
 });
 
 Meteor.publish('image', function(id) {

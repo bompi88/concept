@@ -1,96 +1,55 @@
-/*****************************************************************************/
-/* Client and Server Routes */
-/*****************************************************************************/
-
+/**
+ * Client Routes
+ */
 Router.map(function () {
+
   this.route('ConceptIndex', {
-    path: '/',
-    controller: 'StandardController'
+    path: '/'
   });
 
-  this.route('ReportList', {
-    path: '/reports',
-    controller: 'ReportListController'
+  // -- Report routes ---------------------------------------------------
+
+  this.route('Reports', {
+    path: '/reports/:page',
+    controller: 'ReportsController'
   });
 
   this.route('CreateReport', {
     path: '/create',
-    controller: 'CreateReportController'
+    controller: 'AuthRouteController'
   });
 
   this.route('EditReport', {
-    path: '/reports/:_id/edit',
+    path: '/report/:_id/edit',
     template: 'CreateReport',
     controller: 'EditReportController'
   });
 
   this.route('Report', {
-    path: '/reports/:_id',
+    path: '/report/:_id',
     controller: 'ReportViewController'
   });
 
+  // -- Accounts routes --------------------------------------------------
+
   this.route('AdminLogon', {
     path: '/concept-admin',
-    controller: 'AdminLogonController'
-  });
-
-  this.route('GeneratePdf', {
-    path: '/generate-pdf/:_id',
-    controller: 'GeneratePdfController'
+    controller: 'AdminLogonController',
+    template: 'LoginForm'
   });
 
   this.route('AdminForgottonPassword', {
     path: '/concept-admin-forgotton-password',
-    controller: 'StandardController'
+    template: 'LoginForm'
   });
 
+  // -- Miscellaneous routes ---------------------------------------------
+
   this.route('AboutConcept', {
-    path: '/about-concept',
-    controller: 'StandardController'
+    path: '/about-concept'
   });
 
   this.route('EvaluationCriteria', {
-    path: '/evaluation-criteria',
-    controller: 'StandardController'
+    path: '/evaluation-criteria'
   });
-});
-
-/*****************************************************************************/
-/* SEO inserts for routes without route controller */
-/*****************************************************************************/
-
-SeoCollection.insert({
-  route_name: 'EvaluationCriteria',
-  title: 'Evalueringskriterier',
-  meta: {
-    'description': 'Etterevaluering av en rekke statlige prosjekter gjort av Concept-programmet. På oppdrag fra Finansdepartementet'
-  },
-  og: {
-    'title': 'Evalueringskriterier',
-    'image': '/images/logo.jpg'
-  }
-});
-
-SeoCollection.insert({
-  route_name: 'AboutConcept',
-  title: 'Om Concept NTNU',
-  meta: {
-    'description': 'Etterevaluering av en rekke statlige prosjekter gjort av Concept-programmet. På oppdrag fra Finansdepartementet'
-  },
-  og: {
-    'title': 'Om Concept NTNU',
-    'image': '/images/logo.jpg'
-  }
-});
-
-SeoCollection.insert({
-  route_name: 'AdminForgottonPassword',
-  title: 'Glemt passord',
-  meta: {
-    'description': 'Etterevaluering av en rekke statlige prosjekter gjort av Concept-programmet. På oppdrag fra Finansdepartementet'
-  },
-  og: {
-    'title': 'Glemt passord',
-    'image': '/images/logo.jpg'
-  }
 });

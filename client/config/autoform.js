@@ -1,7 +1,6 @@
-/*****************************************************************************/
-/* Autoform configuration */
-/*****************************************************************************/
-
+/**
+ * Autoform configuration
+ */
 AutoForm.hooks({
     "report-form": {
         before: {
@@ -12,6 +11,9 @@ AutoForm.hooks({
                 return createMofidiers(modifier, tmpl);
             },
             remove: function (id, tmpl) {
+              // TODO: Needs to clean up and remove the files from
+              // gridFS.
+
                 /* console.log('jaha');
                 var report = Reports.findOne(id);
                 var img_ids = _.pluck(report.images, 'fileId');
@@ -21,13 +23,13 @@ AutoForm.hooks({
                 Meteor.call('deleteReferences', ref_ids);*/
 
                 return true;
-            } 
+            }
         },
         onSuccess: function(operation, result, tmpl) {
-            if (operation === 'update' )
-                return Router.go(Router.path('ReportList') + '/' + tmpl.data.doc._id);
+            if (operation === 'update')
+                return Router.go(Router.path('Reports', {page: 0}));
             else
-                return Router.go(Router.path('ReportList'));
+                return Router.go(Router.path('Reports', {page: 0}));
         },
         onError: function(operation, error, template) {
             console.log(error);

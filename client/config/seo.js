@@ -1,7 +1,6 @@
-/*****************************************************************************/
-/* Default values for the SEO package */
-/*****************************************************************************/
-
+/*
+ * Sets default values for the SEO package
+ */
 Meteor.startup(function() {
   return SEO.config({
     title: 'Concept NTNU',

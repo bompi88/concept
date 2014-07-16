@@ -3,16 +3,20 @@
     "iron-router": {},
     "bootstrap3-sass": {},
     "accounts-ui-bootstrap-3": {
-      "git": "https://github.com/bompi88/meteor-accounts-ui-bootstrap-3.git"
+      "git": "https://github.com/todi01/meteor-accounts-ui-bootstrap-3.git",
+      "branch": "master"
     },
     "collectionFS": {},
     "cfs-ui": {
       "git": "https://github.com/bompi88/Meteor-cfs-ui.git"
     },
-    "chartjs": {},
+    "chartjs": {
+      "git": "https://github.com/donskifarrell/meteor-chartjs.git",
+      "branch": "master",
+      "commit": "d3785356d3a35c3ab0b9c7f3e5da486a8dfe6b9c"
+    },
     "handlebar-helpers": {},
     "auto-nprogress": {},
-    "timeline-js": {},
     "collection2": {},
     "autoform": {},
     "ms-seo": {},
@@ -22,8 +26,7 @@
       "branch": "master"
     },
     "pdfkit": {},
-    "googlemaps": {
-        "git": "https://github.com/bompi88/meteor-googlemaps.git"
-    }
+    "just-i18n": {},
+    "googlemaps": {}
   }
 }

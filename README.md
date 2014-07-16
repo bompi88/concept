@@ -1,4 +1,4 @@
-#Presentasjonsverktøy for Concept
+#Presentasjonsverktøy for Concept [![Build Status](https://magnum.travis-ci.com/bompi88/concept.svg?token=hseESc15r1zHkVm476ia&branch=master)](https://magnum.travis-ci.com/bompi88/concept)
 
 ## Introduksjonsguide
 Prosjektet bruker [Meteor v0.8.3] (http://www.meteor.com) som rammeverk og [Bootstrap 3] (http://www.getbootstrap.com) som hjelp til å bygge design. Sass brukes som CSS-preprosessor. En viktig pakke som brukes er [Iron Router] (https://github.com/EventedMind/iron-router). Denne tar seg av alle rutene på klienten og serveren og bestemmer hvilke templater som skal rendres. Layouten bygges opp fra MasterLayout som ligger i client/views/layouts/. 

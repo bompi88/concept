@@ -1,6 +1,6 @@
-/*****************************************************************************/
-/* Bootstrap configuration variables */
-/*****************************************************************************/
+/**
+ * Bootstrap configuration variables
+ */
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600); 
 $grid-float-breakpoint: 920px;
 $font-family-sans-serif:  "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
@@ -8,10 +8,9 @@ $gray-light: #707070;
 $link-color: #266fae;
 $line-height-base: 1.5; 
 
-
-/*****************************************************************************/
-/* Global SCSS Styles */
-/*****************************************************************************/
+/**
+ * Global SCSS Styles
+ */
 
 @import 'packages/bootstrap3-sass/bootstrap';
 
@@ -31,6 +30,14 @@ body { padding-top: 50px;
 	box-shadow: 0px 0px 20px darken(#fff, 20%)
 }
 
+textarea.form-control {
+	resize: vertical;
+}
+
+a.navbar-brand {
+	height:49px;
+}
+
 /*****************************************************************************/
 /* NProgress Overrides */
 /*****************************************************************************/
@@ -38,13 +45,13 @@ body { padding-top: 50px;
 /* Sets the position of nprogress bar and its z-index */
 #nprogress .bar {
 	z-index: 9999;
-	top:53px;
+	top:52px;
 	height:3px;
 }
 
 @media (max-width: 767px) {
 	#nprogress .bar {
-		top:50px;
+		top:49px;
 	}
 }
 

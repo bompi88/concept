@@ -1,0 +1,22 @@
+<template name="ProjectReferences">
+	{{#TableResponsive header="Litteratur og referanser" id="references" class="section-padding"}}
+		<thead>
+			<tr>
+				<th>Tittel</th>
+				<th>Dato</th>
+				<th>Type dokument</th>
+				<th>Lenke</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#each references}}
+			<tr>
+				<td>{{title}}</td>
+				<td>{{date}}</td>
+				<td>{{typedoc}}</td>
+				<td><a href="{{$getUrlById fileId 'files'}}">Last ned</a></td>
+			</tr>
+			{{/each}}
+		</tbody>
+	{{/TableResponsive}}
+</template>

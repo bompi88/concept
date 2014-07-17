@@ -335,8 +335,7 @@ ReportScheme = new SimpleSchema({
     "images.$.link": {
         type: String,
         label: "Kilde-URL",
-        optional: true,
-        regEx: SimpleSchema.RegEx.Url
+        optional: true
     },
     "references": {
         type: [Object],

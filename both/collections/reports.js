@@ -26,7 +26,6 @@ createMofidiers = function(modifier, tmpl) {
     var success = Math.round((((productivityValue + achievementValue + effectsValue +
         relevanceValue + viabilityValue + profitabilityValue - 6)/31) + (1/6)) * 3);
 
-    console.log(success)
     var mods = {
         "project.location.coordinates.lat": lat,
         "project.location.coordinates.lng": lng,
@@ -46,11 +45,12 @@ createMofidiers = function(modifier, tmpl) {
     for (var i = 0; i < imgsIds.length; i++){
         var img = {
             fileId: imgsIds[i],
-            title: tmpl.find('#title-' + imgsIds[i]).value,
-            copyright: tmpl.find('#copyright-' + imgsIds[i]).value,
-            link: tmpl.find('#link-' + imgsIds[i]).value
+            title: tmpl.find('#title-' + imgsIds[i]) && tmpl.find('#title-' + imgsIds[i]).value || null,
+            copyright: tmpl.find('#copyright-' + imgsIds[i]) && tmpl.find('#copyright-' + imgsIds[i]).value || null,
+            link: tmpl.find('#link-' + imgsIds[i]) &&  tmpl.find('#link-' + imgsIds[i]).value || null
         };
-        imgs.push(img);
+        if(Images.findOne({ _id: imgsIds[i]}))
+          imgs.push(img);
     }
     mods.images = imgs;
 
@@ -60,10 +60,11 @@ createMofidiers = function(modifier, tmpl) {
     for (var i = 0; i < filesIds.length; i++){
         var file = {
             fileId: filesIds[i],
-            title: tmpl.find('#title-' + filesIds[i]).value,
-            typedoc: tmpl.find('#typedoc-' + filesIds[i]).value,
-            date: tmpl.find('#date-' + filesIds[i]).value
+            title: tmpl.find('#title-' + filesIds[i]) && tmpl.find('#title-' + filesIds[i]).value || null,
+            typedoc: tmpl.find('#typedoc-' + filesIds[i]) && tmpl.find('#typedoc-' + filesIds[i]).value || null,
+            date: tmpl.find('#date-' + filesIds[i]) && tmpl.find('#date-' + filesIds[i]).value || null
         };
+      if(Files.findOne({ _id: filesIds[i]}))
         files.push(file);
     }
 

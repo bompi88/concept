@@ -23,6 +23,10 @@
     },
     "pdfkit": {},
     "just-i18n": {},
-    "googlemaps": {}
+    "googlemaps": {},
+    "iconv-lite": {
+      "git": "https://github.com/bompi88/meteor-iconv-lite.git",
+      "branch": "master"
+    }
   }
 }

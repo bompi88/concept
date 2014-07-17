@@ -44,7 +44,13 @@ files		- An reactive object where the files is stored.
 							{{> TextInput $generateId 'title' this._id placeholder="Tittel" value=title}}
 							{{> TextInput $generateId 'copyright' this._id  placeholder="Kilde" value=copyright}}
 							{{> TextInput $generateId 'link' this._id  placeholder="Kilde-url" value=link}}
-						{{else}}
+
+              {{#if isChoosenasMainResource this._id}}
+                <div class="well"><span class="glyphicon glyphicon-ok" style="color:green;font-size:20px;margin-right:20px;"></span>Dette bildet er valgt som hovedbilde.</div>
+              {{else}}
+                <button type="button" class="btn btn-sm btn-info pull-right set-main-img">Sett som hovedbilde</button>
+						  {{/if}}
+            {{else}}
 							{{> TextInput $generateId 'title' this._id  placeholder="Tittel" value=title}}
 							{{> TextInput $generateId 'typedoc' this._id  placeholder="Type dokument" value=typedoc}}
 							{{> TextInput $generateId 'date' this._id  placeholder="Dato" value=date}}
@@ -62,20 +68,6 @@ files		- An reactive object where the files is stored.
 					</td>
 					{{/with}}
 				</tr>
-				{{!-- <tr class="listview">
-					{{#with getData this._id parent=..}}
-					<td class="vert-align visible-xs" style="padding-top:25px;">
-						{{#unless this.isUploaded}}
-							{{> FS.UploadProgressBar bootstrap=true}}
-						{{else}}
-							{{> FS.UploadProgressBar bootstrap=true class="progress-bar-success"}}
-						{{/unless}}
-					</td>
-					<td class="text-center vert-align visible-xs">
-						{{#FS.DeleteButton type=type class="btn btn-danger btn-xs"}}Slett{{/FS.DeleteButton}}
-					</td>
-					{{/with}}
-				</tr> --}}
 				{{/each}}
 			</tbody>
 		</table>

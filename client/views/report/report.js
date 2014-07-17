@@ -1,23 +1,13 @@
-Session.setDefault('TextState','short');
-
 /**
  * ReportView: Event Handlers
  */
 
+ var chart;
+
 Template.Report.events({
 
   'click #export-text': function(event, tmpl) {
-    var canvas = document.getElementById('spiderEvaluation');
-
-    // get the canvas as image
-    var dataURL = canvas.toDataURL();
-
-    // open a window or a tab and direct it to the pdf.
-    // And send the spider image over as a parameter.
-    var w = window.open('/pdf/' + this._id + "?spider=" + dataURL);
-    setTimeout(function() {
-      w.close();
-    }, 2000)
+    event.stopPropagation();
   },
 
   'click .edit-btn': function(event, tmpl) {
@@ -34,7 +24,6 @@ Template.EvaluationParagraph.events({
     createModalDialog(this.header, this.ref.long);
   }
 });
-
 
 Template.Report.rendered = function() {
 
@@ -74,9 +63,7 @@ Template.Report.rendered = function() {
         //Boolean - Whether to show labels on the scale
         scaleShowLabels : true,
         //Number - Scale label font size in pixels
-        scaleFontSize : 10,
-        //Boolean - If we show the scale above the chart data
-        //scaleOverlay : true,
+        scaleFontSize : 12,
         //Boolean - If we want to override with a hard coded scale
         scaleOverride : true,
         //** Required if scaleOverride is true **
@@ -87,33 +74,28 @@ Template.Report.rendered = function() {
         //Number - The centre starting value
         scaleStartValue : 0,
         //Number - Point label font size in pixels
-        pointLabelFontSize : 10,
+        pointLabelFontSize : 12,
         //String - Point label font colour
         pointLabelFontColor : "rgba(0,0,0,0.8)",
         //String - Colour of the scale line
         scaleLineColor : "rgba(0,0,0,.4)",
         //String - Scale label font colour
-        scaleFontColor : "rgba(0,0,0,0.5)",
-        //String - Point label font weight
-        pointLabelFontStyle : "bold"
+        scaleFontColor : "rgba(0,0,0,0.8)",
+        responsive: true,
+        onAnimationComplete: function(){
+          var button = $("#export-text");
+          var dataURL = chart.toBase64Image();
+          button.prop("href", button.prop("href") + dataURL);
+
+        }
+
       }
 
       var el = $("#spiderEvaluation");
-
       if (el.get(0)) {
         var ctx = el.get(0).getContext("2d");
-
-        var width = $('canvas').parent().width();
-
-        var chart;
-
-        $('canvas').attr("width",width);
         chart = new Chart(ctx).Radar(data,options);
-        window.onresize = function(event){
-          var width = $('canvas').parent().width();
-          $('canvas').attr("width",width);
-          chart = new Chart(ctx).Radar(data,options);
-        };
+
       }
     }
   });
@@ -134,5 +116,11 @@ Template.Report.rendered = function() {
       // offset to nicely display the target element at the top
       $(window).scrollTop($target.offset().top-(scrollTopOffset));
   });
+
 }
+
+Template.Report.destroyed = function() {
+  if(chart)
+    chart.destroy();
+};
 

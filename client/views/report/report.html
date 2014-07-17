@@ -4,13 +4,13 @@
 			<div class="page-header text-center">
 				<h1 id="information">{{project.name}}</h1>
 				<div class="btn-group button-margin" data-toggle="buttons">
-					<label class="btn btn-default {{#if $eq textState "long"}}active{{/if}}" id="export-text">
-						<input type="radio" name="text-view" ><span class="glyphicon glyphicon-export"></span> Eksporter til PDF
-					</label>
+					<a href="/pdf/{{_id}}?spider=" class="btn btn-default" role="button" id="export-text">
+						<span class="glyphicon glyphicon-export"></span> Eksporter til PDF
+					</a>
 					{{#if currentUser}}
-					<label class="btn btn-success edit-btn">
-						<input type="radio" name="text-view" ><span class="glyphicon glyphicon-edit"></span> Rediger
-					</label>
+					<button class="btn btn-success edit-btn">
+						<span class="glyphicon glyphicon-edit"></span> Rediger
+					</button>
 					{{/if}}
 				</div>
 			</div>

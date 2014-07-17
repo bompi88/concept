@@ -38,7 +38,7 @@ Router.map(function() {
         var filename = 'rapportutvalg' + '.csv';
 
         var headers = {
-          'Content-Type': 'text/csv; charset=utf-8',
+          'Content-Type': 'text/csv',
           'Content-Disposition': "attachment; filename=" + filename
         };
 
@@ -52,8 +52,13 @@ Router.map(function() {
   })
 });
 
+var encodeUTF16LE = function(str) {
+  return iconv.encode(str, 'win1252');
+}
 
 var generateCSV = function(reports) {
+
+  var newlinePattern = /(\r\n|\n|\r)/gm;
 
   var rows = [];
   reports.forEach(function(r) {
@@ -69,30 +74,30 @@ var generateCSV = function(reports) {
       "Sluttkostnad årstall": r.project.costFinal.year,
       "Evaluator": r.responsible.organization,
       "Suksesskategori": r.project.successCategory,
-      "Produktivitet karakter": r.evaluation.productivity.value,
-      "Maaloppnaaelse karakter": r.evaluation.achievement.value,
-      "Virkninger karakter": r.evaluation.effects.value,
-      "Relevans karakter": r.evaluation.relevance.value,
-      "Levedyktighet karakter": r.evaluation.viability.value,
-      "Samf.aak loennsomhet karakter": r.evaluation.profitability.value,
-      "Produktivitet kort": r.evaluation.productivity.short,
-      "Maaloppnaaelse kort": r.evaluation.achievement.short,
-      "Virkninger kort": r.evaluation.effects.short,
-      "Relevans kort": r.evaluation.relevance.short,
-      "Levedyktighet kort": r.evaluation.viability.short,
-      "Samf.aak loennsomhet kort": r.evaluation.profitability.short,
-      "Produktivitet lang": r.evaluation.productivity.long,
-      "Maaloppnaaelse lang": r.evaluation.achievement.long,
-      "Virkninger lang": r.evaluation.effects.long,
-      "Relevans lang": r.evaluation.relevance.long,
-      "Levedyktighet lang": r.evaluation.viability.long,
-      "Samf.aak loennsomhet lang": r.evaluation.profitability.long
+      "Produktivitet (karakter)": r.evaluation.productivity.value,
+      "Måloppnåelse (karakter)": r.evaluation.achievement.value,
+      "Virkninger (karakter)": r.evaluation.effects.value,
+      "Relevans (karakter)": r.evaluation.relevance.value,
+      "Levedyktighet (karakter)": r.evaluation.viability.value,
+      "Samf.øk. lønnsomhet (karakter)": r.evaluation.profitability.value,
+      "Produktivitet (kort)": r.evaluation.productivity.short && r.evaluation.productivity.short.trim().replace(newlinePattern, ""),
+      "Måloppnåelse (kort)": r.evaluation.achievement.short && r.evaluation.achievement.short.trim().replace(newlinePattern, ""),
+      "Virkninger (kort)": r.evaluation.effects.short && r.evaluation.effects.short.trim().replace(newlinePattern, ""),
+      "Relevans (kort)": r.evaluation.relevance.short && r.evaluation.relevance.short.trim().replace(newlinePattern, ""),
+      "Levedyktighet (kort)": r.evaluation.viability.short && r.evaluation.viability.short.trim().replace(newlinePattern, ""),
+      "Samf.øk. lønnsomhet (kort)": r.evaluation.profitability.short && r.evaluation.profitability.short.trim().replace(newlinePattern, ""),
+      "Produktivitet (lang)": r.evaluation.productivity.long && r.evaluation.productivity.long.trim().replace(newlinePattern, ""),
+      "Måloppnåelse (lang)": r.evaluation.achievement.long && r.evaluation.achievement.long.trim().replace(newlinePattern, ""),
+      "Virkninger (lang)": r.evaluation.effects.long && r.evaluation.effects.long.trim().replace(newlinePattern, ""),
+      "Relevans (lang)": r.evaluation.relevance.long && r.evaluation.relevance.long.trim().replace(newlinePattern, ""),
+      "Levedyktighet (lang)": r.evaluation.viability.long && r.evaluation.viability.long.trim().replace(newlinePattern, ""),
+      "Samf.øk. lønnsomhet (lang)": r.evaluation.profitability.long && r.evaluation.profitability.long.trim().replace(newlinePattern, "")
     };
     rows.push(row);
   });
 
   var csv =  json2csv(rows, true, false);
-  return csv;
+  return encodeUTF16LE(csv);
 };
 
 var getImg = Meteor._wrapAsync(function(img, callback) {

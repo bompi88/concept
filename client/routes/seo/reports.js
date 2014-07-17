@@ -1,9 +1,9 @@
 /**
- * SEO configuration for ReportList route
+ * SEO configuration for Reports route
  */
 Meteor.startup(function() {
   SeoCollection.insert({
-    route_name: 'ReportList',
+    route_name: 'Reports',
     title: 'Rapporter - etterevaluering av statlige prosjekter',
     meta: {
       'description': 'Etterevaluering av en rekke statlige prosjekter gjort av Concept-programmet. På oppdrag fra Finansdepartementet'

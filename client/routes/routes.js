@@ -14,6 +14,13 @@ Router.map(function () {
     controller: 'ReportsController'
   });
 
+  this.route('ReportsIndex', {
+    path: '/reports',
+    onBeforeAction: function() {
+      this.redirect('/reports/0');
+    }
+  });
+
   this.route('CreateReport', {
     path: '/create',
     controller: 'AuthRouteController'

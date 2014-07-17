@@ -1,7 +1,7 @@
 <!--
 
-This template renders a form, with use of the autoform package. It acts either as a insert form 
-or as a edit form. 
+This template renders a form, with use of the autoform package. It acts either as a insert form
+or as a edit form.
 
 ================================================================================================
 Params:
@@ -81,7 +81,7 @@ type 		- Type of form; insert, update or remove.
 			<h4>2. Måloppnåelse</h4>
 			{{> afQuickField name='evaluation.achievement.short' id="eval-achievement-short" placeholder="schemaLabel" rows="5"}}
 			{{> afQuickField name='evaluation.achievement.long' id="eval-achievement-long" placeholder="schemaLabel" rows="5"}}
-			
+
 			<h4>3. Virkninger</h4>
 			{{> afQuickField name='evaluation.effects.short' id="eval-effects-short" placeholder="schemaLabel" rows="5"}}
 			{{> afQuickField name='evaluation.effects.long' id="eval-effects-long" placeholder="schemaLabel" rows="5"}}
@@ -118,12 +118,12 @@ type 		- Type of form; insert, update or remove.
 			<legend>Illustrasjoner</legend>
 			{{> Dropzone tp="images" typeDesc="bildefiler" files=imagesList}}
 		</fieldset>
-		
+
 		<fieldset>
 			<legend>Innstillinger</legend>
 			{{> RadioDouble name="public-var" placeholder="Publisitet" curval=doc._public}}
 		</fieldset>
-				  
+
 		{{#if $currentRouteIs 'EditReport'}}
 			<button type="submit" class="btn btn-primary pull-right">Lagre</button>
 		{{else}}
@@ -131,9 +131,9 @@ type 		- Type of form; insert, update or remove.
 		{{/if}}
 		<button type="button" class="btn btn-default pull-right cancel-btn">Avbryt</button>
 	{{/autoForm}}
-	
+
 	{{#if $currentRouteIs 'EditReport'}}
-		{{#afDeleteButton collection="Reports" doc=this.doc}}
+		{{#afDeleteButton collection="Reports" doc=this.doc class="delete-btn"}}
 		Slett
 		{{/afDeleteButton}}
 	{{/if}}

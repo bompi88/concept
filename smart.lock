@@ -26,7 +26,11 @@
       },
       "pdfkit": {},
       "just-i18n": {},
-      "googlemaps": {}
+      "googlemaps": {},
+      "iconv-lite": {
+        "git": "https://github.com/bompi88/meteor-iconv-lite.git",
+        "branch": "master"
+      }
     },
     "packages": {
       "iron-router": {
@@ -108,6 +112,11 @@
         "git": "https://github.com/drewjw81/meteor-googlemaps.git",
         "tag": "v0.0.2",
         "commit": "da8785c82cfd7de0111f898ef10728e7ed24e361"
+      },
+      "iconv-lite": {
+        "git": "https://github.com/bompi88/meteor-iconv-lite.git",
+        "branch": "master",
+        "commit": "4db96f3fa2f89a8e67eac73723cfb6666ef2f80d"
       },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",

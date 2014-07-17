@@ -1,10 +1,11 @@
 <template name="MasterLayout">
+  {{> ConnectionStatus}}
+
 	{{! this div wraps the content and makes some room for the footer. }}
 	<div class="animated fadeIn" id="wrap">
 		<nav>
 			{{> yield region ='nav'}}
 		</nav>
-    {{> ConnectionStatus}}
 		{{> yield}}
 	</div>
 	{{> yield region = 'footer'}}

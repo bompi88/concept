@@ -2,6 +2,12 @@
  * Map: SCSS styles
  */
 
+// UI Pan Controller fix, google maps IE
+.gmnoprint div[title^="Pan"]
+{
+    opacity: 0 !important;
+}
+
 #map-canvas {
 	height: 550px;
 }

@@ -78,18 +78,24 @@
         {{/if}}
       {{/if}}
 
-      {{!-- Presentation view for large screens --}}
-      <div class="row hidden-xs">
-  			<div class="col-xs-12" id="report-list-container">
-  				{{> PresentationView}}
-  			</div>
-  		</div>
+      {{#if $.Session.equals 'ReportViewState' 'map'}}
+          <div class="col-xs-12" id="report-list-container">
+            {{> PresentationView}}
+          </div>
+      {{else}}
+        {{!-- Presentation view for large screens --}}
+        <div class="row hidden-xs">
+    			<div class="col-xs-12" id="report-list-container">
+    				{{> PresentationView}}
+    			</div>
+    		</div>
 
-      {{!-- Presentation view for small screens --}}
-      <div class="col-xs-12 visible-xs" id="report-list-container">
-        {{> PresentationView}}
+        {{!-- Presentation view for small screens --}}
+        <div class="col-xs-12 visible-xs" id="report-list-container">
+          {{> PresentationView}}
+        </div>
+      {{/if}}
       </div>
-    </div>
 	</div>
 </template>
 

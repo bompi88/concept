@@ -2,6 +2,10 @@
  * Map: This is a map component
  */
 
+var map;
+var mapElement;
+var markers;
+
 Template.MapView.events({
   'click .panel': function(event, tmpl) {
     //this is ugly
@@ -13,6 +17,9 @@ Template.MapView.events({
 Template.MapView.rendered = function () {
   var state = this.data.state;
 
+  mapElement = document.getElementById("map-canvas");
+  markers = [];
+
   GoogleMaps.init(
     {
         //'sensor': true, //optional
@@ -22,13 +29,12 @@ Template.MapView.rendered = function () {
     },
       function(){
 
-        var markers = [];
         var mapOptions = {
             zoom: 5,
             maxZoom: 15,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
-        map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+        map = new google.maps.Map(mapElement, mapOptions);
         map.setCenter(new google.maps.LatLng( 63.43, 10.39 ));
         var infowindow = new google.maps.InfoWindow();
         var markerSize = { x: 22, y: 40 };
@@ -89,7 +95,7 @@ Template.MapView.rendered = function () {
             }
 
             // For each place, get the icon, place name, and location.
-            markers = [];
+
             var bounds = new google.maps.LatLngBounds();
 
             for (var i = 0, place; place = places[i]; i++) {
@@ -131,6 +137,7 @@ Template.MapView.rendered = function () {
                 map: map
               });
               marker.setMap(map);
+              markers.push(marker);
 
               google.maps.event.addListener(marker, 'dblclick', function(event) {
                 if(locationAdded) {
@@ -165,6 +172,7 @@ Template.MapView.rendered = function () {
               });
 
               marker.setMap(map);
+              markers.push(marker);
 
               google.maps.event.addListener(marker, 'dblclick', function(event) {
                 if(locationAdded) {
@@ -206,6 +214,8 @@ Template.MapView.rendered = function () {
               });
 
               marker.setMap(map);
+              markers.push(marker);
+
               google.maps.event.addListener(marker, 'click', function() {
                 infowindow.open(map, marker);
               })
@@ -215,4 +225,23 @@ Template.MapView.rendered = function () {
       }
     }
   );
+};
+
+
+Template.MapView.destroyed = function () {
+  google.maps.event.clearInstanceListeners(window);
+  google.maps.event.clearInstanceListeners(document);
+  google.maps.event.clearInstanceListeners(mapElement);
+  google.maps.event.clearInstanceListeners(map);
+
+  for (var i = 0, marker; marker = markers[i]; i++) {
+    marker.setMap(null);
+    google.maps.event.clearInstanceListeners(marker);
+    marker = null;
+  }
+
+  markers.length = 0;
+  markers = null;
+  mapElement = null;
+  map = null;
 };

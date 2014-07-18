@@ -10,9 +10,9 @@
             <button type="button" class="btn btn-default {{#if $.Session.equals 'showFilter' true}} active{{/if}}" id="btn-filter">
               <span class="glyphicon glyphicon-filter"></span> Filtrer
             </button>
-            <button type="button" class="btn btn-default" id="download">
+            <a href="{{csvLink}}" role="button" class="btn btn-default" id="download">
               <span class="glyphicon glyphicon-export"></span> Eksporter
-            </button>
+            </a>
           </div>
           {{/if}}
         </div>

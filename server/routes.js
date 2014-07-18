@@ -8,16 +8,20 @@ Router.map(function() {
       var report = Reports.find({_id: this.params._id}).fetch()[0];
 
       if(report) {
+        var spiderImg = this.params && this.params.spider || "";
 
-        var file = generatePdf(report, this.params.spider);
         var filename = report.project.name + '.pdf';
-
         var headers = {
           'Content-type': 'application/pdf',
-          'Content-Disposition': "attachment; filename=" + filename
+          'Cache-Control': 'must-revalidate, post-check=0, pre-check=0',
+          'Pragma': 'public',
+          'Content-Disposition': "inline; filename=" + filename
         };
 
         this.response.writeHead(200, headers);
+
+        var file = generatePdf(report, spiderImg);
+
         return this.response.end(file);
       }
     }
@@ -178,12 +182,12 @@ var generatePdf = function(report, spider) {
   doc.addPage();
   // Spider diagram
 
-  if(spider != null) {
-  var spiderBuffer = new Buffer(spider.replace('data:image/png;base64,','') || '', 'base64');
-  doc.image(spiderBuffer, (525 - 200) / 2, doc.y, { fit: [400, 300]});
+  if(spider != null && spider.length) {
+    var spiderBuffer = new Buffer(spider.replace('data:image/png;base64,','') || '', 'base64');
+    doc.image(spiderBuffer, (525 - 200) / 2, doc.y, { fit: [400, 300]});
 
-  doc.moveDown();
-  doc.moveDown();
+    doc.moveDown();
+    doc.moveDown();
   }
   doc
   .fontSize(16)

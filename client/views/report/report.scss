@@ -13,6 +13,7 @@
 	}
 
   padding: 0 25px;
+  padding-bottom: 25px;
 }
 
 figure#projectImage {
@@ -49,8 +50,6 @@ figure#projectImage {
 
 }
 
-
-
 /* Portrait tablets and medium desktops */
 @media (min-width: 992px) and (max-width: 1199px) {
    #radarWrapper{
@@ -82,6 +81,10 @@ figure#projectImage {
 
 /* Landscape phones and portrait tablets */
 @media (max-width: 767px) {
+  #eval-header small {
+    font-size: 16px;
+  }
+
    #radarWrapper{
     width:80%;
   }
@@ -107,6 +110,8 @@ figure#projectImage {
   #radarWrapper{
     width:95%;
   }
+
+
 
   .information-box{
     width: 95%;

@@ -4,7 +4,7 @@
 			<div class="page-header text-center">
 				<h1 id="information">{{project.name}}</h1>
 				<div class="btn-group button-margin" data-toggle="buttons">
-					<a href="/pdf/{{_id}}?spider=" class="btn btn-default" role="button" id="export-text">
+					<a href="/pdf/{{_id}}" class="btn btn-default" role="button" id="export-text" disabled="{{buttonDisabled}}">
 						<span class="glyphicon glyphicon-export"></span> Eksporter til PDF
 					</a>
 					{{#if currentUser}}

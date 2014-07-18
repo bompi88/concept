@@ -2,7 +2,9 @@
  * ReportView: Event Handlers
  */
 
- var chart;
+Session.setDefault('exportReady', false);
+
+var chart;
 
 Template.Report.events({
 
@@ -22,6 +24,12 @@ Template.Report.events({
 Template.EvaluationParagraph.events({
   'click .read-more': function(event, tmpl) {
     createModalDialog(this.header, this.ref.long);
+  }
+});
+
+Template.Report.helpers({
+  buttonDisabled: function() {
+    return !Session.get('exportReady');
   }
 });
 
@@ -85,17 +93,41 @@ Template.Report.rendered = function() {
         onAnimationComplete: function(){
           var button = $("#export-text");
           var dataURL = chart.toBase64Image();
-          button.prop("href", button.prop("href") + dataURL);
+          var link = button.prop("href") + '?spider=';
 
+          // Send only the spider diagram if IE is not detected
+          if (!detectIE()) {
+            link = link + dataURL.replace('data:image/png;base64,','');
+          }
+
+          // Set the new href value
+          button.prop("href", link);
+
+          var lastValue;
+
+          // Checks whether the property is correctly set, then sets the session
+          // variable which enables the button. This is done in intervals until
+          // it's finished.
+          var interval = Meteor.setInterval(function() {
+
+            var newValue = button.prop("href");
+
+            if(newValue === lastValue) {
+              Session.set('exportReady', true);
+              Meteor.clearInterval(interval);
+            }
+
+            lastValue = newValue;
+
+          }, 1500);
         }
-
       }
 
+      // initialize the spider diagram
       var el = $("#spiderEvaluation");
-      if (el.get(0)) {
+      if (el && el.get(0)) {
         var ctx = el.get(0).getContext("2d");
         chart = new Chart(ctx).Radar(data,options);
-
       }
     }
   });
@@ -124,3 +156,22 @@ Template.Report.destroyed = function() {
     chart.destroy();
 };
 
+var detectIE = function() {
+    var ua = window.navigator.userAgent;
+    var msie = ua.indexOf('MSIE ');
+    var trident = ua.indexOf('Trident/');
+
+    if (msie > 0) {
+        // IE 10 or older => return version number
+        return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
+    }
+
+    if (trident > 0) {
+        // IE 11 (or newer) => return version number
+        var rv = ua.indexOf('rv:');
+        return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
+    }
+
+    // other browser
+    return false;
+}

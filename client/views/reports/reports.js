@@ -19,6 +19,15 @@ Template.Reports.rendered = function() {
   Session.set('uncheckedReportIds', []);
 };
 
+Template.Reports.csvLink = function() {
+  //handles csv export
+  var reportids = "?reports=" + Session.get('uncheckedReportIds').join();
+  var query = "&query=" + JSON.stringify(Session.get('query'));
+  var s = {sort: {}};
+  s.sort[Session.get('sortBy')] = Session.get('sortOrder') == 'asc' ? 1 : -1;
+  var sort = "&sort=" + JSON.stringify(s);
+  return '/csv/' + reportids + query + sort;
+};
 
 Template.Reports.events({
   'click #report-view-option1': function(event, tmpl) {
@@ -68,20 +77,8 @@ Template.Reports.events({
     else
       Session.set('showFilter', true);
   },
-  //handles csv export
   'click #download' : function(event, tmpl) {
-    var reportids = "?reports=" + Session.get('uncheckedReportIds').join();
-    var query = "&query=" + JSON.stringify(Session.get('query'));
-    var s = {sort: {}};
-    s.sort[Session.get('sortBy')] = Session.get('sortOrder') == 'asc' ? 1 : -1;
-
-    var sort = "&sort=" + JSON.stringify(s);
-
-    //send all ids to csv route for export
-    var w = window.open('/csv/' + reportids + query + sort);
-    setTimeout(function() {
-      w.close();
-    }, 2000);
+    event.stopPropagation();
   },
   'click .paging': function(event, tmpl) {
     event.currentTarget.blur();

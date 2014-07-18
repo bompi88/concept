@@ -12,9 +12,7 @@
           <th class="sort-toggle table-header" data-id="cost-budget">Kostnadsramme {{> SortArrow sortBy='project.costBudget.amount'}}</th>
         	<th class="sort-toggle table-header" data-id="cost-final">Sluttkostnad {{> SortArrow sortBy='project.costFinal.amount'}}</th>
         	<th class="sort-toggle table-header" data-id="responsible-org">Evaluator {{> SortArrow sortBy='responsible.organization'}}</th>
-        	{{#if currentUser}}
-            <th class="table-header">Valgt</th>
-          {{/if}}
+          <th class="table-header">Valgt</th>
         </tr>
       </thead>
       <tbody>
@@ -29,9 +27,7 @@
             <td class="row-item">{{project.costBudget.amount}}</td>
             <td class="row-item">{{project.costFinal.amount}}</td>
             <td class="row-item">{{responsible.organization}}</td>
-     		    {{#if currentUser}}
-              <td><div class="checkbox"><input type="checkbox" value="{{_id}}" checked="{{isChecked}}"></div></td>
-            {{/if}}
+            <td><div class="checkbox"><input type="checkbox" value="{{_id}}" checked="{{isChecked}}"></div></td>
           </tr>
   	  	{{/each}}
     	</tbody>

@@ -71,7 +71,7 @@ Template.Report.rendered = function() {
         //Boolean - Whether to show labels on the scale
         scaleShowLabels : true,
         //Number - Scale label font size in pixels
-        scaleFontSize : 12,
+        scaleFontSize : 14,
         //Boolean - If we want to override with a hard coded scale
         scaleOverride : true,
         //** Required if scaleOverride is true **
@@ -82,13 +82,15 @@ Template.Report.rendered = function() {
         //Number - The centre starting value
         scaleStartValue : 0,
         //Number - Point label font size in pixels
-        pointLabelFontSize : 12,
+        pointLabelFontSize : 14,
         //String - Point label font colour
         pointLabelFontColor : "rgba(0,0,0,0.8)",
         //String - Colour of the scale line
         scaleLineColor : "rgba(0,0,0,.4)",
         //String - Scale label font colour
         scaleFontColor : "rgba(0,0,0,0.8)",
+        scaleFontFamily: "'Open Sans', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+        pointLabelFontFamily: "'Open Sans', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
         responsive: true,
         onAnimationComplete: function(){
           var button = $("#export-text");

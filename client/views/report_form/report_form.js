@@ -93,7 +93,11 @@ Template.ReportForm.events({
   },
 
   'click .cancel-btn': function(event, tmpl) {
-    Router.go('/report/' + this._id);
+    if(this._id) {
+      Router.go('/report/' + this._id);
+    } else {
+      Router.go('/reports/0');
+    }
   },
   'change #dropzone-images': function(event, tmpl) {
     uploadImages(event);

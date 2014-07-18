@@ -6,3 +6,26 @@
 	margin-bottom: 10px;
 	margin-top: 20px;
 }
+
+div.container-fluid.about-container {
+	padding-left: 0;
+	padding-right: 0;
+	margin-left: 0;
+	margin-right: 0;
+}
+
+div.content-wrapper.about-content {
+	padding: 30px;
+}
+
+@media (max-width: 650px) {
+	div.container-fluid.about-container {
+		h1 {
+			font-size: 30px;
+		}
+	}
+
+	div.content-wrapper.about-content {
+		padding: 15px;
+	}
+}

@@ -8,8 +8,20 @@ div.jumbotron {
 	}
 
 	a {
-		font-size:20px;
+		font-size: 20px;
 	}
+
+	h1 {
+		font-size: 45px;
+	}
+}
+
+.section-padding-small {
+	padding: 20px 0;
+}
+
+.small-sections p {
+	font-size: 16px;
 }
 
 div.row.p {
@@ -21,8 +33,25 @@ div.row.p {
 		padding: 40px 0;
 		
 		h1 {
-			font-weight: 600;
+			font-weight: 400;
 			font-size: 25px;
 		}
+	}
+	div.jumbotron .container {
+		margin-top: 20px;
+	}
+}
+
+@media (max-width: 650px) {
+	div.jumbotron {
+		h1 {
+			font-size: 30px;
+		}
+	}
+}
+
+@media (max-width: 950px) {
+	.small-sections a.btn.btn-default {
+		float:none !important;
 	}
 }

@@ -121,7 +121,7 @@ App.helpers = {
 
     var query = { _id: id };
 
-    var store = args || args.hash || args.hash.store || null;
+    var store = args && args.hash && args.hash.store || null;
 
     var file;
 
@@ -130,9 +130,9 @@ App.helpers = {
     } else if (col === 'files') {
       file = Files.findOne(query);
     }
-
+    console.log(store);
     if (file) {
-      return file.url(store);
+      return file.url({store: store});
     } else {
       return false;
     }

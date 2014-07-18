@@ -15,40 +15,66 @@ Template.Report.events({
   'click .edit-btn': function(event, tmpl) {
     Router.go('/report/' + this._id + '/edit');
   },
-
-  'click #desc-button': function(event, tmpl) {
-    createModalDialog("Prosjektbeskrivelse", this.project.projectDescription.long);
+  'click .read-more': function(event, tmpl) {
+    Session.set(event.currentTarget.id, !(Session.get(event.currentTarget.id) || false));
   }
 });
 
 Template.EvaluationParagraph.events({
   'click .read-more': function(event, tmpl) {
-    createModalDialog(this.header, this.ref.long);
+    console.log(this)
+    Session.set(this.id, !(Session.get(this.id) || false));
+  }
+});
+
+Template.EvaluationParagraph.helpers({
+  showMoreText: function(id) {
+    return Session.get(id) || false;
   }
 });
 
 Template.Report.helpers({
   buttonDisabled: function() {
     return !Session.get('exportReady');
+  },
+  showEvaluation: function() {
+    var t = this && this.evaluation;
+
+    if(t) {
+      if(t.achievement.short || t.achievement.long
+        || t.effects.short || t.effects.long
+        || t.overall.short || t.overall.long
+        || t.productivity.short || t.productivity.long
+        || t.profitability.short || t.profitability.long
+        || t.relevance.short || t.relevance.long
+        || t.viability.short || t.viability.long) {
+        return true;
+      }
+    }
+    return false;
+  },
+  showMoreText: function(id) {
+    return Session.get(id) || false;
   }
 });
 
 Template.Report.rendered = function() {
 
-  $('#projectImage a.image-link').magnificPopup({
-    type:'image'
-  });
-
-  $('#links').magnificPopup({
-    delegate: 'a.image-link',
-    type:'image',
-    gallery: {
-      enabled: true
-    }
-  });
-
   Deps.autorun(function () {
 
+    Meteor.defer(function() {
+      $('#projectImage a.image-link').magnificPopup({
+        type:'image'
+      });
+
+      $('#links').magnificPopup({
+        delegate: 'a.image-link',
+        type:'image',
+        gallery: {
+          enabled: true
+        }
+      });
+    });
     var report = Router.getData();
 
     if (report) {
@@ -124,33 +150,16 @@ Template.Report.rendered = function() {
           }, 1500);
         }
       }
-
-      // initialize the spider diagram
-      var el = $("#spiderEvaluation");
-      if (el && el.get(0)) {
-        var ctx = el.get(0).getContext("2d");
-        chart = new Chart(ctx).Radar(data,options);
-      }
+      Meteor.defer(function() {
+        // initialize the spider diagram
+        var el = $("#spiderEvaluation");
+        if (el && el.get(0)) {
+          var ctx = el.get(0).getContext("2d");
+          chart = new Chart(ctx).Radar(data,options);
+        }
+      });
     }
   });
-
-  $('body').scrollspy({ target: '#sidebar'});
-
-  // figure out a nice offset from the top of the page
-  var scrollTopOffset = 55;
-
-  // catch clicks on sidebar navigation links and handle them
-  $('#sidebar li a').on('click', function(evt){
-      // stop the default browser behaviour for the click
-      // on the sidebar navigation link
-      evt.preventDefault();
-      // get a handle on the target element of the clicked link
-      var $target = $($(this).attr('href'));
-      // manually scroll the window vertically to the correct
-      // offset to nicely display the target element at the top
-      $(window).scrollTop($target.offset().top-(scrollTopOffset));
-  });
-
 }
 
 Template.Report.destroyed = function() {

@@ -15,13 +15,11 @@ Router.map(function() {
           'Content-type': 'application/pdf',
           'Cache-Control': 'must-revalidate, post-check=0, pre-check=0',
           'Pragma': 'public',
-          'Content-Disposition': "inline; filename=" + filename
+          'Content-Disposition': "attachment; filename=" + filename
         };
 
-        this.response.writeHead(200, headers);
-
         var file = generatePdf(report, spiderImg);
-
+        this.response.writeHead(200, headers);
         return this.response.end(file);
       }
     }
@@ -50,9 +48,6 @@ Router.map(function() {
         return this.response.end(file);
       }
     }
-
-
-
   })
 });
 
@@ -179,7 +174,7 @@ var generatePdf = function(report, spider) {
   .text(report.evaluation.overall.long || defNaNText);
 
   doc.moveDown();
-  doc.addPage();
+
   // Spider diagram
 
   if(spider != null && spider.length) {

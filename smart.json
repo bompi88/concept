@@ -12,7 +12,6 @@
     },
     "chartjs": {},
     "handlebar-helpers": {},
-    "auto-nprogress": {},
     "collection2": {},
     "autoform": {},
     "ms-seo": {},
@@ -27,6 +26,8 @@
     "iconv-lite": {
       "git": "https://github.com/bompi88/meteor-iconv-lite.git",
       "branch": "master"
-    }
+    },
+    "kadira": {},
+    "iron-router-progress": {}
   }
 }

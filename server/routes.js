@@ -161,12 +161,6 @@ var generatePdf = function(report, spider) {
 
   doc
   .fontSize(18)
-  .text('Evaluering');
-
-  doc.moveDown();
-
-  doc
-  .fontSize(16)
   .text('Samlet vurdering');
 
   doc
@@ -176,8 +170,13 @@ var generatePdf = function(report, spider) {
   doc.moveDown();
 
   // Spider diagram
-
+  console.log(doc.y)
   if(spider != null && spider.length) {
+
+    if(doc.y > 520) {
+      doc.addPage();
+    }
+
     var spiderBuffer = new Buffer(spider.replace('data:image/png;base64,','') || '', 'base64');
     doc.image(spiderBuffer, (525 - 200) / 2, doc.y, { fit: [400, 300]});
 

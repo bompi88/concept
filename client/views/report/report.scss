@@ -61,75 +61,10 @@ figure#projectImage {
   }
 }
 
-/* Portrait tablets and small desktops */
-@media (min-width: 768px) and (max-width: 991px) {
-  #radarWrapper{
-    width:60%;
-  }
-
-  .information-box{
-    width: 60%;
-  }
-  .section-padding {
-    margin-bottom: 25px;
-    margin-top: 12.5px;
-    padding-right: 20px;
-    padding-left: 20px;
-  }
+/* Smaller line-space for smaller devices */
+@media (max-width: 991px) {
   .line-space{
-  margin-right: 20px!important;
-  margin-left: 20px!important;
-
+    margin-right: 15px!important;
+    margin-left: 15px!important;
   }
 }
-
-/* Landscape phones and portrait tablets */
-@media (max-width: 767px) {
-  #eval-header small {
-    font-size: 16px;
-  }
-
-   #radarWrapper{
-    width:80%;
-  }
-
-  .information-box{
-    width: 80%;
-  }
-  .section-padding {
-    margin-bottom: 25px;
-    margin-top: 12.5px;
-    padding-right: 20px;
-    padding-left: 20px;
-  }
-  .line-space{
-  margin-right: 20px!important;
-  margin-left: 20px!important;
-
-  }
-}
-
-/* Landscape phones and smaller */
-@media (max-width: 480px) {
-  #radarWrapper{
-    width:95%;
-  }
-
-
-
-  .information-box{
-    width: 95%;
-  }
-  .section-padding {
-    margin-bottom: 25px;
-    margin-top: 12.5px;
-    padding-right: 20px;
-    padding-left: 20px;
-  }
-  .line-space{
-  margin-right: 10px!important;
-  margin-left: 10px!important;
-
-  }
-}
-

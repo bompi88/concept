@@ -4,7 +4,7 @@
 
 var map;
 var mapElement;
-var markers;
+var markers = [];
 
 Template.MapView.events({
   'click .panel': function(event, tmpl) {
@@ -18,7 +18,6 @@ Template.MapView.rendered = function () {
   var state = this.data.state;
 
   mapElement = document.getElementById("map-canvas");
-  markers = [];
 
   GoogleMaps.init(
     {
@@ -36,7 +35,7 @@ Template.MapView.rendered = function () {
         };
         map = new google.maps.Map(mapElement, mapOptions);
         map.setCenter(new google.maps.LatLng( 63.43, 10.39 ));
-        var infowindow = new google.maps.InfoWindow();
+
         var markerSize = { x: 22, y: 40 };
 
         google.maps.Marker.prototype.setLabel = function(label){
@@ -70,7 +69,7 @@ Template.MapView.rendered = function () {
         });
 
         if(state === 'reportLocationPicker') {
-          markers = [];
+
           // keeps track of whenever a user adds a location.
           // We only want the user to add at maximum one marker
           var locationAdded = false;
@@ -187,11 +186,10 @@ Template.MapView.rendered = function () {
 
         else if(state === 'reportLocation') {
           Deps.autorun(function(){
-            markers = [];
+
             var reports = Reports.find({});
 
             reports.forEach(function (report) {
-
               report.mapPopup = true;
 
               if(report && report.project && report.project.name &&
@@ -205,20 +203,22 @@ Template.MapView.rendered = function () {
                 //an ugly hack to map a report id to a infowindow
                 $('<div id="' + report._id + '" class="report-id"> </div>').appendTo(div.getElementsByClassName('panel-default'));
 
-                infowindow.setContent(div.innerHTML);
-
                 var marker = new google.maps.Marker({
                 position: new google.maps.LatLng(report.project.location.coordinates.lat, report.project.location.coordinates.lng),
                   map: map,
                   label: report.project.name
               });
 
+              marker['infoWindow'] =  new google.maps.InfoWindow({
+                content: div.innerHTML
+              });
+
               marker.setMap(map);
               markers.push(marker);
 
               google.maps.event.addListener(marker, 'click', function() {
-                infowindow.open(map, marker);
-              })
+                this['infoWindow'].open(map, this);
+              });
             }
           });
         });
@@ -241,7 +241,7 @@ Template.MapView.destroyed = function () {
   }
 
   markers.length = 0;
-  markers = null;
+  markers = [];
   mapElement = null;
   map = null;
 };

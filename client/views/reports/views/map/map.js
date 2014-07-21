@@ -70,7 +70,7 @@ Template.MapView.rendered = function () {
         });
 
         if(state === 'reportLocationPicker') {
-
+          markers = [];
           // keeps track of whenever a user adds a location.
           // We only want the user to add at maximum one marker
           var locationAdded = false;
@@ -187,7 +187,7 @@ Template.MapView.rendered = function () {
 
         else if(state === 'reportLocation') {
           Deps.autorun(function(){
-
+            markers = [];
             var reports = Reports.find({});
 
             reports.forEach(function (report) {

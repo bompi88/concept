@@ -130,7 +130,7 @@ App.helpers = {
     } else if (col === 'files') {
       file = Files.findOne(query);
     }
-    console.log(store);
+
     if (file) {
       return file.url({store: store});
     } else {

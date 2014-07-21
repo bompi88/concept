@@ -23,8 +23,19 @@ createMofidiers = function(modifier, tmpl) {
     var viabilityValue = parseInt(tmpl.find('input[name="num-eval-viability"]:checked').value);
     var profitabilityValue = parseInt(tmpl.find('input[name="num-eval-profitability"]:checked').value);
 
-    var success = Math.round((((productivityValue + achievementValue + effectsValue +
-        relevanceValue + viabilityValue + profitabilityValue - 6)/31) + (1/6)) * 3);
+    var criteriaCount = (productivityValue && 1) + (achievementValue && 1) + (effectsValue && 1) + (relevanceValue && 1) + (viabilityValue && 1) + (profitabilityValue && 1);
+    var divider = (criteriaCount * 6);
+
+    var success = 1;
+
+    if (divider) {
+      success = Math.round((((productivityValue + achievementValue + effectsValue +
+        relevanceValue + viabilityValue + profitabilityValue) / divider)) * 3);
+    }
+
+    // old computation
+    // var success = Math.round((((productivityValue + achievementValue + effectsValue +
+    //     relevanceValue + viabilityValue + profitabilityValue - 6) / 31) + (1/6)) * 3);
 
     var mods = {
         "project.location.coordinates.lat": lat,
@@ -167,8 +178,15 @@ createReport = function(tmpl) {
     report.evaluation.viability.value = viabilityValue;
     report.evaluation.profitability.value = profitabilityValue;
 
-    report.project.successCategory = Math.round((((productivityValue + achievementValue + effectsValue +
-        relevanceValue + viabilityValue + profitabilityValue - 6)/31) + (1/6)) * 3);
+    var criteriaCount = (productivityValue && 1) + (achievementValue && 1) + (effectsValue && 1) + (relevanceValue && 1) + (viabilityValue && 1) + (profitabilityValue && 1);
+    var divider = (criteriaCount * 6);
+
+    if (divider) {
+      report.project.successCategory = Math.round((((productivityValue + achievementValue + effectsValue +
+        relevanceValue + viabilityValue + profitabilityValue) / divider)) * 3);
+    } else {
+      report.project.successCategory = 1;
+    }
 
     var imgsIds = uploadObject.getImages();
     var imgs = [];

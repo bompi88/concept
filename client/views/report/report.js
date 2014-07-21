@@ -78,10 +78,40 @@ Template.Report.rendered = function() {
     var report = Router.getData();
 
     if (report) {
-      var values = _.pluck(_.omit(report.evaluation,'overall'), 'value');
+      var criteria = _.omit(report.evaluation,'overall');
+
+      var labels = ["Måloppnåelse", "Virkninger", "Produktivitet", "Samf.øk. lønnsomhet", "Relevans", "Levedyktighet"];
+
+      for(crit in criteria) {
+        if(!criteria[crit].value) {
+          console.log(crit)
+          if(crit === 'productivity') {
+            criteria = _.omit(criteria,'productivity');
+            labels = _.without(labels, 'Produktivitet');
+          } else if(crit === 'achievement') {
+            criteria = _.omit(criteria,'achievement')
+            labels = _.without(labels, 'Måloppnåelse');
+          } else if(crit === 'effects') {
+            criteria = _.omit(criteria,'effects')
+            labels = _.without(labels, 'Virkninger');
+          } else if(crit === 'relevance') {
+            criteria = _.omit(criteria,'relevance')
+            labels = _.without(labels, 'Relevans');
+          } else if(crit === 'viability') {
+            criteria = _.omit(criteria,'viability')
+            labels = _.without(labels, 'Levedyktighet');
+          } else if(crit === 'profitability') {
+            criteria = _.omit(criteria,'profitability')
+            labels = _.without(labels, 'Samf.øk. lønnsomhet');
+          }
+
+        }
+      }
+
+      var values = _.pluck(criteria, 'value');
 
       var data = {
-        labels : ["Måloppnåelse", "Virkninger", "Produktivitet", "Samf.øk. lønnsomhet", "Relevans", "Levedyktighet"],
+        labels : labels,
         datasets : [
           {
             fillColor : "rgba(0, 140, 186, 0.3)",

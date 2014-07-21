@@ -21,12 +21,12 @@
 			<div class="col-md-7">
 				<p>
           {{#if showMoreText "desc-button"}}
-            {{project.projectDescription.short}}
+            <em>{{project.projectDescription.short}}</em>
             <br><br>
             {{project.projectDescription.long}}
             <span> <a href="#" class="read-more" id="desc-button">&laquo; Skjul</a></span>
           {{else}}
-            {{project.projectDescription.short}}
+            <em>{{project.projectDescription.short}}</em>
             <span> <a href="#" class="read-more" id="desc-button">Les mer &raquo;</a></span>
 				  {{/if}}
         </p>
@@ -143,20 +143,28 @@
       <h3 id="{{id}}">{{header}}</h3>
       <p>
         {{#if showMoreText id}}
-          {{ref.short}}
+          <em>{{ref.short}}</em>
           <br><br>
           {{{ref.long}}}
           <br><br>
-          <span><b>&nbsp;{{ref.value}} av 6 poeng</b></span>.
+          {{#if ref.value}}
+            <span><b>{{ref.value}} av 6 poeng</b></span>.
+          {{else}}
+            <span><b>Tallvurdering utelatt</b></span>.
+          {{/if}}
           <span> <a href="#" class="read-more">&laquo; Skjul</a></span>
         {{else}}
           {{#if ref.short}}
-            {{{ref.short}}}
+            <em>{{{ref.short}}}</em>
           {{else}}
             Ingen tekst tilgjengelig.
           {{/if}}
           <br><br>
-          <span><b>&nbsp;{{ref.value}} av 6 poeng</b></span>.
+          {{#if ref.value}}
+            <span><b>{{ref.value}} av 6 poeng</b></span>.
+          {{else}}
+            <span><b>Tallvurdering utelatt</b></span>.
+          {{/if}}
           {{#if ref.long}}
             <span>&nbsp;<a href="#" class="read-more">Les mer &raquo;</a></span>
           {{/if}}

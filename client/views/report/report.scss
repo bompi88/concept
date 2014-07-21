@@ -1,9 +1,3 @@
-.section-padding {
-	margin-bottom: 50px;
-	margin-top: 25px;
-  padding-right: 30px;
-  padding-left: 30px;
-}
 
 #mycontent {
 	h1,h2,h3,h4,h5,h6{
@@ -45,26 +39,27 @@ figure#projectImage {
 }
 
 #radarWrapper{
-  width: 93%;
+  width: 100%;
 }
 
-.line-space{
-  margin-right: 30px!important;
-  margin-left: 30px!important;
-
+.section-padding{
+    margin-bottom: 25px;
+    margin-top: 12.5px;
 }
 
-/* Portrait tablets and medium desktops */
-@media (min-width: 992px) and (max-width: 1199px) {
-   #radarWrapper{
-    width:100%;
-  }
-}
-
-/* Smaller line-space for smaller devices */
-@media (max-width: 991px) {
+/*Add some extra margin and padding for large devices */
+@media (min-width: 992px) {
   .line-space{
-    margin-right: 15px!important;
-    margin-left: 15px!important;
+    margin-right: 30px!important;
+    margin-left: 30px!important;
+  }
+  .section-padding {
+    margin-bottom: 50px;
+    margin-top: 25px;
+    padding-right: 30px;
+    padding-left: 30px;
+  }
+  #radarWrapper{
+    width:93%;
   }
 }

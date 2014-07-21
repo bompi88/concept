@@ -1,11 +1,11 @@
 <template name="Reports">
 	<div class="container-fluid background-basic">
 		<div class="container animated fadeIn" style="padding: 0;">
-
-        {{!-- Filtering is only supported for large devices --}}
-        <div class="col-md-4 hidden-xs hidden-sm animated fadeIn">
-          {{!-- Show export and filtering options for large screens --}}
+        {{!--Filtering only supported on large devices--}}
+        <div class="col-md-4 hidden-xs hidden-sm animated fadeIn" style="z-index:99;">
+          {{!-- Show export and filtering options or search field for large screens --}}
           {{#if showSortBox}}
+          {{#if currentUser}}
           <div class="btn-group">
             <button type="button" class="btn btn-default {{#if $.Session.equals 'showFilter' true}} active{{/if}}" id="btn-filter">
               <span class="glyphicon glyphicon-filter"></span> Filtrer
@@ -14,6 +14,9 @@
               <span class="glyphicon glyphicon-export"></span> Eksporter
             </a>
           </div>
+          {{else}}
+          {{>Search}}
+          {{/if}}
           {{/if}}
         </div>
 
@@ -27,14 +30,18 @@
 					{{> Toolbar}}
 				</div>
 
-        {{!-- Show export and filtering options for small screens --}}
+        {{!-- Show export or search field for small screens --}}
         <div class="col-xs-12 visible-xs visible-sm text-center animated fadeIn" style="margin-top: 20px;">
           {{#if showSortBox}}
+          {{#if currentUser}}
           <div class="btn-group">
-            <button type="button" class="btn btn-default" id="download">
+            <a href="{{csvLink}}" role="button" class="btn btn-default" id="download">
               <span class="glyphicon glyphicon-export"></span> Eksporter
-            </button>
+            </a>
           </div>
+          {{else}}
+          {{>Search}}
+          {{/if}}
           {{/if}}
         </div>
 

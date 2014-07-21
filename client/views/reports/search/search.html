@@ -1,0 +1,9 @@
+<template name="Search">
+  <div class="input-group">
+    <input type="text" class="form-control" placeholder="Skriv inn søkeord" value="{{searchQuery}}">
+    <div class="input-group-btn">
+      <button type="button" class="btn btn-default dropdown-toggle" id="search-attribute" data-toggle="dropdown">Søk etter: {{$.Session.get 'searchBy'}} <span class="glyphicon glyphicon-search"></span> <span class="caret"></span></button>
+      {{>AttributeDropdown}}
+    </div>
+  </div>
+</template>

@@ -23,19 +23,21 @@ createMofidiers = function(modifier, tmpl) {
     var viabilityValue = parseInt(tmpl.find('input[name="num-eval-viability"]:checked').value);
     var profitabilityValue = parseInt(tmpl.find('input[name="num-eval-profitability"]:checked').value);
 
+    // Scale the points from range (p-q) to range (a-b)
+    // Uses linear mapping
     var criteriaCount = (productivityValue && 1) + (achievementValue && 1) + (effectsValue && 1) + (relevanceValue && 1) + (viabilityValue && 1) + (profitabilityValue && 1);
-    var divider = (criteriaCount * 6);
+    var divider = ((6 * criteriaCount) - 6);
 
     var success = 1;
 
     if (divider) {
-      success = Math.round((((productivityValue + achievementValue + effectsValue +
-        relevanceValue + viabilityValue + profitabilityValue) / divider)) * 3);
-    }
+      var x = productivityValue + achievementValue + effectsValue +
+        relevanceValue + viabilityValue + profitabilityValue;
 
-    // old computation
-    // var success = Math.round((((productivityValue + achievementValue + effectsValue +
-    //     relevanceValue + viabilityValue + profitabilityValue - 6) / 31) + (1/6)) * 3);
+      var y = 1 + (x-6)*(3-1) / divider;
+
+      success = Math.round(y);
+    }
 
     var mods = {
         "project.location.coordinates.lat": lat,

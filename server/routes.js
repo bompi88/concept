@@ -183,7 +183,7 @@ var createImageCaption = function(doc, image) {
 
 var generatePdf = function(report, spider) {
 
-  var pathToFonts = process.env.PWD;
+  var pathToFonts = process.env.NODE_ENV === 'production' ? process.env.PWD + "/app/programs/server/assets/app/" : process.env.PWD + "/private/";
 
   if(!report || typeof report === 'undefined') {
     return false;
@@ -193,9 +193,9 @@ var generatePdf = function(report, spider) {
   var defNaNText = "Ingen tekst tilgjengelig...";
 
   doc
-  .registerFont('Heading', pathToFonts + '/private/fonts/OpenSans-Semibold.ttf', 'OpenSans-Semibold')
-  .registerFont('Italic', pathToFonts + '/private/fonts/OpenSans-Italic.ttf', 'OpenSans-Italic')
-  .registerFont('Regular', pathToFonts + '/private/fonts/OpenSans-Light.ttf', 'OpenSans-Light')
+  .registerFont('Heading', pathToFonts + 'fonts/OpenSans-Semibold.ttf', 'OpenSans-Semibold')
+  .registerFont('Italic', pathToFonts + 'fonts/OpenSans-Italic.ttf', 'OpenSans-Italic')
+  .registerFont('Regular', pathToFonts + 'fonts/OpenSans-Light.ttf', 'OpenSans-Light')
 
   doc
   .fontSize(25)

@@ -23,7 +23,7 @@
           {{#if showMoreText "desc-button"}}
             <em>{{project.projectDescription.short}}</em>
             <br><br>
-            {{project.projectDescription.long}}
+            {{{$convertLineBreaks project.projectDescription.long}}}
             <span> <a href="#" class="read-more" id="desc-button">&laquo; Skjul</a></span>
           {{else}}
             <em>{{project.projectDescription.short}}</em>
@@ -126,7 +126,7 @@
         {{#if showMoreText id}}
           {{ref.short}}
           <br><br>
-          {{{ref.long}}}
+          {{{$convertLineBreaks ref.long}}}
           <span> <a href="#" class="read-more">&laquo; Skjul</a></span>
         {{else}}
           {{#if ref.short}}
@@ -145,7 +145,7 @@
         {{#if showMoreText id}}
           <em>{{ref.short}}</em>
           <br><br>
-          {{{ref.long}}}
+          {{{$convertLineBreaks ref.long}}}
           <br><br>
           {{#if ref.value}}
             <span><b>{{ref.value}} av 6 poeng</b></span>.

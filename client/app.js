@@ -40,6 +40,14 @@ App.helpers = {
 		return '';
 	},
 
+  '$convertLineBreaks': function(text) {
+    if (text != null) {
+      text = text.replace(/^[\r\n]+|[\r\n]+$/g,'').replace(/(?:\r\n|\r|\n)/g, '<br />');
+      return text.trim();
+    }
+    return null;
+  },
+
   /**
    * Returns true if the current visiting route is equal to the
    * route given.

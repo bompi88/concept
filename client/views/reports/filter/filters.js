@@ -140,7 +140,8 @@ var queryBuilder = function() {
   Session.set('query', query);
 };
 
-var attToField = function(attribute) {
+//this method is also used in search.js so we make it global
+attToField = function(attribute) {
   if(attribute === 'Sektor')
     return 'project.sector';
   else if(attribute === 'Navn')

@@ -71,21 +71,26 @@
 <template name="AttributePicker">
   <div class="btn-group">
     <a id="{{id}}" class="btn btn-default dropdown-toggle btn-select" data-toggle="dropdown" href="#">Velg attributt <span class="caret"></span></a>
-    <ul class="dropdown-menu" role="menu">
-      <li class="attribute-item"><a href="#">Sektor</a></li>
-      <li class="attribute-item"><a href="#">Navn</a></li>
-      <li class="attribute-item"><a href="#">Suksesskategori</a></li>
-      <li class="attribute-item"><a href="#">Årstall ferdigstilt</a></li>
-      <li class="attribute-item"><a href="#">Årstall evaluering</a></li>
-      <li class="attribute-item"><a href="#">Evaluator</a></li>
-      <li class="attribute-item"><a href="#">Styringsramme</a></li>
-      <li class="attribute-item"><a href="#">Sluttkostnad</a></li>
-      <li class="attribute-item"><a href="#">Produktivitet</a></li>
-      <li class="attribute-item"><a href="#">Måloppnåelse</a></li>
-      <li class="attribute-item"><a href="#">Samf.øk lønnsomhet</a></li>
-      <li class="attribute-item"><a href="#">Virkninger</a></li>
-      <li class="attribute-item"><a href="#">Levedyktighet</a></li>
-      <li class="attribute-item"><a href="#">Relevans</a></li>
-    </ul>
+    {{>AttributeDropdown}}
   </div>
+</template>
+
+<!--this dropdown is reused in search.html-->
+<template name="AttributeDropdown">
+  <ul class="dropdown-menu" role="menu">
+    <li class="attribute-item"><a href="#">Sektor</a></li>
+    <li class="attribute-item"><a href="#">Navn</a></li>
+    <li class="attribute-item"><a href="#">Suksesskategori</a></li>
+    <li class="attribute-item"><a href="#">Årstall ferdigstilt</a></li>
+    <li class="attribute-item"><a href="#">Årstall evaluering</a></li>
+    <li class="attribute-item"><a href="#">Evaluator</a></li>
+    <li class="attribute-item"><a href="#">Styringsramme</a></li>
+    <li class="attribute-item"><a href="#">Sluttkostnad</a></li>
+    <li class="attribute-item"><a href="#">Produktivitet</a></li>
+    <li class="attribute-item"><a href="#">Måloppnåelse</a></li>
+    <li class="attribute-item"><a href="#">Samf.øk lønnsomhet</a></li>
+    <li class="attribute-item"><a href="#">Virkninger</a></li>
+    <li class="attribute-item"><a href="#">Levedyktighet</a></li>
+    <li class="attribute-item"><a href="#">Relevans</a></li>
+  </ul>
 </template>

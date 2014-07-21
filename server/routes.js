@@ -107,7 +107,83 @@ var getImg = Meteor._wrapAsync(function(img, callback) {
   });
 });
 
+var createParagraph = function(doc, title, data, bigHeader) {
+
+  var headerSize = bigHeader && 20 || 16;
+
+  if(doc.y > 600) {
+    doc.addPage();
+  }
+
+  doc
+  .fontSize(headerSize)
+  .font('Heading')
+  .text(title);
+
+  doc.moveDown();
+
+  if(data && data.short) {
+    doc
+    .fontSize(12)
+    .font('Italic')
+    .text(data.short, {width: 400});
+
+    doc.moveDown();
+  }
+
+  if(data && data.long) {
+    doc
+    .fontSize(12)
+    .font('Regular')
+    .text(data.long, {width: 400});
+
+    doc.moveDown();
+  }
+};
+
+var insertImage = function(doc, images, index) {
+  if(images && images.length > (index - 1)) {
+
+    if(doc.y > 450) {
+      doc.addPage();
+    }
+
+    var image = Images.findOne(images[index].fileId);
+    var buffer = getImg(image);
+
+    doc.image(buffer, { fit: [250, 250]});
+
+    doc.moveDown();
+
+    createImageCaption(doc, images[index]);
+
+    doc.moveDown();
+    doc.moveDown();
+  }
+};
+
+var createImageCaption = function(doc, image) {
+  if (image.title && image.copyright) {
+      var width = doc.widthOfString(image.copyright);
+      var height = doc.currentLineHeight();
+      var titleWidth = doc.widthOfString(image.title + ". Foto: " + image.copyright);
+
+      // create the caption
+      doc .text(image.title + ". Foto: " + image.copyright)
+      .fontSize(14)
+      .underline(doc.x + titleWidth - width, doc.y - height, width, height, {color: 'blue'})
+
+      // create a link over copyright text
+      if(image.link) {
+        doc
+        .link(doc.x + titleWidth - width, doc.y - height, width, height, image.link);
+      }
+    }
+};
+
 var generatePdf = function(report, spider) {
+
+  var pathToFonts = process.env.PWD;
 
   if(!report || typeof report === 'undefined') {
     return false;
@@ -117,60 +193,23 @@ var generatePdf = function(report, spider) {
   var defNaNText = "Ingen tekst tilgjengelig...";
 
   doc
+  .registerFont('Heading', pathToFonts + '/private/fonts/OpenSans-Semibold.ttf', 'OpenSans-Semibold')
+  .registerFont('Italic', pathToFonts + '/private/fonts/OpenSans-Italic.ttf', 'OpenSans-Italic')
+  .registerFont('Regular', pathToFonts + '/private/fonts/OpenSans-Light.ttf', 'OpenSans-Light')
+
+  doc
   .fontSize(25)
-  .text(report.project.name || defNaNText, 100, 100);
+  .text(report.project.name, 100, 100);
 
   doc.moveDown();
 
-  doc
-  .fontSize(18)
-  .text('Bakgrunn');
+  createParagraph(doc, 'Bakgrunn', report.project.projectDescription, true);
 
-  doc
-  .fontSize(12)
-  .text(report.project.projectDescription.long || defNaNText, {width: 400});
+  insertImage(doc, report.images, 0);
 
-  doc.moveDown();
-
-  if(report.images && report.images.length > 0) {
-    var image = Images.findOne(report.images[0].fileId);
-    var buffer = getImg(image);
-
-    doc.image(buffer, { fit: [250, 250]});
-
-    doc.moveDown();
-
-    if (report.images[0].title && report.images[0].copyright) {
-      var width = doc.widthOfString(report.images[0].copyright);
-      var height = doc.currentLineHeight();
-      var titleWidth = doc.widthOfString(report.images[0].title + ". Foto: " + report.images[0].copyright);
-
-      doc .text(report.images[0].title + ". Foto: " + report.images[0].copyright)
-      .fontSize(14)
-      .underline(doc.x + titleWidth - width, doc.y - height, width, height, {color: 'blue'})
-
-      if(report.images[0].link) {
-        doc
-        .link(doc.x + titleWidth - width, doc.y - height, width, height, report.images[0].link);
-      }
-    }
-
-    doc.moveDown();
-    doc.moveDown();
-  }
-
-  doc
-  .fontSize(18)
-  .text('Samlet vurdering');
-
-  doc
-  .fontSize(12)
-  .text(report.evaluation.overall.long || defNaNText);
-
-  doc.moveDown();
+  createParagraph(doc, 'Samlet vurdering', report.evaluation.overall, true);
 
   // Spider diagram
-  console.log(doc.y)
   if(spider != null && spider.length) {
 
     if(doc.y > 520) {
@@ -178,71 +217,18 @@ var generatePdf = function(report, spider) {
     }
 
     var spiderBuffer = new Buffer(spider.replace('data:image/png;base64,','') || '', 'base64');
-    doc.image(spiderBuffer, (525 - 200) / 2, doc.y, { fit: [400, 300]});
+    doc.image(spiderBuffer, (450+ - 200) / 2, doc.y, { fit: [400, 300]});
 
     doc.moveDown();
     doc.moveDown();
   }
-  doc
-  .fontSize(16)
-  .text('Produktivitet');
 
-  doc
-  .fontSize(12)
-  .text(report.evaluation.productivity.long || defNaNText);
-
-  doc.moveDown();
-
-
-  doc
-  .fontSize(16)
-  .text('Måloppnåelse');
-
-  doc
-  .fontSize(12)
-  .text(report.evaluation.achievement.long || defNaNText);
-
-  doc.moveDown();
-
-  doc
-  .fontSize(16)
-  .text('Virkninger');
-
-  doc
-  .fontSize(12)
-  .text(report.evaluation.effects.long || defNaNText);
-
-  doc.moveDown();
-
-  doc
-  .fontSize(16)
-  .text('Relevans');
-
-  doc
-  .fontSize(12)
-  .text(report.evaluation.relevance.long || defNaNText);
-
-  doc.moveDown();
-
-  doc
-  .fontSize(16)
-  .text('Levedyktighet');
-
-  doc
-  .fontSize(12)
-  .text(report.evaluation.viability.long || defNaNText);
-
-  doc.moveDown();
-
-  doc
-  .fontSize(16)
-  .text('Samfunnsøkonomisk lønnsomhet');
-
-  doc
-  .fontSize(12)
-  .text(report.evaluation.profitability.long || defNaNText);
-
-  doc.moveDown();
+  createParagraph(doc, 'Produktivitet', report.evaluation.productivity);
+  createParagraph(doc, 'Måloppnåelse', report.evaluation.achievement);
+  createParagraph(doc, 'Virkninger', report.evaluation.effects);
+  createParagraph(doc, 'Relevans', report.evaluation.relevance);
+  createParagraph(doc, 'Levedyktighet', report.evaluation.viability);
+  createParagraph(doc, 'Samfunnsøkonomisk lønnsomhet', report.evaluation.profitability);
 
   return doc.outputSync();
-}
+};

@@ -2,7 +2,7 @@
 
 For å kunne nå de "avanserte" funksjonene som denne applikasjonen tilgjengliggjør, må man logge seg inn på systemet. Det er for så vidt en enkel sak, om man ikke har glemt hva både eposten og passordet var for noe. Om man husker sin egen epost-adresse blir det straks en enklere affære.
 
-På denne papirbiten av en side, står det litt om hvordan man logger seg på og av, og hvordan man kan komme seg inn selv om man har glemt det forbaskede passordet atter en gang.
+På denne papirbiten av en side, står det litt om hvordan man logger seg inn og ut, og hvordan man kan komme seg inn selv om man har glemt det forbaskede passordet atter en gang.
 
 ### 1.1 Logge seg på
 
@@ -11,7 +11,7 @@ Det er ingen link fra Concept sin hovedside og til innloggingssiden. Dette er p�
 <center>![Figure 1-1](../assets/accounts-adress.png)</center>
 <center><em>Et typisk adressefelt i en nettleser.</em></center>
 
-For å logge seg på går man direkte til `http://www.concept.ntnu.no/rapporter/concept-admin` i nettleseren. Du kan klikke [her](http://www.concept.ntnu.no/rapporter/concept-admin), så slipper du å kopiere og lime, og alt det der. For den ambiøse bruker så er det verdt å merke seg, at hvis du allerede er inne på startsiden av presentasjonverktøyet, så legger man bare til `/concept-admin` i adressefeltet i nettleseren.
+For å logge seg på går man direkte til `http://www.concept.ntnu.no/rapporter/concept-admin` i nettleseren. Du kan klikke [her](http://www.concept.ntnu.no/rapporter/concept-admin), så slipper du å kopiere og lime, og alt det der. For den ambisiøse bruker så er det verdt å merke seg, at hvis du allerede er inne på startsiden av presentasjonverktøyet, så legger man bare til `/concept-admin` i adressefeltet til nettleseren.
 
 <center>![Figure 1-2](../assets/accounts-login.png)</center>
 <center><em>Panel for innlogging.</em></center>
@@ -59,12 +59,13 @@ Du vil nå - etter et snevert øyeblikk - få en epost i din innboks. Klikk på 
 
 Kommer du nå til å huske passordet til neste gang? Kremt.. Kremt..
 
-#### 1.2.1 Andre muligheter
+#### 1.2.1 Andre senarioer
 * Du vet allerede hvordan du kommer deg til innloggingssiden.
     1. Hvis ikke allerede gjort: Gå til http://www.concept.ntnu.no/rapporter/concept-admin
     2. Finn `glemt passord` linken og trykk på denne.
     3. Utfør samme prosedyre som over.
-* Du har glemt alt, både epost og passord og vil gjerne ha tilgang til siden igjen. Du må da ta kontakt med enten sjefen, eller en av de to nevnte studentene som er listet opp ved innledningen av denne brukermanualen.
+* Du har glemt alt, både epost og passord og vil gjerne ha tilgang til siden igjen.
+    1. Du må da ta kontakt med enten sjefen, eller en av de to nevnte studentene som er listet opp i innledningen av denne brukermanualen.
 
 ### 1.3 Logge seg ut
 Noen vil sikkert si:

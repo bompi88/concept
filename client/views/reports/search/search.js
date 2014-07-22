@@ -9,15 +9,20 @@ Template.Search.events({
     Session.set('searchQuery', '');
   },
   'keyup [type="text"]': function(event, template) {
-    Session.set('searchQuery', event.target.value);
+    //escape regex
+    var value = event.target.value.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, "\\$&");
     var field = attToField(Session.get('searchBy'));
     var query = {};
-
-    //escape regex
-    var value = Session.get('searchQuery').replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, "\\$&");
-    query[field] = { $regex: value, $options: 'i' };
-
+    //if number, use equals operator
+    if(!isNaN(parseInt(value))) {
+      query[field] = parseInt(value);
+    }
+    //if string, use contains operator with regex
+    else {
+      query[field] = { $regex: value, $options: 'i' };
+    }
     //this triggers iron router to load the report subscription again
     Session.set('query', query);
+    Session.set('searchQuery', value);
   }
 });

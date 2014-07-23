@@ -30,8 +30,34 @@ I kartvisningen finnes ingen sorterings- eller filtreringsmuligheter. Her vises 
 
 ### 2.2 Opprett rapport
 
+Dette er vel den lengste siden i systemet. Det loves kake til de som fullfører denne innføringen.
+
 <center><div style="max-width:600px;">![Figure 1-1](../assets/create-report-form.png)</div></center>
 <center><em>Skjemaet som fylles inn for hver rapport.</em></center>
+
+Når du kommer inn på siden, listes det opp en rekke felter som man bør fylle inn. Det er noen som er obligatoriske, og andre ikke. Du får bedskjed hvis du mangler noen felter. Det anbefales å fylle ut flest mulige felter, da dette hjelper til med å opprettholde estetiske og konsistente rapportersider.
+
+<center><div style="max-width:600px;">![Figure 1-1](../assets/form-error.png)</div></center>
+<center><em>Feilmeldinger i skjemaet. Her er en bokstav lagt inn istedet for et tall.</em></center>
+
+Det finnes seks forskjellige typer felter. Vi har tekstfelter og tallfelter. Disse er veldig like, men den ene av dem godtar bare tall. Man kan ofte se en liten forskjell på dem, da tallfelter ofte har et par små piler på høyre side. Dette er dessverre bestemt av nettleseren, og varierer en del fra nettleser til nettleser. Ikke bekymre deg, kjære venn, systemet sier i fra hvis det er ugler i mosen.
+
+<center><div style="max-width:600px;">![Figure 1-1](../assets/location-picker.png)</div></center>
+<center><em>Kart som man kan søke og velge lokasjon i.</em></center>
+
+Ellers har vi storeper av et tekstfelt, der du skriver inn lengre tekster. Her får du lov til å gjøre ganske mye forskjellig, som for eksempel å lage linjeskift slik at du får delt teksten opp i avsnitt. Dette gjør du på vanlig måte, ved å trykke Retur-knappen to ganger.
+
+<center><div style="max-width:600px;">![Figure 1-1](../assets/marker.png)</div></center>
+<center><em>Markør i kartet.</em></center>
+
+Ganske langt oppe på siden ligger et kart, der du kan søke etter steder og vedlegge lokasjon i rapporten. Ved å skrive inn i søkeboksen, dulter det opp et par forslag til steder i nærheten. Hvis du klikker på et av disse alternativene, kommer du til dette stedet i kartet. Herifra kan du klikke der du vil at posisjonen skal være, og systemet tar da vare på posisjonen. Du ser da at det dukker en markør opp i kartet.
+
+<center><div style="max-width:600px;">![Figure 1-1](../assets/wrong-marker.png)</div></center>
+<center><em>Feil markør.</em></center>
+
+Det finnes to forskjellige markører som kan dukke opp i kartet. Den ene er som tidligere, når du velger lokasjon. Den andre kommer når man søker etter steder i søkeboksen. Da en god titt på vedlagte bilder.
+
+PS. kaken var en løgn.
 
 ### 2.3 Redigere rapport
 

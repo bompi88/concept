@@ -10,7 +10,7 @@
           bootbox.alert('Du har sendt en epost til den nye brukeren som får mulighet til å lage et passord selv.');
         }
         else {
-          bootbox.alert('Noe gikk galt. Prøv på nytt');
+          bootbox.alert(error.message);
         }
 
       })

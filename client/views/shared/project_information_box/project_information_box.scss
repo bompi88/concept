@@ -7,16 +7,20 @@ dt:after {
 	margin: 0 auto;
 }
 
-.panel-default:hover {
+#map-canvas .panel-default:hover {
 
 	border-color: darken(#fff, 20% )!important;
 	cursor: pointer!important;
+	background-color: darken(rgba(255,255,255,0.2), 40%);
 
-	.overlay{
-		display:block!important;
-		background-color:darken(#fff, 40%)!important;
-		opacity:0.2!important;
-		cursor: pointer!important;
+	.panel-heading {
+
+		background-color: rgba(49, 111, 143, 0.2);
+
+		h4 {
+			background:none;
+			color:#008cba !important;
+		}
 	}
 
 	h4, dt, dd{

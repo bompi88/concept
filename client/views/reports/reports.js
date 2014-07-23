@@ -85,6 +85,20 @@ Template.Reports.events({
     var newPage = parseInt(tmpl.find(event.target).textContent);
     Session.set('currentPage', newPage);
     Router.go('/reports/' + (newPage - 1));
+  },
+  'click #next-page': function(event) {
+    var page = Session.get('currentPage');
+    if(page + 1 <= Session.get('numberOfPages')) {
+      Session.set('currentPage', page + 1);
+      Router.go('/reports/' + page);
+    }
+  },
+  'click #last-page': function(event) {
+    var page = Session.get('currentPage');
+    if(page - 1 >= 1) {
+      Session.set('currentPage', page - 1);
+      Router.go('/reports/' + (page - 2));
+    }
   }
 });
 
@@ -105,6 +119,7 @@ Template.Reports.helpers({
 
     var numberOfReports = Session.get('reportCount');
     var numberOfPages = Math.ceil(numberOfReports/20);
+    Session.set('numberOfPages', numberOfPages);
     for(var i = 0; i < numberOfPages; i++) {
       var page = {number: i+1};
       if(i == 0)

@@ -76,10 +76,12 @@
       {{#if pages}}
         {{#if $gt pages.length 1}}
     			<div class="col-xs-12 text-center" style="margin-top:30px;">
-      			<div class="btn-group text-center paging">
+      			<div class="btn-group text-center">
+              <a href="#" id="last-page" class="btn btn-default">&laquo;</a>
               {{#each pages}}
-      				  <button type="button" class="btn btn-default {{#if $.Session.equals 'currentPage' number}} active {{/if}}">{{number}}</button>
+      				  <a href="#" class="btn btn-default paging {{#if $.Session.equals 'currentPage' number}} active {{/if}}">{{number}}</a>
       				{{/each}}
+              <a href="#" id="next-page" class="btn btn-default">&raquo;</a>
       			</div>
           </div>
         {{/if}}

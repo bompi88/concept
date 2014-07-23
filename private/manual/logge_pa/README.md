@@ -67,6 +67,13 @@ Kommer du nå til å huske passordet til neste gang? Kremt.. Kremt..
 * Du har glemt alt, både epost og passord og vil gjerne ha tilgang til siden igjen.
     1. Du må da ta kontakt med enten sjefen, eller en av de to nevnte studentene som er listet opp i innledningen av denne brukermanualen.
 
+<center><div style="width: 85%; text-align:left;background-color:#fffbc4;padding: 5px 25px;border: 1px solid #ffdf02;">
+<h3 style="font-weight: 600;">Visste du at ...?</h3>
+<p>
+Hvis man allerede er logget inn, kan man endre passordet inne under brukermenyen øverst til høyre også.
+</p>
+</div></center>
+
 ### 1.3 Logge seg ut
 Noen vil sikkert si:
 

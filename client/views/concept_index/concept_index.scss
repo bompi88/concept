@@ -29,7 +29,11 @@ div.row.p {
 	}
 
 @media (max-width: 450px) {
+
 	div.jumbotron {
+		p {
+			font-size: 18px;
+		}
 		padding: 40px 0;
 		
 		h1 {
@@ -49,9 +53,3 @@ div.row.p {
 		}
 	}
 }
-
-// @media (max-width: 500px) {
-// 	.small-sections a.btn.btn-default {
-// 		float:none !important;
-// 	}
-// }

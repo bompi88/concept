@@ -55,7 +55,8 @@ createMofidiers = function(modifier, tmpl) {
     var imgsIds = uploadObject.getImages();
     var imgs = [];
 
-    for (var i = 0; i < imgsIds.length; i++){
+    if(imgsIds.length) {
+      for (var i = 0; i < imgsIds.length; i++){
         var img = {
             fileId: imgsIds[i],
             title: tmpl.find('#title-' + imgsIds[i]) && tmpl.find('#title-' + imgsIds[i]).value || null,
@@ -64,13 +65,16 @@ createMofidiers = function(modifier, tmpl) {
         };
         if(Images.findOne({ _id: imgsIds[i]}))
           imgs.push(img);
+      }
     }
+
     mods.images = imgs;
 
     var filesIds = uploadObject.getReferences();
     var files = [];
 
-    for (var i = 0; i < filesIds.length; i++){
+    if(filesIds.length) {
+      for (var i = 0; i < filesIds.length; i++){
         var file = {
             fileId: filesIds[i],
             title: tmpl.find('#title-' + filesIds[i]) && tmpl.find('#title-' + filesIds[i]).value || null,
@@ -79,6 +83,7 @@ createMofidiers = function(modifier, tmpl) {
         };
       if(Files.findOne({ _id: filesIds[i]}))
         files.push(file);
+      }
     }
 
     mods.references = files;
@@ -193,7 +198,8 @@ createReport = function(tmpl) {
     var imgsIds = uploadObject.getImages();
     var imgs = [];
 
-    for (var i = 0; i < imgsIds.length; i++){
+    if(imgsIds.length) {
+      for (var i = 0; i < imgsIds.length; i++){
         var img = {
             fileId: imgsIds[i],
             title: tmpl.find('#title-' + imgsIds[i]).value,
@@ -201,6 +207,7 @@ createReport = function(tmpl) {
             link: tmpl.find('#link-' + imgsIds[i]).value
         };
         imgs.push(img);
+      }
     }
 
     report.images = imgs;
@@ -208,7 +215,8 @@ createReport = function(tmpl) {
     var filesIds = uploadObject.getReferences();
     var files = [];
 
-    for (var i = 0; i < filesIds.length; i++){
+    if(filesIds.length) {
+      for (var i = 0; i < filesIds.length; i++){
         var file = {
             fileId: filesIds[i],
             title: tmpl.find('#title-' + filesIds[i]).value,
@@ -216,6 +224,7 @@ createReport = function(tmpl) {
             date: tmpl.find('#date-' + filesIds[i]).value
         };
         files.push(file);
+      }
     }
 
     report.references = files;

@@ -28,7 +28,7 @@ dt:after {
 	}
 }
 
-@media (min-width: 768px) {
+@media (min-width: 400px) {
 	.dl-horizontal.ls-offset {
 		width:100%;
 		display: block;
@@ -48,11 +48,22 @@ dt:after {
 			padding-left: 5px;
 		}
 	}
-}
 
+
+}
 
 @media (max-width: 991px) {
 	div.panel.panel-info{
 		margin-top: 40px;
+	}
+}
+
+@media (max-width: 400px) {
+	div.panel.panel-info{
+		text-align: center;
+
+	}
+	#faktaboks div.light.tool-top  {
+		margin:  0 auto;
 	}
 }

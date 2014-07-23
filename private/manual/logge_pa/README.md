@@ -6,14 +6,14 @@ På denne papirbiten av en side, står det litt om hvordan man logger seg inn og
 
 ### 1.1 Logge seg på
 
-Det er ingen link fra Concept sin hovedside og til innloggingssiden. Dette er på grunn av at denne siden ikke skal være lett synlig for offentligheten. Man må derfor enten huske linken, eller bruke denne fine brukermanualen. Den må jo bli brukt til noe.
+Det er ingen link fra Concept sin hovedside og inn til innloggingssiden. Dette er på grunn av at denne siden ikke skal være lett synlig for offentligheten. Man må derfor enten huske linken, eller bruke denne fine brukermanualen. Den må jo bli brukt til noe.
 
-<center>![Figure 1-1](../assets/accounts-adress.png)</center>
+<center><div style="max-width:500px;">![Figure 1-1](../assets/accounts-adress.png)</div></center>
 <center><em>Et typisk adressefelt i en nettleser.</em></center>
 
 For å logge seg på går man direkte til `http://www.concept.ntnu.no/rapporter/concept-admin` i nettleseren. Du kan klikke [her](http://www.concept.ntnu.no/rapporter/concept-admin), så slipper du å kopiere og lime, og alt det der. For den ambisiøse bruker så er det verdt å merke seg, at hvis du allerede er inne på startsiden av presentasjonverktøyet, så legger man bare til `/concept-admin` i adressefeltet til nettleseren.
 
-<center>![Figure 1-2](../assets/accounts-login.png)</center>
+<center><div style="max-width:500px;">![Figure 1-2](../assets/accounts-login.png)</div></center>
 <center><em>Panel for innlogging.</em></center>
 
 I dette panelet - som dukker opp på midten av skjermen - skriver man inn epost og tilhørende passord. Deretter klikker man på `Logg inn`, og hvis man da har gjort alt riktig, vil man bli logget inn og få et par ekstra funksjonelle muligheter. Disse mulighetene blir beskrevet i en annen seksjon i denne brukermanualen.
@@ -50,17 +50,17 @@ Her er noen tommelfinger-regler:
 
 > \- Ikke frykt mer gamle sjel, redningen er nær.
 
-Har du en brukerkonto registrert med din egen epost-adresse, kan du gå direkte inn på denne [linken](http://www.concept.ntnu.no/rapporter/concept-admin-forgotton-password). Her oppgir du epost-adressen som du er registrert med, og trykker på knappen `Send inn`.
+Har du en brukerkonto registrert med din egen epost-adresse, kan du gå direkte inn på denne [linken](http://www.concept.ntnu.no/rapporter/concept-admin-forgotton-password) (`http://www.concept.ntnu.no/rapporter/concept-admin-forgotton-password`). Her oppgir du epost-adressen som du er registrert med, og trykker på knappen `Send inn`.
 
 <center>![Figure 1-4](../assets/accounts-forgotton.png)</center>
 <center><em>Panel for resetting av passord.</em></center>
 
-Du vil nå - etter et snevert øyeblikk - få en epost i din innboks. Klikk på linken i eposten. Velg deretter nytt passord ved å fylle inn de respektive feltene, og trykk `Send inn`. Du har nå smertefritt endret passordet.
+Du vil nå - etter et snevert øyeblikk - få en epost i din innboks. Klikk på linken i eposten. Velg deretter nytt passord ved å fylle inn de respektive feltene, og trykk på `Send inn`. Du har nå smertefritt endret passordet.
 
 Kommer du nå til å huske passordet til neste gang? Kremt.. Kremt..
 
 #### 1.2.1 Andre senarioer
-* Du vet allerede hvordan du kommer deg til innloggingssiden.
+* Du vet allerede hvordan du kommer deg til innloggingssiden, eller du er der allerede.
     1. Hvis ikke allerede gjort: Gå til http://www.concept.ntnu.no/rapporter/concept-admin
     2. Finn `glemt passord` linken og trykk på denne.
     3. Utfør samme prosedyre som over.
@@ -77,7 +77,7 @@ Hvis man allerede er logget inn, kan man endre passordet inne under brukermenyen
 ### 1.3 Logge seg ut
 Noen vil sikkert si:
 
-> Spar meg. Jeg klarer vel å logge ut på egenhånd. Hva tar du meg for å være?
+> Spar meg. Jeg klarer vel å logge ut på egenhånd. Hva tar du meg for å være?!
 
 Denne personen er ikke nødvendigvis en superbruker, og det å logge ut er ikke alltid selvforklarende. Det er ikke alltid lett å vite hvor denne logge-ut-knappen er lokalisert. Man kan lete seg ihjel etter søken på logg-ut-knapp på enkelte sider. Bruk sunt datavett og logg ut på datamaskiner som man ikke er alene om å bruke.
 

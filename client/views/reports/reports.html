@@ -6,7 +6,7 @@
           {{!-- Show export and filtering options or search field for large screens --}}
           {{#if showSortBox}}
           {{#if currentUser}}
-          <div class="btn-group">
+          <div class="btn-group animated fadeIn">
             <button type="button" class="btn btn-default {{#if $.Session.equals 'showFilter' true}} active{{/if}}" id="btn-filter">
               <span class="glyphicon glyphicon-filter"></span> Filtrer
             </button>

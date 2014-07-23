@@ -1,6 +1,6 @@
 ## 2 Bevege seg rundt i systemet
 
-Systemet skal være relativt enkelt å navigere seg rundt i. Det finnes ikke mange sorte hull man kan falle ned i, men det finnes et par ubehagelige sidegater likevel. Denne seksjonen skal gi et kort overblikk over hvordan lekeplassen ser ut, og hjelpe deg å kjenne igjen farlige seksjoner som kan ende i banning, ergrelser og vel så det.
+Systemet skal være relativt enkelt å navigere seg rundt i. Det finnes ikke mange sorte hull man kan falle ned i, men det finnes et par ubehagelige sidegater likevel. Denne seksjonen skal gi et kort overblikk over hvordan lekeplassen ser ut, og hjelpe deg å kjenne igjen farlige fallgruver som kan ende i banning, ergrelser og vel så det.
 
 <center>![Figure 1-1](../assets/left-menu.png)</center>
 <center><em>Meny for enkel navigasjon.</em></center>
@@ -42,16 +42,19 @@ Svarte hull observert i systemet. Pass på hvor du trår.
 </p>
 </div></center>
 
-Hvis du tidligere har opprettet en rapport, og nå enten angrer eller vil tilføye informasjon, kan du endre rapporten din. Du leter da etter en redigeringsknapp et eller annet sted. Hvis man leker tampen brenner, kan avsløres at det er veldig varmt inne i boksvisningen og inne på siden for den enkelte rapport. Knappen er grønn og det står `Rediger` på den.
+Hvis du tidligere har opprettet en rapport, og nå enten angrer eller vil tilføye informasjon, kan du endre rapporten din. Du leter da etter en redigeringsknapp et eller annet sted. Hvis man leker tampen brenner, kan det avsløres at det er veldig varmt inne i boksvisningen og inne på siden for den enkelte rapport. Knappen er grønn og det står `Rediger` på den.
 
-Klikker du så på denne knappen kommer du til et vindu som er 99.62% identisk med vinduet som man oppretter rapporter i. Eneste forskjellen er knappene som ligger nederst på siden og hva som utføres når man klikker på disse knappene. Hvis du hoppet over den røde boksen med advarsel, er det lurt at du leser denne på nytt. Alt som er rødt skal man være skeptisk til og forsiktig med.
+Klikker du så på denne knappen kommer du til et vindu som er 99.62% identisk med vinduet som man oppretter rapporter i. Eneste forskjellen er knappene som ligger nederst på siden og hva som utføres når man klikker på disse knappene. Hvis du hoppet over den røde boksen med advarsel, er det lurt at du prøver å lese denne på nytt. Alt som er rødt skal man være skeptisk til og forsiktig med.
 
 <center><div style="max-width:800px;">![Figure 1-1](../assets/delete-button.png)</div></center>
 <center><em>Sletteknappen.</em></center>
 
-Du finner en rød knapp nederst til venstre på siden. `Slett` står det på den. Denne ble du litt kjent med i `Opprett rapport`. Den finnes her også, og den gjør som den sier, og sletter rapporten. Ingen vei tilbake dessverre, så hvis man trykker på denne og angrer på det seinere, hjelper det ikke å ta kontakt med, de tidligere nevnte, smarte studentene.
+Du finner en rød knapp nederst til venstre på siden. `Slett` står det på den. Denne ble du litt kjent med i `Opprett rapport`. Den finnes her også, og den gjør som den sier; den sletter rapporten. Ingen vei tilbake dessverre, så hvis man trykker på denne og angrer på det seinere, hjelper det ikke å ta kontakt med, de tidligere nevnte, smarte studentene.
 
 <center><div style="max-width:800px;">![Figure 1-1](../assets/save-cancel-button.png)</div></center>
 <center><em>Henholdsvis avbryt- og lagreknapp.</em></center>
 
 Når man har gjort de endringene man skal gjøre i de forskjellige feltene, trykker man bare på lagre, og rapporten blir lagret med de nye verdiene. Ingen tilbakestillingsfunksjonalitet (langt ord) her heller. Det som er gjort er gjort, og det som må gjøres må gjøres. Hvis du nå ikke har lyst til å lagre likevel, trykker du på `Avbryt` like ved lagre knappen. På mobile, mikroskopiske enheter kan dette være vanskelig. Lykke til!
+
+<center><div style="max-width:500px;">![Figure 1-1](../assets/micro-phone.jpg)</div></center>
+<center><em>Håpløst.</em></center>

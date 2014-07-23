@@ -21,6 +21,9 @@ Template.Search.events({
     else {
       query[field] = { $regex: value, $options: 'i' };
     }
+    //if the searchbox is empty we have to reset the query
+    if(value == null || value == "")
+      query = {};
     //this triggers iron router to load the report subscription again
     Session.set('query', query);
     Session.set('searchQuery', value);

@@ -1,0 +1,16 @@
+<!--
+This is the navbar dropdown for adding user.
+-->
+<template name="NavBarCreateUserDropdown">
+  <li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Lag ny bruker <span class="caret"></span></a>
+    <div class="dropdown-menu col-sm-3" role="menu" style="width:330px; padding:15px">
+      <form role="form">
+        <div class="form-group">
+          <input name="newUserEmail" type="email" class="form-control" placeholder="Epost til ny bruker" required autofocus>
+        </div>
+        <button id='submit' class="btn btn-primary btn-block" type="submit">Send epost til ny bruker</button>
+      </form>
+    </div>
+  </li>
+</template>

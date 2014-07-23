@@ -5,39 +5,41 @@ This is the navbar located at the top.
 <template name="TopNavbar">
 	<div class="navbar navbar-default navbar-fixed-top animated fadeInDown" role="navigation">
     <div class="container-fluid">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" rel="home" href="/" title="Til forside">
-				<img src="/images/concept_logo.png" alt="Logoen til Concept"> <span>Concept</span>
-			</a>
-		</div>
-		<div class="navbar-collapse collapse">
-			{{> NavBarButton route='Reports' name='Evalueringsrapporter' page='0'}}
-			{{> NavBarButton route='EvaluationCriteria' name='Evalueringskriterier'}}
-			{{> NavBarButton route='AboutConcept' name='Om Concept'}}
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" rel="home" href="/" title="Til forside">
+          <img src="/images/concept_logo.png" alt="Logoen til Concept"> <span>Concept</span>
+        </a>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          {{> NavBarButton route='Reports' name='Evalueringsrapporter' page='0'}}
+          {{> NavBarButton route='EvaluationCriteria' name='Evalueringskriterier'}}
+          {{> NavBarButton route='AboutConcept' name='Om Concept'}}
 
-			{{#if currentUser}}
-				{{> NavBarButton route='CreateReport' name='Opprett rapport'}}
-
-				<ul class="nav navbar-nav navbar-right">
-					{{> loginButtons}}
-				</ul>
-			{{/if}}
-		</div>
-	</div>
-</div>
+          {{#if currentUser}}
+            {{> NavBarButton route='CreateReport' name='Opprett rapport'}}
+            {{> NavBarCreateUserDropdown}}
+          {{/if}}
+        </ul>
+        {{#if currentUser}}
+          <ul class="nav navbar-nav navbar-right">
+            {{> loginButtons}}
+          </ul>
+        {{/if}}
+      </div>
+    </div>
+  </div>
 </template>
 
 <!--
 This is the navbar buttons.
 -->
 <template name="NavBarButton">
-	<ul class="nav navbar-nav">
-		<li class="{{class}} {{$activeIfRouteIs this.route}}" data-toggle="collapse" data-target=".in" id="{{id}}"><a href="{{pathFor this.route page=this.page}}">{{name}}</a></li>
-	</ul>
+  <li class="{{class}} {{$activeIfRouteIs this.route}}" data-toggle="collapse" data-target=".in" id="{{id}}"><a href="{{pathFor this.route page=this.page}}">{{name}}</a></li>
 </template>

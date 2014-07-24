@@ -35,7 +35,7 @@ Accounts.emailTemplates.resetPassword.subject = function (user) {
 };
 Accounts.emailTemplates.resetPassword.html = function (user, url) {
   return "Hver og en kan glemme passordet sitt i blant."
-    + "Hvis dette intrer ofte, kan det være til hjelp å ta en titt <a href='http://www.nyttig.net/helse/hukommelse'>her</a> eller <a href='http://home.online.no/~harc/trimming/'>her</a>.<br><br>"
+    + " Hvis dette intrer ofte, kan det være til hjelp å ta en titt <a href='http://www.nyttig.net/helse/hukommelse'>her</a> eller <a href='http://home.online.no/~harc/trimming/'>her</a>.<br><br>"
     + " For å resette passordet, klikker du på linken under:<br><br>"
     + url;
 };

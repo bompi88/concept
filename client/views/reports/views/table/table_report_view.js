@@ -1,6 +1,15 @@
 Template.TableReportView.events({
   'click .row-item': function(event, tmpl) {
+    $('.pop-info').popover('hide');
     Router.go(Router.path('Report', {_id: this._id}));
+  },
+  'click div.popover-content': function() {
+    $('.pop-info').popover('hide');
+  },
+  'click .pop-info': function(event, tmpl) {
+    $('.pop-info').click(function(){
+        $('.pop-info').not(this).popover('hide');
+    });
   },
   'click .checkbox': function(event, tmpl) {
     var that = this;
@@ -31,3 +40,11 @@ Template.TableReportView.isChecked = function() {
     return true;
   return false;
 }
+
+Template.TableReportView.infoText = "Tallene er i noen tilfeller prisberegnet av evaluator. Se nærmere omtalen av hvert prosjekt.";
+
+Template.TableReportView.rendered = function () {
+  $('.pop-info').popover({
+    placement: 'top'
+  });
+};

@@ -8,9 +8,27 @@
           <th class="sort-toggle table-header" data-id="sector">Sektor {{> SortArrow sortBy='project.sector'}}</th>
           <th class="sort-toggle table-header" data-id="finishing-year">Årstall ferdigstilt {{> SortArrow sortBy='project.finishingYear'}}</th>
           <th class="sort-toggle table-header" data-id="evaluation-year">Årstall evaluering {{> SortArrow sortBy='project.evaluationYear'}}</th>
-        	<th class="sort-toggle table-header" data-id="management-budget">Styringsramme {{> SortArrow sortBy='project.managementBudget.amount'}}</th>
-          <th class="sort-toggle table-header" data-id="cost-budget">Kostnadsramme {{> SortArrow sortBy='project.costBudget.amount'}}</th>
-        	<th class="sort-toggle table-header" data-id="cost-final">Sluttkostnad {{> SortArrow sortBy='project.costFinal.amount'}}</th>
+        	<th class="table-header">
+            <span style="white-space:nowrap;">
+              <span class="sort-toggle" data-id="management-budget">Styringsramme&nbsp;</span>
+              <span class="glyphicon glyphicon-info-sign pop-info" data-toggle="popover" data-content="{{infoText}}"></span>
+            </span>
+            &nbsp;{{> SortArrow sortBy='project.managementBudget.amount'}}
+          </th>
+          <th class="table-header">
+            <span style="white-space:nowrap;">
+              <span class="sort-toggle" data-id="cost-budget">Kostnadsramme&nbsp;</span>
+              <span class="glyphicon glyphicon-info-sign pop-info" data-toggle="popover" data-content="{{infoText}}"></span>
+            </span>
+            &nbsp;{{> SortArrow sortBy='project.costBudget.amount'}}
+          </th>
+          <th class="table-header">
+            <span style="white-space:nowrap;">
+              <span class="sort-toggle" data-id="cost-final">Sluttkostnad&nbsp;</span>
+              <span class="glyphicon glyphicon-info-sign pop-info" data-toggle="popover" data-content="{{infoText}}"></span>
+            </span>
+            &nbsp;{{> SortArrow sortBy='project.costFinal.amount'}}
+          </th>
         	<th class="sort-toggle table-header" data-id="responsible-org">Evaluator {{> SortArrow sortBy='responsible.organization'}}</th>
           {{#if currentUser}}
           <th class="table-header">Valgt</th>

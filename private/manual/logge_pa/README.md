@@ -1,4 +1,4 @@
-## 1 Innlogging
+## 1 Innlogging og brukerkonto
 
 For å kunne nå de "avanserte" funksjonene som denne applikasjonen tilgjengliggjør, må man logge seg inn på systemet. Det er for så vidt en enkel sak, om man ikke har glemt hva både eposten og passordet var for noe. Om man husker sin egen epost-adresse blir det straks en enklere affære.
 
@@ -89,3 +89,9 @@ For å logge ut av presentasjonsverktøyet, klikk øverst i høyre hjørne, der 
 <center>![Figure 1-6](../assets/hamburger-icon.png)</center>
 <center><em>Meny for mindre skjermer. Legg merke til hamburgeren øverst til høyre.</em></center>
 
+### 1.4 Legge til flere brukere
+
+Er man litt ensom inne på sida, kan man alltids legge til flere brukere. Det finnes en `Lag ny bruker`-knapp oppe i menyen. Klikker du på denne, kommer det opp et felt der man kan skrive inn eposten til den personen man vil invitere til fest og moro. Når du har skrevet inn eposten, klikker du på `Send eport til bruker`, og vennen din får straks en epost med instrukser på hvordan han kan bli med i klubben.
+
+<center>![Figure 1-6](../assets/create-user.png)</center>
+<center><em>Inviter til fest og moro på klubbhuset.</em></center>

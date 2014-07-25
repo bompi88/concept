@@ -17,11 +17,29 @@
 					<dt>Årstall evaluering</dt>
 					<dd>{{project.evaluationYear}}</dd>
 					<dt>Styringsramme</dt>
-					<dd>{{project.managementBudget.amount}} mill (i år {{project.managementBudget.year}})</dd>
+					<dd>
+            {{#if project.managementBudget.amount}}
+              {{project.managementBudget.amount}} mill {{#if project.managementBudget.year}} (i år {{project.managementBudget.year}}){{/if}}
+            {{else}}
+              -
+            {{/if}}
+          </dd>
 					<dt>Kostnadsramme</dt>
-					<dd>{{project.costBudget.amount}} mill (i år {{project.costBudget.year}})</dd>
+					<dd>
+            {{#if project.costBudget.amount}}
+              {{project.costBudget.amount}} mill {{#if project.costBudget.year}} (i år {{project.costBudget.year}}){{/if}}
+            {{else}}
+              -
+            {{/if}}
+          </dd>
 					<dt>Sluttkostnad</dt>
-					<dd>{{project.costFinal.amount}} mill (i år {{project.costFinal.year}})</dd>
+					<dd>
+            {{#if project.costFinal.amount}}
+              {{project.costFinal.amount}} mill {{#if project.costFinal.year}} (i år {{project.costFinal.year}}){{/if}}
+            {{else}}
+              -
+            {{/if}}
+          </dd>
 					<dt>Evaluator</dt>
 					<dd>{{responsible.organization}}</dd>
 				</dl>

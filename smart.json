@@ -28,6 +28,7 @@
       "branch": "master"
     },
     "kadira": {},
-    "iron-router-progress": {}
+    "iron-router-progress": {},
+    "iron-router-ga": {}
   }
 }

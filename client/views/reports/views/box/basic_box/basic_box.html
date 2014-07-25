@@ -24,7 +24,7 @@
 
 				{{! An descriptive image of the project.}}
 				<div class="col-xs-5 box-image text-center" style="height:100%;padding:5px 0;">
-					<img class="" src="{{$getUrlById images.[0].fileId 'images' store='fixed'}}" style="margin: 0 auto; max-height:100px;" alt="Bilde knyttet til {{project.name}}.">
+					<img class="" src="{{#if images.[0]}}{{$getUrlById images.[0].fileId 'images' store='fixed'}}{{else}}http://placehold.it/100/eeeeee/999999&text=Tomt{{/if}}" style="margin: 0 auto; max-height:100px;" alt="Bilde knyttet til {{project.name}}.">
 				</div>
 			</section>
 

@@ -50,3 +50,8 @@
 /pdfkit
 /googlemaps
 /just-i18n
+/iconv
+/iconv-lite
+/kadira
+/iron-router-progress
+/iron-router-ga

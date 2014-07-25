@@ -1,114 +1,109 @@
 <template name="Report">
 	<div class="container content-wrapper animated fadeIn" id="mycontent">
 		<header>
-			<div class="page-header text-center">
+			<div class="page-header text-center line-space">
 				<h1 id="information">{{project.name}}</h1>
-				<div class="btn-group button-margin" data-toggle="buttons">
-					<label class="btn btn-default {{#if $eq textState "long"}}active{{/if}}" id="export-text">
-						<input type="radio" name="text-view" ><span class="glyphicon glyphicon-export"></span> Eksporter til PDF
-					</label>
-					{{#if currentUser}}
-					<label class="btn btn-success edit-btn">
-						<input type="radio" name="text-view" ><span class="glyphicon glyphicon-edit"></span> Rediger
-					</label>
-					{{/if}}
-				</div>
+				{{#if currentUser}}
+          <div class="btn-group button-margin" data-toggle="buttons">
+            <a href="/pdf/{{_id}}" class="btn btn-default" role="button" id="export-text" disabled="{{buttonDisabled}}">
+              <span class="glyphicon glyphicon-export"></span> Eksporter til PDF
+            </a>
+  					<button class="btn btn-success edit-btn">
+  						<span class="glyphicon glyphicon-edit"></span> Rediger
+  					</button>
+          </div>
+				{{/if}}
 			</div>
 		</header>
 
-		<div class="row">
-			<div class="col-xs-12 col-lg-10">
-				<div class="row section-padding">
-					<div class="col-md-7">
-						<p>{{project.projectDescription.short}}
-							<span> <a href="#" class="read-more" id="desc-button">Les mer &raquo;</a></span>
-						</p>
-						<figure id="projectImage">
-              <a href="{{$getUrlById images.[0].fileId 'images' store='original'}}" title="<h5>{{images.[0].title}}.</h5> Foto: {{#if images.[0].link}}<a href='{{images.[0].link}}' style='color: #6b8eaf'>{{images.[0].copyright}}</a>{{else}}{{images.[0].copyright}}{{/if}}</br></br>" class="image-link">
-                <img src="{{$getUrlById images.[0].fileId 'images' store='medium'}}" class="img-responsive" style="max-height:350px;margin: 0 auto;" alt="{{images.[0].title}}. Foto.">
-              </a>
-                <figcaption class="text-center">{{images.[0].title}}. Foto: {{#if images.[0].link}}<a href="{{images.[0].link}}">{{images.[0].copyright}}</a>{{else}}{{images.[0].copyright}}{{/if}}</figcaption>
-						</figure>
-					</div>
 
-					<div class="col-md-5">
-						<div class="center-block">
-							{{>ProjectInformationBox}}
-						</div>
-					</div>
-
-				</div>
-
-				<hr>
-
-				<div class="row section-padding" id="evaluation">
-					<div class="col-md-5">
-						<figure id="radarChart">
-							<canvas id="spiderEvaluation" height="400" width="400"></canvas>
-							<figcaption class="text-center" id="spider-caption"><a href="{{pathFor 'EvaluationCriteria'}}">Les om evalueringskriteriene</a></figcaption>
-						</figure>
-					</div>
-
-					<div class="col-md-7">
-
-						<h2>Evaluering <small> utført av {{responsible.organization}} ved {{responsible.person}}</small></h2>
-
-						{{> EvaluationParagraph header="Samlet vurdering" ref=evaluation.overall id="evaluation-overall" hSize="large"}}
-
-						{{> EvaluationParagraph header="Produktivitet" ref=evaluation.productivity id="evaluation-productivity"}}
-
-						{{> EvaluationParagraph header="Måloppnåelse" ref=evaluation.achievement id="evaluation-achievement"}}
-
-						{{> EvaluationParagraph header="Virkninger" ref=evaluation.effects id="evaluation-effects"}}
-
-						{{> EvaluationParagraph header="Relevans" ref=evaluation.relevance id="evaluation-relevance"}}
-
-						{{> EvaluationParagraph header="Levedyktighet" ref=evaluation.viability id="evaluation-viability"}}
-
-						{{> EvaluationParagraph header="Samfunnsøkonomisk lønnsomhet" ref=evaluation.profitability id="evaluation-profitability"}}
-
-					</div>
-				</div>
-
-				<hr>
-
-				<div class="section-padding" id="images">
-					<h2>Bilder</h2>
-					<div id="links" style="padding-top:25px;">
-						{{#each images}}
-  						<a href="{{$getUrlById fileId 'images' store='original'}}" title="<h5>{{title}}.</h5> Foto: {{#if link}}<a href='{{link}}' style='color: #6b8eaf'>{{copyright}}</a>{{else}}{{copyright}}{{/if}}</br></br>" class="image-link">
-  							<img src="{{$getUrlById fileId 'images' store='thumbs'}}" style="max-height:150px;" alt="{{title}}">
-  						</a>
-						{{/each}}
-					</div>
-				</div>
-
-				<hr>
-				{{> ProjectReferences}}
+		<div class="row section-padding">
+			<div class="col-md-7">
+				<p>
+          {{#if showMoreText "desc-button"}}
+            <em>{{project.projectDescription.short}}</em>
+            <br><br>
+            {{{$convertLineBreaks project.projectDescription.long}}}
+            <span> <a href="#" class="read-more" id="desc-button">&laquo; Skjul</a></span>
+          {{else}}
+            <em>{{project.projectDescription.short}}</em>
+            <span> <a href="#" class="read-more" id="desc-button">Les mer &raquo;</a></span>
+				  {{/if}}
+        </p>
+        {{#if images.[0]}}
+    			<figure id="projectImage">
+            <a href="{{$getUrlById images.[0].fileId 'images' store='original'}}" title="<h5>{{#if images.[0].title}}{{images.[0].title}}.</h5> {{/if}}{{#if images.[0].copyright}}Foto: {{#if images.[0].link}}<a href='{{images.[0].link}}' style='color: #6b8eaf' target='_blank'>{{images.[0].copyright}}</a>{{else}}{{images.[0].copyright}}{{/if}}{{/if}}{{#if $or images.[0].title images.[0].copyright}}</br></br>{{/if}}" class="image-link">
+              <img src="{{$getUrlById images.[0].fileId 'images' store='medium'}}" class="img-responsive" style="max-height:350px;margin: 0 auto;" title="{{#if images.[0].title}}{{images.[0].title}}. {{/if}}{{#if images.[0].copyright}}Foto: {{images.[0].copyright}}{{/if}}{{#if $or images.[0].title images.[0].copyright}}{{else}}Ingen tittel{{/if}}">
+            </a>
+            <figcaption class="text-center">{{#if images.[0].title}}{{images.[0].title}}. {{/if}}{{#if images.[0].copyright}}Foto: {{#if images.[0].link}}<a href="{{images.[0].link}}" target="_blank">{{images.[0].copyright}}</a>{{else}}{{images.[0].copyright}}{{/if}}{{/if}}</figcaption>
+    			</figure>
+        {{/if}}
 			</div>
 
-			<div class="col-md-2 hidden-md" id="body-right">
-				<nav class="bs-docs-sidebar" id="sidebar">
-					<ul id="mynav" class="nav nav-stacked affix">
-						{{> SideBarElement name="Prosjektinformasjon" to="information" active="true"}}
-						{{# SideBarElement name="Evaluering" to="evaluation" multiple="true"}}
+		  <div class="col-md-5">
+				<div class="center-block information-box">
+				{{>ProjectInformationBox}}
 
-							{{> SideBarElement name="Samlet vurdering" to="evaluation-overall"}}
-							{{> SideBarElement name="Produktivitet" to="evaluation-productivity"}}
-							{{> SideBarElement name="Måloppnåelse" to="evaluation-achievement"}}
-							{{> SideBarElement name="Virkninger" to="evaluation-effects"}}
-							{{> SideBarElement name="Relevans" to="evaluation-relevance"}}
-							{{> SideBarElement name="Levedyktighet" to="evaluation-viability"}}
-							{{> SideBarElement name="Samf.øk. lønnsomhet" to="evaluation-profitability"}}
-
-						{{/SideBarElement}}
-						{{> SideBarElement name="Bilder" to="images"}}
-						{{> SideBarElement name="Referanser" to="references"}}
-					</ul>
-				</nav>
+        <h4 class="text-center">
+          <small>Evaluering utført av <em>{{responsible.organization}}</em>{{#if responsible.person}}, ansvarlig <em>{{responsible.person}}</em>{{/if}}</small>
+        </h4>
+				</div>
 			</div>
 		</div>
-	</div>
+
+    {{#if showEvaluation}}
+  		<hr class="line-space">
+
+  		<div class="row section-padding" id="evaluation">
+  			<div class="col-md-5">
+          <div id="radarWrapper" class="center-block">
+    				<figure>
+    					<canvas id="spiderEvaluation" height="400" width="400"></canvas>
+    					<figcaption class="text-center" id="spider-caption"><a href="{{pathFor 'EvaluationCriteria'}}">Les om evalueringskriteriene</a></figcaption>
+    				</figure>
+        </div>
+  			</div>
+
+  			<div class="col-md-7">
+
+  				{{> EvaluationParagraph header="Samlet vurdering" ref=evaluation.overall id="evaluation-overall" hSize="large"}}
+
+  				{{> EvaluationParagraph header="Produktivitet" ref=evaluation.productivity id="evaluation-productivity"}}
+
+  				{{> EvaluationParagraph header="Måloppnåelse" ref=evaluation.achievement id="evaluation-achievement"}}
+
+  				{{> EvaluationParagraph header="Virkninger" ref=evaluation.effects id="evaluation-effects"}}
+
+  				{{> EvaluationParagraph header="Relevans" ref=evaluation.relevance id="evaluation-relevance"}}
+
+  				{{> EvaluationParagraph header="Levedyktighet" ref=evaluation.viability id="evaluation-viability"}}
+
+  				{{> EvaluationParagraph header="Samfunnsøkonomisk lønnsomhet" ref=evaluation.profitability id="evaluation-profitability"}}
+
+  			</div>
+  		</div>
+    {{/if}}
+
+    {{#if images.length}}
+  		<hr class="line-space">
+
+  		<div class="section-padding" id="images">
+  			<h2>Bilder</h2>
+  			<div id="links" style="padding-top:25px;">
+  				{{#each images}}
+    				<a href="{{$getUrlById fileId 'images' store='original'}}" title="{{#if title}}<h5>{{title}}.</h5> {{/if}}{{#if copyright}}Foto: {{#if link}}<a href='{{link}}' style='color: #6b8eaf' target='_blank'>{{copyright}}</a>{{else}}{{copyright}}{{/if}}{{/if}}{{#if $or title copyright}}</br></br>{{/if}}" class="image-link">
+    					<img src="{{$getUrlById fileId 'images' store='thumbs'}}" style="max-height:150px;" title="{{#if title}}{{title}}. {{/if}}{{#if copyright}}Foto: {{copyright}}{{/if}}{{#if $or title copyright}}{{else}}Ingen tittel{{/if}}">
+    				</a>
+  				{{/each}}
+  			</div>
+  		</div>
+    {{/if}}
+
+    {{#if references.length}}
+  		<hr class="line-space">
+  		{{> ProjectReferences}}
+    {{/if}}
+  </div>
 </template>
 
 <template name="SideBarElement">
@@ -124,15 +119,57 @@
 </template>
 
 <template name="EvaluationParagraph">
-	{{#if $eq hSize 'large'}}
-		<h3 id="{{id}}">{{header}}</h3>
-		<p>{{ref.short}}
-			<span>&nbsp;<a href="#" class="read-more">Les mer &raquo;</a></span>
-		</p>
-	{{else}}
-		<h4 id="{{id}}">{{header}}</h4>
-		<p>{{{ref.short}}}<b>&nbsp;{{ref.value}} av 6 poeng</b>.
-			<span>&nbsp;<a href="#" class="read-more">Les mer &raquo;</a></span>
-		</p>
-	{{/if}}
+	{{#if $or ref.short ref.long}}
+    {{#if $eq hSize 'large'}}
+      <h2 id="{{id}}">{{header}}</h2>
+      <p>
+        {{#if showMoreText id}}
+          {{ref.short}}
+          <br><br>
+          {{{$convertLineBreaks ref.long}}}
+          <span> <a href="#" class="read-more">&laquo; Skjul</a></span>
+        {{else}}
+          {{#if ref.short}}
+            {{{ref.short}}}
+          {{else}}
+            Ingen tekst tilgjengelig.
+          {{/if}}
+          {{#if ref.long}}
+            <span>&nbsp;<a href="#" class="read-more">Les mer &raquo;</a></span>
+          {{/if}}
+        {{/if}}
+      </p>
+    {{else}}
+      <h3 id="{{id}}">{{header}}</h3>
+      <p>
+        {{#if showMoreText id}}
+          <em>{{ref.short}}</em>
+          <br><br>
+          {{{$convertLineBreaks ref.long}}}
+          <br><br>
+          {{#if ref.value}}
+            <span><b>{{ref.value}} av 6 poeng</b></span>.
+          {{else}}
+            <span><b>Tallvurdering utelatt</b></span>.
+          {{/if}}
+          <span> <a href="#" class="read-more">&laquo; Skjul</a></span>
+        {{else}}
+          {{#if ref.short}}
+            <em>{{{ref.short}}}</em>
+          {{else}}
+            Ingen tekst tilgjengelig.
+          {{/if}}
+          <br><br>
+          {{#if ref.value}}
+            <span><b>{{ref.value}} av 6 poeng</b></span>.
+          {{else}}
+            <span><b>Tallvurdering utelatt</b></span>.
+          {{/if}}
+          {{#if ref.long}}
+            <span>&nbsp;<a href="#" class="read-more">Les mer &raquo;</a></span>
+          {{/if}}
+        {{/if}}
+      </p>
+    {{/if}}
+  {{/if}}
 </template>

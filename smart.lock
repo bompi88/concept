@@ -13,12 +13,8 @@
         "git": "https://github.com/bompi88/Meteor-cfs-ui.git",
         "branch": "master"
       },
-      "chartjs": {
-        "git": "https://github.com/donskifarrell/meteor-chartjs.git",
-        "branch": "master"
-      },
+      "chartjs": {},
       "handlebar-helpers": {},
-      "auto-nprogress": {},
       "collection2": {},
       "autoform": {},
       "ms-seo": {},
@@ -29,7 +25,14 @@
       },
       "pdfkit": {},
       "just-i18n": {},
-      "googlemaps": {}
+      "googlemaps": {},
+      "iconv-lite": {
+        "git": "https://github.com/bompi88/meteor-iconv-lite.git",
+        "branch": "master"
+      },
+      "kadira": {},
+      "iron-router-progress": {},
+      "iron-router-ga": {}
     },
     "packages": {
       "iron-router": {
@@ -45,7 +48,7 @@
       "accounts-ui-bootstrap-3": {
         "git": "https://github.com/todi01/meteor-accounts-ui-bootstrap-3.git",
         "branch": "master",
-        "commit": "a83cf0210df3113cceda124f35d51f98b099cad5"
+        "commit": "b384a4995555c685c26b59499c7a4304a7ff25e1"
       },
       "collectionFS": {
         "git": "https://github.com/CollectionFS/Meteor-CollectionFS.git",
@@ -59,18 +62,13 @@
       },
       "chartjs": {
         "git": "https://github.com/donskifarrell/meteor-chartjs.git",
-        "branch": "master",
-        "commit": "d3785356d3a35c3ab0b9c7f3e5da486a8dfe6b9c"
+        "tag": "v0.0.6",
+        "commit": "7999ee282dc6302806c421607ecd9248d160c6e7"
       },
       "handlebar-helpers": {
         "git": "https://github.com/raix/Meteor-handlebar-helpers.git",
         "tag": "v0.1.1",
         "commit": "0b407ab65e7c1ebd53d71aef0de2e2c1d21a597c"
-      },
-      "auto-nprogress": {
-        "git": "https://github.com/settinghead/meteor-auto-nprogress.git",
-        "tag": "v0.2.7",
-        "commit": "3fa87d5244e140cc5b49696585cd23b110c36467"
       },
       "collection2": {
         "git": "https://github.com/aldeed/meteor-collection2.git",
@@ -79,8 +77,8 @@
       },
       "autoform": {
         "git": "https://github.com/aldeed/meteor-autoform.git",
-        "tag": "v0.14.0",
-        "commit": "30de032833052ea61e9d37bca5523264309d4478"
+        "tag": "v0.15.3",
+        "commit": "b0574c71d33ea8ecff397b3bf054601fb979e0b8"
       },
       "ms-seo": {
         "git": "https://github.com/DerMambo/ms-seo",
@@ -95,7 +93,7 @@
       "bootboxjs": {
         "git": "https://github.com/TimHeckel/meteor-bootboxjs.git",
         "branch": "master",
-        "commit": "9d68c5b442efedf90fb2c08682239afcba455911"
+        "commit": "c125969c1f3aef30e2a2ff20252bd3b2e4014b2f"
       },
       "pdfkit": {
         "git": "https://github.com/pascoual/meteor-pdfkit.git",
@@ -111,6 +109,26 @@
         "git": "https://github.com/drewjw81/meteor-googlemaps.git",
         "tag": "v0.0.2",
         "commit": "da8785c82cfd7de0111f898ef10728e7ed24e361"
+      },
+      "iconv-lite": {
+        "git": "https://github.com/bompi88/meteor-iconv-lite.git",
+        "branch": "master",
+        "commit": "4db96f3fa2f89a8e67eac73723cfb6666ef2f80d"
+      },
+      "kadira": {
+        "git": "https://github.com/meteorhacks/kadira.git",
+        "tag": "v2.4.9",
+        "commit": "8bb902989917522822a0897117672ae858c23427"
+      },
+      "iron-router-progress": {
+        "git": "https://github.com/Multiply/iron-router-progress.git",
+        "tag": "v0.4.1",
+        "commit": "496fcda9a6ec352b4733725f60c6f280250c3541"
+      },
+      "iron-router-ga": {
+        "git": "https://github.com/reywood/meteor-iron-router-ga.git",
+        "tag": "v0.2.5",
+        "commit": "ede54c4633f9a54fddd5c431202a88284df2a932"
       },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",
@@ -157,15 +175,10 @@
         "tag": "v0.0.12",
         "commit": "774bf581e0f3da269dc842672ed6c2da09fd2bdf"
       },
-      "nprogress": {
-        "git": "https://github.com/zhouzhuojie/meteor-nprogress.git",
-        "tag": "v0.0.5",
-        "commit": "bb88a057166e0f1386ab8bc0a1e080b48aa59159"
-      },
       "simple-schema": {
         "git": "https://github.com/aldeed/meteor-simple-schema.git",
-        "tag": "v0.5.1",
-        "commit": "a29956b34d03a4591dbd0eaed9d37009ef48b8db"
+        "tag": "v0.6.0",
+        "commit": "418ec496612fb2afc853e342f0d2269b6674a2fe"
       },
       "moment": {
         "git": "https://github.com/acreeger/meteor-moment.git",
@@ -244,8 +257,8 @@
       },
       "cfs-filesystem": {
         "git": "https://github.com/CollectionFS/Meteor-cfs-filesystem.git",
-        "tag": "v0.0.26",
-        "commit": "1ec938265d937d81ff1323f2a8c8dbd301b233df"
+        "tag": "v0.0.27",
+        "commit": "703be2e5f890c84366df39a90a209b7b2c95c967"
       },
       "reactive-property": {
         "git": "https://github.com/CollectionFS/Meteor-reactive-property.git",

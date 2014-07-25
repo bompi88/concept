@@ -10,13 +10,8 @@
     "cfs-ui": {
       "git": "https://github.com/bompi88/Meteor-cfs-ui.git"
     },
-    "chartjs": {
-      "git": "https://github.com/donskifarrell/meteor-chartjs.git",
-      "branch": "master",
-      "commit": "d3785356d3a35c3ab0b9c7f3e5da486a8dfe6b9c"
-    },
+    "chartjs": {},
     "handlebar-helpers": {},
-    "auto-nprogress": {},
     "collection2": {},
     "autoform": {},
     "ms-seo": {},
@@ -27,6 +22,13 @@
     },
     "pdfkit": {},
     "just-i18n": {},
-    "googlemaps": {}
+    "googlemaps": {},
+    "iconv-lite": {
+      "git": "https://github.com/bompi88/meteor-iconv-lite.git",
+      "branch": "master"
+    },
+    "kadira": {},
+    "iron-router-progress": {},
+    "iron-router-ga": {}
   }
 }

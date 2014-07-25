@@ -11,10 +11,10 @@
 		<tbody>
 			{{#each references}}
 			<tr>
-				<td>{{title}}</td>
-				<td>{{date}}</td>
-				<td>{{typedoc}}</td>
-				<td><a href="{{$getUrlById fileId 'files'}}">Last ned</a></td>
+				<td>{{#if title}}{{title}}{{else}}Uten tittel{{/if}}</td>
+				<td>{{#if date}}{{date}}{{else}}-{{/if}}</td>
+				<td>{{#if typedoc}}{{typedoc}}{{else}}-{{/if}}</td>
+				<td><a href="{{$getUrlById fileId 'files'}}" target="_blank">Last ned</a></td>
 			</tr>
 			{{/each}}
 		</tbody>

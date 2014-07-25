@@ -25,3 +25,18 @@ div.header-with-icon {
 		vertical-align:middle;
 	}
 }
+
+div.container-fluid.eval-criteria-container {
+	padding-left: 0;
+	padding-right: 0;
+	margin-left: 0;
+	margin-right: 0;
+}
+
+@media (max-width: 650px) {
+	div.container-fluid.eval-criteria-container {
+		h1 {
+			font-size: 30px;
+		}
+	}
+}

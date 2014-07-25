@@ -1,7 +1,3 @@
-.section-padding {
-	margin-bottom: 50px;
-	margin-top: 25px;
-}
 
 #mycontent {
 	h1,h2,h3,h4,h5,h6{
@@ -11,10 +7,15 @@
 	}
 
   padding: 0 25px;
+  padding-bottom: 25px;
 }
 
 figure#projectImage {
   margin-top: 30px;
+}
+
+#images img {
+  margin-bottom: 5px;
 }
 
 .button-margin {
@@ -22,35 +23,8 @@ figure#projectImage {
 	margin-top: 20px;
 }
 
-#spider-caption {
-  position: relative;
-  top:-80px;
-  
-  a {
-    z-index:1000;
-  }
-}
-
 .read-more {
   display: inline-block;
-}
-
-.affix,.affix-top {
-   position:static;
-}
-
-@media (min-width: 979px) {
-  #sidebar.affix-top {
-    position: static;
-  	margin-top: 0px;
-  	width:170px;
-  }
-  
-  #sidebar.affix {
-    position: fixed;
-    top:280px;
-    width:170px;
-  }
 }
 
 @media (max-width: 500px) {
@@ -64,56 +38,28 @@ figure#projectImage {
 	text-align: center;
 }
 
-/* all links */
-.bs-docs-sidebar .nav>li>a {
-  color: #707070;
-  border-left: 2px solid transparent;
-  padding: 4px 20px;
-  font-size: 13px;
-  font-weight: 400;
+#radarWrapper{
+  width: 100%;
 }
 
-/* nested links */
-.bs-docs-sidebar .nav .nav>li>a {
-  padding-top: 1px;
-  padding-bottom: 1px;
-  padding-left: 30px;
-  font-size: 12px;
+.section-padding{
+    margin-bottom: 25px;
+    margin-top: 12.5px;
 }
 
-/* active & hover links */
-.bs-docs-sidebar .nav>.active>a, 
-.bs-docs-sidebar .nav>li>a:hover, 
-.bs-docs-sidebar .nav>li>a:focus {
-  color: #3b3b3b;                 
-  text-decoration: none;          
-  background-color: transparent;  
-  border-left-color: #3b3b3b; 
-}
-/* all active links */
-.bs-docs-sidebar .nav>.active>a, 
-.bs-docs-sidebar .nav>.active:hover>a,
-.bs-docs-sidebar .nav>.active:focus>a {
-  font-weight: 600;
-}
-/* nested active links */
-.bs-docs-sidebar .nav .nav>.active>a, 
-.bs-docs-sidebar .nav .nav>.active:hover>a,
-.bs-docs-sidebar .nav .nav>.active:focus>a {
-  font-weight: 400;
-}
-
-/* hide inactive nested list */
-.bs-docs-sidebar .nav ul.nav {
-  display: none;           
-}
-/* show active nested list */
-.bs-docs-sidebar .nav>.active>ul.nav {
-  display: block;           
-}
-
-@media all and (max-width: 1170px) {
-  .bs-docs-sidebar {
-    display: none;
-  }	
+/*Add some extra margin and padding for large devices */
+@media (min-width: 992px) {
+  .line-space{
+    margin-right: 30px!important;
+    margin-left: 30px!important;
+  }
+  .section-padding {
+    margin-bottom: 50px;
+    margin-top: 25px;
+    padding-right: 30px;
+    padding-left: 30px;
+  }
+  #radarWrapper{
+    width:93%;
+  }
 }

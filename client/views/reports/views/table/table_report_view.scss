@@ -1,0 +1,16 @@
+ .pop-info {
+ 	display: inline-block!important;
+ 	position: relative!important;
+ 	top: 4px!important;
+ 	font-size: 16px;
+ 	color: #008cba;
+
+ 	&:hover {
+ 		color: darken(#008cba, 10%);
+ 	}
+ }
+
+div.popover-content {
+	font-size: 14px;
+	font-weight: 400;
+}

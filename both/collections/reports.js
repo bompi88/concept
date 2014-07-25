@@ -122,21 +122,21 @@ createReport = function(tmpl) {
     report.project.projectDescription.short = tmpl.find('#project-desc-short').value;
     report.project.projectDescription.long = tmpl.find('#project-desc-long').value;
 
-    report.project.finishingYear = parseInt(tmpl.find('#finishing-year').value);
-    report.project.evaluationYear = parseInt(tmpl.find('#eval-year').value);
-    report.project.decisionYear = parseInt(tmpl.find('#decision-year').value);
+    report.project.finishingYear = parseInt(tmpl.find('#finishing-year').value) || null;
+    report.project.evaluationYear = parseInt(tmpl.find('#eval-year').value) || null;
+    report.project.decisionYear = parseInt(tmpl.find('#decision-year').value) || null;
 
     report.project.managementBudget = {};
     report.project.costBudget = {};
     report.project.costFinal = {};
 
-    report.project.managementBudget.year = parseInt(tmpl.find('#management-budget-year').value);
-    report.project.costBudget.year = parseInt(tmpl.find('#cost-budget-year').value);
-    report.project.costFinal.year = parseInt(tmpl.find('#cost-final-year').value);
+    report.project.managementBudget.year = parseInt(tmpl.find('#management-budget-year').value) || null;
+    report.project.costBudget.year = parseInt(tmpl.find('#cost-budget-year').value) || null;
+    report.project.costFinal.year = parseInt(tmpl.find('#cost-final-year').value) || null;
 
-    report.project.managementBudget.amount = parseInt(tmpl.find('#management-budget').value);
-    report.project.costBudget.amount = parseInt(tmpl.find('#cost-budget').value);
-    report.project.costFinal.amount = parseInt(tmpl.find('#cost-final').value);
+    report.project.managementBudget.amount = parseInt(tmpl.find('#management-budget').value) || null;
+    report.project.costBudget.amount = parseInt(tmpl.find('#cost-budget').value) || null;
+    report.project.costFinal.amount = parseInt(tmpl.find('#cost-final').value) || null;
 
     report.responsible = {};
     report.responsible.organization = tmpl.find('#eval-responsible-org').value || "";

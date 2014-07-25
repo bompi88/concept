@@ -28,3 +28,7 @@ Når man har valgt Tabell som visningsalternativ er det også mulig manuelt å l
 Husk at dersom det er over 20 rapporter blir dataen delt på flere sider og at man må navigere seg frem og tilbake. Filter-og eksporteringsfunksjonaliteten fungerer uavhengig av flere sider.
 
 Siden komma og ikke punktum er desimalskilletegn i Norge er det viktig at man har norsk tegnsett i Excel slik at csv-filen importeres riktig.
+
+### 4.3 Eksporter rapport som pdf-dokument
+
+Hvis man vil kan man eksportere rapporter hver for seg, som pdf-dokument. Man må være logget inn, og gå til en spesifikk rapport. Der inne finnes det en eksportèr-knapp. Denne blir aktiv når filen er klar for nedlastning. Klikk så på denne eksportèr-knappen. Internet Explorer vil ikke eksportere spider-diagram, da denne nettleseren ikke tilfredstiller visse funksjonelle krav.

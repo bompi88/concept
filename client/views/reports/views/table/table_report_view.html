@@ -43,9 +43,27 @@
             <td class="row-item">{{project.sector}}</td>
             <td class="row-item">{{project.finishingYear}}</td>
             <td class="row-item">{{project.evaluationYear}}</td>
-            <td class="row-item">{{project.managementBudget.amount}}</td>
-            <td class="row-item">{{project.costBudget.amount}}</td>
-            <td class="row-item">{{project.costFinal.amount}}</td>
+            <td class="row-item">
+              {{#if project.managementBudget.amount}}
+                {{project.managementBudget.amount}}
+              {{else}}
+                -
+              {{/if}}
+            </td>
+            <td class="row-item">
+              {{#if project.costBudget.amount}}
+                {{project.costBudget.amount}}
+              {{else}}
+                -
+              {{/if}}
+            </td>
+            <td class="row-item">
+              {{#if project.costFinal.amount}}
+                {{project.costFinal.amount}}
+              {{else}}
+                -
+              {{/if}}
+            </td>
             <td class="row-item">{{responsible.organization}}</td>
             {{#if currentUser}}
             <td><div class="checkbox"><input type="checkbox" value="{{_id}}" checked="{{isChecked}}"></div></td>

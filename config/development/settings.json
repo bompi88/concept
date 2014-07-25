@@ -1,0 +1,10 @@
+{
+    "public": {
+        "ga": {
+        	"id": "UA-53199442-1",
+            "create": {
+                "cookieDomain": "none"
+            }
+        }
+    }
+}

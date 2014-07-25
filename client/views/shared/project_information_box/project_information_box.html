@@ -11,11 +11,26 @@
 					<dt>Suksess</dt>
 					<dd>{{>TrafficLight}}</dd>
 					<dt>Årstall påbegynt</dt>
-					<dd>{{project.decisionYear}}</dd>
+					<dd>
+            {{#if project.decisionYear}}
+              {{project.decisionYear}}
+            {{else}} -
+            {{/if}}
+          </dd>
 					<dt>Årstall ferdigstilt</dt>
-					<dd>{{project.finishingYear}}</dd>
+					<dd>
+            {{#if project.finishingYear}}
+              {{project.finishingYear}}
+            {{else}} -
+            {{/if}}
+          </dd>
 					<dt>Årstall evaluering</dt>
-					<dd>{{project.evaluationYear}}</dd>
+					<dd>
+            {{#if project.evaluationYear}}
+              {{project.evaluationYear}}
+            {{else}} -
+            {{/if}}
+          </dd>
 					<dt>Styringsramme</dt>
 					<dd>
             {{#if project.managementBudget.amount}}

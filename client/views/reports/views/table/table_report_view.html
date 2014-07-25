@@ -41,8 +41,20 @@
             <td class="row-item">{{project.name}}</td>
             <td class="row-item">{{> TrafficLight}}</td>
             <td class="row-item">{{project.sector}}</td>
-            <td class="row-item">{{project.finishingYear}}</td>
-            <td class="row-item">{{project.evaluationYear}}</td>
+            <td class="row-item">
+              {{#if project.finishingYear}}
+                {{project.finishingYear}}
+              {{else}}
+                -
+              {{/if}}
+            </td>
+            <td class="row-item">
+              {{#if project.evaluationYear}}
+                {{project.evaluationYear}}
+              {{else}}
+                -
+              {{/if}}
+            </td>
             <td class="row-item">
               {{#if project.managementBudget.amount}}
                 {{project.managementBudget.amount}}

@@ -48,7 +48,13 @@
 		</li>
 		<li class="list-group-item">
 			<span class="bold">Ferdigstilt:</span>
-			<span class="pull-right">{{project.finishingYear}}</span>
+			<span class="pull-right">
+        {{#if project.finishingYear}}
+          {{project.finishingYear}}
+        {{else}}
+          -
+        {{/if}}
+      </span>
 		</li>
 		<li class="list-group-item">
 			<span class="bold">Sluttkostnad:</span>

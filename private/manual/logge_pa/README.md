@@ -11,7 +11,7 @@ Det er ingen link fra Concept sin hovedside og inn til innloggingssiden. Dette e
 <center><div style="max-width:500px;">![Figure 1-1](../assets/accounts-adress.png)</div></center>
 <center><em>Et typisk adressefelt i en nettleser.</em></center>
 
-For å logge seg på går man direkte til `http://www.concept.ntnu.no/rapporter/concept-admin` i nettleseren. Du kan klikke [her](http://www.concept.ntnu.no/rapporter/concept-admin), så slipper du å kopiere og lime, og alt det der. For den ambisiøse bruker så er det verdt å merke seg, at hvis du allerede er inne på startsiden av presentasjonverktøyet, så legger man bare til `/concept-admin` i adressefeltet til nettleseren.
+Hvis man vil logge seg på, går man direkte til `http://www.concept.ntnu.no/rapporter/concept-admin` i nettleseren. Du kan klikke [her](http://www.concept.ntnu.no/rapporter/concept-admin), så slipper du å kopiere og lime, og alt det der. For den ambisiøse bruker så er det verdt å merke seg, at hvis du allerede er inne på startsiden av presentasjonverktøyet, så legger man bare til `/concept-admin` i adressefeltet til nettleseren.
 
 <center><div style="max-width:500px;">![Figure 1-2](../assets/accounts-login.png)</div></center>
 <center><em>Panel for innlogging.</em></center>
@@ -91,7 +91,7 @@ For å logge ut av presentasjonsverktøyet, klikk øverst i høyre hjørne, der 
 
 ### 1.4 Legge til flere brukere
 
-Er man litt ensom inne på sida, kan man alltids legge til flere brukere. Det finnes en `Lag ny bruker`-knapp oppe i menyen. Klikker du på denne, kommer det opp et felt der man kan skrive inn eposten til den personen man vil invitere til fest og moro. Når du har skrevet inn eposten, klikker du på `Send eport til bruker`, og vennen din får straks en epost med instrukser på hvordan han kan bli med i klubben.
+Er man litt ensom inne på sida, kan man alltids legge til flere brukere. Det finnes en `Lag ny bruker`-knapp oppe i menyen. Klikker du på denne, kommer det opp et felt der man kan skrive inn eposten til den personen man vil invitere til fest og moro. Når du har skrevet inn eposten, klikker du på `Send epost til bruker`, og vennen din får straks en epost med instrukser på hvordan han kan bli med i klubben.
 
 <center>![Figure 1-6](../assets/create-user.png)</center>
-<center><em>Inviter til fest og moro på klubbhuset.</em></center>
+<center><em>Invitér til fest og moro på klubbhuset.</em></center>

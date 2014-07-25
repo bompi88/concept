@@ -2,6 +2,10 @@
  * Map: This is a map component
  */
 
+var map;
+var mapElement;
+var markers = [];
+
 Template.MapView.events({
   'click .panel': function(event, tmpl) {
     //this is ugly
@@ -13,6 +17,8 @@ Template.MapView.events({
 Template.MapView.rendered = function () {
   var state = this.data.state;
 
+  mapElement = document.getElementById("map-canvas");
+
   GoogleMaps.init(
     {
         //'sensor': true, //optional
@@ -22,15 +28,14 @@ Template.MapView.rendered = function () {
     },
       function(){
 
-        var markers = [];
         var mapOptions = {
             zoom: 5,
             maxZoom: 15,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
-        map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+        map = new google.maps.Map(mapElement, mapOptions);
         map.setCenter(new google.maps.LatLng( 63.43, 10.39 ));
-        var infowindow = new google.maps.InfoWindow();
+
         var markerSize = { x: 22, y: 40 };
 
         google.maps.Marker.prototype.setLabel = function(label){
@@ -89,7 +94,7 @@ Template.MapView.rendered = function () {
             }
 
             // For each place, get the icon, place name, and location.
-            markers = [];
+
             var bounds = new google.maps.LatLngBounds();
 
             for (var i = 0, place; place = places[i]; i++) {
@@ -131,6 +136,7 @@ Template.MapView.rendered = function () {
                 map: map
               });
               marker.setMap(map);
+              markers.push(marker);
 
               google.maps.event.addListener(marker, 'dblclick', function(event) {
                 if(locationAdded) {
@@ -165,6 +171,7 @@ Template.MapView.rendered = function () {
               });
 
               marker.setMap(map);
+              markers.push(marker);
 
               google.maps.event.addListener(marker, 'dblclick', function(event) {
                 if(locationAdded) {
@@ -183,7 +190,6 @@ Template.MapView.rendered = function () {
             var reports = Reports.find({});
 
             reports.forEach(function (report) {
-
               report.mapPopup = true;
 
               if(report && report.project && report.project.name &&
@@ -197,22 +203,45 @@ Template.MapView.rendered = function () {
                 //an ugly hack to map a report id to a infowindow
                 $('<div id="' + report._id + '" class="report-id"> </div>').appendTo(div.getElementsByClassName('panel-default'));
 
-                infowindow.setContent(div.innerHTML);
-
                 var marker = new google.maps.Marker({
                 position: new google.maps.LatLng(report.project.location.coordinates.lat, report.project.location.coordinates.lng),
                   map: map,
                   label: report.project.name
               });
 
+              marker['infoWindow'] =  new google.maps.InfoWindow({
+                content: div.innerHTML
+              });
+
               marker.setMap(map);
+              markers.push(marker);
+
               google.maps.event.addListener(marker, 'click', function() {
-                infowindow.open(map, marker);
-              })
+                this['infoWindow'].open(map, this);
+              });
             }
           });
         });
       }
     }
   );
+};
+
+
+Template.MapView.destroyed = function () {
+  google.maps.event.clearInstanceListeners(window);
+  google.maps.event.clearInstanceListeners(document);
+  google.maps.event.clearInstanceListeners(mapElement);
+  google.maps.event.clearInstanceListeners(map);
+
+  for (var i = 0, marker; marker = markers[i]; i++) {
+    marker.setMap(null);
+    google.maps.event.clearInstanceListeners(marker);
+    marker = null;
+  }
+
+  markers.length = 0;
+  markers = [];
+  mapElement = null;
+  map = null;
 };

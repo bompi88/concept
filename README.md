@@ -136,5 +136,16 @@ Meteor bruker MongoDB som database. Hver rapport lagres i én json-fil i databas
 }
 ```
 
+### Brukermanual
+
+Brukermanualen er skrevet i `markdown` og kan genereres til \*.pdf og \*.epub ved bruk av [GitBook](https://github.com/GitbookIO/gitbook).
+
+Det finnes et GUI-program til GitBook også, det kan man laste ned [her](https://github.com/GitbookIO/editor/releases).
+
+For å kunne generere til `pdf` må man installere [Calibre](http://calibre-ebook.com). Last ned [her](http://calibre-ebook.com/download). Deretter må man be Calibre om å legge til cmd-tools:
+
+1. Gå til `Preferences->Avansert->Diverse`.
+2. Klikk `Installer kommandoverktøy`
+
 ## Copyright
 Laget av Bjørn Bråthen (bjorbrat88@gmail.com) og Andreas Drivenes (andreas.drivenes@gmail.com) for Concept-programmet på NTNU.

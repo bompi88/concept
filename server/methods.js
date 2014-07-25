@@ -13,5 +13,13 @@ Meteor.methods({
 	},
   totalCount: function(query) {
     return Reports.find(query).count();
+  },
+  createConceptUser: function(newUserEmail) {
+    var userId = Accounts.createUser({
+      email: newUserEmail
+    });
+
+    Accounts.sendEnrollmentEmail(userId, newUserEmail);
+    return true;
   }
 });

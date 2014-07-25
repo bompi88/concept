@@ -74,7 +74,7 @@ ReportScheme = new SimpleSchema({
     "project.finishingYear": {
         type: Number,
         label: "Årstall for ferdigstilling av prosjekt",
-        optional: false,
+        optional: true,
         max:9999,
         min:1900,
         regEx: /^[0-9]{4}$/
@@ -82,7 +82,7 @@ ReportScheme = new SimpleSchema({
     "project.evaluationYear": {
         type: Number,
         label: "Årstall for utført evaluering",
-        optional: false,
+        optional: true,
         max:9999,
         min:1900,
         regEx: /^[0-9]{4}$/
@@ -90,7 +90,7 @@ ReportScheme = new SimpleSchema({
     "project.decisionYear": {
         type: Number,
         label: "Årstall for vedtak",
-        optional: false,
+        optional: true,
         max:9999,
         min:1900,
         regEx: /^[0-9]{4}$/
@@ -102,7 +102,7 @@ ReportScheme = new SimpleSchema({
     "project.managementBudget.year": {
         type: Number,
         label: "Årstall (Styringsramme)",
-        optional: false,
+        optional: true,
         max:9999,
         min:1900,
         regEx: /^[0-9]{4}$/
@@ -110,7 +110,7 @@ ReportScheme = new SimpleSchema({
     "project.managementBudget.amount": {
         type: Number,
         label: "Styringsramme (i millioner NOK)",
-        optional: false,
+        optional: true,
         regEx: /^[0-9]{1-10}$/
     },
     "project.costBudget": {
@@ -120,7 +120,7 @@ ReportScheme = new SimpleSchema({
     "project.costBudget.year": {
         type: Number,
         label: "Årstall (Kostnadsramme)",
-        optional: false,
+        optional: true,
         max:9999,
         min:1900,
         regEx: /^[0-9]{4}$/
@@ -128,7 +128,7 @@ ReportScheme = new SimpleSchema({
     "project.costBudget.amount": {
         type: Number,
         label: "Kostnadsramme (i millioner NOK)",
-        optional: false,
+        optional: true,
         regEx: /^[0-9]{1-10}$/
     },
     "project.costFinal": {
@@ -138,7 +138,7 @@ ReportScheme = new SimpleSchema({
     "project.costFinal.year": {
         type: Number,
         label: "Årstall (Sluttkostnad)",
-        optional: false,
+        optional: true,
         max:9999,
         min:1900,
         regEx: /^[0-9]{4}$/
@@ -146,7 +146,7 @@ ReportScheme = new SimpleSchema({
     "project.costFinal.amount": {
         type: Number,
         label: "Sluttkostnad (i millioner NOK)",
-        optional: false,
+        optional: true,
         regEx: /^[0-9]{1-10}$/
     },
     "evaluation": {
@@ -335,8 +335,7 @@ ReportScheme = new SimpleSchema({
     "images.$.link": {
         type: String,
         label: "Kilde-URL",
-        optional: true,
-        regEx: SimpleSchema.RegEx.Url
+        optional: true
     },
     "references": {
         type: [Object],

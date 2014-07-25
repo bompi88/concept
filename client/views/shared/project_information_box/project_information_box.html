@@ -4,25 +4,57 @@
 			<h4 class="panel-heading text-center"> {{#if mapPopup}} {{project.name}} {{else}} Prosjektinformasjon {{/if}}</h4>
 		</div>
 		<div class="panel-body">
-			<div class="overlay"></div>
 			<section id="faktaboks">
-				<dl class="dl-horizontal {{#unless mapPopup}} ls-offset {{/unless}}">
+				<dl class="dl-horizontal ls-offset">
 					<dt>Sektor</dt>
 					<dd>{{project.sector}}</dd>
 					<dt>Suksess</dt>
 					<dd>{{>TrafficLight}}</dd>
 					<dt>Årstall påbegynt</dt>
-					<dd>{{project.decisionYear}}</dd>
+					<dd>
+            {{#if project.decisionYear}}
+              {{project.decisionYear}}
+            {{else}} -
+            {{/if}}
+          </dd>
 					<dt>Årstall ferdigstilt</dt>
-					<dd>{{project.finishingYear}}</dd>
+					<dd>
+            {{#if project.finishingYear}}
+              {{project.finishingYear}}
+            {{else}} -
+            {{/if}}
+          </dd>
 					<dt>Årstall evaluering</dt>
-					<dd>{{project.evaluationYear}}</dd>
+					<dd>
+            {{#if project.evaluationYear}}
+              {{project.evaluationYear}}
+            {{else}} -
+            {{/if}}
+          </dd>
 					<dt>Styringsramme</dt>
-					<dd>{{project.managementBudget.amount}} mill (i år {{project.managementBudget.year}})</dd>
+					<dd>
+            {{#if project.managementBudget.amount}}
+              {{project.managementBudget.amount}} mill {{#if project.managementBudget.year}} (i år {{project.managementBudget.year}}){{/if}}
+            {{else}}
+              -
+            {{/if}}
+          </dd>
 					<dt>Kostnadsramme</dt>
-					<dd>{{project.costBudget.amount}} mill (i år {{project.costBudget.year}})</dd>
+					<dd>
+            {{#if project.costBudget.amount}}
+              {{project.costBudget.amount}} mill {{#if project.costBudget.year}} (i år {{project.costBudget.year}}){{/if}}
+            {{else}}
+              -
+            {{/if}}
+          </dd>
 					<dt>Sluttkostnad</dt>
-					<dd>{{project.costFinal.amount}} mill (i år {{project.costFinal.year}})</dd>
+					<dd>
+            {{#if project.costFinal.amount}}
+              {{project.costFinal.amount}} mill {{#if project.costFinal.year}} (i år {{project.costFinal.year}}){{/if}}
+            {{else}}
+              -
+            {{/if}}
+          </dd>
 					<dt>Evaluator</dt>
 					<dd>{{responsible.organization}}</dd>
 				</dl>

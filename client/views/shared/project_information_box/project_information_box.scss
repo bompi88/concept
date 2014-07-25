@@ -4,19 +4,23 @@ dt:after {
 
 
 .ls-offset {
-	width:90%;
 	margin: 0 auto;
 }
 
-.panel-default:hover {
+#map-canvas .panel-default:hover {
 
 	border-color: darken(#fff, 20% )!important;
+	cursor: pointer!important;
+	background-color: darken(rgba(255,255,255,0.2), 40%);
 
-	.overlay{
-		display:block!important;
-		background-color:darken(#fff, 40%)!important;
-		opacity:0.2!important;
-		cursor: pointer!important;
+	.panel-heading {
+
+		background-color: rgba(49, 111, 143, 0.2);
+
+		h4 {
+			background:none;
+			color:#008cba !important;
+		}
 	}
 
 	h4, dt, dd{
@@ -24,29 +28,42 @@ dt:after {
 	}
 }
 
-.dl-horizontal.ls-offset {
-	width:100%;
-	display: block;
+@media (min-width: 400px) {
+	.dl-horizontal.ls-offset {
+		width:100%;
+		display: block;
 
+		dt {
+			text-align:right;
+			display: inline-block;
+			width:49%;
+			margin: 0;
+			padding-right: 5px;
+		}	
 
-	dt {
-		text-align:right;
-		display: inline-block;
-		width:49%;
-		margin: 0;
-		padding-right: 5px;
-	}	
-
-	dd {	
-		display: inline-block;
-		width:49%;
-		margin:0;
-		padding-left: 5px;
+		dd {	
+			display: inline-block;
+			width:49%;
+			margin:0;
+			padding-left: 5px;
+		}
 	}
+
+
 }
 
 @media (max-width: 991px) {
 	div.panel.panel-info{
 		margin-top: 40px;
+	}
+}
+
+@media (max-width: 400px) {
+	div.panel{
+		text-align: center;
+
+	}
+	#faktaboks div.light.tool-top  {
+		margin:  0 auto;
 	}
 }

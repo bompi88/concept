@@ -16,7 +16,6 @@ cfs-graphicsmagick
 cfs-ui
 chartjs
 handlebar-helpers
-auto-nprogress
 collection2
 autoform
 ms-seo
@@ -27,3 +26,7 @@ pdfkit
 just-i18n
 appcache
 googlemaps
+iconv-lite
+kadira
+iron-router-progress
+iron-router-ga

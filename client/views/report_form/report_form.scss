@@ -25,3 +25,9 @@ fieldset {
 form {
 	margin: 0 20px;
 }
+
+// UI Pan Controller fix, google maps IE
+.gmnoprint div[title^="Pan"]
+{
+    opacity: 0 !important;
+}

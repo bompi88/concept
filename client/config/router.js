@@ -9,5 +9,6 @@ Router.configure({
   yieldTemplates: {
     'TopNavbar':{to: 'nav'},
     'Footer': {to: 'footer'}
-  }
+  },
+  trackPageView: true
 });

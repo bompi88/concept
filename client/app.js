@@ -40,6 +40,14 @@ App.helpers = {
 		return '';
 	},
 
+  '$convertLineBreaks': function(text) {
+    if (text != null) {
+      text = text.replace(/^[\r\n]+|[\r\n]+$/g,'').replace(/(?:\r\n|\r|\n)/g, '<br />');
+      return text.trim();
+    }
+    return null;
+  },
+
   /**
    * Returns true if the current visiting route is equal to the
    * route given.
@@ -121,7 +129,7 @@ App.helpers = {
 
     var query = { _id: id };
 
-    var store = args || args.hash || args.hash.store || null;
+    var store = args && args.hash && args.hash.store || null;
 
     var file;
 
@@ -132,7 +140,7 @@ App.helpers = {
     }
 
     if (file) {
-      return file.url(store);
+      return file.url({store: store});
     } else {
       return false;
     }

@@ -23,8 +23,8 @@
 				</div>
 
 				{{! An descriptive image of the project.}}
-				<div class="col-xs-5 box-image" style="height:100%;">
-					<img class="img-responsive" src="{{$getUrlById images.[0].fileId 'images' store='thumbs'}}" style="margin: 0 auto; max-height:100px;" alt="Bilde knyttet til {{project.name}}.">
+				<div class="col-xs-5 box-image text-center" style="height:100%;padding:5px 0;">
+					<img class="" src="{{#if images.[0]}}{{$getUrlById images.[0].fileId 'images' store='fixed'}}{{else}}http://placehold.it/100/eeeeee/999999&text=Tomt{{/if}}" style="margin: 0 auto; max-height:100px;" alt="Bilde knyttet til {{project.name}}.">
 				</div>
 			</section>
 
@@ -48,11 +48,23 @@
 		</li>
 		<li class="list-group-item">
 			<span class="bold">Ferdigstilt:</span>
-			<span class="pull-right">{{project.finishingYear}}</span>
+			<span class="pull-right">
+        {{#if project.finishingYear}}
+          {{project.finishingYear}}
+        {{else}}
+          -
+        {{/if}}
+      </span>
 		</li>
 		<li class="list-group-item">
 			<span class="bold">Sluttkostnad:</span>
-			<span class="pull-right">{{project.costFinal.amount}} mill.</span>
+			<span class="pull-right">
+        {{#if project.costFinal.amount}}
+          {{project.costFinal.amount}} mill.
+        {{else}}
+          -
+        {{/if}}
+      </span>
 		</li>
 		<li class="list-group-item">
 			<span class="bold">Suksess:</span>

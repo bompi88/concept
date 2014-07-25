@@ -23,10 +23,22 @@ createMofidiers = function(modifier, tmpl) {
     var viabilityValue = parseInt(tmpl.find('input[name="num-eval-viability"]:checked').value);
     var profitabilityValue = parseInt(tmpl.find('input[name="num-eval-profitability"]:checked').value);
 
-    var success = Math.round((((productivityValue + achievementValue + effectsValue +
-        relevanceValue + viabilityValue + profitabilityValue - 6)/31) + (1/6)) * 3);
+    // Scale the points from range (p-q) to range (a-b)
+    // Uses linear mapping
+    var criteriaCount = (productivityValue && 1) + (achievementValue && 1) + (effectsValue && 1) + (relevanceValue && 1) + (viabilityValue && 1) + (profitabilityValue && 1);
+    var divider = ((6 * criteriaCount) - 6);
 
-    console.log(success)
+    var success = 1;
+
+    if (divider) {
+      var x = productivityValue + achievementValue + effectsValue +
+        relevanceValue + viabilityValue + profitabilityValue;
+
+      var y = 1 + (x-6)*(3-1) / divider;
+
+      success = Math.round(y);
+    }
+
     var mods = {
         "project.location.coordinates.lat": lat,
         "project.location.coordinates.lng": lng,
@@ -43,28 +55,35 @@ createMofidiers = function(modifier, tmpl) {
     var imgsIds = uploadObject.getImages();
     var imgs = [];
 
-    for (var i = 0; i < imgsIds.length; i++){
+    if(imgsIds.length) {
+      for (var i = 0; i < imgsIds.length; i++){
         var img = {
             fileId: imgsIds[i],
-            title: tmpl.find('#title-' + imgsIds[i]).value,
-            copyright: tmpl.find('#copyright-' + imgsIds[i]).value,
-            link: tmpl.find('#link-' + imgsIds[i]).value
+            title: tmpl.find('#title-' + imgsIds[i]) && tmpl.find('#title-' + imgsIds[i]).value || null,
+            copyright: tmpl.find('#copyright-' + imgsIds[i]) && tmpl.find('#copyright-' + imgsIds[i]).value || null,
+            link: tmpl.find('#link-' + imgsIds[i]) &&  tmpl.find('#link-' + imgsIds[i]).value || null
         };
-        imgs.push(img);
+        if(Images.findOne({ _id: imgsIds[i]}))
+          imgs.push(img);
+      }
     }
+
     mods.images = imgs;
 
     var filesIds = uploadObject.getReferences();
     var files = [];
 
-    for (var i = 0; i < filesIds.length; i++){
+    if(filesIds.length) {
+      for (var i = 0; i < filesIds.length; i++){
         var file = {
             fileId: filesIds[i],
-            title: tmpl.find('#title-' + filesIds[i]).value,
-            typedoc: tmpl.find('#typedoc-' + filesIds[i]).value,
-            date: tmpl.find('#date-' + filesIds[i]).value
+            title: tmpl.find('#title-' + filesIds[i]) && tmpl.find('#title-' + filesIds[i]).value || null,
+            typedoc: tmpl.find('#typedoc-' + filesIds[i]) && tmpl.find('#typedoc-' + filesIds[i]).value || null,
+            date: tmpl.find('#date-' + filesIds[i]) && tmpl.find('#date-' + filesIds[i]).value || null
         };
+      if(Files.findOne({ _id: filesIds[i]}))
         files.push(file);
+      }
     }
 
     mods.references = files;
@@ -103,21 +122,21 @@ createReport = function(tmpl) {
     report.project.projectDescription.short = tmpl.find('#project-desc-short').value;
     report.project.projectDescription.long = tmpl.find('#project-desc-long').value;
 
-    report.project.finishingYear = parseInt(tmpl.find('#finishing-year').value);
-    report.project.evaluationYear = parseInt(tmpl.find('#eval-year').value);
-    report.project.decisionYear = parseInt(tmpl.find('#decision-year').value);
+    report.project.finishingYear = parseInt(tmpl.find('#finishing-year').value) || null;
+    report.project.evaluationYear = parseInt(tmpl.find('#eval-year').value) || null;
+    report.project.decisionYear = parseInt(tmpl.find('#decision-year').value) || null;
 
     report.project.managementBudget = {};
     report.project.costBudget = {};
     report.project.costFinal = {};
 
-    report.project.managementBudget.year = parseInt(tmpl.find('#management-budget-year').value);
-    report.project.costBudget.year = parseInt(tmpl.find('#cost-budget-year').value);
-    report.project.costFinal.year = parseInt(tmpl.find('#cost-final-year').value);
+    report.project.managementBudget.year = parseInt(tmpl.find('#management-budget-year').value) || null;
+    report.project.costBudget.year = parseInt(tmpl.find('#cost-budget-year').value) || null;
+    report.project.costFinal.year = parseInt(tmpl.find('#cost-final-year').value) || null;
 
-    report.project.managementBudget.amount = parseInt(tmpl.find('#management-budget').value);
-    report.project.costBudget.amount = parseInt(tmpl.find('#cost-budget').value);
-    report.project.costFinal.amount = parseInt(tmpl.find('#cost-final').value);
+    report.project.managementBudget.amount = parseInt(tmpl.find('#management-budget').value) || null;
+    report.project.costBudget.amount = parseInt(tmpl.find('#cost-budget').value) || null;
+    report.project.costFinal.amount = parseInt(tmpl.find('#cost-final').value) || null;
 
     report.responsible = {};
     report.responsible.organization = tmpl.find('#eval-responsible-org').value || "";
@@ -166,13 +185,21 @@ createReport = function(tmpl) {
     report.evaluation.viability.value = viabilityValue;
     report.evaluation.profitability.value = profitabilityValue;
 
-    report.project.successCategory = Math.round((((productivityValue + achievementValue + effectsValue +
-        relevanceValue + viabilityValue + profitabilityValue - 6)/31) + (1/6)) * 3);
+    var criteriaCount = (productivityValue && 1) + (achievementValue && 1) + (effectsValue && 1) + (relevanceValue && 1) + (viabilityValue && 1) + (profitabilityValue && 1);
+    var divider = (criteriaCount * 6);
+
+    if (divider) {
+      report.project.successCategory = Math.round((((productivityValue + achievementValue + effectsValue +
+        relevanceValue + viabilityValue + profitabilityValue) / divider)) * 3);
+    } else {
+      report.project.successCategory = 1;
+    }
 
     var imgsIds = uploadObject.getImages();
     var imgs = [];
 
-    for (var i = 0; i < imgsIds.length; i++){
+    if(imgsIds.length) {
+      for (var i = 0; i < imgsIds.length; i++){
         var img = {
             fileId: imgsIds[i],
             title: tmpl.find('#title-' + imgsIds[i]).value,
@@ -180,6 +207,7 @@ createReport = function(tmpl) {
             link: tmpl.find('#link-' + imgsIds[i]).value
         };
         imgs.push(img);
+      }
     }
 
     report.images = imgs;
@@ -187,7 +215,8 @@ createReport = function(tmpl) {
     var filesIds = uploadObject.getReferences();
     var files = [];
 
-    for (var i = 0; i < filesIds.length; i++){
+    if(filesIds.length) {
+      for (var i = 0; i < filesIds.length; i++){
         var file = {
             fileId: filesIds[i],
             title: tmpl.find('#title-' + filesIds[i]).value,
@@ -195,6 +224,7 @@ createReport = function(tmpl) {
             date: tmpl.find('#date-' + filesIds[i]).value
         };
         files.push(file);
+      }
     }
 
     report.references = files;

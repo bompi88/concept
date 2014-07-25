@@ -33,6 +33,10 @@ Template.EvaluationParagraph.helpers({
   }
 });
 
+Template.EvaluationParagraph.destroyed = function () {
+  Session.set(this.data.id, null);
+};
+
 Template.Report.helpers({
   buttonDisabled: function() {
     return !Session.get('exportReady');

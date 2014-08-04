@@ -2,8 +2,8 @@
  * Reports Scheme
  */
 
-var textAreaRegEx = /^[a-z0-9A-z .,!;\n\r&:%"?æøåÆØÅèÈéÉ\/()<«»>-]*$/;
-var textFieldRegEx = /^[a-z0-9A-z .,æøåÆØÅèÈéÉ()-]{2,100}$/;
+var textAreaRegEx = /^[a-z0-9A-z .,!;\n\r&:%"?æøåÆØÅèÈéÉäÄöÖëËòóÒÓ\/()<«»>-]*$/;
+var textFieldRegEx = /^[a-z0-9A-z .,æøåÆØÅèÈéÉäÄöÖëËòóÒÓ()-]{2,100}$/;
 
 ReportScheme = new SimpleSchema({
     project: {

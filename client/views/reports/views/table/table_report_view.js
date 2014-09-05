@@ -41,7 +41,7 @@ Template.TableReportView.isChecked = function() {
   return false;
 }
 
-Template.TableReportView.infoText = "Tallene er i noen tilfeller prisberegnet av evaluator. Se nærmere omtalen av hvert prosjekt.";
+Template.TableReportView.infoText = "Tallene er i noen tilfeller prisomregnet av evaluator. Se nærmere omtalen av hvert prosjekt.";
 
 Template.TableReportView.rendered = function () {
   $('.pop-info').popover({

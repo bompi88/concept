@@ -97,19 +97,6 @@ $header-section-background-color: darken(#fff, 2%);
 	font-size: 13px;
 	padding: 5px;
 	border-top: 1px solid darken($box-background-color,2%);
-	text-align: justify;
-	
-	p {
-		-ms-word-break: break-all;
-		word-break: break-all;
-		word-break: break-word;
-
-		-webkit-hyphens: auto;
-		-moz-hyphens: auto;
-		-ms-hyphens: auto;
-		hyphens: auto;
-		hyphenate-character: "\2112";
-	}
 }
 
 .overlay {

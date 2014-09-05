@@ -23,21 +23,16 @@ createMofidiers = function(modifier, tmpl) {
     var viabilityValue = parseInt(tmpl.find('input[name="num-eval-viability"]:checked').value);
     var profitabilityValue = parseInt(tmpl.find('input[name="num-eval-profitability"]:checked').value);
 
-    // Scale the points from range (p-q) to range (a-b)
-    // Uses linear mapping
+    // determine success category by calculating the mean score and map to three equal intervals
+    //1 - 2.66 is RED (1), 2.66 - 4.32 is ORANGE (2), and 4.32-6 is GREEN (3)
     var criteriaCount = (productivityValue && 1) + (achievementValue && 1) + (effectsValue && 1) + (relevanceValue && 1) + (viabilityValue && 1) + (profitabilityValue && 1);
-    var divider = ((6 * criteriaCount) - 6);
-
+    //RED by default
     var success = 1;
-
-    if (divider) {
-      var x = productivityValue + achievementValue + effectsValue +
-        relevanceValue + viabilityValue + profitabilityValue;
-
-      var y = 1 + (x-6)*(3-1) / divider;
-
-      success = Math.round(y);
-    }
+    var meanScore = 6*(productivityValue + achievementValue + effectsValue + relevanceValue + viabilityValue + profitabilityValue)/criteriaCount;
+    if(meanScore > (8/3) && meanScore <= (13/3))
+      success = 2;
+    else if(meanScore > (13/3))
+      success = 3;
 
     var mods = {
         "project.location.coordinates.lat": lat,

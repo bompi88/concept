@@ -31,13 +31,13 @@ files		- An reactive object where the files is stored.
 							{{#unless this.isUploaded}}
 								<span class="glyphicon glyphicon-file" style="font-size:75px;"></span>
 							{{else}}
-								{{> Img getUrl this "original"}}
+								{{> Img getUrl this "thumbs"}}
 							{{/unless}}
 						{{else}}
 							<span class="glyphicon glyphicon-file" style="font-size:75px;"></span>
 						{{/if}}
 					</td>
-					{{#with getData this._id parent=..}}
+					{{!-- {{#with getData this._id parent=..}} --}}
 					<td class="vert-align">
 						<h5>Navn: {{this.name}}</h5>
 						{{#if $eq collectionName "images"}}
@@ -66,7 +66,7 @@ files		- An reactive object where the files is stored.
 					<td class="text-center vert-align">
 						{{#FS.DeleteButton type=type class="btn btn-danger btn-xs"}}Slett{{/FS.DeleteButton}}
 					</td>
-					{{/with}}
+					{{!-- {{/with}} --}}
 				</tr>
 				{{/each}}
 			</tbody>

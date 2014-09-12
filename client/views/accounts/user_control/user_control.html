@@ -1,0 +1,38 @@
+<template name="UserControl">
+  <div class="container">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <h2>Brukerliste</h2>
+        <p>Vis brukere som finnes i systemet. "Slett bruker" sletter en bruker umiddelbart!</p>
+        <table class="table table-bordered text-center">
+          <thead>
+            <tr>
+              <th>Epost</th>
+              <th>Status</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each users}}
+            <tr>
+              <td>{{emails.[0].address}}</td>
+              <td>{{status}}</td>
+              <td><button class="btn btn-danger btn-sm" id="rem-user">Slett bruker</button></td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+        {{#if isSuperUser}}
+        <h3>Legg til bruker</h3>
+        <p>Den nye brukeren får en epost med instruksjoner for å aktivere kontoen og samtidig sette sitt eget passord. Aktivering av kontoen må gjøres før det har gått 24 timer</p>
+        <form class="form-inline" role="form">
+          <div class="form-group">
+            <input name="newUserEmail" type="email" class="form-control" placeholder="Skriv inn epost" required autofocus>
+          </div>
+          <button id='submit' class="btn btn-primary" type="submit">Send epost til ny bruker</button>
+        </form>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</template>

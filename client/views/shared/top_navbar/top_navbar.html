@@ -24,7 +24,7 @@ This is the navbar located at the top.
 
           {{#if currentUser}}
             {{> NavBarButton route='CreateReport' name='Opprett rapport'}}
-            {{> NavBarCreateUserDropdown}}
+            {{> NavBarButton route='UserControl' name='Brukerhåndtering'}}
           {{/if}}
         </ul>
         {{#if currentUser}}

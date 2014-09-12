@@ -62,7 +62,7 @@ manuelschoebel:ms-seo@0.3.0
 meteor-platform@1.0.2
 meteor@1.0.3
 meteorhacks:kadira-binary-deps@1.0.1
-meteorhacks:kadira@2.6.4
+meteorhacks:kadira@2.7.5
 minifiers@1.0.2
 minimongo@1.0.2
 mizzao:bootboxjs@4.3.0

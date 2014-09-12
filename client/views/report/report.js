@@ -65,7 +65,6 @@ Template.Report.helpers({
 Template.Report.rendered = function() {
 
   Deps.autorun(function () {
-
     Meteor.defer(function() {
       $('#projectImage a.image-link').magnificPopup({
         type:'image'
@@ -79,7 +78,7 @@ Template.Report.rendered = function() {
         }
       });
     });
-    var report = Router.data && Router.data();
+    var report = Router._currentController && Router._currentController.data && Router._currentController.data();
 
     if (report) {
       var criteria = _.omit(report.evaluation,'overall');
@@ -184,7 +183,9 @@ Template.Report.rendered = function() {
           }, 1500);
         }
       }
+      console.log("BÆSJ")
       Meteor.defer(function() {
+        console.log("BÆSJ")
         // initialize the spider diagram
         var el = $("#spiderEvaluation");
         if (el && el.get(0)) {

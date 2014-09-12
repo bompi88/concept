@@ -50,6 +50,12 @@ Router.map(function () {
     template: 'LoginForm'
   });
 
+  this.route('UserControl', {
+    path: '/user-control',
+    template: 'UserControl',
+    controller: 'UserControlController'
+  });
+
   // -- Miscellaneous routes ---------------------------------------------
 
   this.route('AboutConcept', {
@@ -60,3 +66,8 @@ Router.map(function () {
     path: '/evaluation-criteria'
   });
 });
+
+
+//where to put this? we need to subscribe for the account field for the user
+Meteor.subscribe('moreUserData');
+

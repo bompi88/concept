@@ -127,7 +127,7 @@ Template.ReportForm.helpers({
   imagesList: function() {
     if(currentRouteIs('EditReport')) {
 
-      var report = Router.getData();
+      var report = Router.data && Router.data();
 
       if(report) {
         var new_img_ids = uploadObject.getImages();
@@ -142,7 +142,7 @@ Template.ReportForm.helpers({
   },
   referencesList: function() {
     if(currentRouteIs('EditReport')) {
-      var report = Router.getData();
+      var report = Router.data && Router.data();
 
       if(report) {
         var new_files_ids = uploadObject.getReferences();

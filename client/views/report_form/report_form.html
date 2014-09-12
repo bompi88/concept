@@ -111,12 +111,12 @@ type 		- Type of form; insert, update or remove.
 
 		<fieldset>
 			<legend>Referanser</legend>
-			{{> Dropzone tp="files" typeDesc="dokumenter" files=referencesList}}
+			{{> Dropzone tp="files" typeDesc="dokumenter" doc=this.doc files=referencesList}}
 		</fieldset>
 
 		<fieldset>
 			<legend>Illustrasjoner</legend>
-			{{> Dropzone tp="images" typeDesc="bildefiler" files=imagesList}}
+			{{> Dropzone tp="images" typeDesc="bildefiler" doc=this.doc files=imagesList}}
 		</fieldset>
 
 		<fieldset>
@@ -133,8 +133,10 @@ type 		- Type of form; insert, update or remove.
 	{{/autoForm}}
 
 	{{#if $currentRouteIs 'EditReport'}}
-		{{#afDeleteButton collection="Reports" doc=this.doc class="delete-btn"}}
+  {{! Delete button is now a separate package :( )}}
+
+{{!-- 		{{#afDeleteButton collection="Reports" doc=this.doc class="delete-btn"}}
 		Slett
-		{{/afDeleteButton}}
+		{{/afDeleteButton}} --}}
 	{{/if}}
 </template>

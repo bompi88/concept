@@ -1,34 +1,4 @@
 {
   "packages": {
-    "iron-router": {},
-    "bootstrap3-sass": {},
-    "accounts-ui-bootstrap-3": {
-      "git": "https://github.com/todi01/meteor-accounts-ui-bootstrap-3.git",
-      "branch": "master"
-    },
-    "collectionFS": {},
-    "cfs-ui": {
-      "git": "https://github.com/bompi88/Meteor-cfs-ui.git"
-    },
-    "chartjs": {},
-    "handlebar-helpers": {},
-    "collection2": {},
-    "autoform": {},
-    "ms-seo": {},
-    "animate-css": {},
-    "bootboxjs": {
-      "git": "https://github.com/TimHeckel/meteor-bootboxjs.git",
-      "branch": "master"
-    },
-    "pdfkit": {},
-    "just-i18n": {},
-    "googlemaps": {},
-    "iconv-lite": {
-      "git": "https://github.com/bompi88/meteor-iconv-lite.git",
-      "branch": "master"
-    },
-    "kadira": {},
-    "iron-router-progress": {},
-    "iron-router-ga": {}
   }
 }

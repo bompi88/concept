@@ -153,7 +153,7 @@ Template.MapView.rendered = function () {
 
           // If the data gets updated.
           Deps.autorun(function () {
-            var report = Router.getData();
+            var report = Router.data && Router.data();
             if(report && report.project && report.project.location &&
               report.project.location.coordinates &&
               report.project.location.coordinates.lat && report.project.location.coordinates.lng) {

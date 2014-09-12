@@ -79,7 +79,7 @@ Template.Report.rendered = function() {
         }
       });
     });
-    var report = Router.getData();
+    var report = Router.data && Router.data();
 
     if (report) {
       var criteria = _.omit(report.evaluation,'overall');

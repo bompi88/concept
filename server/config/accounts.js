@@ -7,11 +7,12 @@ Meteor.startup(function() {
 
 	// create a admin user if not allready present
 	if(Meteor.users.find({ 'emails.address' : admEmail }).count() === 0) {
-		Accounts.createUser({
+		var newUserId = Accounts.createUser({
       email : admEmail,
       password : admPasswd,
       profile  : {}
     });
+    Meteor.users.update({_id: newUserId}, {$set : {accountType: 'admin'}});
 	}
 });
 

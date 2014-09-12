@@ -5,7 +5,7 @@ Dropzone: An element to upload files, either by dropping or regular click and se
 ================================================================================================
 Params:
 ================================================================================================
-files		- An reactive object where the files is stored. Creates an editable list based on this array 
+files		- An reactive object where the files is stored. Creates an editable list based on this array
 tp			- Which collection to upload to.
 
 -->
@@ -13,7 +13,7 @@ tp			- Which collection to upload to.
 <template name="Dropzone">
 	<div class="row">
 		<div class="col-xs-12">
-			{{> DownloadList files=this.files type=this.tp}}
+			{{> DownloadList files=this.files type=this.tp doc=this.doc}}
 		</div>
 		<div class="col-xs-12">
 			<div  class="dropzone text-center" id="dropzone-{{tp}}" style="text-aling:center;">

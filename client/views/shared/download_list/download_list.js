@@ -4,9 +4,10 @@
 
 Template.DownloadList.helpers({
   getData: function(id, options) {
-    var report = this;
-    console.log(options.hash.parent)
+
     if(options.hash && options.hash.parent && options.hash.parent.type) {
+
+      var report = options.hash.parent.doc;
       if (options.hash.parent.type === 'images') {
         if(report && report.images){
             var img_data = _.find(report.images, function(img){ return img.fileId == id; });

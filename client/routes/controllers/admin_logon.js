@@ -4,10 +4,6 @@
  * not already logged in.
  */
 AdminLogonController = RouteController.extend({
-	waitOn: function () {
-		return Meteor.user();
-	},
-
 	onBeforeAction: function(pause) {
     // Redirects user if allready logged in
 		if (Meteor.user()) {

@@ -1,7 +1,7 @@
 Template.TableReportView.events({
   'click .row-item': function(event, tmpl) {
     $('.pop-info').popover('hide');
-    Router.go(Router.path('Report', {_id: this._id}));
+    Router.go('Report', {_id: this._id, slug: slugify(this.project.name)});
   },
   'click div.popover-content': function() {
     $('.pop-info').popover('hide');

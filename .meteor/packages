@@ -28,4 +28,5 @@ cfs:standard-packages
 cfs:gridfs
 cfs:graphicsmagick
 mrt:iconv-lite
+aldeed:delete-button
 

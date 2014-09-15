@@ -86,20 +86,20 @@ Template.Reports.events({
     event.currentTarget.blur();
     var newPage = parseInt(tmpl.find(event.target).textContent);
     Session.set('currentPage', newPage);
-    Router.go('Reports', {page: (newPage - 1)});
+    Router.go('Reports', {page: newPage});
   },
   'click #next-page': function(event) {
     var page = Session.get('currentPage');
     if(page + 1 <= Session.get('numberOfPages')) {
       Session.set('currentPage', page + 1);
-      Router.go('Reports', {page: page});
+      Router.go('Reports', {page: page + 1});
     }
   },
   'click #last-page': function(event) {
     var page = Session.get('currentPage');
     if(page - 1 >= 1) {
       Session.set('currentPage', page - 1);
-      Router.go('Reports', {page: (page - 2)});
+      Router.go('Reports', {page: (page - 1)});
     }
   }
 });

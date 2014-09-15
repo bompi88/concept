@@ -17,7 +17,7 @@ Router.map(function () {
   this.route('ReportsIndex', {
     path: '/rapporter',
     onBeforeAction: function() {
-      this.redirect('/rapporter/0');
+      this.redirect('/rapporter/side/1');
     }
   });
 

@@ -13,7 +13,7 @@ Template.Report.events({
   },
 
   'click .edit-btn': function(event, tmpl) {
-    Router.go('/report/' + this._id + '/edit');
+    Router.go('EditReport', {_id: this._id});
   },
   'click .read-more': function(event, tmpl) {
     Session.set(event.currentTarget.id, !(Session.get(event.currentTarget.id) || false));

@@ -130,13 +130,9 @@ type 		- Type of form; insert, update or remove.
 			<button type="submit" class="btn btn-primary pull-right">Opprett</button>
 		{{/if}}
 		<button type="button" class="btn btn-default pull-right cancel-btn">Avbryt</button>
+
+    {{#if $currentRouteIs 'EditReport'}}
+      {{#quickRemoveButton collection="Reports" class="btn btn-danger delete-btn" _id=this.doc._id}}Slett{{/quickRemoveButton}}
+    {{/if}}
 	{{/autoForm}}
-
-	{{#if $currentRouteIs 'EditReport'}}
-  {{! Delete button is now a separate package :( )}}
-
-{{!-- 		{{#afDeleteButton collection="Reports" doc=this.doc class="delete-btn"}}
-		Slett
-		{{/afDeleteButton}} --}}
-	{{/if}}
 </template>

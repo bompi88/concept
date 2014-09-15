@@ -10,7 +10,7 @@ Router.map(function () {
   // -- Report routes ---------------------------------------------------
 
   this.route('Reports', {
-    path: '/rapporter/:page',
+    path: '/rapporter/side/:page',
     controller: 'ReportsController'
   });
 
@@ -51,7 +51,7 @@ Router.map(function () {
   });
 
   this.route('UserControl', {
-    path: '/brukerkontroll',
+    path: '/brukere',
     template: 'UserControl',
     controller: 'UserControlController'
   });

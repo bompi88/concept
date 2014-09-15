@@ -27,9 +27,9 @@ AutoForm.hooks({
         },
         onSuccess: function(operation, result, tmpl) {
             if (operation === 'update')
-                return Router.go(Router.path('Reports', {page: 0}));
+                return Router.go(Router.path('Reports', {page: 1}));
             else
-                return Router.go(Router.path('Reports', {page: 0}));
+                return Router.go(Router.path('Reports', {page: 1}));
         },
         onError: function(operation, error, template) {
             console.log(error);

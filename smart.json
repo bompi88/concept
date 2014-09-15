@@ -1,24 +1,42 @@
 {
   "packages": {
-    "iron-router": {},
+    "iron-router": {
+      "git": "https://github.com/EventedMind/iron-router.git",
+      "branch": "devel",
+      "commit": "d1ffb3f06ea4c112132b030f2eb1a70b81675ecb"
+    },
     "bootstrap3-sass": {},
     "accounts-ui-bootstrap-3": {
       "git": "https://github.com/todi01/meteor-accounts-ui-bootstrap-3.git",
-      "branch": "master"
+      "branch": "master",
+      "commit": "b384a4995555c685c26b59499c7a4304a7ff25e1"
     },
-    "collectionFS": {},
+    "collectionFS": {
+      "git": "https://github.com/CollectionFS/Meteor-CollectionFS.git",
+      "branch": "devel",
+      "commit": "fea890b1e27799ccc9f71046748fb23a84330a16"
+    },
     "cfs-ui": {
       "git": "https://github.com/bompi88/Meteor-cfs-ui.git"
     },
     "chartjs": {},
     "handlebar-helpers": {},
-    "collection2": {},
-    "autoform": {},
+    "collection2": {
+      "git": "https://github.com/aldeed/meteor-collection2.git",
+      "tag": "v0.4.2",
+      "commit": "4ff4b707bec8be434919730bf101325adb215444"
+    },
+    "autoform": {
+      "git": "https://github.com/aldeed/meteor-autoform.git",
+      "tag": "v0.15.3",
+      "commit": "b0574c71d33ea8ecff397b3bf054601fb979e0b8"
+    },
     "ms-seo": {},
     "animate-css": {},
     "bootboxjs": {
       "git": "https://github.com/TimHeckel/meteor-bootboxjs.git",
-      "branch": "master"
+      "branch": "master",
+      "commit": "c125969c1f3aef30e2a2ff20252bd3b2e4014b2f"
     },
     "pdfkit": {},
     "just-i18n": {},
@@ -27,7 +45,10 @@
       "git": "https://github.com/bompi88/meteor-iconv-lite.git",
       "branch": "master"
     },
-    "kadira": {},
+    "kadira": {
+      "tag": "v2.4.9",
+      "commit": "8bb902989917522822a0897117672ae858c23427"
+    },
     "iron-router-progress": {},
     "iron-router-ga": {}
   }

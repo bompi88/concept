@@ -10,30 +10,30 @@ Router.map(function () {
   // -- Report routes ---------------------------------------------------
 
   this.route('Reports', {
-    path: '/reports/:page',
+    path: '/rapporter/:page',
     controller: 'ReportsController'
   });
 
   this.route('ReportsIndex', {
-    path: '/reports',
+    path: '/rapporter',
     onBeforeAction: function() {
-      this.redirect('/reports/0');
+      this.redirect('/rapporter/0');
     }
   });
 
   this.route('CreateReport', {
-    path: '/create',
+    path: '/opprett',
     controller: 'AuthRouteController'
   });
 
   this.route('EditReport', {
-    path: '/report/:_id/edit',
+    path: '/rapport/:_id/endre',
     template: 'CreateReport',
     controller: 'EditReportController'
   });
 
   this.route('Report', {
-    path: '/report/:_id',
+    path: '/rapport/:_id/:slug?',
     controller: 'ReportViewController'
   });
 
@@ -51,7 +51,7 @@ Router.map(function () {
   });
 
   this.route('UserControl', {
-    path: '/user-control',
+    path: '/brukerkontroll',
     template: 'UserControl',
     controller: 'UserControlController'
   });
@@ -59,11 +59,11 @@ Router.map(function () {
   // -- Miscellaneous routes ---------------------------------------------
 
   this.route('AboutConcept', {
-    path: '/about-concept'
+    path: '/om'
   });
 
   this.route('EvaluationCriteria', {
-    path: '/evaluation-criteria'
+    path: '/kriterier'
   });
 });
 

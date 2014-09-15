@@ -4,6 +4,6 @@
 
 Template.BasicBox.events({
   'click .thumbnail-normal': function(event, tmpl) {
-    Router.go(Router.path('Report', {_id: this._id}));
+    Router.go('Report', {_id: this._id, slug: slugify(this.project.name)});
   }
 });

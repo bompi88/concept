@@ -68,7 +68,7 @@ Template.Reports.events({
     }
   },
   'click .edit-btn': function(event, tmpl) {
-    Router.go('/report/' + this._id + '/edit');
+    Router.go('EditReport', {_id: this._id});
   },
   'click #btn-filter' : function(event, tmpl) {
     //lose focus on the clicked element
@@ -86,20 +86,20 @@ Template.Reports.events({
     event.currentTarget.blur();
     var newPage = parseInt(tmpl.find(event.target).textContent);
     Session.set('currentPage', newPage);
-    Router.go('/reports/' + (newPage - 1));
+    Router.go('Reports', {page: (newPage - 1)});
   },
   'click #next-page': function(event) {
     var page = Session.get('currentPage');
     if(page + 1 <= Session.get('numberOfPages')) {
       Session.set('currentPage', page + 1);
-      Router.go('/reports/' + page);
+      Router.go('Reports', {page: page});
     }
   },
   'click #last-page': function(event) {
     var page = Session.get('currentPage');
     if(page - 1 >= 1) {
       Session.set('currentPage', page - 1);
-      Router.go('/reports/' + (page - 2));
+      Router.go('Reports', {page: (page - 2)});
     }
   }
 });

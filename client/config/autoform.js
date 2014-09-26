@@ -26,7 +26,7 @@ AutoForm.hooks({
             }
         },
         onSuccess: function(operation, result, tmpl) {
-          return Router.go(Router.path('Reports', {page: 0}));
+          return Router.go(Router.path('Reports', {page: 1}));
         },
         onError: function(operation, error, template) {
             console.log(error);

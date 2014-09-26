@@ -5,7 +5,7 @@
 uploadObject = {
   Images: [],
   References: [],
-  dep: new Deps.Dependency,
+  dep: new Tracker.Dependency,
   getImages: function() {
     this.dep.depend();
     return this.Images;
@@ -62,7 +62,7 @@ uploadObject = {
 
 locationObject = {
   coordinates: {},
-  dep: new Deps.Dependency,
+  dep: new Tracker.Dependency,
   getCoordinates: function() {
     this.dep.depend();
 

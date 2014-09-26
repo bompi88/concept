@@ -24,12 +24,12 @@ ReportsController = RouteController.extend({
   },
   data: function() {
     return {
-      //we have to sort the available data "again"
-      reports: Reports.find({}, {sort: this.findSort()})
-    };
-   },
+        //we have to sort the available data "again"
+        reports: Reports.find({}, {sort: this.findSort()})
+      };
+    },
   onBeforeAction : function() {
-    var page = parseInt(this.params.page) || 1;
+    var page = parseInt(this.params.page, 10) || 1;
     Session.set('currentPage', page);
   }
 });

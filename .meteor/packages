@@ -20,8 +20,6 @@ mizzao:bootboxjs
 mrt:just-i18n
 mrt:googlemaps
 meteorhacks:kadira
-mrt:iron-router-progress
-appcache
 cfs:ui
 cfs:standard-packages
 cfs:gridfs
@@ -30,4 +28,3 @@ mrt:iconv-lite
 aldeed:delete-button
 meteor-pdfkit
 reywood:iron-router-ga
-

@@ -22,7 +22,6 @@ Template.Report.events({
 
 Template.EvaluationParagraph.events({
   'click .read-more': function(event, tmpl) {
-    console.log(this)
     Session.set(this.id, !(Session.get(this.id) || false));
   }
 });
@@ -87,7 +86,6 @@ Template.Report.rendered = function() {
 
       for(crit in criteria) {
         if(!criteria[crit].value) {
-          console.log(crit)
           if(crit === 'productivity') {
             criteria = _.omit(criteria,'productivity');
             labels = _.without(labels, 'Produktivitet');
@@ -183,9 +181,7 @@ Template.Report.rendered = function() {
           }, 1500);
         }
       }
-      console.log("BÆSJ")
       Meteor.defer(function() {
-        console.log("BÆSJ")
         // initialize the spider diagram
         var el = $("#spiderEvaluation");
         if (el && el.get(0)) {

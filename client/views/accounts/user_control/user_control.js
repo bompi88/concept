@@ -44,7 +44,7 @@ Template.UserControl.status = function() {
 };
 
 Template.UserControl.isSuperUser = function() {
-  if(Meteor.user().accountType === 'admin') {
+  if(Meteor.user() && Meteor.user().accountType && Meteor.user().accountType === 'admin') {
     return true;
   }
   return false;

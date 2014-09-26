@@ -82,7 +82,7 @@ locationObject = {
 Template.ReportForm.events({
   'click .delete-btn': function(event, tmpl) {
     Meteor.call('deleteReport', this._id, function (error, result) {
-      Router.go(Router.path('Reports', {page: 0}));
+      Router.go(Router.path('Reports', {page: 1}));
     });
   },
 
@@ -94,9 +94,9 @@ Template.ReportForm.events({
 
   'click .cancel-btn': function(event, tmpl) {
     if(this._id) {
-      Router.go('/report/' + this._id);
+      Router.go('Report', {_id: this._id, slug: slugify(this.project.name)});
     } else {
-      Router.go('/reports/0');
+      Router.go('ReportsIndex');
     }
   },
   'change #dropzone-images': function(event, tmpl) {

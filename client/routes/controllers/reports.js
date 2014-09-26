@@ -4,7 +4,7 @@
 ReportsController = RouteController.extend({
 
   findAggregation: function() {
-    var skip = parseInt(this.params.page) * 20 || 0;
+    var skip = (parseInt(this.params.page) * 20) - 20 || 0;
     var limit = 20;
     return {sort: this.findSort(), skip: skip, limit: limit};
 
@@ -29,7 +29,7 @@ ReportsController = RouteController.extend({
     };
    },
   onBeforeAction : function() {
-    var page = parseInt(this.params.page) + 1 || 1;
+    var page = parseInt(this.params.page) || 1;
     Session.set('currentPage', page);
   }
 });

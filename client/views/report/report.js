@@ -64,7 +64,7 @@ Template.Report.helpers({
 
 Template.Report.rendered = function() {
 
-  Deps.autorun(function () {
+  Tracker.autorun(function () {
     Meteor.defer(function() {
       $('#projectImage a.image-link').magnificPopup({
         type:'image'

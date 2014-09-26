@@ -152,7 +152,7 @@ Template.MapView.rendered = function () {
           });
 
           // If the data gets updated.
-          Deps.autorun(function () {
+          Tracker.autorun(function () {
             var report = Router._currentController && Router._currentController.data && Router._currentController.data();
             if(report && report.project && report.project.location &&
               report.project.location.coordinates &&
@@ -185,7 +185,7 @@ Template.MapView.rendered = function () {
         }
 
         else if(state === 'reportLocation') {
-          Deps.autorun(function(){
+          Tracker.autorun(function(){
 
             var reports = Reports.find({});
 

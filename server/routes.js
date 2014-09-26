@@ -99,7 +99,7 @@ var generateCSV = function(reports) {
   return encodeUTF16LE(csv);
 };
 
-var getImg = Meteor._wrapAsync(function(img, callback) {
+var getImg = Meteor.wrapAsync(function(img, callback) {
   gm(img.createReadStream()).toBuffer(function (err, buffer) {
     if (err) return handle(err);
 

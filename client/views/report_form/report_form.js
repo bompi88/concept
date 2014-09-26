@@ -128,7 +128,6 @@ Template.ReportForm.helpers({
     if(currentRouteIs('EditReport')) {
 
       var report = this.doc;
-      console.log(report)
       if(report) {
         var new_img_ids = uploadObject.getImages();
         var old_img_ids = _.pluck(report.images, 'fileId');

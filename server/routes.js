@@ -204,8 +204,8 @@ var generatePdf = function(report, spider) {
   doc.moveDown();
 
   createParagraph(doc, 'Bakgrunn', report.project.projectDescription, true);
-
-  insertImage(doc, report.images, 0);
+  if(report.images && report.images[0])
+    insertImage(doc, report.images, 0);
 
   createParagraph(doc, 'Samlet vurdering', report.evaluation.overall, true);
 

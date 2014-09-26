@@ -21,7 +21,6 @@ mrt:just-i18n
 mrt:googlemaps
 meteorhacks:kadira
 mrt:iron-router-progress
-reywood:iron-router-ga
 appcache
 cfs:ui
 cfs:standard-packages
@@ -30,4 +29,5 @@ cfs:graphicsmagick
 mrt:iconv-lite
 aldeed:delete-button
 meteor-pdfkit
+reywood:iron-router-ga
 

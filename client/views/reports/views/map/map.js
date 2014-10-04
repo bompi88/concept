@@ -198,7 +198,7 @@ Template.MapView.rendered = function () {
 
                 var div = document.createElement('div');
 
-                UI.insert(UI.renderWithData(Template.ProjectInformationBox, report), div);
+                Blaze.renderWithData(Template.ProjectInformationBox, report, div);
 
                 //an ugly hack to map a report id to a infowindow
                 $('<div id="' + report._id + '" class="report-id"> </div>').appendTo(div.getElementsByClassName('panel-default'));

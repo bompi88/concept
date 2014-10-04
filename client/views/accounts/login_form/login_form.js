@@ -28,7 +28,7 @@ Template.LoginForm.events({
       Accounts.forgotPassword({email: email}, function(error){
         // create error alert box on error
         if (error) {
-          Alert.add({msg: error}, tmpl, '#single-page-login-alert');
+          Notifications.error(error.title, error);
         // or redirect to logon page
         } else {
           Router.go('AdminLogon');
@@ -39,7 +39,7 @@ Template.LoginForm.events({
       });
     } catch(error) {
       // if error: create alert box with error message
-      Alert.add({msg: error}, tmpl, '#single-page-login-alert');
+      Notifications.error(error.title, error);
     }
   },
 
@@ -60,7 +60,7 @@ Template.LoginForm.events({
       Meteor.loginWithPassword(username, password, function(error){
 
         if(error) {
-          Alert.add({msg: error}, tmpl, '#single-page-login-alert');
+          Notifications.error(error.title, error);
         } else {
           Router.go('ConceptIndex');
         }
@@ -71,7 +71,7 @@ Template.LoginForm.events({
 
     // Catch and display error
     } catch(error) {
-      Alert.add({msg: error}, tmpl, '#single-page-login-alert');
+      Notifications.error(error.title, error);
     }
   }
 });
@@ -92,11 +92,3 @@ var toggleButtons = function(btn, disable, label) {
     }
   }
 }
-
-// -- Alert box helper ------------------------------------------------
-
-Alert = {
-  add: function (msg, tmpl, selector) {
-    replaceWithTemplate(msg, tmpl, Template.AlertBox, selector);
-  }
-};

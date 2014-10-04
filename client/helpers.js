@@ -80,20 +80,6 @@ createModalDialog = function(title, body) {
   });
 };
 
-replaceWithTemplate = function (msg, tmpl, meteorTemplate, selector) {
-  // DOM element to hook our template to
-  var parent = tmpl.find(selector);
-
-  while (parent.firstChild) {
-    parent.removeChild(parent.firstChild);
-  }
-  // renders our alert box template
-  var template = UI.renderWithData(meteorTemplate, msg);
-
-  // insert alert box template as a child
-  UI.insert(template, parent);
-};
-
 slugify = function(text) {
   return text.toString().toLowerCase()
     .replace('ø', 'oe')

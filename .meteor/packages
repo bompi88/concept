@@ -26,5 +26,6 @@ cfs:gridfs
 cfs:graphicsmagick
 mrt:iconv-lite
 aldeed:delete-button
-meteor-pdfkit
 reywood:iron-router-ga
+meteor-pdfkit
+gfk:notifications

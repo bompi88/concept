@@ -45,6 +45,7 @@ fastclick@1.0.0
 follower-livedata@1.0.1
 fourseven:scss@0.9.5
 geojson-utils@1.0.0
+gfk:notifications@1.0.9
 handlebars@1.0.0
 html-tools@1.0.1
 htmljs@1.0.1
@@ -57,6 +58,7 @@ iron:layout@0.4.1
 iron:router@0.9.3
 jquery@1.0.0
 json@1.0.0
+less@1.0.9
 livedata@1.0.10
 localstorage@1.0.0
 logging@1.0.3

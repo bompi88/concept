@@ -12,7 +12,6 @@
   					{{/if}}
   				</h1>
   				<div class="account-wall">
-  					<span id="single-page-login-alert"></span>
   					{{#if $currentRouteIs 'AdminLogon'}}
   						{{> AdminLogon}}
   					{{/if}}
@@ -25,7 +24,9 @@
   				{{/if}}
   			</div>
   		</div>
+
   	</div>
+    {{>notifications}}
   </div>
 </template>
 
@@ -45,9 +46,3 @@
 	</form>
 </template>
 
-<template name="AlertBox">
-	<div class="alert alert-danger alert-dismissable" id="single-page-login-alert-msg">
-		{{msg}}
-		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-	</div>
-</template>

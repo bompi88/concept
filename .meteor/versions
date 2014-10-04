@@ -76,7 +76,6 @@ mongo-livedata@1.0.5
 mongo@1.0.6
 mrt:googlemaps@0.0.2
 mrt:iconv-lite@1.0.2
-mrt:just-i18n@0.3.0
 mrt:moment@2.6.0
 natestrauser:animate-css@3.1.2
 npm-bcrypt@0.7.7

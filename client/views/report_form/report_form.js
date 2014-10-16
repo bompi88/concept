@@ -5,7 +5,7 @@
 uploadObject = {
   Images: [],
   References: [],
-  dep: new Tracker.Dependency,
+  dep: new Deps.Dependency,
   getImages: function() {
     this.dep.depend();
     return this.Images;
@@ -62,7 +62,7 @@ uploadObject = {
 
 locationObject = {
   coordinates: {},
-  dep: new Tracker.Dependency,
+  dep: new Deps.Dependency,
   getCoordinates: function() {
     this.dep.depend();
 
@@ -127,7 +127,8 @@ Template.ReportForm.helpers({
   imagesList: function() {
     if(currentRouteIs('EditReport')) {
 
-      var report = this.doc;
+      var report = Router._currentController && Router._currentController.data && Router._currentController.data();
+
       if(report) {
         var new_img_ids = uploadObject.getImages();
         var old_img_ids = _.pluck(report.images, 'fileId');
@@ -141,7 +142,7 @@ Template.ReportForm.helpers({
   },
   referencesList: function() {
     if(currentRouteIs('EditReport')) {
-      var report =  this.doc;
+      var report = Router._currentController && Router._currentController.data && Router._currentController.data();
 
       if(report) {
         var new_files_ids = uploadObject.getReferences();

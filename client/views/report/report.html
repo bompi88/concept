@@ -24,10 +24,10 @@
             <em>{{project.projectDescription.short}}</em>
             <br><br>
             {{{$convertLineBreaks project.projectDescription.long}}}
-            <span> <a href="#" class="read-more" id="desc-button">&laquo; Skjul</a></span>
+            <span> <a class="read-more" id="desc-button">&laquo; Skjul</a></span>
           {{else}}
             <em>{{project.projectDescription.short}}</em>
-            <span> <a href="#" class="read-more" id="desc-button">Les mer &raquo;</a></span>
+            <span> <a class="read-more" id="desc-button">Les mer &raquo;</a></span>
 				  {{/if}}
         </p>
         {{#if images.[0]}}
@@ -127,7 +127,7 @@
           {{ref.short}}
           <br><br>
           {{{$convertLineBreaks ref.long}}}
-          <span> <a href="#" class="read-more">&laquo; Skjul</a></span>
+          <span> <a class="read-more">&laquo; Skjul</a></span>
         {{else}}
           {{#if ref.short}}
             {{{ref.short}}}
@@ -135,7 +135,7 @@
             Ingen tekst tilgjengelig.
           {{/if}}
           {{#if ref.long}}
-            <span>&nbsp;<a href="#" class="read-more">Les mer &raquo;</a></span>
+            <span>&nbsp;<a class="read-more">Les mer &raquo;</a></span>
           {{/if}}
         {{/if}}
       </p>
@@ -152,7 +152,7 @@
           {{else}}
             <span><b>Tallvurdering utelatt</b></span>.
           {{/if}}
-          <span> <a href="#" class="read-more">&laquo; Skjul</a></span>
+          <span> <a class="read-more">&laquo; Skjul</a></span>
         {{else}}
           {{#if ref.short}}
             <em>{{{ref.short}}}</em>
@@ -166,7 +166,7 @@
             <span><b>Tallvurdering utelatt</b></span>.
           {{/if}}
           {{#if ref.long}}
-            <span>&nbsp;<a href="#" class="read-more">Les mer &raquo;</a></span>
+            <span>&nbsp;<a class="read-more">Les mer &raquo;</a></span>
           {{/if}}
         {{/if}}
       </p>

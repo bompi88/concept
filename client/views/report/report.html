@@ -106,18 +106,6 @@
   </div>
 </template>
 
-<template name="SideBarElement">
-	<li class="{{class}} {{#if active}}active{{/if}}">
-		<a href="#{{to}}" contenteditable="false">{{name}}</a>
-
-		{{#if multiple}}
-			<ul class="nav nav-stacked">
-				{{> UI.contentBlock}}
-			</ul>
-		{{/if}}
-	</li>
-</template>
-
 <template name="EvaluationParagraph">
 	{{#if $or ref.short ref.long}}
     {{#if $eq hSize 'large'}}

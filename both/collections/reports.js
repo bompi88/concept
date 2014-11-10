@@ -28,7 +28,8 @@ createMofidiers = function(modifier, tmpl) {
     var criteriaCount = (productivityValue && 1) + (achievementValue && 1) + (effectsValue && 1) + (relevanceValue && 1) + (viabilityValue && 1) + (profitabilityValue && 1);
     //RED by default
     var success = 1;
-    var meanScore = 6*(productivityValue + achievementValue + effectsValue + relevanceValue + viabilityValue + profitabilityValue)/criteriaCount;
+    var meanScore = (productivityValue + achievementValue + effectsValue + relevanceValue + viabilityValue + profitabilityValue)/criteriaCount;
+    console.log(meanScore)
     if(meanScore > (8/3) && meanScore <= (13/3))
       success = 2;
     else if(meanScore > (13/3))
@@ -50,7 +51,7 @@ createMofidiers = function(modifier, tmpl) {
     var imgsIds = uploadObject.getImages();
     var imgs = [];
 
-    if(imgsIds.length) {
+    if(imgsIds.length > 0) {
       for (var i = 0; i < imgsIds.length; i++){
         var img = {
             fileId: imgsIds[i],
@@ -68,7 +69,7 @@ createMofidiers = function(modifier, tmpl) {
     var filesIds = uploadObject.getReferences();
     var files = [];
 
-    if(filesIds.length) {
+    if(filesIds.length > 0) {
       for (var i = 0; i < filesIds.length; i++){
         var file = {
             fileId: filesIds[i],
@@ -84,7 +85,6 @@ createMofidiers = function(modifier, tmpl) {
     mods.references = files;
 
     modifier.$set = _.extend(modifier.$set, mods);
-
     return modifier;
 };
 
@@ -180,20 +180,26 @@ createReport = function(tmpl) {
     report.evaluation.viability.value = viabilityValue;
     report.evaluation.profitability.value = profitabilityValue;
 
-    var criteriaCount = (productivityValue && 1) + (achievementValue && 1) + (effectsValue && 1) + (relevanceValue && 1) + (viabilityValue && 1) + (profitabilityValue && 1);
-    var divider = (criteriaCount * 6);
 
-    if (divider) {
-      report.project.successCategory = Math.round((((productivityValue + achievementValue + effectsValue +
-        relevanceValue + viabilityValue + profitabilityValue) / divider)) * 3);
-    } else {
-      report.project.successCategory = 1;
-    }
+    // determine success category by calculating the mean score and map to three equal intervals
+    //1 - 2.66 is RED (1), 2.66 - 4.32 is ORANGE (2), and 4.32-6 is GREEN (3)
+    var criteriaCount = (productivityValue && 1) + (achievementValue && 1) + (effectsValue && 1) + (relevanceValue && 1) + (viabilityValue && 1) + (profitabilityValue && 1);
+    //RED by default
+    var success = 1;
+    var meanScore = (productivityValue + achievementValue + effectsValue + relevanceValue + viabilityValue + profitabilityValue)/criteriaCount;
+    console.log(meanScore)
+    if(meanScore > (8/3) && meanScore <= (13/3))
+      success = 2;
+    else if(meanScore > (13/3))
+      success = 3;
+
+
+    report.project.successCategory = success;
 
     var imgsIds = uploadObject.getImages();
     var imgs = [];
 
-    if(imgsIds.length) {
+    if(imgsIds.length > 0) {
       for (var i = 0; i < imgsIds.length; i++){
         var img = {
             fileId: imgsIds[i],
@@ -210,7 +216,7 @@ createReport = function(tmpl) {
     var filesIds = uploadObject.getReferences();
     var files = [];
 
-    if(filesIds.length) {
+    if(filesIds.length > 0) {
       for (var i = 0; i < filesIds.length; i++){
         var file = {
             fileId: filesIds[i],

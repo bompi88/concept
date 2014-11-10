@@ -20,7 +20,7 @@
 
   // WARNING: If nodeVersion omitted will setup 0.10.26 by default. Do not 
   // use v, only version number.
-  "nodeVersion": "0.10.29",
+  "nodeVersion": "0.10.31",
 
   // Install PhantomJS in the server
   "setupPhantom": true,

@@ -29,7 +29,6 @@ createMofidiers = function(modifier, tmpl) {
     //RED by default
     var success = 1;
     var meanScore = (productivityValue + achievementValue + effectsValue + relevanceValue + viabilityValue + profitabilityValue)/criteriaCount;
-    console.log(meanScore)
     if(meanScore > (8/3) && meanScore <= (13/3))
       success = 2;
     else if(meanScore > (13/3))
@@ -187,7 +186,6 @@ createReport = function(tmpl) {
     //RED by default
     var success = 1;
     var meanScore = (productivityValue + achievementValue + effectsValue + relevanceValue + viabilityValue + profitabilityValue)/criteriaCount;
-    console.log(meanScore)
     if(meanScore > (8/3) && meanScore <= (13/3))
       success = 2;
     else if(meanScore > (13/3))

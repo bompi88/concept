@@ -29,7 +29,9 @@ ReportsController = RouteController.extend({
       };
     },
   onBeforeAction : function() {
+
     var page = parseInt(this.params.page, 10) || 1;
+
     Session.set('currentPage', page);
   }
 });

@@ -1,0 +1,40 @@
+{
+  "builtBy": "meteor/14",
+  "buildDependencies": {
+    "os.json": {
+      "files": {
+        "/Users/bompi88/concept/packages/meteor-pdfkit/package.js": "9533c99f9303242b7d8bd5929bf4b8723df56c91",
+        "/Users/bompi88/concept/packages/meteor-pdfkit/.npm/package/npm-shrinkwrap.json": "a9cb505ab1fddcbd7b55153386bed847e135e027",
+        "/Users/bompi88/concept/packages/meteor-pdfkit/pdfkitWrapper.js": "061a65b071a2d80a254b625dc9efb0b576247649"
+      },
+      "directories": []
+    },
+    "web.browser.json": {
+      "files": {
+        "/Users/bompi88/concept/packages/meteor-pdfkit/package.js": "9533c99f9303242b7d8bd5929bf4b8723df56c91",
+        "/Users/bompi88/concept/packages/meteor-pdfkit/.npm/package/npm-shrinkwrap.json": "a9cb505ab1fddcbd7b55153386bed847e135e027"
+      },
+      "directories": []
+    },
+    "web.cordova.json": {
+      "files": {
+        "/Users/bompi88/concept/packages/meteor-pdfkit/package.js": "9533c99f9303242b7d8bd5929bf4b8723df56c91",
+        "/Users/bompi88/concept/packages/meteor-pdfkit/.npm/package/npm-shrinkwrap.json": "a9cb505ab1fddcbd7b55153386bed847e135e027"
+      },
+      "directories": []
+    }
+  },
+  "pluginDependencies": {
+    "files": {
+      "/Users/bompi88/concept/packages/meteor-pdfkit/package.js": "9533c99f9303242b7d8bd5929bf4b8723df56c91"
+    },
+    "directories": []
+  },
+  "source": "/Users/bompi88/concept/packages/meteor-pdfkit",
+  "buildTimeDirectDependencies": {
+    "underscore": "1.0.1",
+    "meteor": "1.1.2"
+  },
+  "buildTimePluginDependencies": {},
+  "cordovaDependencies": null
+}

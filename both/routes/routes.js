@@ -65,9 +65,21 @@ Router.map(function () {
   this.route('EvaluationCriteria', {
     path: '/kriterier'
   });
+
+  this.route('pdfFile', {
+    where: 'server',
+    path: '/pdf/:_id',
+    controller: PDFExportController
+  });
+
+  this.route('csvFile', {
+    where: 'server',
+    path: '/csv',
+    controller: CSVExportController
+  })
 });
 
-
-//where to put this? we need to subscribe for the account field for the user
-Meteor.subscribe('moreUserData');
-
+if(Meteor.isClient) {
+  //where to put this? we need to subscribe for the account field for the user
+  Meteor.subscribe('moreUserData');
+}

@@ -24,7 +24,7 @@ currentRouteIs = function(route) {
   var currentRoute = Router.current();
   if (!currentRoute) return '';
 
-  return route === currentRoute.route.name ? true : false;
+  return route === currentRoute.route.getName() ? true : false;
 };
 
 removeItem = function(array, id) {

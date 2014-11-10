@@ -58,7 +58,7 @@ App.helpers = {
 		var currentRoute = Router.current();
 		if (!currentRoute) return '';
 
-		return route === currentRoute.route.name ? true : false;
+		return route === currentRoute.route.getName() ? true : false;
 	},
 
   /**
@@ -77,7 +77,7 @@ App.helpers = {
 		var curRoute = Router.current();
     	if (!curRoute) return '';
 
-		return curRoute && route === curRoute.route.name ? returnValue : '';
+		return curRoute && route === curRoute.route.getName() ? returnValue : '';
   },
 
   /**
@@ -150,5 +150,5 @@ App.helpers = {
 
 // Register all helpers as UI helpers
 _.each(App.helpers, function (helper, key) {
-	UI.registerHelper(key, helper);
+	Template.registerHelper(key, helper);
 });

@@ -8,5 +8,6 @@ AuthRouteController = RouteController.extend({
 		if(!Meteor.loggingIn() && !Meteor.user()) {
 			this.redirect('ConceptIndex');
 		}
+    this.next();
 	}
 });

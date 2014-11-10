@@ -19,7 +19,7 @@ ReportsController = RouteController.extend({
     var query = Session.get('query');
     return query;
   },
-	waitOn: function () {
+	subscriptions: function () {
     return Meteor.subscribe('reportsWithImage', this.findQuery(), this.findAggregation());
   },
   data: function() {
@@ -33,5 +33,6 @@ ReportsController = RouteController.extend({
     var page = parseInt(this.params.page, 10) || 1;
 
     Session.set('currentPage', page);
+    this.next();
   }
 });

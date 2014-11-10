@@ -5,8 +5,9 @@ Router.map(function() {
     where: 'server',
     path: '/pdf/:_id',
     action: function() {
+      console.log(this.params._id)
       var report = Reports.find({_id: this.params._id}).fetch()[0];
-
+      console.log(report)
       if(report) {
         var spiderImg = this.params && this.params.spider || null;
 
@@ -17,9 +18,11 @@ Router.map(function() {
           'Pragma': 'public',
           'Content-Disposition': "attachment; filename=" + filename
         };
-
+        console.log("before")
         var file = generatePdf(report, spiderImg);
+        console.log("after")
         this.response.writeHead(200, headers);
+        console.log("end")
         return this.response.end(file);
       }
     }
@@ -34,6 +37,7 @@ Router.map(function() {
       var query = JSON.parse(this.params.query);
       var sort = JSON.parse(this.params.sort);
       var reports = Reports.find({$and: [{_id: {$nin: reportids}}, query]}, sort).fetch();
+      console.log(reports)
 
       if(reports) {
         var file = generateCSV(reports);
@@ -65,12 +69,12 @@ var generateCSV = function(reports) {
       "Navn": r.project.name,
       "Sektor": r.project.sector,
       "Prosjektnummer": r.project.projectNumber,
-      "Styringsramme": r.project.managementBudget.amount,
-      "Styringsramme årstall": r.project.managementBudget.year,
-      "Kostnadsramme": r.project.costBudget.amount,
-      "Kostnadsramme årstall": r.project.costBudget.year,
-      "Sluttkostnad": r.project.costFinal.amount,
-      "Sluttkostnad årstall": r.project.costFinal.year,
+      "Styringsramme": r.project.managementBudget && r.project.managementBudget.amount || "",
+      "Styringsramme årstall": r.project.managementBudget && r.project.managementBudget.year || "",
+      "Kostnadsramme": r.project.costBudget && r.project.costBudget.amount || "",
+      "Kostnadsramme årstall": r.project.costBudget && r.project.costBudget.year || "",
+      "Sluttkostnad": r.project.costFinal && r.project.costFinal.amount || "",
+      "Sluttkostnad årstall": r.project.costFinal && r.project.costFinal.year || "",
       "Evaluator": r.responsible.organization,
       "Suksesskategori": r.project.successCategory,
       "Produktivitet (karakter)": r.evaluation.productivity.value,
@@ -203,11 +207,11 @@ var generatePdf = function(report, spider) {
 
   doc.moveDown();
 
-  createParagraph(doc, 'Bakgrunn', report.project.projectDescription, true);
+  createParagraph(doc, 'Bakgrunn', report.project && report.project.projectDescription, true);
   if(report.images && report.images[0])
     insertImage(doc, report.images, 0);
 
-  createParagraph(doc, 'Samlet vurdering', report.evaluation.overall, true);
+  createParagraph(doc, 'Samlet vurdering', report.evaluation && report.evaluation.overall, true);
 
   // Spider diagram
   if(spider != null && spider.length) {
@@ -223,12 +227,12 @@ var generatePdf = function(report, spider) {
     doc.moveDown();
   }
 
-  createParagraph(doc, 'Produktivitet', report.evaluation.productivity);
-  createParagraph(doc, 'Måloppnåelse', report.evaluation.achievement);
-  createParagraph(doc, 'Virkninger', report.evaluation.effects);
-  createParagraph(doc, 'Relevans', report.evaluation.relevance);
-  createParagraph(doc, 'Levedyktighet', report.evaluation.viability);
-  createParagraph(doc, 'Samfunnsøkonomisk lønnsomhet', report.evaluation.profitability);
+  createParagraph(doc, 'Produktivitet', report.evaluation && report.evaluation.productivity);
+  createParagraph(doc, 'Måloppnåelse', report.evaluation && report.evaluation.achievement);
+  createParagraph(doc, 'Virkninger', report.evaluation && report.evaluation.effects);
+  createParagraph(doc, 'Relevans', report.evaluation && report.evaluation.relevance);
+  createParagraph(doc, 'Levedyktighet', report.evaluation && report.evaluation.viability);
+  createParagraph(doc, 'Samfunnsøkonomisk lønnsomhet', report.evaluation && report.evaluation.profitability);
 
   return doc.outputSync();
 };

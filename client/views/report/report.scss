@@ -1,5 +1,11 @@
 
 #mycontent {
+  a:hover {
+    cursor: pointer;
+  }
+}
+
+#mycontent {
 	h1,h2,h3,h4,h5,h6{
 		padding-bottom: 0px;
 		padding-top: 10px;

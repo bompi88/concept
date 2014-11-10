@@ -8,29 +8,29 @@ var textFieldRegEx = /^[a-z0-9A-z .,æøåÆØÅèÈéÉäÄöÖëËòóÒÓ()-]
 ReportScheme = new SimpleSchema({
     project: {
         type: Object,
-        optional: false
+        optional: true
     },
     "project.name": {
     	type: String,
     	label: "Prosjektnavn",
-    	optional: false,
+    	optional: true,
     	regEx: textFieldRegEx
     },
     "project.projectNumber": {
     	type: Number,
     	label: "Prosjektnummer (Trailbase)",
-    	optional: false,
+    	optional: true,
     	regEx: /^[0-9 ]{1,10}$/
     },
     "project.sector": {
     	type: String,
     	label: "Sektor",
-    	optional: false,
+    	optional: true,
         regEx: textFieldRegEx
     },
     "project.location": {
         type: Object,
-        optional: false
+        optional: true
     },
     "project.location.name": {
         type: String,
@@ -52,23 +52,23 @@ ReportScheme = new SimpleSchema({
     },
     "project.successCategory": {
         type: Number,
-        optional: false,
+        optional: true,
         regEx: /^[1-3]$/
     },
     "project.projectDescription": {
         type: Object,
-        optional: false
+        optional: true
     },
     "project.projectDescription.short": {
         type: String,
         label: "Kort prosjektbeskrivelse",
-        optional: false,
+        optional: true,
         regEx: textAreaRegEx
     },
     "project.projectDescription.long": {
         type: String,
         label: "Utdypende prosjektbeskrivelse og mål/bakgrunn for prosjektet",
-        optional: false,
+        optional: true,
         regEx: textAreaRegEx
     },
     "project.finishingYear": {
@@ -97,7 +97,7 @@ ReportScheme = new SimpleSchema({
     },
     "project.managementBudget": {
         type: Object,
-        optional: false
+        optional: true
     },
     "project.managementBudget.year": {
         type: Number,
@@ -115,7 +115,7 @@ ReportScheme = new SimpleSchema({
     },
     "project.costBudget": {
         type: Object,
-        optional: false
+        optional: true
     },
     "project.costBudget.year": {
         type: Number,
@@ -133,7 +133,7 @@ ReportScheme = new SimpleSchema({
     },
     "project.costFinal": {
         type: Object,
-        optional: false
+        optional: true
     },
     "project.costFinal.year": {
         type: Number,
@@ -151,11 +151,11 @@ ReportScheme = new SimpleSchema({
     },
     "evaluation": {
         type: Object,
-        optional: false
+        optional: true
     },
     "evaluation.overall": {
         type: Object,
-        optional: false
+        optional: true
     },
     "evaluation.overall.short": {
         type: String,
@@ -171,7 +171,7 @@ ReportScheme = new SimpleSchema({
     },
     "evaluation.productivity": {
         type: Object,
-        optional: false
+        optional: true
     },
     "evaluation.productivity.short": {
         type: String,
@@ -187,12 +187,12 @@ ReportScheme = new SimpleSchema({
     },
     "evaluation.productivity.value": {
         type: Number,
-        optional: false,
+        optional: true,
         regEx: /^[1-6]$/
     },
     "evaluation.achievement": {
         type: Object,
-        optional: false
+        optional: true
     },
     "evaluation.achievement.short": {
         type: String,
@@ -208,12 +208,12 @@ ReportScheme = new SimpleSchema({
     },
     "evaluation.achievement.value": {
         type: Number,
-        optional: false,
+        optional: true,
         regEx: /^[1-6]$/
     },
     "evaluation.effects": {
         type: Object,
-        optional: false
+        optional: true
     },
     "evaluation.effects.short": {
         type: String,
@@ -229,12 +229,12 @@ ReportScheme = new SimpleSchema({
     },
     "evaluation.effects.value": {
         type: Number,
-        optional: false,
+        optional: true,
         regEx: /^[1-6]$/
     },
     "evaluation.relevance": {
         type: Object,
-        optional: false
+        optional: true
     },
     "evaluation.relevance.short": {
         type: String,
@@ -250,12 +250,12 @@ ReportScheme = new SimpleSchema({
     },
     "evaluation.relevance.value": {
         type: Number,
-        optional: false,
+        optional: true,
         regEx: /^[1-6]$/
     },
     "evaluation.viability": {
         type: Object,
-        optional: false
+        optional: true
     },
     "evaluation.viability.short": {
         type: String,
@@ -271,12 +271,12 @@ ReportScheme = new SimpleSchema({
     },
     "evaluation.viability.value": {
         type: Number,
-        optional: false,
+        optional: true,
         regEx: /^[1-6]$/
     },
     "evaluation.profitability": {
         type: Object,
-        optional: false
+        optional: true
     },
     "evaluation.profitability.short": {
         type: String,
@@ -292,17 +292,17 @@ ReportScheme = new SimpleSchema({
     },
     "evaluation.profitability.value": {
         type: Number,
-        optional: false,
+        optional: true,
         regEx: /^[1-6]$/
     },
     "responsible": {
         type: Object,
-        optional: false
+        optional: true
     },
     "responsible.organization": {
         type: String,
         label: "Evalueringsansvarlig instans",
-        optional: false,
+        optional: true,
         regEx: textFieldRegEx
     },
     "responsible.person": {
@@ -313,7 +313,7 @@ ReportScheme = new SimpleSchema({
     },
     "images": {
         type: [Object],
-        optional: false
+        optional: true
     },
     "images.$.fileId": {
         type: String,
@@ -339,7 +339,7 @@ ReportScheme = new SimpleSchema({
     },
     "references": {
         type: [Object],
-        optional: false
+        optional: true
     },
     "references.$.fileId": {
         type: String,
@@ -372,7 +372,7 @@ ReportScheme = new SimpleSchema({
     },
     "_public": {
         type: Boolean,
-        optional: false
+        optional: true
     }
 });
 

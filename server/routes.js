@@ -5,9 +5,7 @@ Router.map(function() {
     where: 'server',
     path: '/pdf/:_id',
     action: function() {
-      console.log(this.params._id)
       var report = Reports.find({_id: this.params._id}).fetch()[0];
-      console.log(report)
       if(report) {
         var spiderImg = this.params && this.params.spider || null;
 
@@ -18,11 +16,8 @@ Router.map(function() {
           'Pragma': 'public',
           'Content-Disposition': "attachment; filename=" + filename
         };
-        console.log("before")
         var file = generatePdf(report, spiderImg);
-        console.log("after")
         this.response.writeHead(200, headers);
-        console.log("end")
         return this.response.end(file);
       }
     }
@@ -37,7 +32,6 @@ Router.map(function() {
       var query = JSON.parse(this.params.query);
       var sort = JSON.parse(this.params.sort);
       var reports = Reports.find({$and: [{_id: {$nin: reportids}}, query]}, sort).fetch();
-      console.log(reports)
 
       if(reports) {
         var file = generateCSV(reports);

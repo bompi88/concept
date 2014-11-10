@@ -29,23 +29,23 @@ Template.UserControl.events({
   }
 });
 
+Template.UserControl.helpers({
+  status: function() {
+    var status = "";
+    if(this.emails && this.emails[0] && this.emails[0] && this.emails[0].verified)
+      status += 'Verifisert';
+    else
+      status += 'Ikke verifisert';
 
-Template.UserControl.status = function() {
-  var status = "";
-  if(this.emails && this.emails[0] && this.emails[0] && this.emails[0].verified)
-    status += 'Verifisert';
-  else
-    status += 'Ikke verifisert';
+    if(this.accountType && this.accountType === 'admin')
+      status += ' og superbruker';
 
-  if(this.accountType && this.accountType === 'admin')
-    status += ' og superbruker';
-
-  return status;
-};
-
-Template.UserControl.isSuperUser = function() {
-  if(Meteor.user() && Meteor.user().accountType && Meteor.user().accountType === 'admin') {
-    return true;
+    return status;
+  },
+  isSuperUser: function() {
+    if(Meteor.user() && Meteor.user().accountType && Meteor.user().accountType === 'admin') {
+      return true;
+    }
+    return false;
   }
-  return false;
-};
+});

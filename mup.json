@@ -20,7 +20,7 @@
 
   // WARNING: If nodeVersion omitted will setup 0.10.26 by default. Do not 
   // use v, only version number.
-  "nodeVersion": "0.10.31",
+  "nodeVersion": "0.10.33",
 
   // Install PhantomJS in the server
   "setupPhantom": true,
@@ -29,7 +29,7 @@
   "appName": "concept",
 
   // Location of app (local directory)
-  "app": "~/concept",
+  "app": "~/projects/concept",
 
   // Configure environment
   "env": {

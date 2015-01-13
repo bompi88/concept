@@ -81,38 +81,40 @@ Template.Report.rendered = function() {
 
     if (report) {
       var criteria = _.omit(report.evaluation,'overall');
-
-      var labels = ["Måloppnåelse", "Virkninger", "Produktivitet", "Samf.øk. lønnsomhet", "Relevans", "Levedyktighet"];
+      var labels = {"achievement": "Måloppnåelse", "effects": "Virkninger", "productivity": "Produktivitet", "profitability": "Samf.øk. lønnsomhet", "relevance": "Relevans", "viability": "Levedyktighet"};
 
       for(crit in criteria) {
         if(!criteria[crit].value) {
           if(crit === 'productivity') {
             criteria = _.omit(criteria,'productivity');
-            labels = _.without(labels, 'Produktivitet');
+            labels = _.omit(labels, 'productivity');
           } else if(crit === 'achievement') {
-            criteria = _.omit(criteria,'achievement')
-            labels = _.without(labels, 'Måloppnåelse');
+            criteria = _.omit(criteria,'achievement');
+            labels = _.omit(labels, 'achievement');
           } else if(crit === 'effects') {
-            criteria = _.omit(criteria,'effects')
-            labels = _.without(labels, 'Virkninger');
+            criteria = _.omit(criteria,'effects');
+            labels = _.omit(labels, 'effects');
           } else if(crit === 'relevance') {
-            criteria = _.omit(criteria,'relevance')
-            labels = _.without(labels, 'Relevans');
+            criteria = _.omit(criteria,'relevance');
+            labels = _.omit(labels, 'relevance');
           } else if(crit === 'viability') {
-            criteria = _.omit(criteria,'viability')
-            labels = _.without(labels, 'Levedyktighet');
+            criteria = _.omit(criteria,'viability');
+            labels = _.omit(labels, 'viability');
           } else if(crit === 'profitability') {
-            criteria = _.omit(criteria,'profitability')
-            labels = _.without(labels, 'Samf.øk. lønnsomhet');
+            criteria = _.omit(criteria,'profitability');
+            labels = _.omit(labels, 'profitability');
           }
 
         }
       }
 
-      var values = _.pluck(criteria, 'value');
+      var values = _.map(labels, function(val, key) {
+        if (criteria && criteria[key] && criteria[key].value)
+          return criteria[key].value;
+      });
 
       var data = {
-        labels : labels,
+        labels : _.values(labels),
         datasets : [
           {
             fillColor : "rgba(0, 140, 186, 0.3)",

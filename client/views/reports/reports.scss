@@ -7,6 +7,10 @@
 	z-index: 800;
 }
 
+.table thead>tr>th.vert-align{
+    vertical-align: middle;
+}
+
 .table thead tr th {
 	text-align: center;   
 }

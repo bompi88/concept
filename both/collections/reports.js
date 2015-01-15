@@ -138,8 +138,12 @@ createMofidiers = function(modifier, tmpl) {
 
     mods.references = files;
 
+    if(_.isEmpty(modifier.$unset)) {
+        modifier = _.omit(modifier, "$unset");
+    }
+
     modifier.$set = _.extend(modifier.$set, mods);
-    console.log(modifier)
+
     return modifier;
 };
 

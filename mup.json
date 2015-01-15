@@ -2,7 +2,7 @@
   // Server authentication info
   "servers": [
     {
-      "host": "ibatconsrap.ivt.ntnu.no",
+      "host": "129.241.88.77",
       "username": "bjorbrat",
       "password": "TqDQV39eRy2s"
       // or pem file (ssh based authentication)

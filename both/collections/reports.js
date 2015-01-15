@@ -86,12 +86,8 @@ createMofidiers = function(modifier, tmpl) {
 
 
     var mods = {
-        "project.location" : {
-            coordinates: {
-                lat: lat || null,
-                lng: lng || null
-            }
-        },
+        "project.location.coordinates.lat": lat || null,
+        "project.location.coordinates.lng": lng || null,
         "project.successCategory": success,
         "evaluation.productivity.value": productivityValue,
         "evaluation.achievement.value": achievementValue,

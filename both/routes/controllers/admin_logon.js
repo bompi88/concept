@@ -5,17 +5,20 @@
  */
 AdminLogonController = RouteController.extend({
 	onBeforeAction: function(pause) {
-    // Redirects user if allready logged in
+    	// Redirects user if allready logged in
+		
 		if (Meteor.user()) {
 			if (!Meteor.loggingIn()) {
 				this.redirect(Router.path('Reports', {page:1}));
 			}
 		}
-    this.next();
+
+		this.next();
 	},
 
 	action: function () {
-    // if user is not logged in, render the login template
+    	// if user is not logged in, render the login template
+		
 		if (!Meteor.user() && !Meteor.loggingIn()) {
 			this.render();
 		}

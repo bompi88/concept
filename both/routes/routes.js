@@ -1,82 +1,81 @@
 /**
  * Client Routes
  */
-Router.map(function () {
+Router.route('/', {
+  name: 'ConceptIndex'
+});
 
-  this.route('ConceptIndex', {
-    path: '/'
-  });
+// -- Report routes ---------------------------------------------------
 
-  // -- Report routes ---------------------------------------------------
+Router.route('/rapporter/side/:page', {
+  name: 'Reports',
+  controller: 'ReportsController'
+});
 
-  this.route('Reports', {
-    path: '/rapporter/side/:page',
-    controller: 'ReportsController'
-  });
+Router.route('/rapporter', {
+  name: 'ReportsIndex',
+  onBeforeAction: function() {
+    this.redirect('/rapporter/side/1');
+  }
+});
 
-  this.route('ReportsIndex', {
-    path: '/rapporter',
-    onBeforeAction: function() {
-      this.redirect('/rapporter/side/1');
-    }
-  });
+Router.route('/opprett', {
+  name: 'CreateReport',
+  controller: 'AuthRouteController'
+});
 
-  this.route('CreateReport', {
-    path: '/opprett',
-    controller: 'AuthRouteController'
-  });
+Router.route('/rapport/:_id/endre', {
+  name: 'EditReport',
+  template: 'CreateReport',
+  controller: 'EditReportController'
+});
 
-  this.route('EditReport', {
-    path: '/rapport/:_id/endre',
-    template: 'CreateReport',
-    controller: 'EditReportController'
-  });
+Router.route('/rapport/:_id/:slug?', {
+  name: 'Report',
+  controller: 'ReportViewController'
+});
 
-  this.route('Report', {
-    path: '/rapport/:_id/:slug?',
-    controller: 'ReportViewController'
-  });
+// -- Accounts routes --------------------------------------------------
 
-  // -- Accounts routes --------------------------------------------------
+Router.route('/concept-admin', {
+  name: 'AdminLogon',
+  template: 'LoginForm',
+  controller: 'AdminLogonController'
+});
 
-  this.route('AdminLogon', {
-    path: '/concept-admin',
-    controller: 'AdminLogonController',
-    template: 'LoginForm'
-  });
+Router.route('/concept-admin-forgotton-password', {
+  name: 'AdminForgottonPassword',
+  template: 'LoginForm'
+});
 
-  this.route('AdminForgottonPassword', {
-    path: '/concept-admin-forgotton-password',
-    template: 'LoginForm'
-  });
+Router.route('/brukere', {
+  name: 'UserControl',
+  template: 'UserControl',
+  controller: 'UserControlController'
+});
 
-  this.route('UserControl', {
-    path: '/brukere',
-    template: 'UserControl',
-    controller: 'UserControlController'
-  });
+// -- Miscellaneous routes ---------------------------------------------
 
-  // -- Miscellaneous routes ---------------------------------------------
+Router.route('/om', {
+  name: 'AboutConcept'
+});
 
-  this.route('AboutConcept', {
-    path: '/om'
-  });
+Router.route('/kriterier', {
+  name: 'EvaluationCriteria'
+});
 
-  this.route('EvaluationCriteria', {
-    path: '/kriterier'
-  });
+// -- Server routes ----------------------------------------------------
 
-  this.route('pdfFile', {
-    where: 'server',
-    path: '/pdf/:_id',
-    controller: PDFExportController
-  });
+Router.route('/pdf/:_id', {
+  name: 'pdfFile',
+  where: 'server',
+  controller: 'PDFExportController'
+});
 
-  this.route('csvFile', {
-    where: 'server',
-    path: '/csv',
-    controller: CSVExportController
-  })
+Router.route('/csv', {
+  name: 'csvFile',
+  where: 'server',
+  controller: 'CSVExportController'
 });
 
 if(Meteor.isClient) {

@@ -1,62 +1,63 @@
 
 
 accountsUIBootstrap3.map('nb', {
-    _resetPasswordDialog: {
+    resetPasswordDialog: {
         title: 'Resett ditt passord',
         newPassword: 'Nytt passord',
         cancel: 'Avbryt',
         submit: 'Sett passord'
     },
-    _enrollAccountDialog: {
+    enrollAccountDialog: {
         title: 'Velg et passord',
         newPassword: 'Nytt passord',
         cancel: 'Avbryt',
         submit: 'Sett passord'
     },
-    _justVerifiedEmailDialog: {
+    justVerifiedEmailDialog: {
         verified: 'Epostadressen er verifisert',
         dismiss: 'Lukk'
     },
-    _loginButtonsMessagesDialog: {
+    loginButtonsMessagesDialog: {
         dismiss: 'Lukk',
     },
-    _loginButtonsLoggedInDropdownActions: {
+    loginButtonsLoggedInDropdownActions: {
         password: 'Bytt passord',
         signOut: 'Logg ut'
     },
-    _loginButtonsLoggedOutDropdown: {
+    loginButtonsLoggedOutDropdown: {
         signIn: 'Logg inn',
         up: 'opp'
     },
-    _loginButtonsLoggedOutPasswordServiceSeparator: {
+    loginButtonsLoggedOutPasswordServiceSeparator: {
         or: 'eller'
     },
-    _loginButtonsLoggedOutPasswordService: {
+    loginButtonsLoggedOutPasswordService: {
         create: 'Opprett',
         signIn: 'Logg inn',
         forgot: 'Glemt passord?',
         createAcc: 'Opprett bruker'
     },
-    _forgotPasswordForm: {
+    forgotPasswordForm: {
         email: 'Epost',
-        reset: 'Resett passord'
+        reset: 'Resett passord',
+        invalidEmail: "Ugyldig epost"
     },
-    _loginButtonsBackToLoginLink: {
+    loginButtonsBackToLoginLink: {
         back: 'Avbryt'
     },
-    _loginButtonsChangePassword: {
+    loginButtonsChangePassword: {
         submit: 'Bytt passord',
         cancel: 'Avbryt'
     },
-    _loginButtonsLoggedOutSingleLoginButton: {
+    loginButtonsLoggedOutSingleLoginButton: {
         signInWith: 'Logg inn med',
         configure: 'Konfigurèr',
         login: 'Logg inn'
     },
-    _loginButtonsLoggedInSingleLogoutButton: {
+    loginButtonsLoggedInSingleLogoutButton: {
         signOut: 'Logg ut'
     },
-    _loginButtonsLoggedOut: {
+    loginButtonsLoggedOut: {
         noLoginServices: 'Ingen påloggingstjeneste konfigurert'
     },
     loginFields: {
@@ -71,6 +72,25 @@ accountsUIBootstrap3.map('nb', {
         'email-opt': 'Epost (valgfri)',
         'password': 'Passord',
         'password-again': 'Passord (gjentagende)'
+    },
+    changePasswordFields: {
+        currentPassword: "Nåværende passord",
+        newPassword: "Nytt passord",
+        newPasswordAgain: "Nytt passord (gjentagende)"
+    },
+    infoMessages : {
+        emailSent: "Epost sendt",
+        passwordChanged: "Passord endret"
+    },
+    errorMessages: {
+        userNotFound: "Bruker ble ikke funnet",
+        invalidEmail: "Ugyldig epost",
+        incorrectPassword: "Ukorrekt passord",
+        usernameTooShort: "Brukernavn må være minst 3 tegn langt",
+        passwordTooShort: "Passord må være minst 6 tegn langt",
+        passwordsDontMatch: "Passord er ikke like",
+        newPasswordSameAsOld: "Nytt og gammelt passord må være forskjellige",
+        signupsForbidden: "Oppretting av brukere er ikke mulig"
     }
 });
 

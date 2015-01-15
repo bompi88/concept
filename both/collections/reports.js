@@ -34,9 +34,25 @@ createMofidiers = function(modifier, tmpl) {
     else if(meanScore > (13/3))
       success = 3;
 
+    // omit invalid $unset variables
+    modifier = _.omit(modifier, [
+        "$unset.project.location",
+        "$unset.evaluation.productivity",
+        "$unset.evaluation.achievement",
+        "$unset.evaluation.effects",
+        "$unset.evaluation.relevance",
+        "$unset.evaluation.viability",
+        "$unset.evaluation.profitability"
+    ]);
+
+
     var mods = {
-        "project.location.coordinates.lat": lat,
-        "project.location.coordinates.lng": lng,
+        "project.location" : {
+            coordinates: {
+                lat: lat,
+                lng: lng
+            }
+        },
         "project.successCategory": success,
         "evaluation.productivity.value": productivityValue,
         "evaluation.achievement.value": achievementValue,
@@ -84,6 +100,7 @@ createMofidiers = function(modifier, tmpl) {
     mods.references = files;
 
     modifier.$set = _.extend(modifier.$set, mods);
+    console.log(modifier)
     return modifier;
 };
 

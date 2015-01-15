@@ -1,6 +1,6 @@
 UserControlController = RouteController.extend({
   onBeforeAction: function() {
-    if(!Meteor.loggingIn() && !Meteor.user()) {
+    if((!Meteor.loggingIn() && !Meteor.user()) || (!Meteor.user().accountType && !(Meteor.user().accountType === 'admin'))) {
       this.redirect('ConceptIndex');
       bootbox.alert('Du må være superbruker for håndtere brukere');
     }

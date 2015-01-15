@@ -13,8 +13,9 @@ ReportScheme = new SimpleSchema({
     "project.name": {
     	type: String,
     	label: "Prosjektnavn",
-    	optional: true,
-    	regEx: /^[a-z0-9A-z .,æøåÆØÅèÈéÉäÄöÖëËòóÒÓ()-]{2,47}$/
+    	optional: false,
+        max: 37,
+    	regEx: /^[a-z0-9A-z .,æøåÆØÅèÈéÉäÄöÖëËòóÒÓ()-]{2,37}$/
     },
     "project.projectNumber": {
     	type: Number,

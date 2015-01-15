@@ -67,23 +67,29 @@ createMofidiers = function(modifier, tmpl) {
 
     var success = evaluateProject(evaluations);
 
-    // omit invalid $unset variables
-    modifier = _.omit(modifier, [
-        "$unset.project.location",
-        "$unset.evaluation.productivity",
-        "$unset.evaluation.achievement",
-        "$unset.evaluation.effects",
-        "$unset.evaluation.relevance",
-        "$unset.evaluation.viability",
-        "$unset.evaluation.profitability"
+    // omit invalid $unset variables, those who are required
+    modifier.$unset = _.omit(modifier.$unset, [
+        "project.location",
+        "evaluation.productivity",
+        "evaluation.achievement",
+        "evaluation.effects",
+        "evaluation.relevance",
+        "evaluation.viability",
+        "evaluation.profitability",
+        "project.managementBudget",
+        "project.costBudget",
+        "project.costFinal",
+        "responsible",
+        "evaluation.overall",
+        "project.location.coordinates"
     ]);
 
 
     var mods = {
         "project.location" : {
             coordinates: {
-                lat: lat,
-                lng: lng
+                lat: lat || null,
+                lng: lng || null
             }
         },
         "project.successCategory": success,

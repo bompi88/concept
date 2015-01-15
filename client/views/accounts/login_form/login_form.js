@@ -6,10 +6,12 @@
 
 Template.LoginForm.events({
   'click #forgot-password': function(event,tmpl){
+    event.preventDefault();
     Router.go('AdminForgottonPassword');
   },
 
   'click #cancel': function(event, tmpl){
+    event.preventDefault();
     Router.go('AdminLogon');
   },
 

@@ -1,8 +1,9 @@
 PDFExportController = RouteController.extend({
   action: function() {
+
     var report = Reports.find({_id: this.params._id}).fetch()[0];
     if(report) {
-      var spiderImg = this.params && this.params.spider || null;
+      var spiderImg = this.params && this.params.query.spider || null;
 
       var filename = report.project.name + '.pdf';
       var headers = {

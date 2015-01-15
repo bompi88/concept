@@ -1,9 +1,9 @@
 CSVExportController = RouteController.extend({
   action: function() {
 
-    var reportids = this.params.reports.split(',');
-    var query = JSON.parse(this.params.query);
-    var sort = JSON.parse(this.params.sort);
+    var reportids = this.params.query.reports.split(',');
+    var query = JSON.parse(this.params.query.query);
+    var sort = JSON.parse(this.params.query.sort);
     var reports = Reports.find({$and: [{_id: {$nin: reportids}}, query]}, sort).fetch();
 
     if(reports) {

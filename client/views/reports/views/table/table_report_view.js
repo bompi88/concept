@@ -11,7 +11,7 @@ Template.TableReportView.events({
         $('.pop-info').not(this).popover('hide');
     });
   },
-  'click .checkbox': function(event, tmpl) {
+  'click input[type="checkbox"]': function(event, tmpl) {
     var that = this;
 
     //unchecked fører til at vi må svarteliste rapporten globalt

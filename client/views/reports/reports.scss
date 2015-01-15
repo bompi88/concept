@@ -3,8 +3,12 @@
 /*****************************************************************************/
 
 #report-list-container {
-	margin: 50px 0;
-	z-index: 1000;
+	margin: 80px 0;
+	z-index: 800;
+}
+
+.table thead>tr>th.vert-align{
+    vertical-align: middle;
 }
 
 .table thead tr th {
@@ -41,7 +45,6 @@
 }
 
 #report-list-container .content-wrapper {
-
 	min-height:575px;
 }
 

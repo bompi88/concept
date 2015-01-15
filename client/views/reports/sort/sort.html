@@ -25,18 +25,18 @@
   Renders a report sort box
 -->
 <template name="SortBox">
-	<div class="btn-group {{class}}">
+	<div class="dropdown {{class}}">
 
     {{!-- dropdown button --}}
-    <a class="btn btn-default dropdown-toggle btn-select" data-toggle="dropdown" href="#">
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" id="sort-dropdown-menu" aria-expanded="true">
       <span style="font-weight:500;">Sorter etter: </span>
       {{currentSort}}
       <span class="{{currentSortDirection}}"></span>
       <span class="caret"></span>
-    </a>
+    </button>
 
     {{!-- dropdown options --}}
-    <ul class="dropdown-menu" role="menu" style="text-align:left;">
+    <ul class="dropdown-menu" role="menu" aria-labelledby="sort-dropdown-menu">
       {{> DropdownItem name='Navn' dataId='name' sortBy='project.name'}}
       {{> DropdownItem name='Suksesskategori' dataId='success' sortBy='project.successCategory' reversed='1'}}
       {{> DropdownItem name='Sektor' dataId='sector' sortBy='project.sector'}}
@@ -51,8 +51,8 @@
 </template>
 
 <template name="DropdownItem">
-  <li class="sort-toggle" data-id="{{dataId}}">
-    <a href="#">{{name}}
+  <li  role="presentation" class="sort-toggle" data-id="{{dataId}}">
+    <a role="menuitem" tabindex="-1" href="#">{{name}}
       <div class="pull-right">
         {{> SortArrow sortBy=this.sortBy reversed=this.reversed}}
       </div>

@@ -90,9 +90,11 @@ Template.FilterList.events({
 // -- Template Helpers --------------------------------------------------------
 
 
-Template.FilterList.filters = function() {
-	return Session.get('filters');
-}
+Template.FilterList.helpers({
+  filters: function() {
+  	return Session.get('filters');
+  }
+});
 
 
 var queryBuilder = function() {

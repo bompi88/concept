@@ -4,6 +4,46 @@
 
 Reports = new Meteor.Collection('reports');
 
+evaluateProject = function(evaluations) {
+    // determine success category by calculating the mean score and map to three equal intervals
+    //1 - 2.66 is RED (1), 2.66 - 4.32 is ORANGE (2), and 4.32-6 is GREEN (3)
+    var criteriaCount = (evaluations[0] && 1) + (evaluations[1] && 1) + (evaluations[2] && 1) + (evaluations[3] && 1) + (evaluations[4] && 1) + (evaluations[5] && 1);
+    //RED by default
+    var success = 1;
+
+    var k;
+    var lessThanFour = false;
+    var reds = 0;
+
+    for(k = 0; k < evaluations.length; k++) {
+        var val = evaluations[k];
+        if(val < 4) {
+            lessThanFour = true;
+        }
+        if(val < 3) {
+            reds++;
+        }
+    }
+
+    var meanScore = (evaluations[0] + evaluations[1] + evaluations[2] + evaluations[3] + evaluations[4] + evaluations[5])/criteriaCount;
+    
+    if(meanScore > (8/3) && meanScore <= (13/3)) {
+        success = 2;
+    } else if(meanScore > (13/3)) {
+        if(lessThanFour) {
+            success = 2;
+        } else {
+            success = 3;
+        }
+    }
+
+    if(reds >= 3) {
+        success = 1;
+    }
+
+    return success;
+}
+
 createMofidiers = function(modifier, tmpl) {
     "use strict";
 
@@ -23,20 +63,35 @@ createMofidiers = function(modifier, tmpl) {
     var viabilityValue = parseInt(tmpl.find('input[name="num-eval-viability"]:checked').value);
     var profitabilityValue = parseInt(tmpl.find('input[name="num-eval-profitability"]:checked').value);
 
-    // determine success category by calculating the mean score and map to three equal intervals
-    //1 - 2.66 is RED (1), 2.66 - 4.32 is ORANGE (2), and 4.32-6 is GREEN (3)
-    var criteriaCount = (productivityValue && 1) + (achievementValue && 1) + (effectsValue && 1) + (relevanceValue && 1) + (viabilityValue && 1) + (profitabilityValue && 1);
-    //RED by default
-    var success = 1;
-    var meanScore = (productivityValue + achievementValue + effectsValue + relevanceValue + viabilityValue + profitabilityValue)/criteriaCount;
-    if(meanScore > (8/3) && meanScore <= (13/3))
-      success = 2;
-    else if(meanScore > (13/3))
-      success = 3;
+    var evaluations = [productivityValue, achievementValue, effectsValue, relevanceValue, viabilityValue, profitabilityValue];
+
+    var success = evaluateProject(evaluations);
+
+    // omit invalid $unset variables, those who are required
+    modifier.$unset = _.omit(modifier.$unset, [
+        "project.location",
+        "evaluation.productivity",
+        "evaluation.achievement",
+        "evaluation.effects",
+        "evaluation.relevance",
+        "evaluation.viability",
+        "evaluation.profitability",
+        "project.managementBudget",
+        "project.costBudget",
+        "project.costFinal",
+        "responsible",
+        "evaluation.overall",
+        "project.location.coordinates"
+    ]);
+
 
     var mods = {
-        "project.location.coordinates.lat": lat,
-        "project.location.coordinates.lng": lng,
+        "project.location" : {
+            coordinates: {
+                lat: lat || null,
+                lng: lng || null
+            }
+        },
         "project.successCategory": success,
         "evaluation.productivity.value": productivityValue,
         "evaluation.achievement.value": achievementValue,
@@ -83,7 +138,12 @@ createMofidiers = function(modifier, tmpl) {
 
     mods.references = files;
 
+    if(_.isEmpty(modifier.$unset)) {
+        modifier = _.omit(modifier, "$unset");
+    }
+
     modifier.$set = _.extend(modifier.$set, mods);
+
     return modifier;
 };
 
@@ -179,17 +239,9 @@ createReport = function(tmpl) {
     report.evaluation.viability.value = viabilityValue;
     report.evaluation.profitability.value = profitabilityValue;
 
+    var evaluations = [productivityValue, achievementValue, effectsValue, relevanceValue, viabilityValue, profitabilityValue];
 
-    // determine success category by calculating the mean score and map to three equal intervals
-    //1 - 2.66 is RED (1), 2.66 - 4.32 is ORANGE (2), and 4.32-6 is GREEN (3)
-    var criteriaCount = (productivityValue && 1) + (achievementValue && 1) + (effectsValue && 1) + (relevanceValue && 1) + (viabilityValue && 1) + (profitabilityValue && 1);
-    //RED by default
-    var success = 1;
-    var meanScore = (productivityValue + achievementValue + effectsValue + relevanceValue + viabilityValue + profitabilityValue)/criteriaCount;
-    if(meanScore > (8/3) && meanScore <= (13/3))
-      success = 2;
-    else if(meanScore > (13/3))
-      success = 3;
+    var success = evaluateProject(evaluations);
 
 
     report.project.successCategory = success;

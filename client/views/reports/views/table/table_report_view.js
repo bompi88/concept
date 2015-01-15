@@ -34,14 +34,15 @@ Template.TableReportView.events({
  }
 });
 
-Template.TableReportView.isChecked = function() {
-  var blacklist = Session.get('uncheckedReportIds');
-  if(!_.contains(blacklist, this._id))
-    return true;
-  return false;
-}
-
-Template.TableReportView.infoText = "Tallene er i noen tilfeller prisomregnet av evaluator. Se nærmere omtalen av hvert prosjekt.";
+Template.TableReportView.helpers({
+  isChecked: function() {
+    var blacklist = Session.get('uncheckedReportIds');
+    if(!_.contains(blacklist, this._id))
+      return true;
+    return false;
+  },
+  infoText: "Tallene er i noen tilfeller prisomregnet av evaluator. Se nærmere omtalen av hvert prosjekt."
+});
 
 Template.TableReportView.rendered = function () {
   $('.pop-info').popover({

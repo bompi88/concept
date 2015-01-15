@@ -19,16 +19,6 @@ Template.Reports.rendered = function() {
   Session.set('uncheckedReportIds', []);
 };
 
-Template.Reports.csvLink = function() {
-  //handles csv export
-  var reportids = "?reports=" + Session.get('uncheckedReportIds').join();
-  var query = "&query=" + JSON.stringify(Session.get('query'));
-  var s = {sort: {}};
-  s.sort[Session.get('sortBy')] = Session.get('sortOrder') == 'asc' ? 1 : -1;
-  var sort = "&sort=" + JSON.stringify(s);
-  return '/csv/' + reportids + query + sort;
-};
-
 Template.Reports.events({
   'click #report-view-option1': function(event, tmpl) {
     Session.set('ReportViewState', 'box');
@@ -132,6 +122,15 @@ Template.Reports.helpers({
 
     return pages;
 
+  },
+  csvLink: function() {
+    //handles csv export
+    var reportids = "?reports=" + Session.get('uncheckedReportIds').join();
+    var query = "&query=" + JSON.stringify(Session.get('query'));
+    var s = {sort: {}};
+    s.sort[Session.get('sortBy')] = Session.get('sortOrder') == 'asc' ? 1 : -1;
+    var sort = "&sort=" + JSON.stringify(s);
+    return '/csv/' + reportids + query + sort;
   }
 });
 

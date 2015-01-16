@@ -3,7 +3,9 @@ PDFExportController = RouteController.extend({
 
     var report = Reports.find({_id: this.params._id}).fetch()[0];
     if(report) {
-      var spiderImg = this.params && this.params.query.spider || null;
+      var spiderImg = this.params && this.params.query.spider || "";
+      
+      spiderImg = decodeURIComponent(spiderImg).replace(new RegExp('\\-', 'gi'),'+').replace(new RegExp('\\_', 'gi'),'/').replace(new RegExp('\\=', 'gi'),'~');
 
       var filename = report.project.name + '.pdf';
       var headers = {
@@ -137,6 +139,7 @@ var generatePdf = function(report, spider) {
     }
 
     var spiderBuffer = new Buffer(spider.replace('data:image/png;base64,','') || '', 'base64');
+
     doc.image(spiderBuffer, (450+ - 200) / 2, doc.y, { fit: [400, 300]});
 
     doc.moveDown();

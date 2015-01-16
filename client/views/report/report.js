@@ -153,7 +153,9 @@ Template.Report.rendered = function() {
         responsive: true,
         onAnimationComplete: function(){
           var button = $("#export-text");
-          var dataURL = chart.toBase64Image();
+          var base64 = chart.toBase64Image();
+          var dataURL = decodeURIComponent(base64.replace('data:image/png;base64,','').replace(new RegExp('\\+', 'gi'),'-').replace(new RegExp('\\/', 'gi'),'_').replace(new RegExp('\\=', 'gi'),'~'));
+
           var link = button.prop("href") + '?spider=';
 
           // Send only the spider diagram if IE is not detected

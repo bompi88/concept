@@ -35,7 +35,7 @@
   "env": {
     "PORT": 80,
     // needs to be set to the correct domain name
-    "ROOT_URL": "http://129.241.88.77",
+    "ROOT_URL": "http://concept-eval.ivt.ntnu.no",
     // using mandrill to send email until we get a real account from NTNU
     "MAIL_URL": "smtp://bjorbrat88%40gmail.com:npjb2t9DJDbIoXDMta46bA@smtp.mandrillapp.com:587/",
     "KADIRA_APP_ID": "pP8ynn9FPn5CkujGi",

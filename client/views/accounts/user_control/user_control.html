@@ -17,7 +17,10 @@
             <tr>
               <td>{{emails.[0].address}}</td>
               <td>{{status}}</td>
-              <td><button class="btn btn-danger btn-sm" id="rem-user">Slett bruker</button></td>
+              <td>
+                <button class="btn btn-success btn-sm" id="set-superuser">{{#if isSuperUser _id}}Frata superbruker{{else}}Gjør superbruker{{/if}}</button>
+                <button class="btn btn-danger btn-sm" id="rem-user">Slett bruker</button>
+              </td>
             </tr>
             {{/each}}
           </tbody>

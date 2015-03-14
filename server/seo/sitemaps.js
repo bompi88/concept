@@ -10,7 +10,7 @@ sitemaps.add('/reports.xml', function() {
   return out;
 });
 
-sitemaps.add('sitemap.xml', function() {
+sitemaps.add('/sitemap.xml', function() {
   return [
     {page: 'om/', lastmod: new Date(2014, 6, 20, 0, 0, 0, 0) },
     {page: 'kriterier/', lastmod: new Date(2014, 6, 20, 0, 0, 0, 0) },

@@ -11,7 +11,9 @@ Template.Search.events({
   'keyup [type="text"]': function(event, template) {
     var page = parseInt(Router.current().params.page);
     if(page > 1) {
-      Router.go('Reports', {page: 1});
+      if(Session.get('searchQuery').length === 0) {
+        Router.go('Reports', {page: 1});
+      }
     }
     //escape regex
     var value = event.target.value.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, "\\$&");

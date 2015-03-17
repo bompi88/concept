@@ -4,7 +4,7 @@ sitemaps.add('/reports.xml', function() {
   _.each(reports, function(report) {
     out.push({
       page: 'rapport/' + report._id + '/' + slugify(report.project.name),
-      lastmod: new Date(2014, 6, 20, 0, 0, 0, 0)
+      lastmod: report.lastModifiedAt == undefined ? new Date(2014, 6, 20, 0, 0, 0, 0) : report.lastModifiedAt
     });
   });
   return out;

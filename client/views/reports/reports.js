@@ -64,8 +64,11 @@ Template.Reports.events({
     //lose focus on the clicked element
     event.currentTarget.blur();
     var state = Session.get('showFilter');
-    if(state)
+    if(state) {
       Session.set('showFilter', false);
+      Session.set('filters', []);
+
+    }
     else
       Session.set('showFilter', true);
   },

@@ -3,6 +3,7 @@
 ## Installasjon og kjøring av prosjektet lokalt
 1. Installer [Meteor](https://www.meteor.com/) 
 2. Hent alle filene og start serveren:
+
 ```bash
 $ git clone git@github.com:bompi88/concept.git
 $ cd concept

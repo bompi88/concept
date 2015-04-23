@@ -1,8 +1,8 @@
-#Presentasjonsverktøy for Concept [![Build Status](https://magnum.travis-ci.com/bompi88/concept.svg?token=hseESc15r1zHkVm476ia&branch=master)](https://magnum.travis-ci.com/bompi88/concept)
+#Presentasjonsverktøy for Concept
 
 ## Installasjon og kjøring av prosjektet lokalt
-1. Installer [Node.js](http://nodejs.org/) and [Meteor](https://www.meteor.com/) 
-2. Hent alle filene og start serveren
+1. Installer [Meteor](https://www.meteor.com/) 
+2. Hent alle filene og start serveren:
 ```bash
 $ git clone git@github.com:bompi88/concept.git
 $ cd concept
@@ -10,12 +10,12 @@ $ meteor
 ```
 
 ## Introduksjonsguide
-Prosjektet bruker [Meteor] (http://www.meteor.com) som rammeverk. Sass brukes som CSS-preprosessor. En viktig pakke som brukes er [Iron Router] (https://github.com/EventedMind/iron-router). Denne tar seg av alle rutene på klienten og serveren og bestemmer hvilke templater som skal rendres. Layouten bygges opp fra MasterLayout som ligger i client/views/layouts/. 
+Prosjektet bruker [Meteor](http://www.meteor.com) som rammeverk. Sass brukes som CSS-preprosessor. En viktig pakke som brukes er [Iron Router](https://github.com/iron-meteor/iron-router). Denne tar seg av alle rutene på klienten og serveren og bestemmer hvilke templater som skal rendres. Layouten bygges opp fra MasterLayout som ligger i client/views/layouts/. 
 
-Kode som ligger i "both" kjøres både på serveren og klienten. Filene er som oftest gruppert slik at javascript-,scss-, og html-filene som hører sammen ligger i samme mappe. 
+Kode som ligger i `/both` kjøres både på serveren og klienten. Filene er som oftest gruppert slik at javascript-,scss-, og html-filene som hører sammen ligger i samme mappe. 
 
 ## Datamodell
-Meteor bruker MongoDB som database. Hver rapport lagres i én json-fil i databasen som vist under. "fileId" i "images" og "references" peker på et filobjekt i Collection FS-rammeverket som også er lagret i databasen.
+Meteor bruker MongoDB som database. Hver rapport lagres i én json-fil i databasen som vist under. `fileId` i `images` og `references` peker på et filobjekt i Collection FS-rammeverket som også er lagret i databasen.
 
 ```javascript
 {
@@ -110,7 +110,7 @@ Meteor bruker MongoDB som database. Hver rapport lagres i én json-fil i databas
 
 ### Brukermanual
 
-Brukermanualen er skrevet i `markdown` og kan genereres til \*.pdf og \*.epub ved bruk av [GitBook](https://github.com/GitbookIO/gitbook).
+Brukermanualen er skrevet i `markdown` og kan genereres til `\*.pdf` og `\*.epub` ved bruk av [GitBook](https://github.com/GitbookIO/gitbook).
 
 Det finnes et GUI-program til GitBook også, det kan man laste ned [her](https://github.com/GitbookIO/editor/releases).
 
@@ -120,4 +120,4 @@ For å kunne generere til `pdf` må man installere [Calibre](http://calibre-eboo
 2. Klikk `Installer kommandoverktøy`
 
 ## Copyright
-Laget av Bjørn Bråthen (bjorbrat88@gmail.com) og Andreas Drivenes (andreas.drivenes@gmail.com) for Concept-programmet på NTNU. Sluppet under Apache-lisens. 
+Laget av [Bjørn Bråthen](https://github.com/bompi88) og [Andreas Drivenes](https://github.com/andybb) for Concept-programmet på NTNU. Sluppet under Apache-lisens. 

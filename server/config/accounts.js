@@ -21,7 +21,7 @@ Meteor.startup(function() {
 	var admPasswd = 'asd';
 
 	// create a admin user if not allready present
-	if(Meteor.users.find({ 'emails.address' : admEmail }).count() === 0) {
+	if(Meteor.users.find().count() === 0) {
 		var newUserId = Accounts.createUser({
       email : admEmail,
       password : admPasswd,

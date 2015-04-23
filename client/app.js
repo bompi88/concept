@@ -89,10 +89,12 @@ App.helpers = {
       returnValue = rValue;
     }
 
-		var curRoute = Router.current();
-    	if (!curRoute) return '';
-
-		return curRoute && route === curRoute.route.getName() ? returnValue : '';
+		var currentController = Router.current();
+    
+    if (currentController && currentController.router && currentController.router.route && currentController.router.route.getName)
+		  return currentController && route === currentController.router.route.getName() ? returnValue : '';
+    else
+      return "";
   },
 
   /**

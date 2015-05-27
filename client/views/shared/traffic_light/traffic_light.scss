@@ -1,3 +1,7 @@
+$red: darken(red, 5%);
+$orange: darken(orange, 5%);
+$green: lighten(green, 10%);
+
 .light {
 	display: block;
 	background-color: #ccc;
@@ -14,17 +18,17 @@
 	height: 15px !important;
 	margin: 1px 1px 0 1px;
 	padding: 0 -5px;
-	opacity: .20;
+	opacity: .10;
 	width: 15px !important;
 }
 
 /* Light colours */
-.red    { background-color: red; }
-.orange { background-color: orange; }
-.green  { background-color: green; }
+.red    { background-color: $red; }
+.orange { background-color: $orange; }
+.green  { background-color: $green; }
 
 /* Active states */
 .light span.active    { opacity: 1; }
-.light .red.active    { box-shadow: 0 0 5px red; }
-.light .orange.active { box-shadow: 0 0 5px orange; }
-.light .green.active  { box-shadow: 0 0 5px green; }
+.light .red.active    { box-shadow: 0 0 3px $red; }
+.light .orange.active { box-shadow: 0 0 3px $orange; }
+.light .green.active  { box-shadow: 0 0 3px $green; }

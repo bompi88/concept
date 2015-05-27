@@ -15,8 +15,8 @@
 -->
 <template name="TrafficLight">
 	<div class="light tool-top" data-toggle="tooltip" data-placement="left" title="{{successColor}}">
-		<span class="green {{#if isColor "3" }} active {{else}} passive {{/if}}"></span>
-		<span class="orange {{#if isColor "2" }} active {{else}} passive {{/if}}"></span>
 		<span class="red {{#if isColor "1" }} active {{else}} passive {{/if}}"></span>
+		<span class="orange {{#if isColor "2" }} active {{else}} passive {{/if}}"></span>
+		<span class="green {{#if isColor "3" }} active {{else}} passive {{/if}}"></span>
 	</div>
 </template>

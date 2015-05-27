@@ -15,7 +15,7 @@
 -->
 <template name="BasicBox">
 	{{! A descriptive box, which shortly describes the project. }}
-	<div class="col-xxs-12 col-xs-12 col-sm-6 col-md-6 col-lg-4 box">
+	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 box">
 		<div class="thumbnail-normal clearfix">
 
 			<div class="box-header text-center">
@@ -24,7 +24,7 @@
 
 			{{! This section contains the fact box and the image. }}
 			<section class="row col-xs-12" style="margin: 0;padding:0;">
-				<div class="col-xs-7 box-facts">
+				<div class="col-xs-8 box-facts">
 
 					{{! Render a small information box with data about the project}}
 					{{> SmallInfoBox}}
@@ -38,7 +38,7 @@
 				</div>
 
 				{{! An descriptive image of the project.}}
-				<div class="col-xs-5 box-image text-center" style="height:100%;padding:5px 0;">
+				<div class="col-xs-4 box-image text-center" style="height:100%;padding:5px 0;">
 					<img class="" src="{{#if images.[0]}}{{$getUrlById images.[0].fileId 'images' store='fixed'}}{{else}}http://placehold.it/100/eeeeee/999999&text=Tomt{{/if}}" style="margin: 0 auto; max-height:100px;" alt="Bilde knyttet til {{project.name}}.">
 				</div>
 			</section>
@@ -56,7 +56,7 @@
 
 <template name="SmallInfoBox">
 	{{! A small information box which shows basic information about a project}}
-	<ul class="list-group infobox">
+	<ul class="list-group small infobox">
 		<li class="list-group-item">
 			<span class="bold">Sektor:</span>
 			<span class="pull-right">{{project.sector}}</span>
@@ -82,8 +82,12 @@
       </span>
 		</li>
 		<li class="list-group-item">
-			<span class="bold">Suksess:</span>
-			<span class="pull-right">{{>TrafficLight}}</span>
+			<span class="bold">Operasjonell suksess:</span>
+			<span class="pull-right">{{>TrafficLight success=project.operationalSuccess}}</span>
+		</li>
+		<li class="list-group-item">
+			<span class="bold">Strategisk suksess:</span>
+			<span class="pull-right">{{>TrafficLight success=project.strategicalSuccess}}</span>
 		</li>
 	</ul>
 </template>

@@ -66,6 +66,17 @@ ReportScheme = new SimpleSchema({
         type: String,
         optional: true
     },
+    "project.operationalSuccess": {
+        type: Number,
+        optional: true,
+        regEx: /^[1-3]$/
+    },
+    "project.strategicalSuccess": {
+        type: Number,
+        optional: true,
+        regEx: /^[1-3]$/
+    },
+    // Depreciated
     "project.successCategory": {
         type: Number,
         optional: true,

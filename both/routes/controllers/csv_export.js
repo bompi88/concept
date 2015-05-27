@@ -44,8 +44,20 @@ var generateCSV = function(reports) {
 
   var newlinePattern = /(\r\n|\n|\r)/gm;
 
+
   var rows = [];
   reports.forEach(function(r) {
+
+    var productivityValue = r.evaluation.productivity.value;
+    var achievementValue = r.evaluation.achievement.value;
+    var effectsValue = r.evaluation.effects.value;
+    var relevanceValue = r.evaluation.relevance.value;
+    var viabilityValue = r.evaluation.viability.value;
+    var profitabilityValue = r.evaluation.profitability.value;
+
+    var operationalEvaluations = [productivityValue];
+    var strategicalEvaluations = [achievementValue, effectsValue, relevanceValue, viabilityValue, profitabilityValue];
+
     var row = {
       "Navn": r.project.name,
       "Sektor": r.project.sector,
@@ -57,7 +69,8 @@ var generateCSV = function(reports) {
       "Sluttkostnad": r.project.costFinal && r.project.costFinal.amount || "",
       "Sluttkostnad årstall": r.project.costFinal && r.project.costFinal.year || "",
       "Evaluator": r.responsible.organization,
-      "Suksesskategori": r.project.successCategory,
+      "Operasjonell suksess": getMeanScore(operationalEvaluations),
+      "Strategisk suksess": getMeanScore(strategicalEvaluations),
       "Produktivitet (karakter)": r.evaluation.productivity.value,
       "Måloppnåelse (karakter)": r.evaluation.achievement.value,
       "Virkninger (karakter)": r.evaluation.effects.value,

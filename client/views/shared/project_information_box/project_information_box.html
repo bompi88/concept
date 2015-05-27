@@ -23,8 +23,10 @@
 				<dl class="dl-horizontal ls-offset">
 					<dt>Sektor</dt>
 					<dd>{{project.sector}}</dd>
-					<dt>Suksess</dt>
-					<dd>{{>TrafficLight}}</dd>
+					<dt>Operasjonell suksess</dt>
+					<dd>{{>TrafficLight success=project.operationalSuccess}}</dd>
+          <dt>Strategisk suksess</dt>
+          <dd>{{>TrafficLight success=project.strategicalSuccess}}</dd>
 					<dt>Årstall påbegynt</dt>
 					<dd>
       {{#if project.decisionYear}}

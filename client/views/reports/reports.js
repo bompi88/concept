@@ -54,8 +54,10 @@ Template.Reports.events({
 
     if (t === 'name') {
       orderBy('project.name', undefined, 'string');
-    } else if (t === 'success') {
-      orderBy('project.successCategory', -1, 'number');
+    } else if (t === 'operational-success') {
+      orderBy('project.operationalSuccess', -1, 'number');
+    } else if (t === 'strategical-success') {
+      orderBy('project.strategicalSuccess', -1, 'number');
     } else if (t === 'sector') {
       orderBy('project.sector', undefined, 'string');
     } else if (t === 'finishing-year') {

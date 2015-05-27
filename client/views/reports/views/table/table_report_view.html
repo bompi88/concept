@@ -19,7 +19,8 @@
 			<thead>
         <tr>
           <th class="sort-toggle vert-align table-header" data-id="name">Navn {{> SortArrow sortBy='project.name'}}</th>
-          <th class="sort-toggle vert-align table-header" data-id="success">Suksesskategori {{> SortArrow sortBy='project.successCategory' reversed="1"}}</th>
+          <th class="sort-toggle vert-align table-header" data-id="operational-success">Operasjonell suksess {{> SortArrow sortBy='project.operationalSuccess' reversed="1"}}</th>
+          <th class="sort-toggle vert-align table-header" data-id="strategical-success">Strategisk suksess {{> SortArrow sortBy='project.strategicalSuccess' reversed="1"}}</th>
           <th class="sort-toggle vert-align table-header" data-id="sector">Sektor {{> SortArrow sortBy='project.sector'}}</th>
           <th class="sort-toggle vert-align table-header" data-id="finishing-year">Årstall ferdigstilt {{> SortArrow sortBy='project.finishingYear'}}</th>
           <th class="sort-toggle vert-align table-header" data-id="evaluation-year">Årstall evaluering {{> SortArrow sortBy='project.evaluationYear'}}</th>
@@ -54,7 +55,8 @@
   		  {{#each reports}}
   	  		<tr class="table-row">
             <td class="row-item">{{project.name}}</td>
-            <td class="row-item">{{> TrafficLight}}</td>
+            <td class="row-item">{{> TrafficLight success=project.operationalSuccess class="center-block"}}</td>
+            <td class="row-item">{{> TrafficLight success=project.strategicalSuccess class="center-block"}}</td>
             <td class="row-item">{{project.sector}}</td>
             <td class="row-item">
               {{#if project.finishingYear}}

@@ -19,44 +19,35 @@
 
 Reports = new Meteor.Collection('reports');
 
+/**
+ * Determines success category by calculating the mean score and map to three equal intervals
+ * 1 - 2.66 is RED (1), 2.66 - 4.32 is ORANGE (2), and 4.32-6 is GREEN (3)
+ */
 evaluateProject = function(evaluations) {
-    // determine success category by calculating the mean score and map to three equal intervals
-    //1 - 2.66 is RED (1), 2.66 - 4.32 is ORANGE (2), and 4.32-6 is GREEN (3)
-    var criteriaCount = (evaluations[0] && 1) + (evaluations[1] && 1) + (evaluations[2] && 1) + (evaluations[3] && 1) + (evaluations[4] && 1) + (evaluations[5] && 1);
-    //RED by default
-    var success = 1;
-
-    var k;
-    var lessThanFour = false;
-    var reds = 0;
-
-    for(k = 0; k < evaluations.length; k++) {
-        var val = evaluations[k];
-        if(val < 4) {
-            lessThanFour = true;
-        }
-        if(val < 3) {
-            reds++;
-        }
-    }
-
-    var meanScore = (evaluations[0] + evaluations[1] + evaluations[2] + evaluations[3] + evaluations[4] + evaluations[5])/criteriaCount;
     
+    var meanScore = getMeanScore(evaluations);
+
     if(meanScore > (8/3) && meanScore <= (13/3)) {
         success = 2;
     } else if(meanScore > (13/3)) {
-        if(lessThanFour) {
-            success = 2;
-        } else {
-            success = 3;
-        }
-    }
-
-    if(reds >= 3) {
-        success = 1;
+        success = 3;
     }
 
     return success;
+}
+
+getMeanScore = function(evaluations) {
+    var criteriaCount = 0;
+    var meanScore = 0;
+
+    for(k = 0; k < evaluations.length; k++) {
+        criteriaCount += (evaluations[k] && 1);
+        meanScore += evaluations[k] || 0;
+    }
+
+    meanScore /= criteriaCount;
+
+    return meanScore;
 }
 
 createMofidiers = function(modifier, tmpl) {
@@ -78,9 +69,11 @@ createMofidiers = function(modifier, tmpl) {
     var viabilityValue = parseInt(tmpl.find('input[name="num-eval-viability"]:checked').value);
     var profitabilityValue = parseInt(tmpl.find('input[name="num-eval-profitability"]:checked').value);
 
-    var evaluations = [productivityValue, achievementValue, effectsValue, relevanceValue, viabilityValue, profitabilityValue];
+    var operationalEvaluations = [productivityValue];
+    var strategicalEvaluations = [achievementValue, effectsValue, relevanceValue, viabilityValue, profitabilityValue];
 
-    var success = evaluateProject(evaluations);
+    var operationalSuccess = evaluateProject(operationalEvaluations);
+    var strategicalSuccess = evaluateProject(strategicalEvaluations);
 
     // omit invalid $unset variables, those who are required
     modifier.$unset = _.omit(modifier.$unset, [
@@ -103,7 +96,8 @@ createMofidiers = function(modifier, tmpl) {
     var mods = {
         "project.location.coordinates.lat": lat || null,
         "project.location.coordinates.lng": lng || null,
-        "project.successCategory": success,
+        "project.operationalSuccess": operationalSuccess,
+        "project.strategicalSuccess": strategicalSuccess,
         "evaluation.productivity.value": productivityValue,
         "evaluation.achievement.value": achievementValue,
         "evaluation.effects.value": effectsValue,
@@ -250,12 +244,14 @@ createReport = function(tmpl) {
     report.evaluation.viability.value = viabilityValue;
     report.evaluation.profitability.value = profitabilityValue;
 
-    var evaluations = [productivityValue, achievementValue, effectsValue, relevanceValue, viabilityValue, profitabilityValue];
+    var operationalEvaluations = [productivityValue];
+    var strategicalEvaluations = [achievementValue, effectsValue, relevanceValue, viabilityValue, profitabilityValue];
 
-    var success = evaluateProject(evaluations);
+    var operationalSuccess = evaluateProject(operationalEvaluations);
+    var strategicalSuccess = evaluateProject(strategicalEvaluations);
 
-
-    report.project.successCategory = success;
+    report.project.operationalSuccess = operationalSuccess;
+    report.project.strategicalSuccess = strategicalSuccess;
 
     var imgsIds = uploadObject.getImages();
     var imgs = [];

@@ -53,7 +53,8 @@
     {{!-- dropdown options --}}
     <ul class="dropdown-menu" role="menu" aria-labelledby="sort-dropdown-menu">
       {{> DropdownItem name='Navn' dataId='name' sortBy='project.name'}}
-      {{> DropdownItem name='Suksesskategori' dataId='success' sortBy='project.successCategory' reversed='1'}}
+      {{> DropdownItem name='Operasjonell suksess' dataId='operational-success' sortBy='project.operationalSuccess' reversed='1'}}
+      {{> DropdownItem name='Strategisk suksess' dataId='strategical-success' sortBy='project.strategicalSuccess' reversed='1'}}
       {{> DropdownItem name='Sektor' dataId='sector' sortBy='project.sector'}}
       {{> DropdownItem name='Årstall ferdigstilt' dataId='finishing-year' sortBy='project.finishingYear'}}
       {{> DropdownItem name='Årstall evaluering' dataId='evaluation-year' sortBy='project.evaluationYear'}}

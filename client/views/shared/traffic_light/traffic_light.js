@@ -16,7 +16,7 @@
 Template.TrafficLight.helpers({
   successColor: function() {
     try {
-      var success = this.project.successCategory;
+      var success = this.success;
 
       if(success == 1) {
         return "Rød";
@@ -34,8 +34,8 @@ Template.TrafficLight.helpers({
     }
   },
   isColor: function (c) {
-    if(this.project && this.project.successCategory)
-      return parseInt(c) === this.project.successCategory;
+    if(this.success)
+      return parseInt(c) === this.success;
     return false;
   }
 });

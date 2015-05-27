@@ -165,8 +165,10 @@ attToField = function(attribute) {
     return 'project.name';
   else if(attribute === 'Evaluator')
     return 'responsible.organization';
-  else if(attribute === 'Suksesskategori')
-    return 'project.successCategory';
+  else if(attribute === 'Operasjonell suksess')
+    return 'project.operationalSuccess';
+  else if(attribute === 'Strategisk suksess')
+    return 'project.strategicalSuccess';
   else if(attribute === 'Årstall ferdigstilt')
     return 'project.finishingYear';
   else if(attribute === 'Årstall evaluering')
@@ -204,7 +206,7 @@ function validateFilter(filter) {
 			"operators": ["er lik", "inneholder"]
 		},
 		"number": {
-			"attributes": ["Suksesskategori", "Årstall ferdigstilt", "Årstall evaluering", "Styringsramme", "Sluttkostnad", "Produktivitet", "Måloppnåelse", "Samf.øk lønnsomhet", "Virkninger", "Levedyktighet", "Relevans"],
+			"attributes": ["Operasjonell suksess", "Strategisk suksess", "Årstall ferdigstilt", "Årstall evaluering", "Styringsramme", "Sluttkostnad", "Produktivitet", "Måloppnåelse", "Samf.øk lønnsomhet", "Virkninger", "Levedyktighet", "Relevans"],
 			"operators": ["er lik", "større enn", "mindre enn"]
 		}
 	};

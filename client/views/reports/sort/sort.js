@@ -20,8 +20,10 @@ Template.SortBox.helpers({
 
     if (curSort === 'project.name') {
       text = 'Navn';
-    } else if (curSort === 'project.successCategory') {
-      text = 'Suksesskategori';
+    } else if (curSort === 'project.operationalSuccess') {
+      text = 'Operasjonell suksess';
+    } else if (curSort === 'project.strategicalSuccess') {
+      text = 'Strategisk suksess';
     } else if (curSort === 'project.sector') {
       text = 'Sektor';
     } else if (curSort === 'project.finishingYear') {

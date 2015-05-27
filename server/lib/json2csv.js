@@ -26,13 +26,22 @@ json2csv = function (array, headings, quotes) {
 
     if (quotes) {
       for (var index in array[i]) {
+        
         var value = array[i][index] + "";
+        
         line += '"' + value.replace(/"/g, '""') + '";';
       }
     }
     else {
       for (var index in array[i]) {
-        line += array[i][index] + ';';
+        var partial = array[i][index];
+        var isN = _.isNumber(partial);
+        
+        partial += ";";
+
+        if(isN) { partial = partial.replace('.', ','); }
+
+        line += partial;
       }
     }
     line = line.slice(0, -1);

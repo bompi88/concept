@@ -31,7 +31,8 @@ Meteor bruker MongoDB som database. Hver rapport lagres i én json-fil i databas
 				lng: ""
 			}
 		},
-		"successCategory" : "",
+		"operationalSuccess" : "",
+		"strategicalSuccess" : "",
 		"projectDescription" : {
 			"short" : "",
 			"long" : ""

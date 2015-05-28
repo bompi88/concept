@@ -36,7 +36,7 @@ Router.route('/rapporter', {
 
 Router.route('/opprett', {
   name: 'CreateReport',
-  controller: 'AuthRouteController'
+  controller: 'CreateReportController'
 });
 
 Router.route('/rapport/:_id/endre', {

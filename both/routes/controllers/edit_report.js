@@ -56,3 +56,10 @@ EditReportController = AuthRouteController.extend({
 		}
 	}
 });
+
+
+CreateReportController = AuthRouteController.extend({
+	onAfterAction: function() {
+		uploadObject.reset();
+	}
+});

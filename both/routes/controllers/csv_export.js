@@ -15,23 +15,29 @@
  */
 CSVExportController = RouteController.extend({
   action: function() {
+    if(this.params.query) {
 
-    var reportids = this.params.query.reports.split(',');
-    var query = JSON.parse(this.params.query.query);
-    var sort = JSON.parse(this.params.query.sort);
-    var reports = Reports.find({$and: [{_id: {$nin: reportids}}, query]}, sort).fetch();
+      var reportids = [];
+      
+      if(this.params.query.reports)
+        reportids = this.params.query.reports.split(',');
 
-    if(reports) {
-      var file = generateCSV(reports);
-      var filename = 'rapportutvalg' + '.csv';
+      var query = JSON.parse(this.params.query.query);
+      var sort = JSON.parse(this.params.query.sort);
+      var reports = Reports.find({$and: [{_id: {$nin: reportids}}, query]}, sort).fetch();
 
-      var headers = {
-        'Content-Type': 'text/csv',
-        'Content-Disposition': "attachment; filename=" + filename
-      };
+      if(reports) {
+        var file = generateCSV(reports);
+        var filename = 'rapportutvalg' + '.csv';
 
-      this.response.writeHead(200, headers);
-      return this.response.end(file);
+        var headers = {
+          'Content-Type': 'text/csv',
+          'Content-Disposition': "attachment; filename=" + filename
+        };
+
+        this.response.writeHead(200, headers);
+        return this.response.end(file);
+      }
     }
   }
 });

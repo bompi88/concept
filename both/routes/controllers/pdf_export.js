@@ -16,22 +16,24 @@
 PDFExportController = RouteController.extend({
   action: function() {
 
-    var report = Reports.find({_id: this.params._id}).fetch()[0];
-    if(report) {
-      var spiderImg = this.params && this.params.query.spider || "";
-      
-      spiderImg = decodeURIComponent(spiderImg).replace(new RegExp('\\-', 'gi'),'+').replace(new RegExp('\\_', 'gi'),'/').replace(new RegExp('\\=', 'gi'),'~');
+    if(this.params._id) {
+      var report = Reports.find({_id: this.params._id}).fetch()[0];
+      if(report) {
+        var spiderImg = this.params && this.params.query.spider || "";
+        
+        spiderImg = decodeURIComponent(spiderImg).replace(new RegExp('\\-', 'gi'),'+').replace(new RegExp('\\_', 'gi'),'/').replace(new RegExp('\\=', 'gi'),'~');
 
-      var filename = report.project.name + '.pdf';
-      var headers = {
-        'Content-type': 'application/pdf',
-        'Cache-Control': 'must-revalidate, post-check=0, pre-check=0',
-        'Pragma': 'public',
-        'Content-Disposition': "attachment; filename=" + filename
-      };
-      var file = generatePdf(report, spiderImg);
-      this.response.writeHead(200, headers);
-      return this.response.end(file);
+        var filename = report.project.name + '.pdf';
+        var headers = {
+          'Content-type': 'application/pdf',
+          'Cache-Control': 'must-revalidate, post-check=0, pre-check=0',
+          'Pragma': 'public',
+          'Content-Disposition': "attachment; filename=" + filename
+        };
+        var file = generatePdf(report, spiderImg);
+        this.response.writeHead(200, headers);
+        return this.response.end(file);
+      }
     }
   }
 });

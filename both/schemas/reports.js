@@ -400,6 +400,13 @@ ReportScheme = new SimpleSchema({
     "_public": {
         type: Boolean,
         optional: false
+    },
+    "lastModifiedAt": {
+        type: Date,
+        optional: false,
+        autoValue: function() {
+          return new Date();
+        }
     }
 });
 

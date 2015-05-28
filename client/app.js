@@ -90,9 +90,9 @@ App.helpers = {
     }
 
 		var curRoute = Router.current();
-    	if (!curRoute) return '';
+    	if (!curRoute || !curRoute.route) return '';
 
-		return curRoute && route === curRoute.route.getName() ? returnValue : '';
+		return curRoute && ((route === curRoute.route.getName()) ? returnValue : '');
   },
 
   /**

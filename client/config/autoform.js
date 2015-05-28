@@ -41,10 +41,10 @@ AutoForm.hooks({
             }
         },
         onSuccess: function(operation, result, tmpl) {
-          return Router.go(Router.path('Reports', {page: 1}));
+            return Router.go(Router.path('Reports', {page: 1}));
         },
         onError: function(operation, error, template) {
-            console.log(error);
+            Notifications.error("Feil i skjema", error.message, { timeout: 5000 });
         }
     }
 });

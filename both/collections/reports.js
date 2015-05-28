@@ -25,6 +25,8 @@ Reports = new Meteor.Collection('reports');
  */
 evaluateProject = function(evaluations) {
     
+    var success = 1;
+
     var meanScore = getMeanScore(evaluations);
 
     if(meanScore > (8/3) && meanScore <= (13/3)) {

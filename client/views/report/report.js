@@ -59,13 +59,13 @@ Template.Report.helpers({
     var t = this && this.evaluation;
 
     if(t) {
-      if(t.achievement.short || t.achievement.long
-        || t.effects.short || t.effects.long
-        || t.overall.short || t.overall.long
-        || t.productivity.short || t.productivity.long
-        || t.profitability.short || t.profitability.long
-        || t.relevance.short || t.relevance.long
-        || t.viability.short || t.viability.long) {
+      if((t.achievement && (t.achievement.short || t.achievement.long))
+        || (t.effects && (t.effects.short || t.effects.long))
+        || (t.overall && (t.overall.short || t.overall.long))
+        || (t.productivity && (t.productivity.short || t.productivity.long))
+        || (t.profitability && (t.profitability.short || t.profitability.long))
+        || (t.relevance && (t.relevance.short || t.relevance.long))
+        || (t.viability && (t.viability.short || t.viability.long))) {
         return true;
       }
     }

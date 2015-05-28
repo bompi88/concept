@@ -42,6 +42,7 @@
             <span> <a class="read-more" id="desc-button">&laquo; Skjul</a></span>
           {{else}}
             <em>{{project.projectDescription.short}}</em>
+            <div style="display:none;">{{{$convertLineBreaks project.projectDescription.long}}}</div>
             <span> <a class="read-more" id="desc-button">Les mer &raquo;</a></span>
 				  {{/if}}
         </p>
@@ -138,6 +139,7 @@
             Ingen tekst tilgjengelig.
           {{/if}}
           {{#if ref.long}}
+            <div style="display:none;">{{{$convertLineBreaks ref.long}}}</div>
             <span>&nbsp;<a class="read-more">Les mer &raquo;</a></span>
           {{/if}}
         {{/if}}
@@ -169,6 +171,7 @@
             <span><b>Tallvurdering utelatt</b></span>.
           {{/if}}
           {{#if ref.long}}
+            <div style="display:none;">{{{$convertLineBreaks ref.long}}}</div>
             <span>&nbsp;<a class="read-more">Les mer &raquo;</a></span>
           {{/if}}
         {{/if}}

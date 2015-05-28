@@ -24,6 +24,12 @@ Template.Search.events({
     Session.set('searchQuery', '');
   },
   'keyup [type="text"]': function(event, template) {
+    var page = parseInt(Router.current().params.page);
+    if(page > 1) {
+      if(Session.get('searchQuery').length === 0) {
+        Router.go('Reports', {page: 1});
+      }
+    }
     //escape regex
     var value = event.target.value.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, "\\$&");
     var field = attToField(Session.get('searchBy'));
@@ -40,6 +46,7 @@ Template.Search.events({
     if(value == null || value == "")
       query = {};
     //this triggers iron router to load the report subscription again
+
     Session.set('query', query);
     Session.set('searchQuery', value);
   }

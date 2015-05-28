@@ -93,23 +93,22 @@ Router.route('/csv', {
   controller: 'CSVExportController'
 });
 
-Router.onBeforeAction(function() {
-  Session.set('query', {});
-  Session.set('searchQuery', '');
-  Session.set('searchBy', 'Navn');
-  Session.set('filters', []);
-  Session.set('sortBy', 'project.name');
-  Session.set('sortOrder', 'asc');
-  Session.set('sortType', 'string');
-  Session.set('showFilter', false);
-  this.next();
-
-}, {
-  except: ['Reports']
-});
-
-
 if(Meteor.isClient) {
+  Router.onBeforeAction(function() {
+    Session.set('query', {});
+    Session.set('searchQuery', '');
+    Session.set('searchBy', 'Navn');
+    Session.set('filters', []);
+    Session.set('sortBy', 'project.name');
+    Session.set('sortOrder', 'asc');
+    Session.set('sortType', 'string');
+    Session.set('showFilter', false);
+    this.next();
+
+  }, {
+    except: ['Reports']
+  });
+  
   //where to put this? we need to subscribe for the account field for the user
   Meteor.subscribe('moreUserData');
 }

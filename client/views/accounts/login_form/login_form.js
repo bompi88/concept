@@ -45,7 +45,7 @@ Template.LoginForm.events({
       Accounts.forgotPassword({email: email}, function(error){
         // create error alert box on error
         if (error) {
-          Notifications.error(error.title, error);
+          Notifications.error("Feil oppstod", "Vær sikker på å at du har skrevet inn riktig epost.", { timeout: 5000 });
         // or redirect to logon page
         } else {
           Router.go('AdminLogon');
@@ -56,7 +56,10 @@ Template.LoginForm.events({
       });
     } catch(error) {
       // if error: create alert box with error message
-      Notifications.error(error.title, error);
+      Notifications.error("Feil oppstod", "Vær sikker på å at du har skrevet inn riktig epost.", { timeout: 5000 });
+      
+      // Enable button and set button text
+      toggleButtons(submitButton, false, 'Send inn');
     }
   },
 
@@ -77,7 +80,7 @@ Template.LoginForm.events({
       Meteor.loginWithPassword(username, password, function(error){
 
         if(error) {
-          Notifications.error(error.title, error);
+          Notifications.error("Feil oppstod", "Kunne ikke logge inn. Sikker på om du har tastet inn riktig?", { timeout: 5000 });
         } else {
           Router.go('ConceptIndex');
         }
@@ -88,7 +91,10 @@ Template.LoginForm.events({
 
     // Catch and display error
     } catch(error) {
-      Notifications.error(error.title, error);
+      Notifications.error("Feil oppstod", "Kunne ikke logge inn. Sikker på om du har tastet inn riktig?", { timeout: 5000 });
+      
+      // reset buttons
+      toggleButtons(submitButton, false, 'Logg inn');
     }
   }
 });

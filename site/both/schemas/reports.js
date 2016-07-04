@@ -393,7 +393,7 @@ ReportScheme = new SimpleSchema({
     },
     "_id": {
         type: String,
-        denyInsert: true,
+        denyInsert: false,
         optional: true,
         regEx: SimpleSchema.RegEx.Id
     },

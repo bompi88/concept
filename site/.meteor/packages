@@ -32,3 +32,8 @@ percolate:migrations
 fourseven:scss
 gadicohen:sitemaps
 spiderable
+standard-minifier-css
+standard-minifier-js
+cfs:base-package
+zenniz:jquery-placeholder
+http

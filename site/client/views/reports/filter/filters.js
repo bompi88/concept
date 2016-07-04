@@ -21,6 +21,7 @@
 
 Template.AttributePicker.events({
   'click .dropdown-menu li': function(event, tmpl) {
+    if (event.preventDefault) { event.preventDefault(); }
     var chosenAttribute = $(event.currentTarget).text();
 
     //replace button text in dropdown with chosen element
@@ -30,6 +31,7 @@ Template.AttributePicker.events({
 
 Template.OperatorPicker.events({
   'click .dropdown-menu li': function(event, tmpl) {
+    if (event.preventDefault) { event.preventDefault(); }
     var chosenAttribute = $(event.currentTarget).text();
 
     //replace button text in dropdown with chosen element

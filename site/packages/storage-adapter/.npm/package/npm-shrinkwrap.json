@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "length-stream": {
+      "version": "0.1.1",
+      "resolved": "https://registry.npmjs.org/length-stream/-/length-stream-0.1.1.tgz",
+      "from": "length-stream@0.1.1"
+    },
+    "pass-stream": {
+      "version": "0.1.5",
+      "resolved": "https://registry.npmjs.org/pass-stream/-/pass-stream-0.1.5.tgz",
+      "from": "pass-stream@>=0.1.0 <0.2.0"
+    },
+    "readable-stream": {
+      "version": "1.0.2",
+      "resolved": "https://github.com/jeffbski/readable-stream/archive/v1.0.2-object-transform2-ret-self.tar.gz",
+      "from": "https://github.com/jeffbski/readable-stream/archive/v1.0.2-object-transform2-ret-self.tar.gz"
+    }
+  }
+}

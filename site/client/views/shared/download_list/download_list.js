@@ -55,6 +55,31 @@ Template.DownloadList.helpers({
     return null;
   },
 
+  fileName: function() {
+    var len = 20;
+    var file = this;
+
+    if(file) {
+      var oldName = file.name();
+
+      var ext = oldName.substring(oldName.lastIndexOf(".") + 1, oldName.length).toLowerCase();
+      var filename = oldName.replace('.' + ext, '');
+
+      // If the cut-length specified do not affect the filename, return the old filename
+      if(filename.length <= len) {
+          return oldName;
+      }
+
+      // Cut the string and append [...] if the name actually got sliced.
+      filename = filename.substr(0, len) + (oldName.length > len ? '[...]' : '');
+
+      // Return the filename with the correct extension
+      return filename + '.' + ext;
+    }
+
+    return "";
+  },
+
   isChoosenasMainResource: function(resource) {
     return uploadObject.getImages().indexOf(resource) === 0;
   }

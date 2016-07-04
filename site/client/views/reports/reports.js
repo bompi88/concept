@@ -48,6 +48,7 @@ Template.Reports.events({
     Session.set('ReportViewState', 'timeline');
   },
   'click .sort-toggle': function(event, tmpl) {
+    if (event.preventDefault) { event.preventDefault(); }
     $('.pop-info').popover('hide');
 
     var t = $(event.currentTarget).attr("data-id");

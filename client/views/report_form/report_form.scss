@@ -1,0 +1,33 @@
+/*****************************************************************************/
+/* ReportForm: Style */
+/*****************************************************************************/
+
+form.report-form .btn {
+    margin: 2px 5px;
+}
+
+div.form-group, div.control-group {
+	margin-bottom:20px;
+
+	label {
+		margin-bottom: 7px;
+	}
+}
+
+fieldset {
+	margin-top: 40px !important;
+
+	img.img-responsive {
+		width: 100%;
+	}
+}
+
+form {
+	margin: 0 20px;
+}
+
+// UI Pan Controller fix, google maps IE
+.gmnoprint div[title^="Pan"]
+{
+    opacity: 0 !important;
+}

@@ -1,0 +1,94 @@
+<!--
+~ Copyright 2015 Concept
+~
+~ Licensed under the Apache License, Version 2.0 (the "License");
+~ you may not use this file except in compliance with the License.
+~ You may obtain a copy of the License at
+~
+~ http://www.apache.org/licenses/LICENSE-2.0
+~
+~ Unless required by applicable law or agreed to in writing, software
+~ distributed under the License is distributed on an "AS IS" BASIS,
+~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+~ See the License for the specific language governing permissions and
+~ limitations under the License.
+-->
+<!--
+
+DownloadList: Creates an editable list for a list of files.
+
+================================================================================================
+Params:
+================================================================================================
+files   - An reactive object where the files is stored.
+
+-->
+
+<template name="DownloadList">
+  {{#if $collectionNotEmpty files}}
+    <table class="table table-striped table-condensed">
+      <thead>
+        <tr>
+          <th style="width:15%;" class="hidden-xs"></th>
+          <th style="width:50%;" class="hidden-xs"></th>
+          <th style="width:30%;" class="hidden-xs"></th>
+          <th style="width:5%;" class="hidden-xs"></th>
+          <th style="width:40%;" class="visible-xs"></th>
+          <th style="width:40%;" class="visible-xs"></th>
+          <th style="width:20%;" class="visible-xs"></th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each files}}
+        <tr class="listview">
+          <td class="text-center vert-align">
+            {{#if $eq collectionName "images"}}
+              {{#unless this.isUploaded}}
+                <span class="glyphicon glyphicon-file" style="font-size:75px;"></span>
+              {{else}}
+                {{> Img getUrl this "original"}}
+              {{/unless}}
+            {{else}}
+              <span class="glyphicon glyphicon-file" style="font-size:75px;"></span>
+            {{/if}}
+          </td>
+          {{#with getData this._id parent=..}}
+          <td class="vert-align">
+            <h5><b>Navn:</b> {{fileName}}</h5>
+            {{#if $eq collectionName "images"}}
+              {{> TextInput $generateId 'title' this._id placeholder="Tittel" value=title}}
+              {{> TextInput $generateId 'copyright' this._id  placeholder="Kilde" value=copyright}}
+              {{> TextInput $generateId 'link' this._id  placeholder="Kilde-url" value=link}}
+
+              {{#if isChoosenasMainResource this._id}}
+                <div class="well"><span class="glyphicon glyphicon-ok" style="color:green;font-size:20px;margin-right:20px;"></span>Dette bildet er valgt som hovedbilde.</div>
+              {{else}}
+                <button type="button" class="btn btn-sm btn-info pull-right set-main-img">Sett som hovedbilde</button>
+              {{/if}}
+            {{else}}
+              {{> TextInput $generateId 'title' this._id  placeholder="Tittel" value=title}}
+              {{> TextInput $generateId 'typedoc' this._id  placeholder="Type dokument" value=typedoc}}
+              {{> TextInput $generateId 'date' this._id  placeholder="Dato" value=date}}
+            {{/if}}
+          </td>
+          <td class="vert-align hidden-xs" style="padding-top:25px;">
+            {{#unless this.isUploaded}}
+              {{> FS.UploadProgressBar bootstrap=true}}
+            {{else}}
+              {{> FS.UploadProgressBar bootstrap=true class="progress-bar-success"}}
+            {{/unless}}
+          </td>
+          <td class="text-center vert-align">
+            {{#FS.DeleteButton type=type class="btn btn-danger btn-xs"}}Slett{{/FS.DeleteButton}}
+          </td>
+          {{/with}}
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  {{/if}}
+</template>
+
+<template name="Img">
+  <img src="{{this}}" class="img-responsive" style="margin:auto;">
+</template>

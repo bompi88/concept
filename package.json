@@ -1,0 +1,20 @@
+{
+  "name": "concept",
+  "version": "0.1.0",
+  "description": "Presentasjonsverktøy for Concept",
+  "repository": "https://github.com/bompi88/concept",
+  "scripts": {
+    "dev": "meteor",
+    "reset": "meteor reset",
+    "mongo": "meteor mongo",
+    "import:data": "./testdata.sh",
+    "deploy": "cd ./.deploy && mup deploy",
+    "logs": "cd ./.deploy && mup logs",
+    "logs:mongo": "cd ./.deploy && mup mongo logs"
+  },
+  "devDependencies": {
+  },
+  "dependencies": {
+  },
+  "license": "Apache-2.0"
+}

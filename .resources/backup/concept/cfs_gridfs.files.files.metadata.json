@@ -1,0 +1,1 @@
+{"indexes":[{"v":NumberInt(1),"name":"_id_","key":{"_id":NumberInt(1)},"ns":"meteor.cfs_gridfs.files.files"},{"v":NumberInt(1),"name":"filename_1","key":{"filename":1},"ns":"meteor.cfs_gridfs.files.files"}]}

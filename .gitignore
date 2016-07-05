@@ -3,3 +3,5 @@
 .DS_Store
 public/pdf/
 mup.json
+resources/backup/*
+.deploy/mup.js

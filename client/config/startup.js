@@ -22,7 +22,7 @@ Meteor.startup(function() {
 	$('html').attr('lang', 'no-nb');
 
 	// Dirty hack for dismissing modal by clicking outside it. so we dont have to fork bootbox
-	$(document).on('click', '.bootbox', function(){
+	$(document).on('click', '.bootbox', function(event){
     var classname = event.target.className;
 
     if(classname && !$('.' + classname).parents('.modal-dialog').length)

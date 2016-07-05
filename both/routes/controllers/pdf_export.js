@@ -20,7 +20,7 @@ PDFExportController = RouteController.extend({
       var report = Reports.find({_id: this.params._id}).fetch()[0];
       if(report) {
         var spiderImg = this.params && this.params.query.spider || "";
-        
+
         spiderImg = decodeURIComponent(spiderImg).replace(new RegExp('\\-', 'gi'),'+').replace(new RegExp('\\_', 'gi'),'/').replace(new RegExp('\\=', 'gi'),'~');
 
         var filename = report.project.name + '.pdf';
@@ -122,7 +122,7 @@ var createImageCaption = function(doc, image) {
 
 var generatePdf = function(report, spider) {
 
-  var pathToFonts = process.env.NODE_ENV === 'production' ? process.env.PWD + "/app/programs/server/assets/app/" : process.env.PWD + "/private/";
+  var pathToFonts = process.env.NODE_ENV === 'production' ? process.env.PWD + "/programs/server/assets/app/" : process.env.PWD + "/private/";
 
   if(!report || typeof report === 'undefined') {
     return false;
@@ -172,5 +172,3 @@ var generatePdf = function(report, spider) {
 
   return doc.outputSync();
 };
-
-

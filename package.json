@@ -9,6 +9,7 @@
     "mongo": "meteor mongo",
     "import:data": "./testdata.sh",
     "deploy": "cd ./.deploy && mup deploy",
+    "deploy": "cd ./.deploy && mup detup",
     "logs": "cd ./.deploy && mup logs",
     "logs:mongo": "cd ./.deploy && mup mongo logs"
   },

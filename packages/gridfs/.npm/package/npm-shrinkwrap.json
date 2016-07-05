@@ -45,7 +45,14 @@
     "mongodb": {
       "version": "1.4.35",
       "resolved": "https://registry.npmjs.org/mongodb/-/mongodb-1.4.35.tgz",
-      "from": "mongodb@1.4.35"
+      "from": "mongodb@1.4.35",
+      "dependencies": {
+        "readable-stream": {
+          "version": "2.1.4",
+          "resolved": "https://registry.npmjs.org/readable-stream/-/readable-stream-2.1.4.tgz",
+          "from": "readable-stream@latest"
+        }
+      }
     },
     "nan": {
       "version": "1.8.4",

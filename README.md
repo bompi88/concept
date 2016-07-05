@@ -208,14 +208,19 @@ Concept Presentasjonsverktøy bruker MongoDB som database. Hver rapport lagres i
 
 ### Brukermanual
 
+Brukermanualen befinner seg i et eget [repository](https://github.com/bompi88/concept-docs).
+
 Brukermanualen er skrevet i `markdown` og kan genereres til `\*.pdf` og `\*.epub` ved bruk av [GitBook](https://github.com/GitbookIO/gitbook).
 
-Det finnes et GUI-program til GitBook også, det kan man laste ned [her](https://github.com/GitbookIO/editor/releases).
+Det finnes et GUI-program til GitBook også, det kan man laste ned [her](https://www.gitbook.com/editor).
 
-For å kunne generere til `pdf` må man installere [Calibre](http://calibre-ebook.com). Last ned [her](http://calibre-ebook.com/download). Deretter må man be Calibre om å legge til cmd-tools:
+For å kunne generere til `pdf` må man installere [Calibre](http://calibre-ebook.com). Last ned [her](http://calibre-ebook.com/download). Deretter må man sørge for at `ebook-convert` ligger i `PATH`-variablen.
 
-1. Gå til `Preferences->Avansert->Diverse`.
-2. Klikk `Installer kommandoverktøy`
+Når alt er OK, kan man generere PDF ved å kjøre:
+
+``` bash
+$ gitbook pdf
+```
 
 ## Copyright
 Laget av [Bjørn Bråthen](https://github.com/bompi88) og [Andreas Drivenes](https://github.com/andybb) for Concept-programmet på NTNU. Sluppet under Apache-lisens.

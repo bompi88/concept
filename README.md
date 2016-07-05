@@ -84,7 +84,7 @@ module.exports = {
     env: {
       PORT: 80,
       ROOT_URL: 'http://concept-eval.ivt.ntnu.no',
-      MONGO_URL: 'mongodb://localhost/meteor'
+      MONGO_URL: 'mongodb://localhost/meteor',
       MAIL_URL: '',
       KADIRA_APP_ID: '',
       KADIRA_APP_SECRET: ''
@@ -97,9 +97,9 @@ module.exports = {
     oplog: true,
     port: 27017,
     servers: {
-      one: {},
-    },
-  },
+      one: {}
+    }
+  }
 };
 
 ```
@@ -107,7 +107,7 @@ module.exports = {
 Hvis man skal ha tilgang på loggingen fra Meteor og Mongo, kan man få dette ved å kjøre:
 
 ```bash
-$ npm run logs					# Meteor logs
+$ npm run logs				# Meteor logs
 $ npm run logs:mongo		# MongoDB logs
 ```
 

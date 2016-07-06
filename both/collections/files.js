@@ -33,6 +33,9 @@ Files = new FS.Collection("files", {
 				'application/vnd.ms-excel',
 				'application/vnd.ms-powerpoint',
 			]
-		}
+		},
+    onInvalid: function (message) {
+      Notifications.warn('Feil format', 'Vi støtter bare PDF, Word, Excel og PowerPoint akkurat nå. Hvis du skal laste opp bilder, prøv det andre opplastningsfeltet.');
+    }
 	}
 });

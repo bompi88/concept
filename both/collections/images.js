@@ -55,6 +55,9 @@ Images = new FS.Collection("images", {
   filter: {
     allow: {
       contentTypes: ['image/*'] //allow only images
+    },
+    onInvalid: function (message) {
+      Notifications.warn('Feil format', 'Bare bilder kan lastes opp her, prøv det andre opplastningsfeltet.');
     }
   }
 });

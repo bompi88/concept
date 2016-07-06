@@ -350,14 +350,12 @@ ReportScheme = new SimpleSchema({
     "images.$.title": {
         type: String,
         label: "Tittel",
-        optional: true,
-        regEx: textFieldRegEx
+        optional: true
     },
     "images.$.copyright": {
         type: String,
         label: "Kilde",
-        optional: true,
-        regEx: textFieldRegEx
+        optional: true
     },
     "images.$.link": {
         type: String,
@@ -376,14 +374,12 @@ ReportScheme = new SimpleSchema({
     "references.$.title": {
         type: String,
         label: "Tittel",
-        optional: true,
-        regEx: textFieldRegEx
+        optional: true
     },
     "references.$.typedoc": {
         type: String,
         label: "Dokumenttype",
-        optional: true,
-        regEx: textFieldRegEx
+        optional: true
     },
     "references.$.date": {
         type: String,

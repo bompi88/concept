@@ -96,9 +96,30 @@ locationObject = {
 
 Template.ReportForm.events({
   'click .delete-btn': function(event, tmpl) {
-    Meteor.call('deleteReport', this._id, function (error, result) {
-      Router.go(Router.path('Reports', {page: 1}));
-    });
+    // A confirmation prompt before removing the document
+    var self = this;
+
+    var confirmationPrompt = {
+      title: "Bekreftelse på slettingen",
+      message: 'Er du sikker på at du vil permanent slette rapporten?',
+      buttons: {
+        cancel: {
+          label: "Nei"
+        },
+        confirm: {
+          label: "Ja",
+          callback: function(result) {
+            if (result) {
+              Meteor.call('deleteReport', self.doc._id, function (error, result) {
+                Router.go(Router.path('Reports', {page: 1}));
+              });
+            }
+          }
+        }
+      }
+    };
+
+    bootbox.dialog(confirmationPrompt);
   },
 
   'keydown #map-canvas':function(event, tmpl) {

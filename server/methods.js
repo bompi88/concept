@@ -20,6 +20,16 @@
 
 Meteor.methods({
 
+	deleteReport: function(id) {
+		check(id, String);
+
+		if (!Meteor.userId()) {
+			return;
+		}
+
+		Reports.remove({ _id: id });
+	},
+
 	toggleReportPublic: function(id, publicity) {
 		if(this.userId) {
 			return Reports.update({_id: id}, {$set: {"_public": publicity}});

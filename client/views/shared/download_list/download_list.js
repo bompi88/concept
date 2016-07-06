@@ -87,6 +87,6 @@ Template.DownloadList.helpers({
 
 Template.DownloadList.events({
   'click .set-main-img': function (evt, tmpl) {
-    uploadObject.setAsMainImg(this.fileId);
+    uploadObject.setAsMainImg(this.fileId || this._id);
   }
 });
